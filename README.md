@@ -98,6 +98,6 @@ It currently includes:
 - supporting reference/spec docs for deeper design work
 
 Important current validation note:
-- the pipeline does **not** yet invoke the released `service-lasso-harness` binary
-- it still runs the starter local package/test flow
-- switching the template pipeline to the real harness binary remains a follow-up step once the harness integration path is finalized
+- the pipeline now downloads and invokes the released `service-lasso-harness` binary in CI
+- it still keeps the starter local package/test flow alongside harness verification
+- the current harness version is pinned in workflow config and can be advanced intentionally over time

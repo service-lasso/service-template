@@ -20,4 +20,4 @@ Ref/code-backed donor healthcheck types observed:
 Current starter implementation status:
 - GitHub Actions now packages starter release archives on Windows/Linux/macOS
 - GitHub Actions now runs basic starter tests on each platform
-- the workflow still needs to switch from starter tests to real released-harness invocation once `service-lasso-harness` exists as a binary
+- GitHub Actions now downloads the released `service-lasso-harness` binary and runs the template verify flow through that harness path
