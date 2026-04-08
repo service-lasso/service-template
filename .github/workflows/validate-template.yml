@@ -72,7 +72,7 @@ jobs:
       - name: Package starter artifact (POSIX)
         if: runner.os != 'Windows'
         shell: bash
-        run: ./scripts/package.sh
+        run: bash ./scripts/package.sh
 
       - name: Run starter tests (Windows)
         if: runner.os == 'Windows'
@@ -82,7 +82,7 @@ jobs:
       - name: Run starter tests (POSIX)
         if: runner.os != 'Windows'
         shell: bash
-        run: ./scripts/test.sh
+        run: bash ./scripts/test.sh
 
       - name: Verify via released harness (Windows)
         if: runner.os == 'Windows'
@@ -92,4 +92,4 @@ jobs:
       - name: Verify via released harness (POSIX)
         if: runner.os != 'Windows'
         shell: bash
-        run: ./scripts/verify.sh
+        run: bash ./scripts/verify.sh
