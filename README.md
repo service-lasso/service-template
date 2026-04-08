@@ -1,30 +1,53 @@
 # service-template
 
-_Status: planning folder / review bundle_
+_Status: starter template repo_
 
-This folder is the standalone local project area for the future `service-template` repo.
+`service-template` is the canonical starting point for new Service Lasso service repos.
 
-It currently contains the template-specific planning and OpenSpec material moved out of the donor-ref/harness staging areas so the template work can be reviewed on its own.
+Use this repo when you want to create a new service repo that already has:
+- the expected service repo layout
+- a starter `service.json`
+- starter packaging scripts
+- starter verify scripts and harness contract shape
+- starter docs for service contract, packaging, and validation
+- starter CI scaffolding
 
-## Start here
+## Use this template
 
-Read in this order:
+Recommended flow:
+
+1. Create a new repo from this GitHub template.
+2. Rename the sample service files/content for the real service.
+3. Replace the sample runtime payload with the real service payload.
+4. Update `service.json`, `verify/service-harness.json`, and the docs for the new service.
+5. Run the local package + test flow.
+6. Wire the repo into the real released `service-lasso-harness` binary once that integration path is enabled.
+
+## Quick start
+
+### Local package
+
+```powershell
+pwsh -NoLogo -NoProfile -File .\scripts\package.ps1
+```
+
+### Local tests
+
+```powershell
+pwsh -NoLogo -NoProfile -File .\scripts\test.ps1
+```
+
+## Start here for deeper design context
+
+Read in this order if you need the underlying design/spec context:
 
 1. `docs/openspec-drafts/SPEC-SERVICE-TEMPLATE-REPO.md`
 2. `docs/openspec-drafts/OPENSPEC-TRACKER.md`
-3. `docs/reference/SERVICE-TEMPLATE-REPO.md`
-4. `docs/reference/SERVICE-STRUCTURE-REVIEW.md`
-5. `docs/reference/PROPOSED-CODEBASE-STRUCTURE.md`
-6. `docs/reference/DECISION-CONTEXT.md`
-7. `docs/reference/shared-runtime/QUESTION-LIST-AND-CODE-VALIDATION.md`
-8. `docs/reference/shared-runtime/ARCHITECTURE-DECISIONS.md`
-9. `docs/reference/shared-runtime/SERVICE-MANAGER-BEHAVIOR.md`
-10. `docs/reference/adjacent/SPEC-SERVICE-LASSO-HARNESS.md`
-11. `docs/reference/EXAMPLE-REPO-TREE.md`
-12. `docs/reference/EXAMPLE-service.json`
-13. `docs/reference/EXAMPLE-service-harness.json`
-14. `docs/reference/EXAMPLE-verify.ps1`
-15. `docs/reference/EXAMPLE-verify.sh`
+3. `docs/service-contract.md`
+4. `docs/service-json-reference.md`
+5. `docs/packaging.md`
+6. `docs/validation.md`
+7. `docs/reference/adjacent/SPEC-SERVICE-LASSO-HARNESS.md`
 
 ## What is here
 
@@ -53,7 +76,7 @@ Read in this order:
 
 ## Purpose
 
-This repo is intended to become the canonical starting point for Service Lasso service repos.
+This repo is the canonical starting point for Service Lasso service repos.
 
 Its role is to define:
 - one-service-per-repo expectations
@@ -65,12 +88,16 @@ Its role is to define:
 
 ## Current status
 
-This is now a first-pass starter skeleton, not just a planning folder.
+This repo is usable now as a starter template.
 
-The folder now includes:
-- template-specific specs/design notes
-- copied shared runtime/reconciliation context needed for template decisions
-- copied adjacent harness-spec context needed for validation integration decisions
+It currently includes:
 - actual starter repo files (`service.json`, `verify/`, `scripts/`, `runtime/`, `config/`, `.github/workflows/`)
 - a packaged first-pass sample artifact at `dist/echo-service-win32.zip`
 - a starter multi-OS GitHub Actions workflow that packages release archives and runs basic tests
+- starter harness-contract files and thin verify wrappers
+- supporting reference/spec docs for deeper design work
+
+Important current validation note:
+- the pipeline does **not** yet invoke the released `service-lasso-harness` binary
+- it still runs the starter local package/test flow
+- switching the template pipeline to the real harness binary remains a follow-up step once the harness integration path is finalized
