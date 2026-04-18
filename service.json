@@ -2,6 +2,9 @@
   "id": "echo-service",
   "name": "Echo Service",
   "description": "Minimal sample service used to prove the service-template contract.",
+  "meta": {
+    "license": "Apache-2.0"
+  },
   "enabled": true,
   "version": "0.1.0",
   "logoutput": true,
