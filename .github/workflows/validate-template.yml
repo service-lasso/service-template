@@ -58,11 +58,12 @@ jobs:
         shell: pwsh
         run: |
           Expand-Archive -Path ".harness/download/${{ matrix.archive_name }}" -DestinationPath ".harness/bin" -Force
-          $binDir = Resolve-Path ".harness/bin/${{ matrix.extracted_dir }}"
-          $binPath = Join-Path $binDir "${{ matrix.binary_name }}"
-          if (-not (Test-Path $binPath)) {
-            throw "Harness binary not found at $binPath"
+          $bin = Get-ChildItem ".harness/bin" -Recurse -Filter "${{ matrix.binary_name }}" | Select-Object -First 1
+          if (-not $bin) {
+            throw "Harness binary not found under .harness/bin"
           }
+          $binDir = $bin.Directory.FullName
+          $binPath = $bin.FullName
           Add-Content -Path $env:GITHUB_PATH -Value $binDir
           Add-Content -Path $env:GITHUB_ENV -Value "SERVICE_LASSO_HARNESS_BIN=$binPath"
 
@@ -72,12 +73,12 @@ jobs:
         run: |
           set -euo pipefail
           tar -xzf ".harness/download/${{ matrix.archive_name }}" -C .harness/bin
-          BIN_DIR="$PWD/.harness/bin/${{ matrix.extracted_dir }}"
-          BIN_PATH="$BIN_DIR/${{ matrix.binary_name }}"
-          if [[ ! -x "$BIN_PATH" ]]; then
-            echo "Harness binary not found at $BIN_PATH" >&2
+          BIN_PATH="$(find "$PWD/.harness/bin" -type f -name "${{ matrix.binary_name }}" | head -n 1)"
+          if [[ -z "$BIN_PATH" || ! -x "$BIN_PATH" ]]; then
+            echo "Harness binary not found under .harness/bin" >&2
             exit 1
           fi
+          BIN_DIR="$(dirname "$BIN_PATH")"
           echo "$BIN_DIR" >> "$GITHUB_PATH"
           echo "SERVICE_LASSO_HARNESS_BIN=$BIN_PATH" >> "$GITHUB_ENV"
 
