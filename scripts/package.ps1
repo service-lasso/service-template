@@ -10,7 +10,6 @@ New-Item -ItemType Directory -Force -Path $dist | Out-Null
 if (Test-Path $staging) { Remove-Item -Recurse -Force $staging }
 New-Item -ItemType Directory -Force -Path $staging | Out-Null
 
-Copy-Item -Force (Join-Path $root 'service.json') (Join-Path $staging 'service.json')
 Copy-Item -Recurse -Force (Join-Path $runtime 'win32') (Join-Path $staging 'runtime')
 Copy-Item -Recurse -Force (Join-Path $root 'config') (Join-Path $staging 'config')
 

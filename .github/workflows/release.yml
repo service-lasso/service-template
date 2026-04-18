@@ -23,19 +23,16 @@ jobs:
             platform: win32
             artifact: dist/echo-service-win32.zip
             archive_name: service-lasso-harness-windows-amd64.zip
-            extracted_dir: service-lasso-harness-windows-amd64
             binary_name: service-lasso-harness.exe
           - os: ubuntu-latest
             platform: linux
             artifact: dist/echo-service-linux.tar.gz
             archive_name: service-lasso-harness-linux-amd64.tar.gz
-            extracted_dir: service-lasso-harness-linux-amd64
             binary_name: service-lasso-harness
           - os: macos-14
             platform: darwin
             artifact: dist/echo-service-darwin.tar.gz
             archive_name: service-lasso-harness-darwin-arm64.tar.gz
-            extracted_dir: service-lasso-harness-darwin-arm64
             binary_name: service-lasso-harness
 
     runs-on: ${{ matrix.os }}
@@ -135,12 +132,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
       - name: Download packaged artifacts
         uses: actions/download-artifact@v4
         with:
           path: release-assets
           pattern: echo-service-*
           merge-multiple: true
+
+      - name: Copy service manifest into release assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp service.json release-assets/service.json
 
       - name: Compute release version
         id: version
@@ -160,4 +166,5 @@ jobs:
             release-assets/echo-service-win32.zip
             release-assets/echo-service-linux.tar.gz
             release-assets/echo-service-darwin.tar.gz
+            release-assets/service.json
           generate_release_notes: true

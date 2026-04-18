@@ -16,7 +16,6 @@ mkdir -p "$DIST"
 rm -rf "$STAGING"
 mkdir -p "$STAGING"
 
-cp "$ROOT/service.json" "$STAGING/service.json"
 cp -R "$ROOT/runtime/$PLATFORM" "$STAGING/runtime"
 cp -R "$ROOT/config" "$STAGING/config"
 
