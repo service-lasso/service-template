@@ -17,3 +17,10 @@ This starter is intentionally minimal. It is meant to prove the contract shape, 
 Important distinction:
 - the root `service.json` is the canonical manifest for the template service repo itself
 - the tracked `services/` folder is an example inventory for downstream app/reference repos that embed Service Lasso and need to declare the services they want to manage
+
+Current bounded release/install note:
+- release/install metadata belongs inside `service.json`, not in a sidecar source file
+- the bounded first-pass core runtime currently models that through an `artifact` block with:
+  - `artifact.kind`
+  - `artifact.source`
+  - `artifact.platforms`

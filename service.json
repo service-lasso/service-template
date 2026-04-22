@@ -54,14 +54,32 @@
       "repo": "service-lasso/service-template",
       "channel": "latest"
     },
-    "version": "0.1.0",
-    "path": {
-      "win32": "dist/echo-service-win32.zip",
-      "darwin": "dist/echo-service-darwin.tar.gz",
-      "linux": "dist/echo-service-linux.tar.gz",
-      "default": "dist/echo-service-win32.zip"
-    },
-    "updateStrategy": "replace-artifact-and-restart"
+    "platforms": {
+      "win32": {
+        "assetName": "echo-service-win32.zip",
+        "archiveType": "zip",
+        "command": "./echo-service.exe",
+        "args": []
+      },
+      "darwin": {
+        "assetName": "echo-service-darwin.tar.gz",
+        "archiveType": "tar.gz",
+        "command": "./echo-service",
+        "args": []
+      },
+      "linux": {
+        "assetName": "echo-service-linux.tar.gz",
+        "archiveType": "tar.gz",
+        "command": "./echo-service",
+        "args": []
+      },
+      "default": {
+        "assetName": "echo-service-win32.zip",
+        "archiveType": "zip",
+        "command": "./echo-service.exe",
+        "args": []
+      }
+    }
   },
   "actions": {
     "install": {

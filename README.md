@@ -104,6 +104,10 @@ Important current validation note:
 - it still keeps the starter local package/test flow alongside harness verification
 - the current harness version is pinned in workflow config and can be advanced intentionally over time
 
+Important current manifest note:
+- the bounded first-pass core runtime now expects service release/install metadata to live directly in `service.json`
+- the current template example uses a bounded `artifact.kind`, `artifact.source`, and `artifact.platforms` shape to show that direction explicitly
+
 ## Baseline app inventory rule
 
 This repo still models the canonical one-service-per-repo contract through the root `service.json`.
