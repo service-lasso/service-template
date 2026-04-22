@@ -12,6 +12,15 @@ service-template/
   CHANGELOG.md
   LICENSE
   service.json
+  services/
+    echo-service/
+      service.json
+    service-admin/
+      service.json
+    @node/
+      service.json
+    @traefik/
+      service.json
   verify/
     service-harness.json
   scripts/
@@ -38,6 +47,8 @@ service-template/
 
 - `service.json`
   - canonical service manifest for the sample service
+- `services/`
+  - example managed-service inventory for app/reference repos that embed Service Lasso
 - `verify/service-harness.json`
   - machine-readable validation contract for the shared harness
 - `scripts/verify.*`

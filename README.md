@@ -7,6 +7,7 @@ _Status: starter template repo_
 Use this repo when you want to create a new service repo that already has:
 - the expected service repo layout
 - a starter `service.json`
+- a starter `services/` inventory example for app/reference repos that embed Service Lasso
 - starter packaging scripts
 - starter verify scripts and harness contract shape
 - starter docs for service contract, packaging, and validation
@@ -92,6 +93,7 @@ This repo is usable now as a starter template.
 
 It currently includes:
 - actual starter repo files (`service.json`, `verify/`, `scripts/`, `runtime/`, `config/`, `.github/workflows/`)
+- a tracked example `services/` inventory for downstream app/reference repos
 - a packaged first-pass sample artifact at `dist/echo-service-win32.zip`
 - a starter multi-OS GitHub Actions workflow that packages release archives and runs basic tests
 - starter harness-contract files and thin verify wrappers
@@ -101,3 +103,20 @@ Important current validation note:
 - the pipeline now downloads and invokes the released `service-lasso-harness` binary in CI
 - it still keeps the starter local package/test flow alongside harness verification
 - the current harness version is pinned in workflow config and can be advanced intentionally over time
+
+## Baseline app inventory rule
+
+This repo still models the canonical one-service-per-repo contract through the root `service.json`.
+
+In addition, it now carries a tracked example `services/` inventory to show what app/reference repos should own when they embed Service Lasso.
+
+Current baseline inventory:
+- `services/echo-service/service.json`
+- `services/service-admin/service.json`
+- `services/@node/service.json`
+- `services/@traefik/service.json`
+
+Important rule:
+- app/reference repos should own the exact `services/` manifests for the services they intend to manage
+- if an app repo includes `service-admin`, it should also include the manifests needed to satisfy Service Admin's declared service dependencies
+- environment settings like `VITE_SERVICE_LASSO_API_BASE_URL` still belong in app/runtime config, not as extra service manifests

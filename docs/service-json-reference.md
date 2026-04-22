@@ -42,6 +42,22 @@ At a high level it carries:
 - dependency hints
 - health expectations
 
+## App repo inventory rule
+
+When a repo is acting as an app/reference host around Service Lasso, it should also own a tracked `services/` folder containing the manifests for the services it intends to manage.
+
+Current baseline example inventory in this repo:
+- `services/echo-service/service.json`
+- `services/service-admin/service.json`
+- `services/@node/service.json`
+- `services/@traefik/service.json`
+
+Important distinction:
+- the root `service.json` remains the canonical manifest for the service repo itself
+- the `services/` folder is an example managed-service inventory for host/app repos, not an additional replacement for the root manifest
+
+If an app repo includes `service-admin`, it should also include the manifests needed to satisfy Service Admin's declared service dependencies rather than relying on hidden sibling-repo state.
+
 ## Current sample manifest
 
 The current sample in this repo is:
