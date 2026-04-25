@@ -107,6 +107,7 @@ Important current validation note:
 Important current manifest note:
 - the bounded first-pass core runtime now expects service release/install metadata to live directly in `service.json`
 - the current template example uses a bounded `artifact.kind`, `artifact.source`, and `artifact.platforms` shape to show that direction explicitly
+- bundled app artifacts mean the app package step has already acquired service archives into `services/<service-id>/.state/artifacts/<tag>/<assetName>` so first run can install without downloading those archives
 
 ## Baseline app inventory rule
 
