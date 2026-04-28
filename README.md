@@ -119,9 +119,12 @@ Current baseline inventory:
 - `services/echo-service/service.json`
 - `services/service-admin/service.json`
 - `services/@node/service.json`
+- `services/localcert/service.json`
+- `services/nginx/service.json`
 - `services/@traefik/service.json`
 
 Important rule:
 - app/reference repos should own the exact `services/` manifests for the services they intend to manage
 - if an app repo includes `service-admin`, it should also include the manifests needed to satisfy Service Admin's declared service dependencies
+- `@node` and `@traefik` keep the `@` prefix because they are runtime/provider/infra service IDs; `echo-service`, `service-admin`, `localcert`, and `nginx` are normal managed service IDs
 - environment settings like `VITE_SERVICE_LASSO_API_BASE_URL` still belong in app/runtime config, not as extra service manifests

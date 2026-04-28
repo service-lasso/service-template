@@ -8,6 +8,10 @@ Current baseline inventory:
 - `echo-service`
 - `service-admin`
 - `@node`
+- `localcert`
+- `nginx`
 - `@traefik`
 
 If a host/app repo includes `service-admin`, it should also include the manifests needed to satisfy Service Admin's declared service dependencies.
+
+`@node` and `@traefik` keep the `@` prefix because they are runtime/provider/infra service IDs. `echo-service`, `service-admin`, `localcert`, and `nginx` are normal managed service IDs.
