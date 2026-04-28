@@ -48,19 +48,19 @@ When a repo is acting as an app/reference host around Service Lasso, it should a
 
 Current baseline example inventory in this repo:
 - `services/echo-service/service.json`
-- `services/service-admin/service.json`
+- `services/@serviceadmin/service.json`
 - `services/@node/service.json`
-- `services/localcert/service.json`
-- `services/nginx/service.json`
+- `services/@localcert/service.json`
+- `services/@nginx/service.json`
 - `services/@traefik/service.json`
 
 Important distinction:
 - the root `service.json` remains the canonical manifest for the service repo itself
 - the `services/` folder is an example managed-service inventory for host/app repos, not an additional replacement for the root manifest
 
-If an app repo includes `service-admin`, it should also include the manifests needed to satisfy Service Admin's declared service dependencies rather than relying on hidden sibling-repo state.
+If an app repo includes `@serviceadmin`, it should also include the manifests needed to satisfy Service Admin's declared service dependencies rather than relying on hidden sibling-repo state.
 
-`@node` and `@traefik` keep the `@` prefix because they are runtime/provider/infra service IDs. `echo-service`, `service-admin`, `localcert`, and `nginx` are normal managed service IDs.
+Core Service Lasso services use the `@` prefix: `@node`, `@localcert`, `@nginx`, `@traefik`, and `@serviceadmin`. `echo-service` stays unprefixed because it is the sample/test managed service.
 
 ## Current sample manifest
 

@@ -15,13 +15,13 @@ service-template/
   services/
     echo-service/
       service.json
-    service-admin/
+    @serviceadmin/
       service.json
     @node/
       service.json
-    localcert/
+    @localcert/
       service.json
-    nginx/
+    @nginx/
       service.json
     @traefik/
       service.json

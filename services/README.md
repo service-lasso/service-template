@@ -6,12 +6,12 @@ Important distinction:
 
 Current baseline inventory:
 - `echo-service`
-- `service-admin`
+- `@serviceadmin`
 - `@node`
-- `localcert`
-- `nginx`
+- `@localcert`
+- `@nginx`
 - `@traefik`
 
-If a host/app repo includes `service-admin`, it should also include the manifests needed to satisfy Service Admin's declared service dependencies.
+If a host/app repo includes `@serviceadmin`, it should also include the manifests needed to satisfy Service Admin's declared service dependencies.
 
-`@node` and `@traefik` keep the `@` prefix because they are runtime/provider/infra service IDs. `echo-service`, `service-admin`, `localcert`, and `nginx` are normal managed service IDs.
+Core Service Lasso services use the `@` prefix: `@node`, `@localcert`, `@nginx`, `@traefik`, and `@serviceadmin`. `echo-service` stays unprefixed because it is the sample/test managed service.
