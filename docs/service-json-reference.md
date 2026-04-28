@@ -50,6 +50,8 @@ Current baseline example inventory in this repo:
 - `services/echo-service/service.json`
 - `services/service-admin/service.json`
 - `services/@node/service.json`
+- `services/localcert/service.json`
+- `services/nginx/service.json`
 - `services/@traefik/service.json`
 
 Important distinction:
@@ -57,6 +59,8 @@ Important distinction:
 - the `services/` folder is an example managed-service inventory for host/app repos, not an additional replacement for the root manifest
 
 If an app repo includes `service-admin`, it should also include the manifests needed to satisfy Service Admin's declared service dependencies rather than relying on hidden sibling-repo state.
+
+`@node` and `@traefik` keep the `@` prefix because they are runtime/provider/infra service IDs. `echo-service`, `service-admin`, `localcert`, and `nginx` are normal managed service IDs.
 
 ## Current sample manifest
 

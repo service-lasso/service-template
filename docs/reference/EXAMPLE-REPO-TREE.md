@@ -19,6 +19,10 @@ service-template/
       service.json
     @node/
       service.json
+    localcert/
+      service.json
+    nginx/
+      service.json
     @traefik/
       service.json
   verify/
