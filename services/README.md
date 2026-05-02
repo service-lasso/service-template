@@ -12,6 +12,10 @@ Current baseline inventory:
 - `@nginx`
 - `@traefik`
 
+Optional provider inventory:
+- `@python` disabled release-backed Python 3.11.5 provider; Windows artifact only
+- `@java` disabled release-backed Java 17 provider
+
 If a host/app repo includes `@serviceadmin`, it should also include the manifests needed to satisfy Service Admin's declared service dependencies.
 
-Core Service Lasso services use the `@` prefix: `@node`, `@localcert`, `@nginx`, `@traefik`, and `@serviceadmin`. `echo-service` stays unprefixed because it is the sample/test managed service.
+Core Service Lasso services use the `@` prefix: `@node`, `@python`, `@java`, `@localcert`, `@nginx`, `@traefik`, and `@serviceadmin`. `echo-service` stays unprefixed because it is the sample/test managed service.

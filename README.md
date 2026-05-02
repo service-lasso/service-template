@@ -123,8 +123,12 @@ Current baseline inventory:
 - `services/@nginx/service.json`
 - `services/@traefik/service.json`
 
+Optional provider inventory:
+- `services/@python/service.json` disabled release-backed Python 3.11.5 provider; Windows artifact only
+- `services/@java/service.json` disabled release-backed Java 17 provider
+
 Important rule:
 - app/reference repos should own the exact `services/` manifests for the services they intend to manage
 - if an app repo includes `@serviceadmin`, it should also include the manifests needed to satisfy Service Admin's declared service dependencies
-- core Service Lasso services use the `@` prefix: `@node`, `@localcert`, `@nginx`, `@traefik`, and `@serviceadmin`; `echo-service` stays unprefixed because it is the sample/test managed service
+- core Service Lasso services use the `@` prefix: `@node`, `@python`, `@java`, `@localcert`, `@nginx`, `@traefik`, and `@serviceadmin`; `echo-service` stays unprefixed because it is the sample/test managed service
 - environment settings like `VITE_SERVICE_LASSO_API_BASE_URL` still belong in app/runtime config, not as extra service manifests
