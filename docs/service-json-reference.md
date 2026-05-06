@@ -60,7 +60,7 @@ Important distinction:
 
 If an app repo includes `@serviceadmin`, it should also include the manifests needed to satisfy Service Admin's declared service dependencies rather than relying on hidden sibling-repo state.
 
-Core Service Lasso services use the `@` prefix: `@node`, `@localcert`, `@nginx`, `@traefik`, and `@serviceadmin`. `echo-service` stays unprefixed because it is the sample/test managed service.
+Core Service Lasso services use the `@` prefix: `@node`, `@python`, `@java`, `@localcert`, `@nginx`, `@traefik`, `@serviceadmin`, and `@secretsbroker`. `echo-service` stays unprefixed because it is the sample/test managed service.
 
 ## Current sample manifest
 
