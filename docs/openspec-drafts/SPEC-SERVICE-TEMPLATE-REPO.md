@@ -261,6 +261,19 @@ Important clarification:
 - create it as a normal repo first
 - then mark it as a GitHub template repo
 
+Useful GitHub CLI direction for a new service repo created from the template:
+
+```bash
+gh repo create service-lasso/<repo-name> \
+  --public \
+  --template service-lasso/service-template \
+  --description "<description>"
+
+git clone https://github.com/service-lasso/<repo-name>.git
+```
+
+New service repos must be created from the GitHub template first, then cloned locally before service-specific adaptation work begins. Do not start from a local copy or another service repo and retrofit the template later.
+
 ### Recommended first value
 The first real `service-template` repo should be valuable immediately as both:
 - a service repo starting point
