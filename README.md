@@ -19,17 +19,26 @@ Use this repo when you want to create a new service repo that already has:
 
 Recommended flow:
 
-1. Create the new GitHub repo from this template repo.
-2. Clone the new GitHub repo locally.
-3. Rename the sample service files/content for the real service.
-4. Replace the sample runtime payload with the real service payload.
-5. Update `service.json`, `verify/service-harness.json`, workflows, package/test/verify scripts, and docs for the new service.
-6. Run the local package + test flow.
-7. Open a focused PR and wait for `validate-template` to pass on Windows/Linux/macOS.
+1. Create the new GitHub repo **through GitHub's template mechanism** from `service-lasso/service-template`.
+   - GitHub UI: click **Use this template** on this repo.
+   - GitHub CLI: `gh repo create service-lasso/<repo-name> --public --template service-lasso/service-template`.
+2. Verify GitHub recorded the origin:
 
-Do **not** start from a local copy or another service repo and retrofit the template later.
+   ```powershell
+   gh api repos/service-lasso/<repo-name> --jq '.template_repository.full_name'
+   # must print: service-lasso/service-template
+   ```
 
-See `docs/bootstrap-new-service-repo.md` for the full GitHub-template-first checklist.
+3. Clone the new GitHub-created repo locally.
+4. Rename the sample service files/content for the real service.
+5. Replace the sample runtime payload with the real service payload.
+6. Update `service.json`, `verify/service-harness.json`, workflows, package/test/verify scripts, and docs for the new service.
+7. Run the local package + test flow.
+8. Open a focused PR and wait for `validate-template` to pass on Windows/Linux/macOS.
+
+Do **not** start from a local copy or another service repo and retrofit the template later. File parity is not enough; the GitHub repo itself must show it was generated from `service-lasso/service-template`.
+
+See `docs/bootstrap-new-service-repo.md` for the full GitHub-template-first checklist and remediation process for incorrectly-created repos.
 
 ## Quick start
 
