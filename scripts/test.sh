@@ -24,6 +24,31 @@ if [[ "$SERVICE_ID" != "echo-service" ]]; then
   exit 1
 fi
 
+python3 - <<'PY'
+import json
+import pathlib
+
+paths = [pathlib.Path('service.json')]
+services_root = pathlib.Path('services')
+if services_root.exists():
+    paths.extend(sorted(services_root.glob('**/service.json')))
+
+for path in paths:
+    doc = json.loads(path.read_text())
+    if 'healthcheck' in doc:
+        raise SystemExit(f"Singular healthcheck is not allowed in {path}; use healthchecks[].")
+    execconfig = doc.get('execconfig')
+    if isinstance(execconfig, dict) and 'healthcheck' in execconfig:
+        raise SystemExit(f"execconfig.healthcheck is not allowed in {path}; use top-level healthchecks[].")
+    if 'healthchecks' in doc:
+        checks = doc['healthchecks']
+        if not isinstance(checks, list):
+            raise SystemExit(f"healthchecks must be an array in {path}.")
+        for check in checks:
+            if not isinstance(check, dict) or not check.get('id'):
+                raise SystemExit(f"Every healthchecks[] item needs a stable id in {path}.")
+PY
+
 CONTRACT_ID=$(python3 - <<'PY'
 import json, pathlib
 path = pathlib.Path('verify/service-harness.json')
