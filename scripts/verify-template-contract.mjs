@@ -66,7 +66,9 @@ function archiveEntries(archive) {
     if (!path || path.endsWith("/")) continue;
     if (!line.startsWith("-")) fail("candidate_archive", `Candidate archive contains a link or non-regular member: ${path}`);
     if (!/^(?!\/)(?!.*(?:^|\/)\.\.(?:\/|$))[A-Za-z0-9._@/\\-]+$/.test(path) || entries.has(path)) fail("candidate_archive", "Candidate archive has an unsafe or duplicate member path.");
-    entries.set(path, `0${line.slice(1, 10).replaceAll("-", "").replaceAll(" ", "-")}`);
+    // Git archive's Windows tar writer represents regular files as 0664/0775.
+    // Preserve the staged Git regular/executable class across archive formats.
+    entries.set(path, line.slice(1, 10).includes("x") ? "0755" : "0644");
   }
   return entries;
 }
