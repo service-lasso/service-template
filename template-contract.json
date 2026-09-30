@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "96c56e03068914f109ba21934be4ca2b2a7795085b08ff1626eccb50d7df40f1",
+  "contractDigest": "a3621fd9d50d0e42ffdcdb3b61375dcd60f482da75421d783f8d5df85f8ed5ae",
   "inventory": [
     {
       "path": ".gitattributes",
@@ -95,7 +95,7 @@
     },
     {
       "path": ".governance/specs/SPEC-017-template-contract.md",
-      "sha256": "70a240daf8b9a5dbbf4475dcac4ad0b31fb122128b5d122e35ac3c029a27c841",
+      "sha256": "d644a7d6e3a7f3f56b7360e3664f3d89f7a90c56e01208156f04644bcdc5ec11",
       "mode": "0644"
     },
     {
@@ -215,7 +215,7 @@
     },
     {
       "path": "docs/template-contract.md",
-      "sha256": "6420f307d0f9282df380c26daf6d8423ff2e686785437d2e1df9bdcb3c5175d7",
+      "sha256": "ce54a838bf382520de3bdac749a3b3352675ac70d7d3c2aba3244aff537c85c3",
       "mode": "0644"
     },
     {
@@ -280,7 +280,7 @@
     },
     {
       "path": "scripts/verify-template-contract.mjs",
-      "sha256": "dff35302600b3f2fcf9c1dd5e9e5dfb4f85cbe3376bbcfd2ee372bcfafd53737",
+      "sha256": "8313fda29641fbf5036c1c6addf2abff2600718ed8985efb95d95b0b651201f1",
       "mode": "0644"
     },
     {
@@ -345,7 +345,7 @@
     },
     {
       "path": "tests/template-contract.test.mjs",
-      "sha256": "66be2b9ae0a8800d0d92e407ef223c01ddfaa97ff6131d883a2e0251ee0624dc",
+      "sha256": "fafcf7f24cadf5720b1cce53f6ca42d7c4582c17a5e0bd710546c1be6513ea56",
       "mode": "0644"
     },
     {
@@ -358,22 +358,77 @@
     "maximumFiles": 128,
     "maximumTotalBytes": 262144,
     "maximumConfigFiles": 16,
-    "maximumConfigBytes": 65536
+    "maximumConfigBytes": 65536,
+    "maximumArchiveBytes": 262144,
+    "maximumArchiveExpandedBytes": 524288,
+    "maximumArchiveEntries": 128,
+    "maximumArchivePathDepth": 12
   },
   "authoring": {
     "provenanceFile": "template-provenance.json",
     "manifest": {
       "path": "service.json",
-      "allowedJsonPointers": [
-        "/id",
-        "/name",
-        "/description",
-        "/version",
-        "/enabled",
-        "/meta/developers",
-        "/meta/repository/url",
-        "/meta/tags"
-      ]
+      "fields": {
+        "/id": {
+          "mode": "author-editable",
+          "type": "string",
+          "maximumBytes": 63,
+          "pattern": "^[a-z][a-z0-9-]{0,62}$"
+        },
+        "/name": {
+          "mode": "author-editable",
+          "type": "string",
+          "maximumBytes": 120,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9 .,'()/_-]{0,119}$"
+        },
+        "/description": {
+          "mode": "author-editable",
+          "type": "string",
+          "maximumBytes": 512,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9 .,'()/:;_!?-]{0,511}$"
+        },
+        "/version": {
+          "mode": "author-editable",
+          "type": "string",
+          "maximumBytes": 64,
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?$"
+        },
+        "/enabled": {
+          "mode": "author-editable",
+          "type": "boolean"
+        },
+        "/meta/developers": {
+          "mode": "author-editable",
+          "type": "array",
+          "maximumItems": 8,
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "maximumBytes": 120,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9 .,'_-]{0,119}$"
+              }
+            }
+          }
+        },
+        "/meta/repository/url": {
+          "mode": "github-derived-identity",
+          "type": "string",
+          "maximumBytes": 256,
+          "pattern": "^https://github\\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+\\.git$"
+        },
+        "/meta/tags": {
+          "mode": "author-editable",
+          "type": "array",
+          "maximumItems": 12,
+          "items": {
+            "type": "string",
+            "maximumBytes": 48,
+            "pattern": "^[a-z0-9][a-z0-9-]{0,47}$"
+          }
+        }
+      }
     },
     "configuration": {
       "pathPrefix": "config/",
