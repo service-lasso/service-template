@@ -18,6 +18,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Verify the checked-in template contract
+        run: node scripts/generate-template-contract.mjs && git diff --exit-code -- template-contract.json
+      - name: Run template contract regression tests
+        run: node --test tests/template-contract.test.mjs
       - name: Bind immutable development candidate
         shell: bash
         run: |
@@ -60,8 +64,6 @@ jobs:
           }, null, 2) + '\n');
           NODE
           node scripts/verify-template-contract.mjs --template-root "$GITHUB_WORKSPACE" --project-root "$project_root" --candidate candidate/template-candidate.json --candidate-archive candidate/service-template.tar.gz
-      - run: node scripts/generate-template-contract.mjs && git diff --exit-code -- template-contract.json
-      - run: node --test tests/template-contract.test.mjs
       - uses: actions/upload-artifact@v4
         with:
           name: template-candidate-${{ github.sha }}
