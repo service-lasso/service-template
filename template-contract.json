@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "6a416eec753f474550aaa1a9b1efa94982e05cd5db22a3171418057fa021cf0d",
+  "contractDigest": "6e7f4d46881a82837cc9cad343c5fc438dfe1debb9917fc7c159114dff595942",
   "inventory": [
     {
       "path": ".gitattributes",
@@ -25,7 +25,7 @@
     },
     {
       "path": ".github/workflows/development-candidate.yml",
-      "sha256": "f6f57f528fdc1447c9f75e60d9388a47afc7da9aa7c19326f5bd5c4cf878c4d8",
+      "sha256": "92419fcb23390488cc53ae589a14ad38acf376cea313409b796c1573712f62e0",
       "mode": "0644"
     },
     {

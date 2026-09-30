@@ -42,7 +42,7 @@ jobs:
           git archive --format=tar "$GITHUB_SHA" | gzip -n > candidate/service-template.tar.gz
           archive_sha256="$(sha256sum candidate/service-template.tar.gz | awk '{print $1}')"
           contract_sha256="$(sha256sum template-contract.json | awk '{print $1}')"
-          template_tag="template-v$(node -p \"require('./template-contract.json').templateVersion\")-${GITHUB_SHA}"
+          template_tag="template-v$(node -p "require('./template-contract.json').templateVersion")-${GITHUB_SHA}"
           export ARCHIVE_SHA256="$archive_sha256"
           export CONTRACT_SHA256="$contract_sha256"
           export TEMPLATE_TAG="$template_tag"
@@ -121,9 +121,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          tag="$(node -p \"require('./candidate/template-candidate.json').releaseTag\")"
-          commit="$(node -p \"require('./candidate/template-candidate.json').templateCommit\")"
-          version="$(node -p \"require('./candidate/template-candidate.json').templateVersion\")"
+          tag="$(node -p "require('./candidate/template-candidate.json').releaseTag")"
+          commit="$(node -p "require('./candidate/template-candidate.json').templateCommit")"
+          version="$(node -p "require('./candidate/template-candidate.json').templateVersion")"
           gh release create "$tag" candidate/service-template.tar.gz candidate/template-candidate.json candidate/template-contract.json candidate/SHA256SUMS --repo "$GITHUB_REPOSITORY" --target "$commit" --title "Development template candidate $version ($commit)" --prerelease --notes "Checksum-bound development candidate. This is not a stable release, promotion, deployment, or Core catalog admission."
       - name: Read back immutable published tuple
         env:
