@@ -4,6 +4,8 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
+node --test tests/template-contract.test.mjs
+
 for path in \
   "$ROOT/service.json" \
   "$ROOT/verify/service-harness.json"; do
