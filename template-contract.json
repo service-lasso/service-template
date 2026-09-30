@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "cac8292c6e21c46fd794d092ae9243c99731883acae601cadfc6979c293c617c",
+  "contractDigest": "74692ba3022baa69eba0ae24d9ba9cfcc4fb1bcd74c1b863c82011525c6e3baf",
   "inventory": [
     {
       "path": ".gitattributes",
@@ -25,7 +25,7 @@
     },
     {
       "path": ".github/workflows/development-candidate.yml",
-      "sha256": "3b40ab5a25a0e94e80032c5397bd1ca1b625c62ec112e0a9d03a65d851100088",
+      "sha256": "f6f57f528fdc1447c9f75e60d9388a47afc7da9aa7c19326f5bd5c4cf878c4d8",
       "mode": "0644"
     },
     {
@@ -95,7 +95,7 @@
     },
     {
       "path": ".governance/specs/SPEC-017-template-contract.md",
-      "sha256": "e3c2be7be47f02b3286ae8a20ff274cf68fadc2d7597b8c6761782a5fed2d7ed",
+      "sha256": "112629b589458f87eea3f72d33a061c8ecc1ed4894515bf78d43b014ef894cd6",
       "mode": "0644"
     },
     {
@@ -215,7 +215,7 @@
     },
     {
       "path": "docs/template-contract.md",
-      "sha256": "d862512d5dd5b844055083f6115a5056d854857737433a1afc2e4a4b4e96df16",
+      "sha256": "07a74d5f9841127bc1b4d1815e34f712023ba5690bd05ebbf05095ed3eb964c8",
       "mode": "0644"
     },
     {
@@ -269,6 +269,11 @@
       "mode": "0644"
     },
     {
+      "path": "scripts/publish-development-candidate.mjs",
+      "sha256": "989fe721d9c2236fb3b13fc9775293585f464d09452496d41096b6ddaf5e9266",
+      "mode": "0644"
+    },
+    {
       "path": "scripts/test.ps1",
       "sha256": "64c86acbfe8cc3b810ed41fb2f157990b57f9cf60419f52d830b588e65b8a828",
       "mode": "0644"
@@ -276,6 +281,11 @@
     {
       "path": "scripts/test.sh",
       "sha256": "f05a72b323ddefab16c4048accb6874da529c598cb014de6b45f308826d9d479",
+      "mode": "0644"
+    },
+    {
+      "path": "scripts/validate-development-candidate-workflow.mjs",
+      "sha256": "4267f7c482d680545f43d250cdc5ae93cd48efda071fb6e6cd78a643d6128213",
       "mode": "0644"
     },
     {
@@ -345,7 +355,7 @@
     },
     {
       "path": "tests/development-candidate-workflow.test.mjs",
-      "sha256": "957ee3257ca35698bfc43019d2afae30f556a014b822f9de887f181aa036cac8",
+      "sha256": "3f541c310a45b3ff08cbf9c515455ad8ad0e67ec1f24952dccfa7cd572b6b80d",
       "mode": "0644"
     },
     {
@@ -361,7 +371,7 @@
   ],
   "quotas": {
     "maximumFiles": 128,
-    "maximumTotalBytes": 262144,
+    "maximumTotalBytes": 524288,
     "maximumConfigFiles": 16,
     "maximumConfigBytes": 65536,
     "maximumArchiveBytes": 262144,
