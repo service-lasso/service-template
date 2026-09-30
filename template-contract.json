@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "06de6aa0cf72e81d85587e5b15ace5e8a565fe39efb28f034a62d2b480e18b64",
+  "contractDigest": "cac8292c6e21c46fd794d092ae9243c99731883acae601cadfc6979c293c617c",
   "inventory": [
     {
       "path": ".gitattributes",
@@ -25,7 +25,7 @@
     },
     {
       "path": ".github/workflows/development-candidate.yml",
-      "sha256": "db08c41e53297e6948df33f3ea8f64f1dab6608a698a342ff5033ce45fedbc0a",
+      "sha256": "3b40ab5a25a0e94e80032c5397bd1ca1b625c62ec112e0a9d03a65d851100088",
       "mode": "0644"
     },
     {
@@ -215,7 +215,7 @@
     },
     {
       "path": "docs/template-contract.md",
-      "sha256": "0d086c62cea9ab3d26066ddf29768617202f5b6bd9f6615065348003382799a8",
+      "sha256": "d862512d5dd5b844055083f6115a5056d854857737433a1afc2e4a4b4e96df16",
       "mode": "0644"
     },
     {
@@ -225,7 +225,7 @@
     },
     {
       "path": "INIT-TODO.md",
-      "sha256": "7040836101e7ae5fb9cba117174189818b9595e35b6d6d7bcae3ce82fed7eff4",
+      "sha256": "2d9325f860140cf8dfa400cdbb0c71b7459f9b3da6c1269dba4fa58f920af2d9",
       "mode": "0644"
     },
     {
@@ -255,7 +255,7 @@
     },
     {
       "path": "scripts/generate-template-contract.mjs",
-      "sha256": "c25120c06d8795b2b0de8c589308c11650cbe827bbc6a358e718f9c5042f85f9",
+      "sha256": "b9c618e4c9b17c2b035bd5285ff1ac83c3a90c733e37c853c7a15dd6b712c04a",
       "mode": "0644"
     },
     {
@@ -280,7 +280,7 @@
     },
     {
       "path": "scripts/verify-template-contract.mjs",
-      "sha256": "c4303fcf0376ab78a45180e02956c90a3430475115021827dfb9c45ffddca253",
+      "sha256": "24885a824f05236fdb4ddad593629be2ccccc5be9a5f52716e4492cda6427e43",
       "mode": "0644"
     },
     {
@@ -344,8 +344,13 @@
       "mode": "0644"
     },
     {
+      "path": "tests/development-candidate-workflow.test.mjs",
+      "sha256": "957ee3257ca35698bfc43019d2afae30f556a014b822f9de887f181aa036cac8",
+      "mode": "0644"
+    },
+    {
       "path": "tests/template-contract.test.mjs",
-      "sha256": "12d4ba9be0e660bb066faf7354cd3a5afffe47b641f1f034b4a159af2c14f689",
+      "sha256": "e929dc00120cda68e4005b9a7c41184b957f5b9272efa190883f112e205f2582",
       "mode": "0644"
     },
     {

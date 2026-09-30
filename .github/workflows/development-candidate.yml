@@ -29,7 +29,11 @@ jobs:
           mkdir -p candidate
           git archive --format=tar "$GITHUB_SHA" | gzip -n > candidate/service-template.tar.gz
           archive_sha256="$(sha256sum candidate/service-template.tar.gz | awk '{print $1}')"
+          contract_sha256="$(sha256sum template-contract.json | awk '{print $1}')"
+          template_tag="template-v$(node -p \"require('./template-contract.json').templateVersion\")-${GITHUB_SHA}"
           export ARCHIVE_SHA256="$archive_sha256"
+          export CONTRACT_SHA256="$contract_sha256"
+          export TEMPLATE_TAG="$template_tag"
           node - <<'NODE'
           const fs = require('node:fs');
           const policy = require('./template-contract.json');
@@ -39,10 +43,17 @@ jobs:
             templateCommit: process.env.GITHUB_SHA,
             templateVersion: policy.templateVersion,
             contractDigest: policy.contractDigest,
-            archiveSha256: process.env.ARCHIVE_SHA256
+            archiveSha256: process.env.ARCHIVE_SHA256,
+            contractSha256: process.env.CONTRACT_SHA256,
+            releaseTag: process.env.TEMPLATE_TAG
           };
           fs.writeFileSync('candidate/template-candidate.json', JSON.stringify(candidate, null, 2) + '\n');
           NODE
+          cp template-contract.json candidate/template-contract.json
+          (
+            cd candidate
+            sha256sum service-template.tar.gz template-candidate.json template-contract.json > SHA256SUMS
+          )
       - name: Verify the owner-controlled candidate tuple
         shell: bash
         run: |
@@ -64,6 +75,51 @@ jobs:
           }, null, 2) + '\n');
           NODE
           node scripts/verify-template-contract.mjs --template-root "$GITHUB_WORKSPACE" --project-root "$project_root" --candidate candidate/template-candidate.json --candidate-archive candidate/service-template.tar.gz
+      - name: Publish the exact immutable development prerelease
+        if: github.event_name == 'workflow_dispatch'
+        permissions:
+          contents: write
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="$(node -p \"require('./candidate/template-candidate.json').releaseTag\")"
+          commit="$(node -p \"require('./candidate/template-candidate.json').templateCommit\")"
+          version="$(node -p \"require('./candidate/template-candidate.json').templateVersion\")"
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Refusing to replace existing development candidate release: $tag" >&2
+            exit 1
+          fi
+          gh release create "$tag" \
+            candidate/service-template.tar.gz \
+            candidate/template-candidate.json \
+            candidate/template-contract.json \
+            candidate/SHA256SUMS \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$commit" \
+            --title "Development template candidate $version ($commit)" \
+            --prerelease \
+            --notes "Checksum-bound development candidate. This is not a stable release, promotion, deployment, or Core catalog admission."
+      - name: Read back immutable published tuple
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="$(node -p \"require('./candidate/template-candidate.json').releaseTag\")"
+          commit="$(node -p \"require('./candidate/template-candidate.json').templateCommit\")"
+          archive_sha256="$(node -p \"require('./candidate/template-candidate.json').archiveSha256\")"
+          contract_sha256="$(node -p \"require('./candidate/template-candidate.json').contractSha256\")"
+          release="$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/$tag")"
+          jq -e \
+            --arg tag "$tag" \
+            --arg commit "$commit" \
+            --arg archive "sha256:$archive_sha256" \
+            --arg contract "sha256:$contract_sha256" \
+            '.tag_name == $tag and .target_commitish == $commit and .prerelease == true and .draft == false and .immutable == true and ([.assets[].name] | sort) == ["SHA256SUMS", "service-template.tar.gz", "template-candidate.json", "template-contract.json"] and ([.assets[] | select(.name == "service-template.tar.gz") | .digest] == [$archive]) and ([.assets[] | select(.name == "template-contract.json") | .digest] == [$contract])' \
+            <<<"$release" >/dev/null
       - uses: actions/upload-artifact@v4
         with:
           name: template-candidate-${{ github.sha }}

@@ -27,7 +27,8 @@ async function fixture() {
   const commit = spawnSync("git", ["-C", root, "rev-parse", "HEAD"], { encoding: "utf8" });
   assert.equal(commit.status, 0, commit.stderr);
   const candidate = join(directory, "template-candidate.json");
-  const descriptor = { schemaVersion: 1, kind: "development-template-candidate", templateCommit: commit.stdout.trim(), templateVersion: policy.templateVersion, contractDigest: policy.contractDigest, archiveSha256: digest(await readFile(archive)) };
+  const templateCommit = commit.stdout.trim();
+  const descriptor = { schemaVersion: 1, kind: "development-template-candidate", templateCommit, templateVersion: policy.templateVersion, contractDigest: policy.contractDigest, archiveSha256: digest(await readFile(archive)), contractSha256: digest(await readFile(join(root, "template-contract.json"))), releaseTag: `template-v${policy.templateVersion}-${templateCommit}` };
   await writeFile(candidate, `${JSON.stringify(descriptor, null, 2)}\n`);
   return { directory, project, archive, candidate, descriptor };
 }
@@ -47,7 +48,7 @@ test("GitHub-derived provenance validates the repository URL even when the basel
   const mismatch = await fixture(); t.after(() => rm(mismatch.directory, { recursive: true, force: true })); await provenance(mismatch.project, mismatch.descriptor, { kind: "github-derived", repository: "example/lasso-weather" }); let result = run(mismatch); assert.notEqual(result.status, 0); assert.match(result.stderr, /github_identity/);
   const matching = await fixture(); t.after(() => rm(matching.directory, { recursive: true, force: true })); await provenance(matching.project, matching.descriptor, { kind: "github-derived", repository: "service-lasso/service-template" }); result = run(matching); assert.equal(result.status, 0, result.stderr);
 });
-test("invented commit and archive digests are denied even when provenance is well formed", async (t) => { const value = await derivedFixture(t); const invented = { ...value.descriptor, templateCommit: "b".repeat(40), archiveSha256: "a".repeat(64) }; await writeFile(value.candidate, `${JSON.stringify(invented, null, 2)}\n`); await provenance(value.project, invented); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /candidate_binding/); });
+test("invented commit and archive digests are denied even when provenance is well formed", async (t) => { const value = await derivedFixture(t); const templateCommit = "b".repeat(40); const invented = { ...value.descriptor, templateCommit, releaseTag: `template-v${value.descriptor.templateVersion}-${templateCommit}`, archiveSha256: "a".repeat(64) }; await writeFile(value.candidate, `${JSON.stringify(invented, null, 2)}\n`); await provenance(value.project, invented); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /candidate_binding/); });
 test("provenance cannot self-report an archive digest different from the candidate", async (t) => { const value = await derivedFixture(t); await provenance(value.project, value.descriptor, { kind: "local-archive", archiveSha256: "a".repeat(64) }); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /origin/); });
 test("a candidate archive with forged noncanonical regular modes is denied from archive metadata", async (t) => {
   const value = await derivedFixture(t);

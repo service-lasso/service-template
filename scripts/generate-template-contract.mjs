@@ -15,6 +15,10 @@ async function files(directory) {
     const info = await lstat(absolute);
     if (info.isSymbolicLink() || (!info.isDirectory() && !info.isFile())) throw new Error(`Template inventory rejects links and non-regular objects: ${relative(root, absolute)}`);
     if (excludedDirectories.has(entry.name)) {
+      // Git worktrees use a top-level .git metadata file instead of a directory.
+      // It is Git-owned checkout metadata, never a template member, and must not
+      // make the generator depend on whether a maintainer uses a worktree.
+      if (entry.name === ".git" && directory === root && info.isFile()) continue;
       if (!info.isDirectory()) throw new Error(`Template inventory requires reserved paths to be non-link directories: ${relative(root, absolute)}`);
       continue;
     }
