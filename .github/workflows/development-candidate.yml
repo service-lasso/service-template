@@ -18,8 +18,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node scripts/generate-template-contract.mjs && git diff --exit-code -- template-contract.json
-      - run: node --test tests/template-contract.test.mjs
       - name: Bind immutable development candidate
         shell: bash
         run: |
@@ -41,6 +39,29 @@ jobs:
           };
           fs.writeFileSync('candidate/template-candidate.json', JSON.stringify(candidate, null, 2) + '\n');
           NODE
+      - name: Verify the owner-controlled candidate tuple
+        shell: bash
+        run: |
+          set -euo pipefail
+          project_root="$(mktemp -d)"
+          tar -xzf candidate/service-template.tar.gz -C "$project_root"
+          export PROJECT_ROOT="$project_root"
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+          const candidate = require('./candidate/template-candidate.json');
+          fs.writeFileSync(path.join(process.env.PROJECT_ROOT, 'template-provenance.json'), JSON.stringify({
+            schemaVersion: 1,
+            templateRepository: 'service-lasso/service-template',
+            templateCommit: candidate.templateCommit,
+            templateVersion: candidate.templateVersion,
+            contractDigest: candidate.contractDigest,
+            origin: { kind: 'local-archive', archiveSha256: candidate.archiveSha256 }
+          }, null, 2) + '\n');
+          NODE
+          node scripts/verify-template-contract.mjs --template-root "$GITHUB_WORKSPACE" --project-root "$project_root" --candidate candidate/template-candidate.json --candidate-archive candidate/service-template.tar.gz
+      - run: node scripts/generate-template-contract.mjs && git diff --exit-code -- template-contract.json
+      - run: node --test tests/template-contract.test.mjs
       - uses: actions/upload-artifact@v4
         with:
           name: template-candidate-${{ github.sha }}

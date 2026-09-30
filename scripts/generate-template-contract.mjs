@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { readdir, readFile, stat, writeFile } from "node:fs/promises";
+import { lstat, readdir, readFile, writeFile } from "node:fs/promises";
 import { join, relative } from "node:path";
 import { execFileSync } from "node:child_process";
 
@@ -13,8 +13,10 @@ async function files(directory) {
   for (const entry of entries) {
     if (excluded.has(entry.name)) continue;
     const absolute = join(directory, entry.name);
-    if (entry.isDirectory()) result.push(...await files(absolute));
-    else if (entry.isFile()) result.push(absolute);
+    const info = await lstat(absolute);
+    if (info.isSymbolicLink() || (!info.isDirectory() && !info.isFile())) throw new Error(`Template inventory rejects links and non-regular objects: ${relative(root, absolute)}`);
+    if (info.isDirectory()) result.push(...await files(absolute));
+    else result.push(absolute);
   }
   return result;
 }
@@ -37,9 +39,10 @@ const policy = JSON.parse(await readFile(policyPath, "utf8"));
 const modes = trackedModes();
 policy.inventory = [];
 for (const file of await files(root)) {
-  const info = await stat(file);
   const path = relative(root, file).replaceAll("\\", "/");
-  policy.inventory.push({ path, sha256: digest(await readFile(file)), mode: modes.get(path) || (info.mode & 0o777).toString(8).padStart(4, "0") });
+  const mode = modes.get(path);
+  if (!mode) throw new Error(`Template inventory requires staged Git mode metadata: ${path}`);
+  policy.inventory.push({ path, sha256: digest(await readFile(file)), mode });
 }
 policy.inventory.sort((a, b) => a.path.localeCompare(b.path));
 const unsigned = { ...policy, contractDigest: undefined };

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "0ce1e1ffd29e32674b52742084414e0142cb534f2bcadb7e05c4cd84ab901adf",
+  "contractDigest": "ece842bb744cd4abe538e2ea42154a56862fc48ed987ecedf5f3aa941aace81c",
   "inventory": [
     {
       "path": ".gitattributes",
@@ -25,7 +25,7 @@
     },
     {
       "path": ".github/workflows/development-candidate.yml",
-      "sha256": "7ed7a7c1073aed6bd4588580cf2b2c7e94741997dfd55e1990a81fc95449151d",
+      "sha256": "78ec5676be57cbd0fec911bf6ddca1d5a717fb9a517994aa8e8efbd581df2fe2",
       "mode": "0644"
     },
     {
@@ -215,7 +215,7 @@
     },
     {
       "path": "docs/template-contract.md",
-      "sha256": "c6e80aec68e00d7d2d512d7fd620d477c7b8f962b8e18b201f2586ffe32c078d",
+      "sha256": "6420f307d0f9282df380c26daf6d8423ff2e686785437d2e1df9bdcb3c5175d7",
       "mode": "0644"
     },
     {
@@ -255,7 +255,7 @@
     },
     {
       "path": "scripts/generate-template-contract.mjs",
-      "sha256": "d28a6a52184c6a66bb2e84ed2b142444eaece7aca3e402ab99af4bc4cf152477",
+      "sha256": "bbc880c3d5c6c1a16c82d30f17bfdc49ceb9a31947f8e52524c08f6850cbfdeb",
       "mode": "0644"
     },
     {
@@ -280,7 +280,7 @@
     },
     {
       "path": "scripts/verify-template-contract.mjs",
-      "sha256": "71e10e5b2def10f6572d8018566c46f0f6519d02366eb7834cee5c607b380f78",
+      "sha256": "fce38a1953e4bf526a9e1e7c8bc88e4ad40ce760d13fb373f8edc2a68b4fc6bf",
       "mode": "0644"
     },
     {
@@ -345,7 +345,7 @@
     },
     {
       "path": "tests/template-contract.test.mjs",
-      "sha256": "eea824474f9b81748945ec3f733ee25aaa40aaa2d9fec689bd24c91ffea5caa6",
+      "sha256": "9569a2a4e4b99c1f856b0ba8b2ce30ae62bd5acf006d96e0c717059aa77ba882",
       "mode": "0644"
     },
     {
