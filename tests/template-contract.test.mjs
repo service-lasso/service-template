@@ -43,10 +43,12 @@ test("provenance cannot self-report an archive digest different from the candida
 test("a candidate archive with a forged executable mode is denied from archive metadata", async (t) => {
   const value = await derivedFixture(t);
   const tar = gunzipSync(await readFile(value.archive));
-  tar.write("0000775\0", 100, "ascii");
-  tar.fill(0x20, 148, 156);
-  const checksum = tar.subarray(0, 512).reduce((sum, byte) => sum + byte, 0).toString(8).padStart(6, "0");
-  tar.write(`${checksum}\0 `, 148, "ascii");
+  const headerOffset = tar.indexOf(Buffer.from(".gitattributes\0", "ascii"));
+  assert.notEqual(headerOffset, -1, "fixture archive must include a regular locked file header");
+  tar.write("0000775\0", headerOffset + 100, "ascii");
+  tar.fill(0x20, headerOffset + 148, headerOffset + 156);
+  const checksum = tar.subarray(headerOffset, headerOffset + 512).reduce((sum, byte) => sum + byte, 0).toString(8).padStart(6, "0");
+  tar.write(`${checksum}\0 `, headerOffset + 148, "ascii");
   await writeFile(value.archive, gzipSync(tar, { mtime: 0 }));
   value.descriptor.archiveSha256 = digest(await readFile(value.archive));
   await writeFile(value.candidate, `${JSON.stringify(value.descriptor, null, 2)}\n`);
