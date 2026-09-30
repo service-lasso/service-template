@@ -42,6 +42,11 @@ function canonical(value) {
   if (value && typeof value === "object") return Object.fromEntries(Object.keys(value).sort().map((key) => [key, canonical(value[key])]));
   return value;
 }
+function authoringBudget(policy) {
+  const editable = new Set([policy.authoring.manifest.path, ...policy.authoring.configuration.allowedPaths]);
+  const immutableBytes = policy.inventory.filter((entry) => !editable.has(entry.path)).reduce((total, entry) => total + entry.bytes, 0);
+  return immutableBytes + Buffer.byteLength(`${JSON.stringify(policy, null, 2)}\n`) + policy.quotas.maximumManifestBytes + policy.quotas.maximumProvenanceBytes + policy.quotas.maximumConfigBytes;
+}
 
 const policy = JSON.parse(await readFile(policyPath, "utf8"));
 const modes = trackedModes();
@@ -50,11 +55,17 @@ for (const file of await files(root)) {
   const path = relative(root, file).replaceAll("\\", "/");
   const mode = modes.get(path);
   if (!mode) throw new Error(`Template inventory requires staged Git mode metadata: ${path}`);
-  policy.inventory.push({ path, sha256: digest(await readFile(file)), mode });
+  const bytes = await readFile(file);
+  policy.inventory.push({ path, sha256: digest(bytes), mode, bytes: bytes.length });
 }
 policy.inventory.sort((a, b) => a.path.localeCompare(b.path));
-const unsigned = { ...policy, contractDigest: undefined };
-delete unsigned.contractDigest;
-policy.contractDigest = digest(JSON.stringify(canonical(unsigned)));
+for (;;) {
+  const unsigned = { ...policy, contractDigest: undefined };
+  delete unsigned.contractDigest;
+  policy.contractDigest = digest(JSON.stringify(canonical(unsigned)));
+  const next = authoringBudget(policy);
+  if (policy.quotas.maximumTotalBytes === next) break;
+  policy.quotas.maximumTotalBytes = next;
+}
 await writeFile(policyPath, `${JSON.stringify(policy, null, 2)}\n`);
 console.log(`wrote ${policy.inventory.length} locked entries with digest ${policy.contractDigest}`);
