@@ -8,6 +8,11 @@ import test from "node:test";
 const root = resolve(import.meta.dirname, "..");
 const verifier = join(root, "scripts", "verify-template-contract.mjs");
 const policy = JSON.parse(await readFile(join(root, "template-contract.json"), "utf8"));
+test("locked template files use LF checkout bytes", () => {
+  const attributes = spawnSync("git", ["-C", root, "check-attr", "eol", "--", ".github/branch-protection-checklist.md"], { encoding: "utf8" });
+  assert.equal(attributes.status, 0, attributes.stderr);
+  assert.match(attributes.stdout, /\.github\/branch-protection-checklist\.md: eol: lf/);
+});
 async function fixture() { const directory = await mkdtemp(join(tmpdir(), "template-contract-")); const project = join(directory, "project"); await cp(root, project, { recursive: true, filter: (path) => ![".git", ".harness", "dist", "output", "node_modules"].some((name) => path.endsWith(`/${name}`) || path.endsWith(`\\${name}`)) }); return { directory, project }; }
 async function provenance(project, origin = { kind: "local-archive", archiveSha256: "a".repeat(64) }) { await writeFile(join(project, "template-provenance.json"), `${JSON.stringify({ schemaVersion: 1, templateRepository: "service-lasso/service-template", templateCommit: "b".repeat(40), templateVersion: policy.templateVersion, contractDigest: policy.contractDigest, origin }, null, 2)}\n`); }
 function run(project) { return spawnSync(process.execPath, [verifier, "--template-root", root, "--project-root", project], { encoding: "utf8" }); }

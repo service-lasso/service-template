@@ -1,8 +1,13 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "52ef9788699ea5f6a2eae0da2c3573ed27f33f6ac5dfa24fb52e2cad55e10e7d",
+  "contractDigest": "0ce1e1ffd29e32674b52742084414e0142cb534f2bcadb7e05c4cd84ab901adf",
   "inventory": [
+    {
+      "path": ".gitattributes",
+      "sha256": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c",
+      "mode": "0644"
+    },
     {
       "path": ".github/branch-protection-checklist.md",
       "sha256": "23e62c015e836d28271f4faa485389fefdf62c0e3759b060afb648358ca32ac9",
@@ -340,7 +345,7 @@
     },
     {
       "path": "tests/template-contract.test.mjs",
-      "sha256": "2b407f12b4397b120e4ef1cb326ce1a332966fef4a08c1b3fd22204bb1c27fec",
+      "sha256": "eea824474f9b81748945ec3f733ee25aaa40aaa2d9fec689bd24c91ffea5caa6",
       "mode": "0644"
     },
     {
