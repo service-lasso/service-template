@@ -27,13 +27,28 @@ async function fixture() {
   const commit = spawnSync("git", ["-C", root, "rev-parse", "HEAD"], { encoding: "utf8" });
   assert.equal(commit.status, 0, commit.stderr);
   const candidate = join(directory, "template-candidate.json");
-  const descriptor = { schemaVersion: 1, kind: "development-template-candidate", templateCommit: commit.stdout.trim(), templateVersion: policy.templateVersion, contractDigest: policy.contractDigest, archiveSha256: digest(await readFile(archive)) };
+  const templateCommit = commit.stdout.trim();
+  const descriptor = { schemaVersion: 1, kind: "development-template-candidate", templateCommit, templateVersion: policy.templateVersion, contractDigest: policy.contractDigest, archiveSha256: digest(await readFile(archive)), contractSha256: digest(await readFile(join(root, "template-contract.json"))), releaseTag: `template-v${policy.templateVersion}-${templateCommit}` };
   await writeFile(candidate, `${JSON.stringify(descriptor, null, 2)}\n`);
   return { directory, project, archive, candidate, descriptor };
 }
 async function provenance(project, descriptor, origin = { kind: "local-archive", archiveSha256: descriptor.archiveSha256 }) {
   await writeFile(join(project, "template-provenance.json"), `${JSON.stringify({ schemaVersion: 1, templateRepository: "service-lasso/service-template", templateCommit: descriptor.templateCommit, templateVersion: descriptor.templateVersion, contractDigest: descriptor.contractDigest, origin }, null, 2)}\n`);
 }
+const repeated = (first, length) => `${first}${"a".repeat(length - 1)}`;
+function maximumGithubOrigin() { return { kind: "github-derived", repository: `${"o".repeat(39)}/${"r".repeat(100)}` }; }
+function maximumManifest(baseline, repository) {
+  const manifest = structuredClone(baseline);
+  manifest.id = repeated("a", 63);
+  manifest.name = repeated("A", 120);
+  manifest.description = repeated("A", 512);
+  manifest.version = `1.0.0-${"a".repeat(58)}`;
+  manifest.meta.developers = Array.from({ length: 8 }, () => ({ name: repeated("A", 120) }));
+  manifest.meta.repository.url = `https://github.com/${repository}.git`;
+  manifest.meta.tags = Array.from({ length: 12 }, () => repeated("a", 48));
+  return manifest;
+}
+const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 function run(fixture) { return spawnSync(process.execPath, [verifier, "--template-root", root, "--project-root", fixture.project, "--candidate", fixture.candidate, "--candidate-archive", fixture.archive], { encoding: "utf8" }); }
 async function derivedFixture(t) { const value = await fixture(); t.after(() => rm(value.directory, { recursive: true, force: true })); await provenance(value.project, value.descriptor); return value; }
 async function bindArchive(value) { value.descriptor.archiveSha256 = digest(await readFile(value.archive)); await writeFile(value.candidate, `${JSON.stringify(value.descriptor, null, 2)}\n`); await provenance(value.project, value.descriptor); }
@@ -43,11 +58,46 @@ function tarRecord(name, type, body = Buffer.alloc(0)) { const header = Buffer.a
 function syntheticTar(records) { return Buffer.concat([...records, Buffer.alloc(1024)]); }
 test("valid local archive project is admitted using the owner candidate tuple", async (t) => { const value = await derivedFixture(t); const result = run(value); assert.equal(result.status, 0, result.stderr); assert.match(result.stdout, /"verified": true/); });
 test("safe identity, GitHub identity and example configuration changes are admitted", async (t) => { const value = await fixture(); t.after(() => rm(value.directory, { recursive: true, force: true })); const origin = { kind: "github-derived", repository: "example/lasso-weather" }; await provenance(value.project, value.descriptor, origin); const manifest = JSON.parse(await readFile(join(value.project, "service.json"), "utf8")); manifest.id = "weather-service"; manifest.name = "Weather Service"; manifest.meta.repository.url = "https://github.com/example/lasso-weather.git"; await writeFile(join(value.project, "service.json"), `${JSON.stringify(manifest, null, 2)}\n`); await writeFile(join(value.project, "config", "example.env"), "ECHO_MESSAGE=weather\n"); const result = run(value); assert.equal(result.status, 0, result.stderr); });
+test("authoring JSON uses canonical syntax and rejects whitespace padding", async (t) => {
+  const value = await derivedFixture(t);
+  const manifestPath = join(value.project, "service.json");
+  const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+  manifest.name = "Canonical Service";
+  await writeFile(manifestPath, json(manifest));
+  let result = run(value); assert.equal(result.status, 0, result.stderr);
+  await writeFile(manifestPath, `${json(manifest)} `);
+  result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /canonical_json/);
+});
+test("closed authoring budgets admit their exact maximum and reject each one-byte excess", async (t) => {
+  const accepted = await fixture(); t.after(() => rm(accepted.directory, { recursive: true, force: true }));
+  const origin = maximumGithubOrigin();
+  await provenance(accepted.project, accepted.descriptor, origin);
+  const manifestPath = join(accepted.project, "service.json");
+  const manifest = maximumManifest(JSON.parse(await readFile(manifestPath, "utf8")), origin.repository);
+  await writeFile(manifestPath, json(manifest));
+  const provenanceBytes = await readFile(join(accepted.project, "template-provenance.json"));
+  assert.equal(Buffer.byteLength(json(manifest)), policy.quotas.maximumManifestBytes);
+  assert.equal(provenanceBytes.length, policy.quotas.maximumProvenanceBytes);
+  await writeFile(join(accepted.project, "config", "example.env"), `ECHO_MESSAGE=${"x".repeat(policy.quotas.maximumConfigBytes - 14)}\n`);
+  let result = run(accepted); assert.equal(result.status, 0, result.stderr);
+  const total = policy.inventory.filter((entry) => ![policy.authoring.manifest.path, ...policy.authoring.configuration.allowedPaths].includes(entry.path)).reduce((sum, entry) => sum + entry.bytes, 0) + Buffer.byteLength(await readFile(join(accepted.project, "template-contract.json"))) + policy.quotas.maximumManifestBytes + policy.quotas.maximumProvenanceBytes + policy.quotas.maximumConfigBytes;
+  assert.equal(total, policy.quotas.maximumTotalBytes);
+  await writeFile(join(accepted.project, "config", "example.env"), `ECHO_MESSAGE=${"x".repeat(policy.quotas.maximumConfigBytes - 13)}\n`);
+  result = run(accepted); assert.notEqual(result.status, 0); assert.match(result.stderr, /Project exceeds file or byte quota/);
+
+  const manifestOver = await derivedFixture(t); const originalManifest = JSON.parse(await readFile(join(manifestOver.project, "service.json"), "utf8")); await writeFile(join(manifestOver.project, "service.json"), `${json(maximumManifest(originalManifest, origin.repository))} `); result = run(manifestOver); assert.notEqual(result.status, 0); assert.match(result.stderr, /Manifest exceeds its closed byte budget/);
+  const provenanceOver = await fixture(); t.after(() => rm(provenanceOver.directory, { recursive: true, force: true })); await provenance(provenanceOver.project, provenanceOver.descriptor, origin); await writeFile(join(provenanceOver.project, "template-provenance.json"), `${await readFile(join(provenanceOver.project, "template-provenance.json"), "utf8")} `); result = run(provenanceOver); assert.notEqual(result.status, 0); assert.match(result.stderr, /Provenance exceeds its closed byte budget/);
+});
+test("the preserved configuration budget remains independently enforced", async (t) => {
+  const value = await derivedFixture(t);
+  await writeFile(join(value.project, "config", "example.env"), `ECHO_MESSAGE=${"x".repeat(policy.quotas.maximumConfigBytes - 13)}\n`);
+  const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /Configuration exceeds byte quota/);
+});
 test("GitHub-derived provenance validates the repository URL even when the baseline URL is unchanged", async (t) => {
   const mismatch = await fixture(); t.after(() => rm(mismatch.directory, { recursive: true, force: true })); await provenance(mismatch.project, mismatch.descriptor, { kind: "github-derived", repository: "example/lasso-weather" }); let result = run(mismatch); assert.notEqual(result.status, 0); assert.match(result.stderr, /github_identity/);
   const matching = await fixture(); t.after(() => rm(matching.directory, { recursive: true, force: true })); await provenance(matching.project, matching.descriptor, { kind: "github-derived", repository: "service-lasso/service-template" }); result = run(matching); assert.equal(result.status, 0, result.stderr);
 });
-test("invented commit and archive digests are denied even when provenance is well formed", async (t) => { const value = await derivedFixture(t); const invented = { ...value.descriptor, templateCommit: "b".repeat(40), archiveSha256: "a".repeat(64) }; await writeFile(value.candidate, `${JSON.stringify(invented, null, 2)}\n`); await provenance(value.project, invented); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /candidate_binding/); });
+test("invented commit and archive digests are denied even when provenance is well formed", async (t) => { const value = await derivedFixture(t); const templateCommit = "b".repeat(40); const invented = { ...value.descriptor, templateCommit, releaseTag: `template-v${value.descriptor.templateVersion}-${templateCommit}`, archiveSha256: "a".repeat(64) }; await writeFile(value.candidate, `${JSON.stringify(invented, null, 2)}\n`); await provenance(value.project, invented); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /candidate_binding/); });
 test("provenance cannot self-report an archive digest different from the candidate", async (t) => { const value = await derivedFixture(t); await provenance(value.project, value.descriptor, { kind: "local-archive", archiveSha256: "a".repeat(64) }); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /origin/); });
 test("a candidate archive with forged noncanonical regular modes is denied from archive metadata", async (t) => {
   const value = await derivedFixture(t);
@@ -77,7 +127,7 @@ test("local archive cannot edit repository URL", async (t) => {
   const value = await derivedFixture(t); const manifest = JSON.parse(await readFile(join(value.project, "service.json"), "utf8")); manifest.meta.repository.url = "https://attacker.invalid/evil.git"; await writeFile(join(value.project, "service.json"), `${JSON.stringify(manifest, null, 2)}\n`); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /github_identity/);
 });
 test("GitHub-derived repository URLs enforce declared size and type constraints", async (t) => {
-  const oversized = await fixture(); t.after(() => rm(oversized.directory, { recursive: true, force: true })); const owner = "o".repeat(130); const repository = "r".repeat(130); const origin = { kind: "github-derived", repository: `${owner}/${repository}` }; await provenance(oversized.project, oversized.descriptor, origin); const oversizedManifest = JSON.parse(await readFile(join(oversized.project, "service.json"), "utf8")); oversizedManifest.meta.repository.url = `https://github.com/${origin.repository}.git`; await writeFile(join(oversized.project, "service.json"), `${JSON.stringify(oversizedManifest, null, 2)}\n`); let result = run(oversized); assert.notEqual(result.status, 0); assert.match(result.stderr, /github_identity/);
+  const oversized = await fixture(); t.after(() => rm(oversized.directory, { recursive: true, force: true })); const owner = "o".repeat(130); const repository = "r".repeat(130); const origin = { kind: "github-derived", repository: `${owner}/${repository}` }; await provenance(oversized.project, oversized.descriptor, origin); const oversizedManifest = JSON.parse(await readFile(join(oversized.project, "service.json"), "utf8")); oversizedManifest.meta.repository.url = `https://github.com/${origin.repository}.git`; await writeFile(join(oversized.project, "service.json"), `${JSON.stringify(oversizedManifest, null, 2)}\n`); let result = run(oversized); assert.notEqual(result.status, 0); assert.match(result.stderr, /Provenance exceeds its closed byte budget/);
   const wrongType = await fixture(); t.after(() => rm(wrongType.directory, { recursive: true, force: true })); await provenance(wrongType.project, wrongType.descriptor, { kind: "github-derived", repository: "example/lasso-weather" }); const typedManifest = JSON.parse(await readFile(join(wrongType.project, "service.json"), "utf8")); typedManifest.meta.repository.url = { url: "https://github.com/example/lasso-weather.git" }; await writeFile(join(wrongType.project, "service.json"), `${JSON.stringify(typedManifest, null, 2)}\n`); result = run(wrongType); assert.notEqual(result.status, 0); assert.match(result.stderr, /github_identity/);
 });
 test("unknown and malformed provenance origins are denied", async (t) => {
