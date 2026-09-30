@@ -9,7 +9,7 @@ const canonical = (value) => Array.isArray(value) ? value.map(canonical) : value
 const exists = async (path) => access(path).then(() => true, () => false);
 function trackedModes(root) {
   try {
-    const rows = execFileSync("git", ["-C", root, "ls-files", "-s"], { encoding: "utf8" }).trim().split("\n");
+    const rows = execFileSync("git", ["-C", root, "ls-files", "-s"], { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim().split("\n");
     return new Map(rows.filter(Boolean).map((row) => {
       const [metadata, path] = row.split("\t");
       return [path, metadata.split(" ")[0].slice(-4)];
@@ -23,7 +23,7 @@ function parseArgs(args) {
   return out;
 }
 async function listFiles(root) {
-  const ignored = new Set([".git", "dist", "output", "node_modules"]);
+  const ignored = new Set([".git", ".harness", "dist", "output", "node_modules"]);
   async function visit(directory) {
     const entries = await readdir(directory, { withFileTypes: true });
     const paths = [];

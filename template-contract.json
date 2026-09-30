@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "b789e15f9007887acd4febb2e8cb7c72536eaf6faa2aa80a642f4540854c61ee",
+  "contractDigest": "52ef9788699ea5f6a2eae0da2c3573ed27f33f6ac5dfa24fb52e2cad55e10e7d",
   "inventory": [
     {
       "path": ".github/branch-protection-checklist.md",
@@ -250,7 +250,7 @@
     },
     {
       "path": "scripts/generate-template-contract.mjs",
-      "sha256": "e9ec108a3040246d621dee77fad01b2de1801d8ce8a010e3b515ac55a82fb2fb",
+      "sha256": "d28a6a52184c6a66bb2e84ed2b142444eaece7aca3e402ab99af4bc4cf152477",
       "mode": "0644"
     },
     {
@@ -275,7 +275,7 @@
     },
     {
       "path": "scripts/verify-template-contract.mjs",
-      "sha256": "f9efe59d10c38a7d2f0dc0b07dbc6ec1f2aec272a3d162cabbadb600b173e971",
+      "sha256": "71e10e5b2def10f6572d8018566c46f0f6519d02366eb7834cee5c607b380f78",
       "mode": "0644"
     },
     {
@@ -340,7 +340,7 @@
     },
     {
       "path": "tests/template-contract.test.mjs",
-      "sha256": "de251073e45db41f2dd0db20e8fde2a11e5fc03b140ff9c9c6f7b634f10d5815",
+      "sha256": "2b407f12b4397b120e4ef1cb326ce1a332966fef4a08c1b3fd22204bb1c27fec",
       "mode": "0644"
     },
     {

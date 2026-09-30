@@ -5,7 +5,7 @@ import { execFileSync } from "node:child_process";
 
 const root = process.cwd();
 const policyPath = join(root, "template-contract.json");
-const excluded = new Set([".git", "dist", "output", "node_modules", "template-contract.json"]);
+const excluded = new Set([".git", ".harness", "dist", "output", "node_modules", "template-contract.json"]);
 
 async function files(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
