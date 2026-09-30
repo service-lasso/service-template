@@ -63,11 +63,16 @@ test("remote asset download follows only allowlisted redirects without authoriza
   const calls = [];
   const request = async (url, options) => {
     calls.push({ url, options });
-    if (calls.length === 1) return { status: 302, headers: new Headers({ location: "https://objects.githubusercontent.com/release-asset" }) };
+    if (calls.length === 1) return { status: 302, headers: new Headers({ location: "https://release-assets.githubusercontent.com/release-asset" }) };
     return { status: 200, ok: true, arrayBuffer: async () => Buffer.from("downloaded") };
   };
   assert.deepEqual(await downloadAsset("https://github.com/service-lasso/service-template/releases/download/tag/service-template.tar.gz", request), Buffer.from("downloaded"));
   assert.equal(calls.length, 2);
   assert.deepEqual(calls.map((call) => call.options), [{ redirect: "manual" }, { redirect: "manual" }]);
-  await assert.rejects(() => downloadAsset("https://example.invalid/asset", request), (error) => error instanceof PublicationError && error.code === "asset_url");
+  const rejectedCalls = [];
+  await assert.rejects(() => downloadAsset("https://github.com/service-lasso/service-template/releases/download/tag/service-template.tar.gz", async (url, options) => {
+    rejectedCalls.push({ url, options });
+    return { status: 302, headers: new Headers({ location: "https://example.invalid/release-asset" }) };
+  }), (error) => error instanceof PublicationError && error.code === "asset_url");
+  assert.deepEqual(rejectedCalls, [{ url: "https://github.com/service-lasso/service-template/releases/download/tag/service-template.tar.gz", options: { redirect: "manual" } }]);
 });

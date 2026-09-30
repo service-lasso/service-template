@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "1cb285fd1c7aa8b970092320d50ae175c07b7458694de7151c06e98f3c3b4819",
+  "contractDigest": "05162aa2966c3656d5809050398ebaeba354ee6639f51b047464bc6a383324cb",
   "inventory": [
     {
       "path": ".gitattributes",
@@ -113,9 +113,9 @@
     },
     {
       "path": ".governance/specs/SPEC-017-template-contract.md",
-      "sha256": "a04aa8a855f1af52eeb9eeb55d5aad910d5102b328da642bba36b11caa18edc5",
+      "sha256": "c2d1242fa4575823b5a5c176e162b5504bba561fc49ec5a4013d64e8440cebcc",
       "mode": "0644",
-      "bytes": 4079
+      "bytes": 4239
     },
     {
       "path": "CHANGELOG.md",
@@ -257,9 +257,9 @@
     },
     {
       "path": "docs/template-contract.md",
-      "sha256": "07e8b40da5e0dc4a31a82f1b25d70eaa8a65db0e778f8347c517e0b76a98abe2",
+      "sha256": "a9acee662cba6b62cc07fa92362cbe1f10b220caf38165bc80bf89cc84dd6878",
       "mode": "0644",
-      "bytes": 6280
+      "bytes": 6469
     },
     {
       "path": "docs/validation.md",
@@ -323,9 +323,9 @@
     },
     {
       "path": "scripts/publish-development-candidate.mjs",
-      "sha256": "989fe721d9c2236fb3b13fc9775293585f464d09452496d41096b6ddaf5e9266",
+      "sha256": "5d57fd46aad520fcadff750e2c69449e02b11ca628881b49f08e057fcaaa50cf",
       "mode": "0644",
-      "bytes": 10842
+      "bytes": 10882
     },
     {
       "path": "scripts/test.ps1",
@@ -425,9 +425,9 @@
     },
     {
       "path": "tests/development-candidate-workflow.test.mjs",
-      "sha256": "3f541c310a45b3ff08cbf9c515455ad8ad0e67ec1f24952dccfa7cd572b6b80d",
+      "sha256": "45fa3d6600a566ad4c87e29682a4d5c87b5b2c47faa2f4b9895940c0b0c094fc",
       "mode": "0644",
-      "bytes": 6772
+      "bytes": 7220
     },
     {
       "path": "tests/template-contract.test.mjs",
@@ -444,7 +444,7 @@
   ],
   "quotas": {
     "maximumFiles": 128,
-    "maximumTotalBytes": 353435,
+    "maximumTotalBytes": 354272,
     "maximumManifestBytes": 6298,
     "maximumProvenanceBytes": 479,
     "maximumConfigFiles": 16,

@@ -4,7 +4,7 @@ import { basename, join } from "node:path";
 
 const assetNames = ["service-template.tar.gz", "template-candidate.json", "template-contract.json", "SHA256SUMS"];
 const checksummedAssetNames = assetNames.filter((name) => name !== "SHA256SUMS");
-const downloadHosts = new Set(["github.com", "objects.githubusercontent.com", "github-releases.githubusercontent.com"]);
+const downloadHosts = new Set(["github.com", "objects.githubusercontent.com", "github-releases.githubusercontent.com", "release-assets.githubusercontent.com"]);
 
 export class PublicationError extends Error {
   constructor(code, message) { super(message); this.code = code; }
