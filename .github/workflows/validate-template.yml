@@ -3,8 +3,9 @@ name: validate-template
 on:
   workflow_dispatch:
   pull_request:
+    branches: [ develop ]
   push:
-    branches: [ main ]
+    branches: [ develop ]
 
 permissions:
   contents: read

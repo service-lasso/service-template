@@ -1,6 +1,9 @@
 $ErrorActionPreference = 'Stop'
 
 $root = Split-Path -Parent $PSScriptRoot
+Set-Location $root
+
+node --test tests/template-contract.test.mjs
 
 $required = @(
   (Join-Path $root 'service.json'),
