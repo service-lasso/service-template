@@ -5,16 +5,20 @@ import { execFileSync } from "node:child_process";
 
 const root = process.cwd();
 const policyPath = join(root, "template-contract.json");
-const excluded = new Set([".git", ".harness", "dist", "output", "node_modules", "template-contract.json"]);
+const excludedDirectories = new Set([".git", ".harness", "dist", "output", "node_modules"]);
 
 async function files(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
   const result = [];
   for (const entry of entries) {
-    if (excluded.has(entry.name)) continue;
     const absolute = join(directory, entry.name);
     const info = await lstat(absolute);
     if (info.isSymbolicLink() || (!info.isDirectory() && !info.isFile())) throw new Error(`Template inventory rejects links and non-regular objects: ${relative(root, absolute)}`);
+    if (excludedDirectories.has(entry.name)) {
+      if (!info.isDirectory()) throw new Error(`Template inventory requires reserved paths to be non-link directories: ${relative(root, absolute)}`);
+      continue;
+    }
+    if (entry.name === "template-contract.json") continue;
     if (info.isDirectory()) result.push(...await files(absolute));
     else result.push(absolute);
   }

