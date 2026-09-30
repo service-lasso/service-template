@@ -39,7 +39,7 @@ async function derivedFixture(t) { const value = await fixture(); t.after(() => 
 async function bindArchive(value) { value.descriptor.archiveSha256 = digest(await readFile(value.archive)); await writeFile(value.candidate, `${JSON.stringify(value.descriptor, null, 2)}\n`); await provenance(value.project, value.descriptor); }
 function rewriteTarHeader(tar, name, mutate) { const offset = tar.indexOf(Buffer.from(`${name}\0`, "ascii")); assert.notEqual(offset, -1, `fixture archive must include ${name}`); mutate(offset); tar.fill(0x20, offset + 148, offset + 156); const checksum = tar.subarray(offset, offset + 512).reduce((sum, byte) => sum + byte, 0).toString(8).padStart(6, "0"); tar.write(`${checksum}\0 `, offset + 148, "ascii"); }
 function terminalOffset(tar) { for (let offset = 0; offset + 1024 <= tar.length; offset += 512) if (tar.subarray(offset, offset + 512).every((byte) => byte === 0) && tar.subarray(offset + 512, offset + 1024).every((byte) => byte === 0)) return offset; assert.fail("fixture archive must contain a two-block terminal record"); }
-function tarRecord(name, type, body = Buffer.alloc(0)) { const header = Buffer.alloc(512); header.write(name, 0, "ascii"); header.write(type === "5" ? "0000755\0" : "0000644\0", 100, "ascii"); header.write(body.length.toString(8).padStart(11, "0") + "\0", 124, "ascii"); header.fill(0x20, 148, 156); header.write(type, 156, "ascii"); header.write("ustar\0", 257, "ascii"); header.write("00", 263, "ascii"); const checksum = header.reduce((sum, byte) => sum + byte, 0).toString(8).padStart(6, "0"); header.write(`${checksum}\0 `, 148, "ascii"); return Buffer.concat([header, body, Buffer.alloc((512 - (body.length % 512)) % 512)]); }
+function tarRecord(name, type, body = Buffer.alloc(0)) { const header = Buffer.alloc(512); header.write(name, 0, "ascii"); header.write(type === "5" ? "0000775\0" : type === "g" ? "0000666\0" : "0000664\0", 100, "ascii"); header.write(body.length.toString(8).padStart(11, "0") + "\0", 124, "ascii"); header.fill(0x20, 148, 156); header.write(type, 156, "ascii"); header.write("ustar\0", 257, "ascii"); header.write("00", 263, "ascii"); const checksum = header.reduce((sum, byte) => sum + byte, 0).toString(8).padStart(6, "0"); header.write(`${checksum}\0 `, 148, "ascii"); return Buffer.concat([header, body, Buffer.alloc((512 - (body.length % 512)) % 512)]); }
 function syntheticTar(records) { return Buffer.concat([...records, Buffer.alloc(1024)]); }
 test("valid local archive project is admitted using the owner candidate tuple", async (t) => { const value = await derivedFixture(t); const result = run(value); assert.equal(result.status, 0, result.stderr); assert.match(result.stdout, /"verified": true/); });
 test("safe identity, GitHub identity and example configuration changes are admitted", async (t) => { const value = await fixture(); t.after(() => rm(value.directory, { recursive: true, force: true })); const origin = { kind: "github-derived", repository: "example/lasso-weather" }; await provenance(value.project, value.descriptor, origin); const manifest = JSON.parse(await readFile(join(value.project, "service.json"), "utf8")); manifest.id = "weather-service"; manifest.name = "Weather Service"; manifest.meta.repository.url = "https://github.com/example/lasso-weather.git"; await writeFile(join(value.project, "service.json"), `${JSON.stringify(manifest, null, 2)}\n`); await writeFile(join(value.project, "config", "example.env"), "ECHO_MESSAGE=weather\n"); const result = run(value); assert.equal(result.status, 0, result.stderr); });
@@ -49,12 +49,12 @@ test("GitHub-derived provenance validates the repository URL even when the basel
 });
 test("invented commit and archive digests are denied even when provenance is well formed", async (t) => { const value = await derivedFixture(t); const invented = { ...value.descriptor, templateCommit: "b".repeat(40), archiveSha256: "a".repeat(64) }; await writeFile(value.candidate, `${JSON.stringify(invented, null, 2)}\n`); await provenance(value.project, invented); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /candidate_binding/); });
 test("provenance cannot self-report an archive digest different from the candidate", async (t) => { const value = await derivedFixture(t); await provenance(value.project, value.descriptor, { kind: "local-archive", archiveSha256: "a".repeat(64) }); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /origin/); });
-test("a candidate archive with a forged executable mode is denied from archive metadata", async (t) => {
+test("a candidate archive with forged noncanonical regular modes is denied from archive metadata", async (t) => {
   const value = await derivedFixture(t);
   const tar = gunzipSync(await readFile(value.archive));
   const headerOffset = tar.indexOf(Buffer.from(".gitattributes\0", "ascii"));
   assert.notEqual(headerOffset, -1, "fixture archive must include a regular locked file header");
-  tar.write("0000775\0", headerOffset + 100, "ascii");
+  tar.write("0000666\0", headerOffset + 100, "ascii");
   tar.fill(0x20, headerOffset + 148, headerOffset + 156);
   const checksum = tar.subarray(headerOffset, headerOffset + 512).reduce((sum, byte) => sum + byte, 0).toString(8).padStart(6, "0");
   tar.write(`${checksum}\0 `, headerOffset + 148, "ascii");
@@ -63,6 +63,9 @@ test("a candidate archive with a forged executable mode is denied from archive m
   await writeFile(value.candidate, `${JSON.stringify(value.descriptor, null, 2)}\n`);
   await provenance(value.project, value.descriptor);
   const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /candidate_archive/);
+});
+test("a candidate archive rejects forged global PAX metadata", async (t) => {
+  const value = await derivedFixture(t); const tar = gunzipSync(await readFile(value.archive)); const forged = Buffer.concat([tarRecord("pax_global_header", "g", Buffer.from(`52 comment=${"a".repeat(40)}\n`, "ascii")), tar]); await writeFile(value.archive, gzipSync(forged, { mtime: 0 })); await bindArchive(value); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /candidate_archive/);
 });
 test("archive policy byte substitution is denied even with a matching candidate digest", async (t) => {
   const value = await derivedFixture(t); const tar = gunzipSync(await readFile(value.archive)); const marker = Buffer.from('"templateVersion": "1.0.0-dev"', "utf8"); const offset = tar.indexOf(marker); assert.notEqual(offset, -1); tar.write('"templateVersion": "9.9.9-dev"', offset, "utf8"); await writeFile(value.archive, gzipSync(tar, { mtime: 0 })); await bindArchive(value); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /candidate_archive/);
@@ -91,14 +94,14 @@ test("archive compressed, expanded, and path-depth quotas are denied before acce
 });
 test("archive entry quotas include regular files, directories, and allowed global PAX metadata", async (t) => {
   const cases = [
-    ["regular boundary", Array.from({ length: policy.quotas.maximumArchiveEntries }, (_, index) => tarRecord(`file-${index}`, "0")), /candidate_archive/],
-    ["regular over quota", Array.from({ length: policy.quotas.maximumArchiveEntries + 1 }, (_, index) => tarRecord(`file-${index}`, "0")), /archive_quota/],
-    ["directory boundary", Array.from({ length: policy.quotas.maximumArchiveEntries }, (_, index) => tarRecord(`directory-${index}/`, "5")), /candidate_archive/],
-    ["directory over quota", Array.from({ length: policy.quotas.maximumArchiveEntries + 1 }, (_, index) => tarRecord(`directory-${index}/`, "5")), /archive_quota/],
-    ["PAX metadata boundary", [tarRecord("pax_global_header", "g"), ...Array.from({ length: policy.quotas.maximumArchiveEntries - 1 }, (_, index) => tarRecord(`metadata-directory-${index}/`, "5"))], /candidate_archive/],
-    ["PAX metadata over quota", [tarRecord("pax_global_header", "g"), ...Array.from({ length: policy.quotas.maximumArchiveEntries }, (_, index) => tarRecord(`metadata-directory-${index}/`, "5"))], /archive_quota/]
+    ["regular boundary", () => Array.from({ length: policy.quotas.maximumArchiveEntries }, (_, index) => tarRecord(`file-${index}`, "0")), /candidate_archive/],
+    ["regular over quota", () => Array.from({ length: policy.quotas.maximumArchiveEntries + 1 }, (_, index) => tarRecord(`file-${index}`, "0")), /archive_quota/],
+    ["directory boundary", () => Array.from({ length: policy.quotas.maximumArchiveEntries }, (_, index) => tarRecord(`directory-${index}/`, "5")), /candidate_archive/],
+    ["directory over quota", () => Array.from({ length: policy.quotas.maximumArchiveEntries + 1 }, (_, index) => tarRecord(`directory-${index}/`, "5")), /archive_quota/],
+    ["PAX metadata boundary", (value) => [tarRecord("pax_global_header", "g", Buffer.from(`52 comment=${value.descriptor.templateCommit}\n`, "ascii")), ...Array.from({ length: policy.quotas.maximumArchiveEntries - 1 }, (_, index) => tarRecord(`metadata-directory-${index}/`, "5"))], /candidate_archive/],
+    ["PAX metadata over quota", (value) => [tarRecord("pax_global_header", "g", Buffer.from(`52 comment=${value.descriptor.templateCommit}\n`, "ascii")), ...Array.from({ length: policy.quotas.maximumArchiveEntries }, (_, index) => tarRecord(`metadata-directory-${index}/`, "5"))], /archive_quota/]
   ];
-  for (const [name, records, expectation] of cases) { const value = await derivedFixture(t); await writeFile(value.archive, gzipSync(syntheticTar(records), { mtime: 0 })); await bindArchive(value); const result = run(value); assert.notEqual(result.status, 0, name); assert.match(result.stderr, expectation, name); }
+  for (const [name, makeRecords, expectation] of cases) { const value = await derivedFixture(t); await writeFile(value.archive, gzipSync(syntheticTar(makeRecords(value)), { mtime: 0 })); await bindArchive(value); const result = run(value); assert.notEqual(result.status, 0, name); assert.match(result.stderr, expectation, name); }
 });
 test("archive terminal record requires two zero blocks and only zero padding", async (t) => {
   const valid = await derivedFixture(t); const tar = gunzipSync(await readFile(valid.archive)); const footer = terminalOffset(tar);
