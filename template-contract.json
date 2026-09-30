@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "74692ba3022baa69eba0ae24d9ba9cfcc4fb1bcd74c1b863c82011525c6e3baf",
+  "contractDigest": "6a416eec753f474550aaa1a9b1efa94982e05cd5db22a3171418057fa021cf0d",
   "inventory": [
     {
       "path": ".gitattributes",
@@ -35,7 +35,7 @@
     },
     {
       "path": ".github/workflows/validate-template.yml",
-      "sha256": "d47dbaffe8cec72eca6d06489907f8b5ae054f00d760785fed05c1eae1b593e0",
+      "sha256": "30f17e70f6c118fdcc3a1d8b5a12466a040f6a94354fdc860da105b6cf752afd",
       "mode": "0644"
     },
     {
@@ -275,12 +275,12 @@
     },
     {
       "path": "scripts/test.ps1",
-      "sha256": "64c86acbfe8cc3b810ed41fb2f157990b57f9cf60419f52d830b588e65b8a828",
+      "sha256": "a5d43b44919be74ea7e5badefccd563bd064e47dcf941ba6633049a5c1e27fce",
       "mode": "0644"
     },
     {
       "path": "scripts/test.sh",
-      "sha256": "f05a72b323ddefab16c4048accb6874da529c598cb014de6b45f308826d9d479",
+      "sha256": "bbb811fcf3922edee8c7708e7f97d6b23f09dc21b0f69ebd7303563a88b4c71f",
       "mode": "0644"
     },
     {

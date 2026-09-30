@@ -3,7 +3,8 @@ $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 Set-Location $root
 
-node --test tests/template-contract.test.mjs
+node --test tests/template-contract.test.mjs tests/development-candidate-workflow.test.mjs
+node scripts/validate-development-candidate-workflow.mjs
 
 $required = @(
   (Join-Path $root 'service.json'),
