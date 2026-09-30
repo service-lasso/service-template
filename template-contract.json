@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "a3621fd9d50d0e42ffdcdb3b61375dcd60f482da75421d783f8d5df85f8ed5ae",
+  "contractDigest": "746aa351544fee35a473d2173e518e22ec36f97bffc7043cb511c390a65e3db2",
   "inventory": [
     {
       "path": ".gitattributes",
@@ -215,7 +215,7 @@
     },
     {
       "path": "docs/template-contract.md",
-      "sha256": "ce54a838bf382520de3bdac749a3b3352675ac70d7d3c2aba3244aff537c85c3",
+      "sha256": "2caae3bdc03e60023ec62f56b8464d9c3c5a24addb655d56e896d5dcfe2d6421",
       "mode": "0644"
     },
     {
@@ -280,7 +280,7 @@
     },
     {
       "path": "scripts/verify-template-contract.mjs",
-      "sha256": "8313fda29641fbf5036c1c6addf2abff2600718ed8985efb95d95b0b651201f1",
+      "sha256": "96b5c7a43d21e2598c15c31c1792da1e172e1ace0f377f687b0137a83d722198",
       "mode": "0644"
     },
     {
@@ -345,7 +345,7 @@
     },
     {
       "path": "tests/template-contract.test.mjs",
-      "sha256": "fafcf7f24cadf5720b1cce53f6ca42d7c4582c17a5e0bd710546c1be6513ea56",
+      "sha256": "4620022ab91941a3fa1818030aa941411f56ad42a157087af6431a92fa7b1a89",
       "mode": "0644"
     },
     {
