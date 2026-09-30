@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "40433f4b152bccdbe5436c687212a39f0211377180db4a1abf42d04afa237227",
+  "contractDigest": "1cb285fd1c7aa8b970092320d50ae175c07b7458694de7151c06e98f3c3b4819",
   "inventory": [
     {
       "path": ".gitattributes",
@@ -431,9 +431,9 @@
     },
     {
       "path": "tests/template-contract.test.mjs",
-      "sha256": "8b8add7d549116073c167e10455f0844425a84afd1a46212a0b25af50af6374d",
+      "sha256": "72cc5faded5ea6a6b3616c1138ec4d830dd4b0df1a1e2db215d5566560b67d49",
       "mode": "0644",
-      "bytes": 25614
+      "bytes": 25640
     },
     {
       "path": "verify/service-harness.json",
@@ -444,7 +444,7 @@
   ],
   "quotas": {
     "maximumFiles": 128,
-    "maximumTotalBytes": 353409,
+    "maximumTotalBytes": 353435,
     "maximumManifestBytes": 6298,
     "maximumProvenanceBytes": 479,
     "maximumConfigFiles": 16,
