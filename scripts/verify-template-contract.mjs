@@ -72,7 +72,7 @@ function archiveEntries(archive) {
   }
   return entries;
 }
-function archiveBytes(archive, path) { try { return execFileSync("tar", ["-xOzf", archive, `./${path}`], { encoding: null, stdio: ["ignore", "pipe", "pipe"] }); } catch { fail("candidate_archive", `Candidate archive cannot read ${path}.`); } }
+function archiveBytes(archive, path) { try { return execFileSync("tar", ["-xOzf", archive, path], { encoding: null, stdio: ["ignore", "pipe", "pipe"] }); } catch { fail("candidate_archive", `Candidate archive cannot read ${path}.`); } }
 function candidateSchema(candidate) {
   if (Object.keys(candidate).sort().join(",") !== "archiveSha256,contractDigest,kind,schemaVersion,templateCommit,templateVersion" || candidate.schemaVersion !== 1 || candidate.kind !== "development-template-candidate" || !/^[a-f0-9]{40}$/.test(candidate.templateCommit) || !/^[a-f0-9]{64}$/.test(candidate.archiveSha256) || !/^[a-f0-9]{64}$/.test(candidate.contractDigest) || typeof candidate.templateVersion !== "string") fail("candidate", "Candidate descriptor must use the closed immutable-candidate schema.");
 }
