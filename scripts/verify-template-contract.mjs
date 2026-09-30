@@ -1,11 +1,21 @@
 import { createHash } from "node:crypto";
 import { access, readdir, readFile, stat } from "node:fs/promises";
 import { join, relative, resolve, sep } from "node:path";
+import { execFileSync } from "node:child_process";
 
 class ContractError extends Error { constructor(code, message) { super(message); this.code = code; } }
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const canonical = (value) => Array.isArray(value) ? value.map(canonical) : value && typeof value === "object" ? Object.fromEntries(Object.keys(value).sort().map((key) => [key, canonical(value[key])])) : value;
 const exists = async (path) => access(path).then(() => true, () => false);
+function trackedModes(root) {
+  try {
+    const rows = execFileSync("git", ["-C", root, "ls-files", "-s"], { encoding: "utf8" }).trim().split("\n");
+    return new Map(rows.filter(Boolean).map((row) => {
+      const [metadata, path] = row.split("\t");
+      return [path, metadata.split(" ")[0].slice(-4)];
+    }));
+  } catch { return new Map(); }
+}
 function parseArgs(args) {
   const out = {};
   for (let i = 0; i < args.length; i += 2) out[args[i]] = args[i + 1];
@@ -41,6 +51,8 @@ function assertDigest(policy) {
 }
 async function verify({ templateRoot, projectRoot }) {
   const policy = await readJson(join(templateRoot, "template-contract.json"), "malformed_contract");
+  const templateModes = trackedModes(templateRoot);
+  const projectModes = trackedModes(projectRoot);
   if (policy.schemaVersion !== 1 || !/^\d+\.\d+\.\d+(?:-[a-z0-9.]+)?$/.test(policy.templateVersion)) fail("contract_schema", "Unsupported contract schema or template version.");
   assertDigest(policy);
   if (!Array.isArray(policy.inventory) || policy.inventory.length === 0 || policy.inventory.length > policy.quotas.maximumFiles) fail("inventory", "Contract inventory is missing or exceeds its quota.");
@@ -49,7 +61,7 @@ async function verify({ templateRoot, projectRoot }) {
   for (const entry of policy.inventory) {
     if (!/^(?!\/)(?!.*(?:^|\/)\.\.(?:\/|$))[A-Za-z0-9._@/\\-]+$/.test(entry.path) || !/^[a-f0-9]{64}$/.test(entry.sha256) || !/^[0-7]{4}$/.test(entry.mode)) fail("inventory", "Contract inventory entry is malformed.");
     const file = join(templateRoot, entry.path);
-    if (!(await exists(file)) || sha256(await readFile(file)) !== entry.sha256 || ((await stat(file)).mode & 0o777).toString(8).padStart(4, "0") !== entry.mode) fail("template_drift", `Canonical template drifted at ${entry.path}. Regenerate and review the contract.`);
+    if (!(await exists(file)) || sha256(await readFile(file)) !== entry.sha256 || (templateModes.get(entry.path) && templateModes.get(entry.path) !== entry.mode)) fail("template_drift", `Canonical template drifted at ${entry.path}. Regenerate and review the contract.`);
   }
   const projectFiles = await listFiles(projectRoot);
   if (projectFiles.length > policy.quotas.maximumFiles) fail("quota", "Project exceeds maximum file count.");
@@ -71,7 +83,7 @@ async function verify({ templateRoot, projectRoot }) {
     const projectFile = join(projectRoot, entry.path);
     if (!(await exists(projectFile))) fail("missing_locked_file", `Project is missing locked file: ${entry.path}`);
     if (entry.path === policy.authoring.manifest.path || policy.authoring.configuration.allowedPaths.includes(entry.path)) continue;
-    if (sha256(await readFile(projectFile)) !== entry.sha256 || ((await stat(projectFile)).mode & 0o777).toString(8).padStart(4, "0") !== entry.mode) fail("immutable_baseline", `Immutable baseline changed: ${entry.path}`);
+    if (sha256(await readFile(projectFile)) !== entry.sha256 || (projectModes.get(entry.path) && projectModes.get(entry.path) !== entry.mode)) fail("immutable_baseline", `Immutable baseline changed: ${entry.path}`);
   }
   const baselineManifest = await readJson(join(templateRoot, policy.authoring.manifest.path), "malformed_template_manifest");
   const projectManifest = await readJson(join(projectRoot, policy.authoring.manifest.path), "malformed_manifest");

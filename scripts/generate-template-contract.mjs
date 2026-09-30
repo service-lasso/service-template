@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { readdir, readFile, stat, writeFile } from "node:fs/promises";
 import { join, relative } from "node:path";
+import { execFileSync } from "node:child_process";
 
 const root = process.cwd();
 const policyPath = join(root, "template-contract.json");
@@ -19,6 +20,13 @@ async function files(directory) {
 }
 
 function digest(value) { return createHash("sha256").update(value).digest("hex"); }
+function trackedModes() {
+  const rows = execFileSync("git", ["ls-files", "-s"], { cwd: root, encoding: "utf8" }).trim().split("\n");
+  return new Map(rows.filter(Boolean).map((row) => {
+    const [metadata, path] = row.split("\t");
+    return [path, metadata.split(" ")[0].slice(-4)];
+  }));
+}
 function canonical(value) {
   if (Array.isArray(value)) return value.map(canonical);
   if (value && typeof value === "object") return Object.fromEntries(Object.keys(value).sort().map((key) => [key, canonical(value[key])]));
@@ -26,11 +34,12 @@ function canonical(value) {
 }
 
 const policy = JSON.parse(await readFile(policyPath, "utf8"));
+const modes = trackedModes();
 policy.inventory = [];
 for (const file of await files(root)) {
   const info = await stat(file);
   const path = relative(root, file).replaceAll("\\", "/");
-  policy.inventory.push({ path, sha256: digest(await readFile(file)), mode: (info.mode & 0o777).toString(8).padStart(4, "0") });
+  policy.inventory.push({ path, sha256: digest(await readFile(file)), mode: modes.get(path) || (info.mode & 0o777).toString(8).padStart(4, "0") });
 }
 policy.inventory.sort((a, b) => a.path.localeCompare(b.path));
 const unsigned = { ...policy, contractDigest: undefined };
