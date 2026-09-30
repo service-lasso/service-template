@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 import { cp, mkdtemp, readFile, rm, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
-import { gzipSync } from "node:zlib";
+import { gunzipSync, gzipSync } from "node:zlib";
 import { spawnSync } from "node:child_process";
 import test from "node:test";
 
@@ -40,6 +40,19 @@ test("valid local archive project is admitted using the owner candidate tuple", 
 test("safe identity, GitHub identity and example configuration changes are admitted", async (t) => { const value = await fixture(); t.after(() => rm(value.directory, { recursive: true, force: true })); const origin = { kind: "github-derived", repository: "example/lasso-weather" }; await provenance(value.project, value.descriptor, origin); const manifest = JSON.parse(await readFile(join(value.project, "service.json"), "utf8")); manifest.id = "weather-service"; manifest.name = "Weather Service"; manifest.meta.repository.url = "https://github.com/example/lasso-weather.git"; await writeFile(join(value.project, "service.json"), `${JSON.stringify(manifest, null, 2)}\n`); await writeFile(join(value.project, "config", "example.env"), "ECHO_MESSAGE=weather\n"); const result = run(value); assert.equal(result.status, 0, result.stderr); });
 test("invented commit and archive digests are denied even when provenance is well formed", async (t) => { const value = await derivedFixture(t); const invented = { ...value.descriptor, templateCommit: "b".repeat(40), archiveSha256: "a".repeat(64) }; await writeFile(value.candidate, `${JSON.stringify(invented, null, 2)}\n`); await provenance(value.project, invented); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /candidate_binding/); });
 test("provenance cannot self-report an archive digest different from the candidate", async (t) => { const value = await derivedFixture(t); await provenance(value.project, value.descriptor, { kind: "local-archive", archiveSha256: "a".repeat(64) }); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /origin/); });
+test("a candidate archive with a forged executable mode is denied from archive metadata", async (t) => {
+  const value = await derivedFixture(t);
+  const tar = gunzipSync(await readFile(value.archive));
+  tar.write("0000775\0", 100, "ascii");
+  tar.fill(0x20, 148, 156);
+  const checksum = tar.subarray(0, 512).reduce((sum, byte) => sum + byte, 0).toString(8).padStart(6, "0");
+  tar.write(`${checksum}\0 `, 148, "ascii");
+  await writeFile(value.archive, gzipSync(tar, { mtime: 0 }));
+  value.descriptor.archiveSha256 = digest(await readFile(value.archive));
+  await writeFile(value.candidate, `${JSON.stringify(value.descriptor, null, 2)}\n`);
+  await provenance(value.project, value.descriptor);
+  const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /candidate_archive/);
+});
 test("altered executable baseline is denied", async (t) => { const value = await derivedFixture(t); await writeFile(join(value.project, "runtime", "linux", "echo-service.sh"), "#!/usr/bin/env bash\necho altered\n"); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /immutable_baseline/); });
 test("arbitrary artifact source change is denied", async (t) => { const value = await derivedFixture(t); const manifest = JSON.parse(await readFile(join(value.project, "service.json"), "utf8")); manifest.artifact.source.repo = "attacker/example"; await writeFile(join(value.project, "service.json"), `${JSON.stringify(manifest, null, 2)}\n`); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /forbidden_manifest_change/); });
 test("secret-like configuration is denied", async (t) => { const value = await derivedFixture(t); await writeFile(join(value.project, "config", "example.env"), "API_TOKEN=not-allowed\n"); const result = run(value); assert.notEqual(result.status, 0); assert.match(result.stderr, /unsafe_configuration/); });

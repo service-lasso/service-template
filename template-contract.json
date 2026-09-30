@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "b6046e8845f2f3ca8dd0af729a480e81ca9fb5ee1ab1d7ffb34b9e1481bd2a90",
+  "contractDigest": "b1ebbc4144a648fd79f9fb786f2ca93c61c1a2e0d66971d5f1f53b7e9df2e0f6",
   "inventory": [
     {
       "path": ".gitattributes",
@@ -345,7 +345,7 @@
     },
     {
       "path": "tests/template-contract.test.mjs",
-      "sha256": "9569a2a4e4b99c1f856b0ba8b2ce30ae62bd5acf006d96e0c717059aa77ba882",
+      "sha256": "3f69eb31571ef3b3268e83c68df25a8465909109485a76251a122fc6c2a076cb",
       "mode": "0644"
     },
     {
