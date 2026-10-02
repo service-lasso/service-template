@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
-import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, realpath, rm, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -356,4 +356,64 @@ for (const helper of ["test", "verify"]) for (const caller of ["standalone", "ac
     if (scenario.exit === 0) assert.match(result.stdout, /Template tests passed \(Windows\)/);
     else assert.doesNotMatch(result.stdout, /Template tests passed/);
   }
+});
+
+
+// Physical CLI identity is tested by actual Node launches, never by rewriting argv
+// to the real path before invocation. Directory junctions need no Windows link grant.
+for (const encoded of [false, true]) for (const aliasKind of ["directory", "script"]) test(`physical ${aliasKind} alias: workflow and publisher ${encoded ? "encoded" : "ordinary"} paths`, async (t) => {
+  const directory = await mkdtemp(join(tmpdir(), "template-physical-cli-"));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const physical = join(directory, encoded ? "physical space # percent% é" : "physical");
+  const alias = join(directory, encoded ? "alias space # percent% é" : "alias");
+  await mkdir(physical);
+  for (const name of ["validate-development-candidate-workflow.mjs", "publish-development-candidate.mjs", "verify-template-contract.mjs"]) await writeFile(join(physical, name), await readFile(join(root, "scripts", name)));
+  let workflowScript; let publisherScript;
+  if (aliasKind === "directory") {
+    await symlink(physical, alias, process.platform === "win32" ? "junction" : "dir");
+    workflowScript = join(alias, "validate-development-candidate-workflow.mjs"); publisherScript = join(alias, "publish-development-candidate.mjs");
+  } else {
+    await mkdir(alias);
+    workflowScript = join(alias, "workflow.mjs"); publisherScript = join(alias, "publisher.mjs");
+    try {
+      await symlink(join(physical, "validate-development-candidate-workflow.mjs"), workflowScript, "file");
+      await symlink(join(physical, "publish-development-candidate.mjs"), publisherScript, "file");
+    } catch (error) {
+      if (process.platform === "win32" && ["EPERM", "EACCES"].includes(error.code)) { t.skip(`Direct file symbolic links unavailable: ${error.code}; mandatory directory-junction and Windows native gates are separate.`); return; }
+      throw error;
+    }
+  }
+  assert.equal(await realpath(workflowScript), await realpath(join(physical, "validate-development-candidate-workflow.mjs")));
+  assert.equal(await realpath(publisherScript), await realpath(join(physical, "publish-development-candidate.mjs")));
+  assert.notEqual(workflowScript, await realpath(workflowScript));
+  if (process.platform === "win32") assert.match(workflowScript, /^[A-Za-z]:\\/);
+  const valid = join(directory, "valid # workflow.yml"); const invalid = join(directory, "invalid % workflow.yml");
+  await writeFile(valid, await readFile(join(root, ".github/workflows/development-candidate.yml")));
+  await writeFile(invalid, "jobs:\n  invalid:\n    steps: []\n");
+  for (const [file, success] of [[valid, true], [invalid, false]]) {
+    const result = spawnSync(process.execPath, [workflowScript, file], { cwd: directory, encoding: "utf8", timeout: 15000 });
+    assert.ifError(result.error); assert.equal(result.signal, null);
+    if (success) { assert.equal(result.status, 0, result.stderr); assert.match(result.stdout, /development-candidate workflow structure is valid/); assert.equal(result.stderr, ""); }
+    else { assert.equal(result.status, 1); assert.match(result.stderr, /separate bind-candidate and publish-candidate jobs/); assert.equal(result.stdout, ""); }
+  }
+  // The preload observes every actual global fetch attempt; invalid usage must
+  // fail before any candidate read/provider authority, even with a token present.
+  const denyNetwork = "data:text/javascript," + encodeURIComponent('globalThis.fetch = () => { console.error("UNEXPECTED_NETWORK_ATTEMPT"); throw new Error("Network denied by fixture"); };');
+  for (const args of [[], ["unrelated", "missing-candidate"]]) {
+    const result = spawnSync(process.execPath, ["--import", denyNetwork, publisherScript, ...args], { cwd: directory, env: { ...process.env, GH_TOKEN: "fixture-no-authority" }, encoding: "utf8", timeout: 15000 });
+    assert.ifError(result.error); assert.equal(result.signal, null); assert.equal(result.status, 1); assert.equal(result.stdout, "");
+    const diagnostic = JSON.parse(result.stderr); assert.equal(diagnostic.ok, false); assert.equal(diagnostic.code, "usage"); assert.match(diagnostic.message, /Usage: publish-development-candidate\.mjs publish/);
+    assert.doesNotMatch(result.stderr, /UNEXPECTED_NETWORK_ATTEMPT/);
+  }
+});
+
+for (const name of ["validate-development-candidate-workflow.mjs", "publish-development-candidate.mjs", "verify-template-contract.mjs"]) for (const argvKind of ["absent", "unrelated", "missing"]) for (const withArgs of [false, true]) test(`safe import ${name}: ${argvKind} entrypoint, ${withArgs ? "unrelated" : "absent"} arguments`, async (t) => {
+  const directory = await mkdtemp(join(tmpdir(), "template-safe-import-")); t.after(() => rm(directory, { recursive: true, force: true }));
+  const runner = join(directory, "unrelated # runner.mjs");
+  const url = pathToFileURL(join(root, "scripts", name)).href;
+  const exported = name.startsWith("validate") ? "validateWorkflow" : name.startsWith("publish") ? "createPublisher" : "verifyPublisherArchive";
+  const argv = argvKind === "absent" ? "delete process.argv[1];" : argvKind === "missing" ? `process.argv[1] = ${JSON.stringify(join(directory, "missing.mjs"))};` : "";
+  await writeFile(runner, `globalThis.fetch = () => { throw new Error("Unexpected imported network authority"); }; ${argv} const module = await import(${JSON.stringify(url)}); if (typeof module[${JSON.stringify(exported)}] !== "function") throw new Error("Missing exported function");`);
+  const result = spawnSync(process.execPath, [runner, ...(withArgs ? ["unrelated", "missing-file"] : [])], { cwd: directory, env: { ...process.env, GH_TOKEN: "fixture-no-authority" }, encoding: "utf8", timeout: 15000 });
+  assert.ifError(result.error); assert.equal(result.signal, null); assert.equal(result.status, 0, result.stderr); assert.equal(result.stdout, ""); assert.equal(result.stderr, "");
 });

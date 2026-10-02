@@ -1,5 +1,6 @@
+import { realpathSync } from "node:fs";
 import { readFile } from "node:fs/promises";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 export function validateWorkflow(source) {
   const lines = source.split(/\r?\n/);
@@ -33,7 +34,15 @@ export function validateWorkflow(source) {
   return { jobs: jobs.map((job) => ({ name: job.name, permissions: job.permissions, environment: job.environment, if: job.if, steps: job.steps.length })) };
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+// Node ESM resolves filesystem aliases; argv retains the invocation spelling.
+// Resolve both sides so imports remain safe even with unrelated/missing argv.
+function isCliEntrypoint() {
+  if (!process.argv[1]) return false;
+  try {
+    return pathToFileURL(realpathSync(process.argv[1])).href === pathToFileURL(realpathSync(fileURLToPath(import.meta.url))).href;
+  } catch { return false; }
+}
+if (isCliEntrypoint()) {
   const file = process.argv[2] || ".github/workflows/development-candidate.yml";
   validateWorkflow(await readFile(file, "utf8"));
   console.log("development-candidate workflow structure is valid");

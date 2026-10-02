@@ -1,8 +1,8 @@
 import { createHash } from "node:crypto";
-import { constants } from "node:fs";
+import { constants, realpathSync } from "node:fs";
 import { open, lstat } from "node:fs/promises";
 import { join } from "node:path";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { verifyPublisherArchive } from "./verify-template-contract.mjs";
 
 export const assetNames = Object.freeze(["service-template.tar.gz", "template-candidate.json", "template-contract.json", "SHA256SUMS"]);
@@ -253,4 +253,12 @@ async function main() {
   const ownerContractBytes = await regularBytes(join(process.cwd(), "template-contract.json"), limits.contract);
   console.log(JSON.stringify(await createPublisher({ token: process.env.GH_TOKEN, repository, ref, sha, ownerContractBytes }).publish(local)));
 }
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main().catch((error) => { console.error(JSON.stringify({ ok: false, code: error.code || "internal", message: error.message })); process.exitCode = 1; });
+// Node ESM resolves filesystem aliases; argv retains the invocation spelling.
+// Resolve both sides so imports remain safe even with unrelated/missing argv.
+function isCliEntrypoint() {
+  if (!process.argv[1]) return false;
+  try {
+    return pathToFileURL(realpathSync(process.argv[1])).href === pathToFileURL(realpathSync(fileURLToPath(import.meta.url))).href;
+  } catch { return false; }
+}
+if (isCliEntrypoint()) main().catch((error) => { console.error(JSON.stringify({ ok: false, code: error.code || "internal", message: error.message })); process.exitCode = 1; });

@@ -1,10 +1,10 @@
 import { createHash } from "node:crypto";
-import { createReadStream } from "node:fs";
+import { createReadStream, realpathSync } from "node:fs";
 import { lstat, readdir, readFile } from "node:fs/promises";
 import { join, relative, resolve, sep } from "node:path";
 import { createGunzip } from "node:zlib";
 import { Readable } from "node:stream";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { execFileSync } from "node:child_process";
 
 class ContractError extends Error { constructor(code, message) { super(message); this.code = code; } }
@@ -69,4 +69,12 @@ async function verify({ templateroot: templateRoot, projectroot: projectRoot, ca
   for (const [pointer, rule] of Object.entries(fields)) { const baseline = pointerValue(baselineManifest, pointer); const value = pointerValue(projectManifest, pointer); if (JSON.stringify(baseline) === JSON.stringify(value)) continue; if (rule.mode === "github-derived-identity") { if (provenance.origin.kind !== "github-derived") fail("github_identity", "Repository URL changes require exact GitHub-derived provenance."); } else if (rule.mode !== "author-editable" || !validateValue(value, rule)) fail("unsafe_manifest_value", `Manifest field is not an approved typed authoring value: ${pointer}`); }
   let configBytes = 0; for (const path of policy.authoring.configuration.allowedPaths) { const content = (await readRegular(join(projectRoot, path), "unsafe_configuration", `Configuration file is not a regular file: ${path}`)).toString("utf8"); configBytes += Buffer.byteLength(content); if (new RegExp(policy.authoring.configuration.forbiddenNamePattern, "i").test(path) || new RegExp(policy.authoring.configuration.forbiddenValuePattern, "im").test(content)) fail("unsafe_configuration", `Configuration is an example-only surface and cannot contain secret material: ${path}`); } if (configBytes > policy.quotas.maximumConfigBytes) fail("quota", "Configuration exceeds byte quota."); return { verified: true, templateVersion: policy.templateVersion, contractDigest: policy.contractDigest, lockedFiles: policy.inventory.length, provenance: provenance.origin.kind };
 }
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) { try { console.log(JSON.stringify(await verify(parseArgs(process.argv.slice(2))), null, 2)); } catch (error) { console.error(JSON.stringify({ verified: false, code: error.code || "internal", message: error.message }, null, 2)); process.exitCode = 1; } }
+// Node ESM resolves filesystem aliases; argv retains the invocation spelling.
+// Resolve both sides so imports remain safe even with unrelated/missing argv.
+function isCliEntrypoint() {
+  if (!process.argv[1]) return false;
+  try {
+    return pathToFileURL(realpathSync(process.argv[1])).href === pathToFileURL(realpathSync(fileURLToPath(import.meta.url))).href;
+  } catch { return false; }
+}
+if (isCliEntrypoint()) { try { console.log(JSON.stringify(await verify(parseArgs(process.argv.slice(2))), null, 2)); } catch (error) { console.error(JSON.stringify({ verified: false, code: error.code || "internal", message: error.message }, null, 2)); process.exitCode = 1; } }

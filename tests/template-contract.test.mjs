@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { cp, mkdir, mkdtemp, readFile, rm, symlink, writeFile } from "node:fs/promises";
+import { cp, mkdir, mkdtemp, readFile, realpath, rm, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { gunzipSync, gzipSync } from "node:zlib";
@@ -179,3 +179,31 @@ async function assertGeneratorLinkDenied(t, type) {
 }
 test("contract generator rejects a reserved-name file link before exclusion", async (t) => assertGeneratorLinkDenied(t, "file"));
 test("contract generator rejects a reserved-name directory link before exclusion", async (t) => assertGeneratorLinkDenied(t, "dir"));
+
+
+for (const encoded of [false, true]) for (const aliasKind of ["directory", "script"]) test(`actual verifier ${aliasKind} physical alias ${encoded ? "encoded" : "ordinary"}: argument denial and verified project`, async (t) => {
+  const value = await derivedFixture(t);
+  const alias = join(value.directory, encoded ? "alias space # percent% é" : "alias");
+  let script;
+  if (aliasKind === "directory") {
+    await symlink(root, alias, process.platform === "win32" ? "junction" : "dir");
+    script = join(alias, "scripts", "verify-template-contract.mjs");
+  } else {
+    script = `${alias}.mjs`;
+    try { await symlink(verifier, script, "file"); }
+    catch (error) {
+      if (process.platform === "win32" && ["EPERM", "EACCES"].includes(error.code)) { t.skip(`Direct file symbolic links unavailable: ${error.code}; mandatory directory-junction and Windows native gates remain required.`); return; }
+      throw error;
+    }
+  }
+  assert.equal(await realpath(script), await realpath(verifier)); assert.notEqual(script, await realpath(script));
+  if (process.platform === "win32") assert.match(script, /^[A-Za-z]:\\/);
+  for (const args of [[], ["--unrelated", "missing"]]) {
+    const result = spawnSync(process.execPath, [script, ...args], { cwd: value.directory, encoding: "utf8", timeout: 15000 });
+    assert.ifError(result.error); assert.equal(result.signal, null); assert.equal(result.status, 1); assert.equal(result.stdout, "");
+    const diagnostic = JSON.parse(result.stderr); assert.equal(diagnostic.verified, false); assert.equal(diagnostic.code, "usage"); assert.match(diagnostic.message, /Usage: verify-template-contract|Unknown or duplicate verifier argument/);
+  }
+  const result = spawnSync(process.execPath, [script, "--template-root", root, "--project-root", value.project, "--candidate", value.candidate, "--candidate-archive", value.archive], { cwd: value.directory, encoding: "utf8", timeout: 15000 });
+  assert.ifError(result.error); assert.equal(result.signal, null); assert.equal(result.status, 0, result.stderr); assert.equal(result.stderr, "");
+  const verified = JSON.parse(result.stdout); assert.equal(verified.verified, true); assert.equal(verified.contractDigest, policy.contractDigest); assert.equal(verified.lockedFiles, policy.inventory.length); assert.equal(verified.provenance, "local-archive");
+});
