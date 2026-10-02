@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "05162aa2966c3656d5809050398ebaeba354ee6639f51b047464bc6a383324cb",
+  "contractDigest": "50c94ac2ea86e1a334820d796294bb5544715cf3e67815f044e3512b5a9bd001",
   "inventory": [
     {
       "path": ".gitattributes",
@@ -29,9 +29,9 @@
     },
     {
       "path": ".github/workflows/development-candidate.yml",
-      "sha256": "92419fcb23390488cc53ae589a14ad38acf376cea313409b796c1573712f62e0",
+      "sha256": "ab24953e3b76eeaf95376b6fa290e39e06ba6d6f568516f85801134180a1fc06",
       "mode": "0644",
-      "bytes": 6429
+      "bytes": 5072
     },
     {
       "path": ".github/workflows/release.yml",
@@ -53,15 +53,15 @@
     },
     {
       "path": ".governance/project/BACKLOG.md",
-      "sha256": "ebab504263ddef44214273e36f0f6037493a0798aa089dec08ddec2f096ac9b7",
+      "sha256": "3333275f85192c995eff65208fa51d66034362312e739ec926759448a76c0d52",
       "mode": "0644",
-      "bytes": 219
+      "bytes": 311
     },
     {
       "path": ".governance/project/PROJECT_INTENT.md",
-      "sha256": "ba9b11253a7801c6ac987eab13fb9eda713e3a26f75db0858229e93942b51333",
+      "sha256": "b2f146384cf755f791b43a294a718ba239cd0a3a6e7114a9fd75b7d8f7c3e46f",
       "mode": "0644",
-      "bytes": 479
+      "bytes": 821
     },
     {
       "path": ".governance/rules/gov-01-instructions.mdc",
@@ -113,9 +113,9 @@
     },
     {
       "path": ".governance/specs/SPEC-017-template-contract.md",
-      "sha256": "c2d1242fa4575823b5a5c176e162b5504bba561fc49ec5a4013d64e8440cebcc",
+      "sha256": "49b4f982e37a8e53f12048475c958128aa51b78247d56a1e0be93e38fe9acfb9",
       "mode": "0644",
-      "bytes": 4239
+      "bytes": 6531
     },
     {
       "path": "CHANGELOG.md",
@@ -257,9 +257,9 @@
     },
     {
       "path": "docs/template-contract.md",
-      "sha256": "a9acee662cba6b62cc07fa92362cbe1f10b220caf38165bc80bf89cc84dd6878",
+      "sha256": "b25cc87b75d23280797ddd1d6699546f1f6012c49d157545c53436055f1d7abb",
       "mode": "0644",
-      "bytes": 6469
+      "bytes": 8059
     },
     {
       "path": "docs/validation.md",
@@ -269,9 +269,9 @@
     },
     {
       "path": "INIT-TODO.md",
-      "sha256": "2d9325f860140cf8dfa400cdbb0c71b7459f9b3da6c1269dba4fa58f920af2d9",
+      "sha256": "4afa27b3d5192517869a32ecea725078f85843b08b9b244d12041643cd20c104",
       "mode": "0644",
-      "bytes": 426
+      "bytes": 667
     },
     {
       "path": "LICENSE",
@@ -323,9 +323,9 @@
     },
     {
       "path": "scripts/publish-development-candidate.mjs",
-      "sha256": "5d57fd46aad520fcadff750e2c69449e02b11ca628881b49f08e057fcaaa50cf",
+      "sha256": "42508891f37cebb31ce2be713ccdbcc41011d7424e2f9642c2bd3bdb990b8c56",
       "mode": "0644",
-      "bytes": 10882
+      "bytes": 23366
     },
     {
       "path": "scripts/test.ps1",
@@ -341,9 +341,9 @@
     },
     {
       "path": "scripts/validate-development-candidate-workflow.mjs",
-      "sha256": "4267f7c482d680545f43d250cdc5ae93cd48efda071fb6e6cd78a643d6128213",
+      "sha256": "e3df620c048c62ff1785275a1ea11ffe925496f6dc84ffc77fd0fc45066d6908",
       "mode": "0644",
-      "bytes": 3319
+      "bytes": 3397
     },
     {
       "path": "scripts/verify-template-contract.mjs",
@@ -425,9 +425,9 @@
     },
     {
       "path": "tests/development-candidate-workflow.test.mjs",
-      "sha256": "45fa3d6600a566ad4c87e29682a4d5c87b5b2c47faa2f4b9895940c0b0c094fc",
+      "sha256": "5a36c04daba8b8133996b58e5ee7c1afd896b3b527d48862da66bae7eab12d3f",
       "mode": "0644",
-      "bytes": 7220
+      "bytes": 22305
     },
     {
       "path": "tests/template-contract.test.mjs",
@@ -444,7 +444,7 @@
   ],
   "quotas": {
     "maximumFiles": 128,
-    "maximumTotalBytes": 354272,
+    "maximumTotalBytes": 385120,
     "maximumManifestBytes": 6298,
     "maximumProvenanceBytes": 479,
     "maximumConfigFiles": 16,
