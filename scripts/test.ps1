@@ -4,7 +4,11 @@ $root = Split-Path -Parent $PSScriptRoot
 Set-Location $root
 
 node --test tests/template-contract.test.mjs tests/development-candidate-workflow.test.mjs
+$nativeExitCode = $LASTEXITCODE
+if ($nativeExitCode -ne 0) { exit $nativeExitCode }
 node scripts/validate-development-candidate-workflow.mjs
+$nativeExitCode = $LASTEXITCODE
+if ($nativeExitCode -ne 0) { exit $nativeExitCode }
 
 $required = @(
   (Join-Path $root 'service.json'),

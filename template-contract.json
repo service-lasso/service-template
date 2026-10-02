@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "05162aa2966c3656d5809050398ebaeba354ee6639f51b047464bc6a383324cb",
+  "contractDigest": "472c498800b2aefd3a40db77424cedba246ca348da09c7c44b189c6f11c74642",
   "inventory": [
     {
       "path": ".gitattributes",
@@ -29,9 +29,9 @@
     },
     {
       "path": ".github/workflows/development-candidate.yml",
-      "sha256": "92419fcb23390488cc53ae589a14ad38acf376cea313409b796c1573712f62e0",
+      "sha256": "ab24953e3b76eeaf95376b6fa290e39e06ba6d6f568516f85801134180a1fc06",
       "mode": "0644",
-      "bytes": 6429
+      "bytes": 5072
     },
     {
       "path": ".github/workflows/release.yml",
@@ -53,15 +53,15 @@
     },
     {
       "path": ".governance/project/BACKLOG.md",
-      "sha256": "ebab504263ddef44214273e36f0f6037493a0798aa089dec08ddec2f096ac9b7",
+      "sha256": "bc3c8fb0a32b16c5762efcffc056f456336888fb309b927f70a2520dd26fd802",
       "mode": "0644",
-      "bytes": 219
+      "bytes": 466
     },
     {
       "path": ".governance/project/PROJECT_INTENT.md",
-      "sha256": "ba9b11253a7801c6ac987eab13fb9eda713e3a26f75db0858229e93942b51333",
+      "sha256": "f07e514f821699a57dd2824e5c1cb7dad6659ef85ce9ae75c3e238c75c5817c1",
       "mode": "0644",
-      "bytes": 479
+      "bytes": 1099
     },
     {
       "path": ".governance/rules/gov-01-instructions.mdc",
@@ -113,9 +113,9 @@
     },
     {
       "path": ".governance/specs/SPEC-017-template-contract.md",
-      "sha256": "c2d1242fa4575823b5a5c176e162b5504bba561fc49ec5a4013d64e8440cebcc",
+      "sha256": "abb4b24aa5043a0a0867f1803f1d78d1e72f58ad25c36b4cdcc3ad3c30c40580",
       "mode": "0644",
-      "bytes": 4239
+      "bytes": 9086
     },
     {
       "path": "CHANGELOG.md",
@@ -257,9 +257,9 @@
     },
     {
       "path": "docs/template-contract.md",
-      "sha256": "a9acee662cba6b62cc07fa92362cbe1f10b220caf38165bc80bf89cc84dd6878",
+      "sha256": "768de348391026d1f25c5223421ac045e92269217ec92a6b83e101dfde2d953c",
       "mode": "0644",
-      "bytes": 6469
+      "bytes": 8511
     },
     {
       "path": "docs/validation.md",
@@ -269,9 +269,9 @@
     },
     {
       "path": "INIT-TODO.md",
-      "sha256": "2d9325f860140cf8dfa400cdbb0c71b7459f9b3da6c1269dba4fa58f920af2d9",
+      "sha256": "29520f6a979217fdaa74469713563f28075f2095972d96450c4a776614e945bb",
       "mode": "0644",
-      "bytes": 426
+      "bytes": 933
     },
     {
       "path": "LICENSE",
@@ -323,15 +323,15 @@
     },
     {
       "path": "scripts/publish-development-candidate.mjs",
-      "sha256": "5d57fd46aad520fcadff750e2c69449e02b11ca628881b49f08e057fcaaa50cf",
+      "sha256": "df580516c1683343f7bd9f3fa70dbc3e5a87692824bc4bd83e7022d1386b4cd7",
       "mode": "0644",
-      "bytes": 10882
+      "bytes": 24898
     },
     {
       "path": "scripts/test.ps1",
-      "sha256": "a5d43b44919be74ea7e5badefccd563bd064e47dcf941ba6633049a5c1e27fce",
+      "sha256": "4cef8a074e337106c1e6b1b554bec635a096cf809bd53094c3309fa85b6f429a",
       "mode": "0644",
-      "bytes": 2244
+      "bytes": 2412
     },
     {
       "path": "scripts/test.sh",
@@ -341,21 +341,21 @@
     },
     {
       "path": "scripts/validate-development-candidate-workflow.mjs",
-      "sha256": "4267f7c482d680545f43d250cdc5ae93cd48efda071fb6e6cd78a643d6128213",
+      "sha256": "bd30453b48217b4f06f128b96c8bc724fa024e20c3ba83aabba18baba1b080c7",
       "mode": "0644",
-      "bytes": 3319
+      "bytes": 3835
     },
     {
       "path": "scripts/verify-template-contract.mjs",
-      "sha256": "538a55572a5072b91d9de18954eb0faad865d5297cba575343b016407dfa914b",
+      "sha256": "c8a31da84ba16786d6adc5426c4c09c40f1f0fa785cb81fcb42e09c8f1ba2aa9",
       "mode": "0644",
-      "bytes": 24755
+      "bytes": 28086
     },
     {
       "path": "scripts/verify.ps1",
-      "sha256": "be8bdee4beee744f90b660cd6ee0661b717d166198145879f5dedcc80c7820af",
+      "sha256": "9c04444ac8c59f52ccb17b2748a475f81978e31b232a332f750102ca61702d16",
       "mode": "0644",
-      "bytes": 1356
+      "bytes": 1524
     },
     {
       "path": "scripts/verify.sh",
@@ -425,15 +425,15 @@
     },
     {
       "path": "tests/development-candidate-workflow.test.mjs",
-      "sha256": "45fa3d6600a566ad4c87e29682a4d5c87b5b2c47faa2f4b9895940c0b0c094fc",
+      "sha256": "cba11e603a6b47024b876bf93e216bdba3e409b96545983030003935574feb6b",
       "mode": "0644",
-      "bytes": 7220
+      "bytes": 42807
     },
     {
       "path": "tests/template-contract.test.mjs",
-      "sha256": "72cc5faded5ea6a6b3616c1138ec4d830dd4b0df1a1e2db215d5566560b67d49",
+      "sha256": "cbabc6e1c8ecebc7735380f3591eebc8655bf6932e6d50b2d82e7642cb8a2365",
       "mode": "0644",
-      "bytes": 25640
+      "bytes": 27990
     },
     {
       "path": "verify/service-harness.json",
@@ -444,7 +444,7 @@
   ],
   "quotas": {
     "maximumFiles": 128,
-    "maximumTotalBytes": 354272,
+    "maximumTotalBytes": 417316,
     "maximumManifestBytes": 6298,
     "maximumProvenanceBytes": 479,
     "maximumConfigFiles": 16,

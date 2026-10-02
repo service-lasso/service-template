@@ -1,4 +1,6 @@
+import { realpathSync } from "node:fs";
 import { readFile } from "node:fs/promises";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 export function validateWorkflow(source) {
   const lines = source.split(/\r?\n/);
@@ -28,11 +30,19 @@ export function validateWorkflow(source) {
   if (publish.environment !== "development-candidate" || !publish.if?.includes("workflow_dispatch") || !publish.if.includes("refs/heads/develop")) throw new Error("Publication must use the protected development-candidate environment and develop-only manual condition.");
   if (!bind.steps.some((step) => step.includes("actions/upload-artifact@v4")) || !publish.steps.some((step) => step.includes("actions/download-artifact@v4"))) throw new Error("Publication must consume the bound artifact from a separate job.");
   if (!bind.steps.some((step) => step.includes("rhysd/actionlint:1.7.7"))) throw new Error("The host Actions validator must validate this workflow.");
-  if (!publish.steps.some((step) => step.includes("Preflight immutable publication")) || !publish.steps.some((step) => step.includes("Read back immutable published tuple"))) throw new Error("Publication must preflight and read back the immutable tuple.");
+  if (!publish.steps.some((step) => step.includes("Publish held bytes through verified private draft and immutable readback")) || !source.includes("publish-development-candidate.mjs publish candidate") || source.includes("gh release create")) throw new Error("Publication must use one held-byte private-draft publisher invocation.");
   return { jobs: jobs.map((job) => ({ name: job.name, permissions: job.permissions, environment: job.environment, if: job.if, steps: job.steps.length })) };
 }
 
-if (import.meta.url === `file://${process.argv[1]?.replaceAll("\\", "/")}`) {
+// Node ESM resolves filesystem aliases; argv retains the invocation spelling.
+// Resolve both sides so imports remain safe even with unrelated/missing argv.
+function isCliEntrypoint() {
+  if (!process.argv[1]) return false;
+  try {
+    return pathToFileURL(realpathSync(process.argv[1])).href === pathToFileURL(realpathSync(fileURLToPath(import.meta.url))).href;
+  } catch { return false; }
+}
+if (isCliEntrypoint()) {
   const file = process.argv[2] || ".github/workflows/development-candidate.yml";
   validateWorkflow(await readFile(file, "utf8"));
   console.log("development-candidate workflow structure is valid");

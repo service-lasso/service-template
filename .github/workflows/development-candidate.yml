@@ -103,30 +103,8 @@ jobs:
         with:
           name: template-candidate-${{ github.sha }}
           path: candidate
-      - name: Preflight immutable publication
-        id: publication
+      - name: Publish held bytes through verified private draft and immutable readback
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
-        run: |
-          set -euo pipefail
-          result="$(node scripts/publish-development-candidate.mjs preflight candidate "$GITHUB_REPOSITORY" "$GITHUB_REF" "$GITHUB_SHA")"
-          mode="$(jq -er '.mode' <<<"$result")"
-          test "$mode" = create -o "$mode" = recovered
-          echo "mode=$mode" >> "$GITHUB_OUTPUT"
-      - name: Publish the exact immutable development prerelease
-        if: steps.publication.outputs.mode == 'create'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          tag="$(node -p "require('./candidate/template-candidate.json').releaseTag")"
-          commit="$(node -p "require('./candidate/template-candidate.json').templateCommit")"
-          version="$(node -p "require('./candidate/template-candidate.json').templateVersion")"
-          gh release create "$tag" candidate/service-template.tar.gz candidate/template-candidate.json candidate/template-contract.json candidate/SHA256SUMS --repo "$GITHUB_REPOSITORY" --target "$commit" --title "Development template candidate $version ($commit)" --prerelease --notes "Checksum-bound development candidate. This is not a stable release, promotion, deployment, or Core catalog admission."
-      - name: Read back immutable published tuple
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: node scripts/publish-development-candidate.mjs readback candidate "$GITHUB_REPOSITORY" "$GITHUB_REF" "$GITHUB_SHA"
+        run: node scripts/publish-development-candidate.mjs publish candidate "$GITHUB_REPOSITORY" "$GITHUB_REF" "$GITHUB_SHA"
