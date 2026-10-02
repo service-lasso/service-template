@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "a57d8357975df812168e5365291c981ef81ef5a6b82c3d54ee5e5b14e4c86b42",
+  "contractDigest": "472c498800b2aefd3a40db77424cedba246ca348da09c7c44b189c6f11c74642",
   "inventory": [
     {
       "path": ".gitattributes",
@@ -425,9 +425,9 @@
     },
     {
       "path": "tests/development-candidate-workflow.test.mjs",
-      "sha256": "a0bc0b13288bb61000ce36b210a0bd211035f05fa563040a7d3e094928fe9aba",
+      "sha256": "cba11e603a6b47024b876bf93e216bdba3e409b96545983030003935574feb6b",
       "mode": "0644",
-      "bytes": 42808
+      "bytes": 42807
     },
     {
       "path": "tests/template-contract.test.mjs",
@@ -444,7 +444,7 @@
   ],
   "quotas": {
     "maximumFiles": 128,
-    "maximumTotalBytes": 417317,
+    "maximumTotalBytes": 417316,
     "maximumManifestBytes": 6298,
     "maximumProvenanceBytes": 479,
     "maximumConfigFiles": 16,
