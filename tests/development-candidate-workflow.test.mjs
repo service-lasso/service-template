@@ -298,7 +298,7 @@ test("actual publisher accepts ordinary relative private and public redirect pat
 for (const encoded of [false, true]) test(`workflow CLI validates supplied files through absolute ${encoded ? "URL-encoded" : "ordinary"} paths`, async (t) => {
   const directory = await mkdtemp(join(tmpdir(), "template-workflow-cli-"));
   t.after(() => rm(directory, { recursive: true, force: true }));
-  const folder = join(directory, encoded ? "space # percent% unicode-é" : "ordinary");
+  const folder = join(directory, encoded ? "space # percent% unicode-�" : "ordinary");
   await mkdir(folder);
   const script = join(folder, "validate-workflow.mjs");
   const valid = join(folder, "valid # workflow.yml");
