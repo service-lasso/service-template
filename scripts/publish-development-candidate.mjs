@@ -182,7 +182,8 @@ export function createPublisher({ request = fetch, token, repository, ref, sha, 
     fail("tag", "Tag dereference budget exceeded.");
   };
   const getRelease = (tag) => api(`/releases/tags/${encodeURIComponent(tag)}`, { optional: true });
-  const verify = async (release, local, draft, ids) => {
+  const verify = async (release, local, draft, ids, expectedReleaseId = release?.id) => {
+    if (release?.id !== expectedReleaseId) fail("release_tuple", "Fixed release ID changed before verification.");
     const assets = releaseAssets(release, repository, local, draft, ids);
     await proveTag(local.candidate.releaseTag);
     for (const name of assetNames) {
@@ -219,6 +220,11 @@ export function createPublisher({ request = fetch, token, repository, ref, sha, 
       await proveTag(local.candidate.releaseTag);
       const current = await api(`/releases/${draft.id}`);
       if (current.draft !== true || current.id !== draft.id || current.tag_name !== local.candidate.releaseTag || current.target_commitish !== sha || !Array.isArray(current.assets) || current.assets.length !== Object.keys(ids).length || current.assets.some((asset) => ids[asset.name] !== asset.id)) fail("draft", "Private draft changed before upload.");
+      const priorNames = new Set();
+      for (const asset of current.assets) {
+        if (priorNames.has(asset.name) || asset.url !== `${base}/releases/assets/${asset.id}` || asset.size !== local.bytes[asset.name]?.length || asset.digest !== `sha256:${local.digests[asset.name]}` || asset.browser_download_url !== `https://github.com/${repository}/releases/download/${encodeURIComponent(local.candidate.releaseTag)}/${encodeURIComponent(asset.name)}`) fail("draft", "Uploaded private asset metadata changed before next write.");
+        priorNames.add(asset.name);
+      }
       await policy();
       const url = `https://uploads.github.com/repos/${repository}/releases/${draft.id}/assets?name=${encodeURIComponent(name)}`;
       strictUrl(url, new Set(["uploads.github.com"]));
@@ -226,9 +232,9 @@ export function createPublisher({ request = fetch, token, repository, ref, sha, 
       if (!response.ok || response.status >= 300) fail("upload", "Asset upload failed; retain draft and do not retry.");
       const asset = parseBoundedJson(bytes); if (asset.name !== name || !positiveId(asset.id) || Object.values(ids).includes(asset.id)) fail("upload", "Upload asset identity is invalid."); ids[name] = asset.id;
     }
-    await verify(await api(`/releases/${draft.id}`), local, true, ids);
+    await verify(await api(`/releases/${draft.id}`), local, true, ids, draft.id);
     // Re-read policies first, then reverify the entire private tuple immediately before the single transition.
-    await policy(); await verify(await api(`/releases/${draft.id}`), local, true, ids); await policy();
+    await policy(); await verify(await api(`/releases/${draft.id}`), local, true, ids, draft.id); await policy();
     const published = await api(`/releases/${draft.id}`, { method: "PATCH", value: { draft: false } });
     if (published.id !== draft.id) fail("release_tuple", "Publish changed release identity.");
     const final = await verify(published, local, false, ids);

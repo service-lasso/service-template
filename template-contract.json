@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "50c94ac2ea86e1a334820d796294bb5544715cf3e67815f044e3512b5a9bd001",
+  "contractDigest": "fe89ce3be6ab86da13a2011c3c9aae2c327ae241a7944e58e692075805e67383",
   "inventory": [
     {
       "path": ".gitattributes",
@@ -323,9 +323,9 @@
     },
     {
       "path": "scripts/publish-development-candidate.mjs",
-      "sha256": "42508891f37cebb31ce2be713ccdbcc41011d7424e2f9642c2bd3bdb990b8c56",
+      "sha256": "13678206e409830900cd10400cf47943dfeb2bbb49372962e416788dfa1a87e3",
       "mode": "0644",
-      "bytes": 23366
+      "bytes": 24109
     },
     {
       "path": "scripts/test.ps1",
@@ -425,9 +425,9 @@
     },
     {
       "path": "tests/development-candidate-workflow.test.mjs",
-      "sha256": "5a36c04daba8b8133996b58e5ee7c1afd896b3b527d48862da66bae7eab12d3f",
+      "sha256": "ce81753de2bf29fe019dee113f1cbda5a320105999df7971a5cf933be2bc874b",
       "mode": "0644",
-      "bytes": 22305
+      "bytes": 23435
     },
     {
       "path": "tests/template-contract.test.mjs",
@@ -444,7 +444,7 @@
   ],
   "quotas": {
     "maximumFiles": 128,
-    "maximumTotalBytes": 385120,
+    "maximumTotalBytes": 386993,
     "maximumManifestBytes": 6298,
     "maximumProvenanceBytes": 479,
     "maximumConfigFiles": 16,

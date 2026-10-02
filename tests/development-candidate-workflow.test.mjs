@@ -201,3 +201,14 @@ for (const name of assetNames) test(`local per-asset bound applies before alloca
   const value = await fixture(t); const maximum = { "service-template.tar.gz": limits.archive, "template-candidate.json": limits.descriptor, "template-contract.json": limits.contract, SHA256SUMS: limits.sums }[name];
   await writeFile(join(value.directory, name), Buffer.alloc(maximum + 1)); await assert.rejects(() => inspectCandidateDirectory(value.directory), code("candidate_asset"));
 });
+
+test("fixed draft release ID cannot be substituted during private verification", async (t) => {
+  const value = await fixture(t); const server = provider(value); const original = server.request;
+  server.request = async (url, init) => { const result = await original(url, init); if (init.method === "GET" && url.endsWith("/releases/42") && server.state.release?.assets.length === 4) { const body = await result.json(); body.id = 99; return response(body); } return result; };
+  await assert.rejects(() => publish(value, server), code("release_tuple")); assert.equal(server.state.published, false);
+});
+test("partial private uploaded metadata corruption prevents the next upload", async (t) => {
+  const value = await fixture(t);
+  const server = provider(value, { before: async (url, init, state) => { if (init.method === "GET" && url.endsWith("/releases/42") && state.release?.assets.length === 1) state.release.assets[0].digest = "sha256:" + "0".repeat(64); } });
+  await assert.rejects(() => publish(value, server), code("draft")); assert.equal(server.state.writes.length, 3); assert.equal(server.state.published, false);
+});
