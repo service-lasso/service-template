@@ -5,6 +5,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import test from "node:test";
+import { gzipSync } from "node:zlib";
 import { assetNames, createPublisher, inspectCandidateDirectory, downloadAsset, limits, parseBoundedJson } from "../scripts/publish-development-candidate.mjs";
 import { validateWorkflow } from "../scripts/validate-development-candidate-workflow.mjs";
 const root = fileURLToPath(new URL("..", import.meta.url));
@@ -14,14 +15,31 @@ const hash = (value) => createHash("sha256").update(value).digest("hex");
 const json = (value) => Buffer.from(JSON.stringify(value, null, 2) + "\n");
 const canonical = (value) => Array.isArray(value) ? value.map(canonical) : value && typeof value === "object" ? Object.fromEntries(Object.keys(value).sort().map((key) => [key, canonical(value[key])])) : value;
 const code = (expected) => (error) => error.code === expected;
+function tarMember(name, bytes, type = "0", mode = 0o664) {
+  const header = Buffer.alloc(512); header.write(name, 0, 100, "ascii");
+  for (const [start, width, value] of [[100, 8, mode], [108, 8, 0], [116, 8, 0], [124, 12, bytes.length], [136, 12, 0]]) header.write(value.toString(8).padStart(width - 1, "0") + "\0", start, width, "ascii");
+  header.fill(32, 148, 156); header[156] = type.charCodeAt(0); header.write("ustar\0", 257, 6, "ascii"); header.write("00", 263, 2, "ascii");
+  const checksum = header.reduce((sum, byte) => sum + byte, 0); header.write(checksum.toString(8).padStart(6, "0") + "\0 ", 148, 8, "ascii");
+  return Buffer.concat([header, bytes, Buffer.alloc((512 - bytes.length % 512) % 512)]);
+}
+function archiveFor(contract, payload = Buffer.from("accepted archive")) {
+  return gzipSync(Buffer.concat([tarMember("pax_global_header", Buffer.from(`52 comment=${sha}\n`), "g", 0o666), tarMember("README.md", payload), tarMember("template-contract.json", contract), Buffer.alloc(1024)]));
+}
 
 async function fixture(t) {
   const directory = await mkdtemp(join(tmpdir(), "template-held-publisher-"));
   t.after(() => rm(directory, { recursive: true, force: true }));
-  const policy = { templateVersion: "1.0.0-dev", quotas: { maximumArchiveBytes: limits.archive } };
-  policy.contractDigest = hash(JSON.stringify(canonical(policy)));
+  const policy = JSON.parse(await readFile(join(root, "template-contract.json"), "utf8"));
+  const payload = Buffer.from("accepted archive");
+  policy.inventory = [{ path: "README.md", sha256: hash(payload), bytes: payload.length, mode: "0644" }];
+  for (;;) {
+    const unsigned = { ...policy }; delete unsigned.contractDigest;
+    policy.contractDigest = hash(JSON.stringify(canonical(unsigned)));
+    const next = payload.length + json(policy).length + policy.quotas.maximumManifestBytes + policy.quotas.maximumProvenanceBytes + policy.quotas.maximumConfigBytes;
+    if (next === policy.quotas.maximumTotalBytes) break; policy.quotas.maximumTotalBytes = next;
+  }
   const contract = json(policy);
-  const archive = Buffer.from("accepted archive");
+  const archive = archiveFor(contract, payload);
   const candidate = { schemaVersion: 1, kind: "development-template-candidate", templateCommit: sha, templateVersion: "1.0.0-dev", contractDigest: policy.contractDigest, archiveSha256: hash(archive), contractSha256: hash(contract), releaseTag: `template-v1.0.0-dev-${sha}` };
   const bytes = { "service-template.tar.gz": archive, "template-candidate.json": json(candidate), "template-contract.json": contract };
   bytes.SHA256SUMS = Buffer.from(assetNames.slice(0, 3).map((name) => `${hash(bytes[name])}  ${name}`).join("\n") + "\n");
@@ -211,4 +229,21 @@ test("partial private uploaded metadata corruption prevents the next upload", as
   const value = await fixture(t);
   const server = provider(value, { before: async (url, init, state) => { if (init.method === "GET" && url.endsWith("/releases/42") && state.release?.assets.length === 1) state.release.assets[0].digest = "sha256:" + "0".repeat(64); } });
   await assert.rejects(() => publish(value, server), code("draft")); assert.equal(server.state.writes.length, 3); assert.equal(server.state.published, false);
+});
+
+test("publisher rejects a self-consistent checksum tuple whose held TAR violates owner inventory before network", async (t) => {
+  const value = await fixture(t); const server = provider(value);
+  const archive = archiveFor(value.bytes["template-contract.json"], Buffer.from("altered member"));
+  const candidate = { ...value.candidate, archiveSha256: hash(archive) };
+  value.local.bytes = { ...value.local.bytes, "service-template.tar.gz": archive, "template-candidate.json": json(candidate) };
+  value.local.bytes.SHA256SUMS = Buffer.from(assetNames.slice(0, 3).map((name) => `${hash(value.local.bytes[name])}  ${name}`).join("\n") + "\n");
+  await assert.rejects(() => publish(value, server), code("candidate_archive")); assert.equal(server.state.calls.length, 0);
+});
+test("publisher applies the actual retained-byte TAR terminal budget before network", async (t) => {
+  const value = await fixture(t); const server = provider(value);
+  const archive = gzipSync(Buffer.concat([tarMember("README.md", Buffer.from("accepted archive")), tarMember("template-contract.json", value.bytes["template-contract.json"])]));
+  const candidate = { ...value.candidate, archiveSha256: hash(archive) };
+  value.local.bytes = { ...value.local.bytes, "service-template.tar.gz": archive, "template-candidate.json": json(candidate) };
+  value.local.bytes.SHA256SUMS = Buffer.from(assetNames.slice(0, 3).map((name) => `${hash(value.local.bytes[name])}  ${name}`).join("\n") + "\n");
+  await assert.rejects(() => publish(value, server), code("candidate_archive")); assert.equal(server.state.calls.length, 0);
 });

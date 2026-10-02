@@ -3,6 +3,7 @@ import { constants } from "node:fs";
 import { open, lstat } from "node:fs/promises";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
+import { verifyPublisherArchive } from "./verify-template-contract.mjs";
 
 export const assetNames = Object.freeze(["service-template.tar.gz", "template-candidate.json", "template-contract.json", "SHA256SUMS"]);
 export const limits = Object.freeze({ metadata: 1048576, archive: 262144, descriptor: 4096, contract: 131072, sums: 1024, deadlineMs: 30000 });
@@ -205,6 +206,7 @@ export function createPublisher({ request = fetch, token, repository, ref, sha, 
     // Copy once before awaits; uploads never reopen paths or borrow caller-owned buffers.
     const local = bindBytes(input.bytes); if (sha !== local.candidate.templateCommit) fail("sha", "Candidate/source mismatch.");
     if (!local.bytes["template-contract.json"].equals(ownerContract)) fail("candidate_binding", "Artifact policy differs from the exact checked-out owner contract.");
+    await verifyPublisherArchive(local.bytes["service-template.tar.gz"], ownerContract, local.candidate);
     await policy(); const existing = await getRelease(local.candidate.releaseTag);
     if (existing) { const recovered = await verify(existing, local, false); return { mode: "recovered", releaseId: recovered.id, tag: local.candidate.releaseTag, commit: sha }; }
     await absent(local);

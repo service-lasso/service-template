@@ -23,6 +23,8 @@ Every tag, release, asset-upload and publish mutation requires an immediately pr
 
 AC-17.7: Injectable actual fetch/read/write state-machine regressions cover success, read-only recovery, all release/tag collisions, recursive tag cycles/mismatch, protected-policy change before each mutation, retained buffers, private mismatch/nonpublication, API and asset identity, duplicate/raw JSON bounds, stream bounds/stalls, deadlines and credential-free public redirects. Test source remains UNEXECUTED until separate entire source review and fresh complete-input ROOT admission.
 
+The actual publisher validates the held archive buffers with the existing contract/TAR parser before any provider request, against the exact held checked-out owner policy: inventory names, directory set, payload bytes/digests/modes, policy self-member, source PAX syntax, terminal structure and all existing archive quotas. A self-consistent descriptor/checksum substitution is insufficient. The parser is importable without running its standalone project-verifier entrypoint; authoring/provenance/allowed-difference behavior remains unchanged.
+
 ## External dependency boundary
 
 Core proposal `#1514` / `SPEC-002 AC-4CF.1` and Core `#1513` are reference material only. This policy is owned by `service-template`; Core must explicitly adopt a compatible parser and catalog pin before it may use this policy for admission.
