@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "491566520d125fbb8e752722b097dc8e0338fc94f1f27c43b5bd3046a3dcb952",
+  "contractDigest": "25fe8b346b87cfaa9c26eb8ad22d22cc89aae47850a2a46da65df6c78e6a1b12",
   "inventory": [
     {
       "path": ".gitattributes",
@@ -53,15 +53,15 @@
     },
     {
       "path": ".governance/project/BACKLOG.md",
-      "sha256": "e4761636ae31b36d0d7e7a8e51902e3fb78709292d6430c1a306d83300f3281d",
+      "sha256": "45a52bebde81e76a6dbcaf5c2f8c28fb414ef83f7249033f1049060fa029f241",
       "mode": "0644",
-      "bytes": 368
+      "bytes": 444
     },
     {
       "path": ".governance/project/PROJECT_INTENT.md",
-      "sha256": "b2f146384cf755f791b43a294a718ba239cd0a3a6e7114a9fd75b7d8f7c3e46f",
+      "sha256": "4a33dadd82c4333f12c4fd387ebdff6273e409824a2f5818a1fe1c1759fb1efa",
       "mode": "0644",
-      "bytes": 821
+      "bytes": 1071
     },
     {
       "path": ".governance/rules/gov-01-instructions.mdc",
@@ -113,9 +113,9 @@
     },
     {
       "path": ".governance/specs/SPEC-017-template-contract.md",
-      "sha256": "bc31d8f4343aa9b183000f96400dfe97b270366f109915b3e29cb5d635b0b311",
+      "sha256": "992d7b26a482895b8fb8baf5c35b630ab1d5e4b52198ffaf2843fc25faf224f7",
       "mode": "0644",
-      "bytes": 7268
+      "bytes": 8660
     },
     {
       "path": "CHANGELOG.md",
@@ -257,9 +257,9 @@
     },
     {
       "path": "docs/template-contract.md",
-      "sha256": "48f93069d72b73cd81a9564cbbf7b808bcdb7ecd5d89573caeafa137713ab18d",
+      "sha256": "768de348391026d1f25c5223421ac045e92269217ec92a6b83e101dfde2d953c",
       "mode": "0644",
-      "bytes": 8468
+      "bytes": 8511
     },
     {
       "path": "docs/validation.md",
@@ -269,9 +269,9 @@
     },
     {
       "path": "INIT-TODO.md",
-      "sha256": "4afa27b3d5192517869a32ecea725078f85843b08b9b244d12041643cd20c104",
+      "sha256": "a62e354bbb948e2850f839c7ff6862ad5507a72a9a3a3d361dccb8ae4209aabe",
       "mode": "0644",
-      "bytes": 667
+      "bytes": 924
     },
     {
       "path": "LICENSE",
@@ -329,9 +329,9 @@
     },
     {
       "path": "scripts/test.ps1",
-      "sha256": "a5d43b44919be74ea7e5badefccd563bd064e47dcf941ba6633049a5c1e27fce",
+      "sha256": "4cef8a074e337106c1e6b1b554bec635a096cf809bd53094c3309fa85b6f429a",
       "mode": "0644",
-      "bytes": 2244
+      "bytes": 2412
     },
     {
       "path": "scripts/test.sh",
@@ -341,9 +341,9 @@
     },
     {
       "path": "scripts/validate-development-candidate-workflow.mjs",
-      "sha256": "e3df620c048c62ff1785275a1ea11ffe925496f6dc84ffc77fd0fc45066d6908",
+      "sha256": "79235075f80305a6170a54663dbae04b5c0aa68e977b1da75aba456513b1335f",
       "mode": "0644",
-      "bytes": 3397
+      "bytes": 3443
     },
     {
       "path": "scripts/verify-template-contract.mjs",
@@ -353,9 +353,9 @@
     },
     {
       "path": "scripts/verify.ps1",
-      "sha256": "be8bdee4beee744f90b660cd6ee0661b717d166198145879f5dedcc80c7820af",
+      "sha256": "9c04444ac8c59f52ccb17b2748a475f81978e31b232a332f750102ca61702d16",
       "mode": "0644",
-      "bytes": 1356
+      "bytes": 1524
     },
     {
       "path": "scripts/verify.sh",
@@ -425,9 +425,9 @@
     },
     {
       "path": "tests/development-candidate-workflow.test.mjs",
-      "sha256": "d5d43b0b63aa3bc97553fe0976b0e708b50f9c8f05fa4342d3930654995ce0d8",
+      "sha256": "298152fde95a9e238bdb4d69a9afbbe5ceb509863d9938c01dd9f4a5f0e80b13",
       "mode": "0644",
-      "bytes": 31159
+      "bytes": 36935
     },
     {
       "path": "tests/template-contract.test.mjs",
@@ -444,7 +444,7 @@
   ],
   "quotas": {
     "maximumFiles": 128,
-    "maximumTotalBytes": 399308,
+    "maximumTotalBytes": 407485,
     "maximumManifestBytes": 6298,
     "maximumProvenanceBytes": 479,
     "maximumConfigFiles": 16,

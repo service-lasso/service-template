@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+import { pathToFileURL } from "node:url";
 
 export function validateWorkflow(source) {
   const lines = source.split(/\r?\n/);
@@ -32,7 +33,7 @@ export function validateWorkflow(source) {
   return { jobs: jobs.map((job) => ({ name: job.name, permissions: job.permissions, environment: job.environment, if: job.if, steps: job.steps.length })) };
 }
 
-if (import.meta.url === `file://${process.argv[1]?.replaceAll("\\", "/")}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const file = process.argv[2] || ".github/workflows/development-candidate.yml";
   validateWorkflow(await readFile(file, "utf8"));
   console.log("development-candidate workflow structure is valid");

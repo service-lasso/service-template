@@ -39,4 +39,8 @@ $doc | ConvertTo-Json -Depth 10 | Set-Content $resolvedContractPath
 
 $harness = Resolve-HarnessBinary
 & $harness validate-contract --contract $resolvedContractPath
+$nativeExitCode = $LASTEXITCODE
+if ($nativeExitCode -ne 0) { exit $nativeExitCode }
 & $harness run --contract $resolvedContractPath --output-dir $runOutputDir
+$nativeExitCode = $LASTEXITCODE
+if ($nativeExitCode -ne 0) { exit $nativeExitCode }

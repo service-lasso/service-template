@@ -27,4 +27,4 @@ Run the verifier against an immutable template checkout and the candidate projec
 node .\scripts\verify-template-contract.mjs --template-root <template-root> --project-root <project-root> --candidate <owner-controlled-template-candidate.json> --candidate-archive <owner-controlled-service-template.tar.gz>
 ```
 
-Core admission is intentionally outside this repository. The older Core CLI/service-init surface has not implemented this 70-file inventory or candidate provenance protocol, so it is not currently compatible evidence. Core `#1513` and proposal `#1514` / `SPEC-002 AC-4CF.1` must explicitly adopt a compatible parser and curated catalog pin before Core can rely on this result.
+Core admission is intentionally outside this repository. The older Core CLI/service-init surface has not implemented this closed immutable inventory, separate canonical policy member or candidate provenance protocol, so it is not currently compatible evidence. Core `#1513` and proposal `#1514` / `SPEC-002 AC-4CF.1` must explicitly adopt a compatible parser and curated catalog pin before Core can rely on this result.

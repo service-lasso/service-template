@@ -1,9 +1,10 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { spawnSync } from "node:child_process";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import test from "node:test";
 import { gzipSync } from "node:zlib";
 import { assetNames, createPublisher, inspectCandidateDirectory, downloadAsset, limits, parseBoundedJson } from "../scripts/publish-development-candidate.mjs";
@@ -290,4 +291,69 @@ test("actual publisher accepts ordinary relative private and public redirect pat
     return ordinary(url, init);
   };
   assert.equal((await publish(value, server)).mode, "verified"); assert.equal(server.state.writes.length, 7); assert.equal(server.state.published, true); assert.equal(destinations.length, 12);
+});
+
+// These invoke the real standalone CLI, including its entrypoint guard, rather
+// than only calling the imported validator function.
+for (const encoded of [false, true]) test(`workflow CLI validates supplied files through absolute ${encoded ? "URL-encoded" : "ordinary"} paths`, async (t) => {
+  const directory = await mkdtemp(join(tmpdir(), "template-workflow-cli-"));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const folder = join(directory, encoded ? "space # percent% unicode-é" : "ordinary");
+  await mkdir(folder);
+  const script = join(folder, "validate-workflow.mjs");
+  const valid = join(folder, "valid # workflow.yml");
+  const invalid = join(folder, "invalid % workflow.yml");
+  await writeFile(script, await readFile(join(root, "scripts/validate-development-candidate-workflow.mjs")));
+  await writeFile(valid, await readFile(join(root, ".github/workflows/development-candidate.yml")));
+  await writeFile(invalid, "jobs:\n  invalid:\n    steps: []\n");
+  for (const [file, success] of [[valid, true], [invalid, false]]) {
+    const result = spawnSync(process.execPath, [script, file], { cwd: directory, encoding: "utf8", timeout: 15000 });
+    assert.ifError(result.error); assert.equal(result.signal, null);
+    if (success) { assert.equal(result.status, 0, result.stderr); assert.match(result.stdout, /development-candidate workflow structure is valid/); }
+    else { assert.notEqual(result.status, 0); assert.match(result.stderr, /separate bind-candidate and publish-candidate jobs/); assert.doesNotMatch(result.stdout, /structure is valid/); }
+  }
+  if (process.platform === "win32") assert.match(script, /^[A-Za-z]:\\/);
+});
+test("workflow validator import with absent entrypoint argv has no CLI side effects", () => {
+  const url = pathToFileURL(join(root, "scripts/validate-development-candidate-workflow.mjs")).href;
+  const source = `delete process.argv[1]; const module = await import(${JSON.stringify(url)}); if (typeof module.validateWorkflow !== "function") throw new Error("Missing validator export");`;
+  const result = spawnSync(process.execPath, ["--input-type=module", "--eval", source], { cwd: tmpdir(), encoding: "utf8", timeout: 15000 });
+  assert.ifError(result.error); assert.equal(result.signal, null); assert.equal(result.status, 0, result.stderr); assert.equal(result.stdout, ""); assert.equal(result.stderr, "");
+});
+
+// Windows-only native .cmd fixtures supply controlled process exits. Actual
+// helper bytes, argument order and the Actions epilogue are exercised unchanged.
+// Other operating systems retain their existing POSIX gates.
+test("standalone Windows native-error preference is false without a profile", { skip: process.platform !== "win32" }, () => {
+  const result = spawnSync("pwsh", ["-NoLogo", "-NoProfile", "-NonInteractive", "-Command", "[Console]::Write($PSNativeCommandUseErrorActionPreference)"], { encoding: "utf8", timeout: 15000 });
+  assert.ifError(result.error); assert.equal(result.status, 0, result.stderr); assert.equal(result.stdout.toLowerCase(), "false");
+});
+for (const helper of ["test", "verify"]) for (const caller of ["standalone", "actions"]) for (const scenario of [
+  { name: "first failure stops successor", first: 23, last: 0, calls: 1, exit: 23 },
+  { name: "final failure propagates", first: 0, last: 37, calls: 2, exit: 37 },
+  { name: "both succeed", first: 0, last: 0, calls: 2, exit: 0 }
+]) test(`actual Windows ${helper}.ps1 ${caller}: ${scenario.name}`, { skip: process.platform !== "win32" }, async (t) => {
+  const directory = await mkdtemp(join(tmpdir(), "template-windows-native-exit-"));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  for (const path of ["scripts", "verify", "runtime/win32", "bin"]) await mkdir(join(directory, path), { recursive: true });
+  for (const path of [`scripts/${helper}.ps1`, "service.json", "verify/service-harness.json", "runtime/win32/echo-service.ps1"]) await writeFile(join(directory, path), await readFile(join(root, path)));
+  const callsPath = join(directory, "native-calls.txt");
+  const stub = join(directory, "bin", "node.cmd");
+  await writeFile(stub, '@echo off\r\necho %~1>>"%TEMPLATE_NATIVE_CALLS%"\r\nif "%~1"=="--test" exit /b %TEMPLATE_NATIVE_FIRST%\r\nif "%~1"=="validate-contract" exit /b %TEMPLATE_NATIVE_FIRST%\r\nexit /b %TEMPLATE_NATIVE_LAST%\r\n');
+  const script = join(directory, "scripts", `${helper}.ps1`);
+  const quoted = script.replaceAll("'", "''");
+  const args = ["-NoLogo", "-NoProfile", "-NonInteractive"];
+  if (caller === "standalone") args.push("-File", script);
+  else args.push("-Command", `$ErrorActionPreference = 'Stop'; $PSNativeCommandUseErrorActionPreference = $false; & '${quoted}'; if ((Test-Path -LiteralPath variable:\\LASTEXITCODE)) { exit $LASTEXITCODE }`);
+  const result = spawnSync("pwsh", args, { cwd: directory, encoding: "utf8", timeout: 15000, env: {
+    ...process.env, PATH: `${join(directory, "bin")};${process.env.PATH}`, SERVICE_LASSO_HARNESS_BIN: stub,
+    TEMPLATE_NATIVE_CALLS: callsPath, TEMPLATE_NATIVE_FIRST: String(scenario.first), TEMPLATE_NATIVE_LAST: String(scenario.last)
+  } });
+  assert.ifError(result.error); assert.equal(result.signal, null); assert.equal(result.status, scenario.exit, result.stderr);
+  const calls = (await readFile(callsPath, "utf8")).trim().split(/\r?\n/);
+  assert.deepEqual(calls, (helper === "test" ? ["--test", "scripts/validate-development-candidate-workflow.mjs"] : ["validate-contract", "run"]).slice(0, scenario.calls));
+  if (helper === "test") {
+    if (scenario.exit === 0) assert.match(result.stdout, /Template tests passed \(Windows\)/);
+    else assert.doesNotMatch(result.stdout, /Template tests passed/);
+  }
 });

@@ -28,3 +28,9 @@ The actual publisher validates the held archive buffers with the existing contra
 ## External dependency boundary
 
 Core proposal `#1514` / `SPEC-002 AC-4CF.1` and Core `#1513` are reference material only. This policy is owned by `service-template`; Core must explicitly adopt a compatible parser and catalog pin before it may use this policy for admission.
+
+## Windows gate and CLI entrypoint requirements (issue #17 review F1–F3)
+
+- `AC-17.8`: Each native command in the actual Windows test and verification helpers must immediately capture and propagate its own nonzero exit before any successor command. Standalone `pwsh -File` and GitHub Actions-style callers must both fail; a later success must never hide an earlier failure. Actual-helper subprocess regressions cover first failure with successor not called, final failure, and both success for both helpers and both caller forms, with the native-error preference explicitly false.
+- `AC-17.9`: The workflow validator CLI uses portable file-URL conversion with an argv-presence check and remains safe to import. Actual subprocess regressions exercise valid and invalid supplied workflow files, script and argument paths needing URL encoding, Windows absolute paths on Windows, and import with absent entrypoint argv without validation side effects.
+- `AC-17.10`: Documentation describes the closed inventory and separate canonical policy member truthfully without hard-coded inventory counts that drift. F1–F3 source and regression changes require a DIFFERENT entire cumulative review and NEW complete-input ROOT admission before execution; publisher custody, all quotas except mathematically closed total growth, deadlines, platform assertions and authoring differences remain unchanged.
