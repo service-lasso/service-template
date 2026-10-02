@@ -114,7 +114,7 @@ export async function downloadAsset(url, request = fetch, maximum = limits.archi
   for (let redirects = 0; redirects < 4; redirects += 1) {
     const remaining = deadline - Date.now(); if (remaining <= 0) fail("deadline", "Download deadline exceeded.");
     const { response, bytes } = await boundedRequest(request, current, {}, maximum, remaining);
-    if (response.status >= 300 && response.status < 400) { const location = response.headers.get("location"); if (!location) fail("download", "Redirect lacks location."); if (/^[A-Za-z][A-Za-z0-9+.-]*:/.test(location)) strictUrl(location, downloadHosts); current = strictUrl(new URL(location, current).toString(), downloadHosts).toString(); continue; }
+    if (response.status >= 300 && response.status < 400) { const location = response.headers.get("location"); if (!location) fail("download", "Redirect lacks location."); if (location !== location.trim() || /[\u0000-\u001f\u007f\\]/.test(location) || location.includes("#")) fail("asset_url", "Raw redirect violates URL grammar."); if (location.startsWith("//")) strictUrl(`https:${location}`, downloadHosts); else if (/^[A-Za-z][A-Za-z0-9+.-]*:/.test(location)) strictUrl(location, downloadHosts); current = strictUrl(new URL(location, current).toString(), downloadHosts).toString(); continue; }
     if (!response.ok) fail("download", "Public asset request failed."); return bytes;
   }
   fail("download", "Redirect budget exceeded.");

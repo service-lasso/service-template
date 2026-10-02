@@ -247,3 +247,47 @@ test("publisher applies the actual retained-byte TAR terminal budget before netw
   value.local.bytes.SHA256SUMS = Buffer.from(assetNames.slice(0, 3).map((name) => `${hash(value.local.bytes[name])}  ${name}`).join("\n") + "\n");
   await assert.rejects(() => publish(value, server), code("candidate_archive")); assert.equal(server.state.calls.length, 0);
 });
+
+const rejectedRawRedirects = [
+  "//github.com:443/rejected", "//release-assets.githubusercontent.com:443/rejected",
+  "//objects.githubusercontent.com:443/rejected", "//github-releases.githubusercontent.com:443/rejected",
+  "//user@github.com/rejected", "//user:password@release-assets.githubusercontent.com/rejected",
+  "//github.com:444/rejected", "//release-assets.githubusercontent.com:444/rejected",
+  "//github.com/rejected#fragment", "//release-assets.githubusercontent.com/rejected#",
+  "//example.invalid/rejected", "///github.com:443/rejected",
+  "\\github.com:443/rejected",
+  " //github.com:443/rejected", "\t//github.com:443/rejected", "https:\t//github.com:443/rejected"
+];
+for (const location of rejectedRawRedirects) test(`raw redirect authority denied before destination request: ${JSON.stringify(location)}`, async () => {
+  const calls = [];
+  const request = async (url, init) => { calls.push({ url, init }); assert.equal(init.headers, undefined); return new Response(null, { status: 302, headers: { location } }); };
+  await assert.rejects(() => downloadAsset("https://github.com/start", request), code("asset_url"));
+  assert.equal(calls.length, 1); assert.equal(calls[0].url, "https://github.com/start");
+});
+for (const location of rejectedRawRedirects) test(`actual read-only recovery rejects raw authority without writes: ${JSON.stringify(location)}`, async (t) => {
+  const value = await fixture(t); const server = provider(value, { existing: {} }); const ordinary = server.request; const downloads = [];
+  server.request = async (url, init) => { if (!url.startsWith("https://api.github.com/")) { downloads.push({ url, init }); assert.equal(init.headers, undefined); return new Response(null, { status: 302, headers: { location } }); } return ordinary(url, init); };
+  await assert.rejects(() => publish(value, server), code("asset_url")); assert.equal(server.state.writes.length, 0); assert.equal(downloads.length, 1);
+});
+for (const location of rejectedRawRedirects) test(`actual private headerless continuation rejects raw authority before publish: ${JSON.stringify(location)}`, async (t) => {
+  const value = await fixture(t); const server = provider(value, { privateRedirect: true }); const ordinary = server.request; const downloads = [];
+  server.request = async (url, init) => { if (!url.startsWith("https://api.github.com/") && !url.startsWith("https://uploads.github.com/")) { downloads.push({ url, init }); assert.equal(init.headers, undefined); return new Response(null, { status: 302, headers: { location } }); } return ordinary(url, init); };
+  await assert.rejects(() => publish(value, server), code("asset_url")); assert.equal(server.state.writes.length, 6); assert.equal(downloads.length, 1); assert.equal(server.state.release.draft, true); assert.equal(server.state.published, false);
+});
+for (const location of ["next", "../next", "/next", "?part=2", "//release-assets.githubusercontent.com/next"]) test(`ordinary relative or valid network-path redirect remains headerless: ${location}`, async () => {
+  const calls = []; const expected = new URL(location, "https://github.com/path/start").toString();
+  const request = async (url, init) => { calls.push(url); assert.equal(init.headers, undefined); assert.equal(init.redirect, "manual"); return calls.length === 1 ? new Response(null, { status: 302, headers: { location } }) : response(Buffer.from("accepted")); };
+  assert.deepEqual(await downloadAsset("https://github.com/path/start", request, 8), Buffer.from("accepted")); assert.deepEqual(calls, ["https://github.com/path/start", expected]);
+});
+test("actual publisher accepts ordinary relative private and public redirect paths", async (t) => {
+  const value = await fixture(t); const server = provider(value, { privateRedirect: true }); const ordinary = server.request; const redirected = new Set(); const destinations = [];
+  server.request = async (url, init) => {
+    if (url.startsWith("https://github.com/") || url.startsWith("https://release-assets.githubusercontent.com/")) {
+      assert.equal(init.headers, undefined);
+      if (!redirected.has(url) && !new URL(url).pathname.includes("/accepted/")) { redirected.add(url); return new Response(null, { status: 302, headers: { location: `./accepted/${new URL(url).pathname.split("/").at(-1)}` } }); }
+      destinations.push(url);
+    }
+    return ordinary(url, init);
+  };
+  assert.equal((await publish(value, server)).mode, "verified"); assert.equal(server.state.writes.length, 7); assert.equal(server.state.published, true); assert.equal(destinations.length, 12);
+});

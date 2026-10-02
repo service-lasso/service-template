@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "9d7770ae89122026c0d143fa30d201d0b5248a0f7ea471989ab27a4ad0f34000",
+  "contractDigest": "491566520d125fbb8e752722b097dc8e0338fc94f1f27c43b5bd3046a3dcb952",
   "inventory": [
     {
       "path": ".gitattributes",
@@ -53,9 +53,9 @@
     },
     {
       "path": ".governance/project/BACKLOG.md",
-      "sha256": "3333275f85192c995eff65208fa51d66034362312e739ec926759448a76c0d52",
+      "sha256": "e4761636ae31b36d0d7e7a8e51902e3fb78709292d6430c1a306d83300f3281d",
       "mode": "0644",
-      "bytes": 311
+      "bytes": 368
     },
     {
       "path": ".governance/project/PROJECT_INTENT.md",
@@ -113,9 +113,9 @@
     },
     {
       "path": ".governance/specs/SPEC-017-template-contract.md",
-      "sha256": "38a602393d2ccdae1dfafdc4b0cc8e183451d44701fcfa8054bfcbc5a0325eb7",
+      "sha256": "bc31d8f4343aa9b183000f96400dfe97b270366f109915b3e29cb5d635b0b311",
       "mode": "0644",
-      "bytes": 7077
+      "bytes": 7268
     },
     {
       "path": "CHANGELOG.md",
@@ -257,9 +257,9 @@
     },
     {
       "path": "docs/template-contract.md",
-      "sha256": "0ce0b67895239504555e3e843648a7227d5708d9f6aa9375e22d05678f996f0a",
+      "sha256": "48f93069d72b73cd81a9564cbbf7b808bcdb7ecd5d89573caeafa137713ab18d",
       "mode": "0644",
-      "bytes": 8278
+      "bytes": 8468
     },
     {
       "path": "docs/validation.md",
@@ -323,9 +323,9 @@
     },
     {
       "path": "scripts/publish-development-candidate.mjs",
-      "sha256": "982f89d0e0325477bf4565d180e118361e347420199d47202a61355e7d56212c",
+      "sha256": "106ef375881f0b2c7b4b706d7db000ef49eb3c30ebbcaab60b29c03844f6ea6a",
       "mode": "0644",
-      "bytes": 24288
+      "bytes": 24532
     },
     {
       "path": "scripts/test.ps1",
@@ -425,9 +425,9 @@
     },
     {
       "path": "tests/development-candidate-workflow.test.mjs",
-      "sha256": "c794e25d51faf4d1f4f0e10c7494012d88e03e083c2e2c11e1429ba9a4b864e2",
+      "sha256": "d5d43b0b63aa3bc97553fe0976b0e708b50f9c8f05fa4342d3930654995ce0d8",
       "mode": "0644",
-      "bytes": 26578
+      "bytes": 31159
     },
     {
       "path": "tests/template-contract.test.mjs",
@@ -444,7 +444,7 @@
   ],
   "quotas": {
     "maximumFiles": 128,
-    "maximumTotalBytes": 394045,
+    "maximumTotalBytes": 399308,
     "maximumManifestBytes": 6298,
     "maximumProvenanceBytes": 479,
     "maximumConfigFiles": 16,
