@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "472c498800b2aefd3a40db77424cedba246ca348da09c7c44b189c6f11c74642",
+  "contractDigest": "142942b2bf987e9b0f492bb39fb656d24b362a7ce609334829e6b43269f56860",
   "inventory": [
     {
       "path": ".gitattributes",
@@ -29,9 +29,15 @@
     },
     {
       "path": ".github/workflows/development-candidate.yml",
-      "sha256": "ab24953e3b76eeaf95376b6fa290e39e06ba6d6f568516f85801134180a1fc06",
+      "sha256": "bb30a06d49a86ca0d646ea9abe3c50e16814ec0a536cd16b1258bd72a6392b09",
       "mode": "0644",
-      "bytes": 5072
+      "bytes": 5481
+    },
+    {
+      "path": ".github/workflows/qualification-publication-scoped.yml",
+      "sha256": "08d6ecf4071a263732b6e4ab77c5a92b8b193ac364a0e08b6f92c423c9e75ae0",
+      "mode": "0644",
+      "bytes": 1228
     },
     {
       "path": ".github/workflows/release.yml",
@@ -53,15 +59,21 @@
     },
     {
       "path": ".governance/project/BACKLOG.md",
-      "sha256": "bc3c8fb0a32b16c5762efcffc056f456336888fb309b927f70a2520dd26fd802",
+      "sha256": "dada5c62c4a765cff47906e39e32c37ed521e72ec11b479bf5bcb98fb55d7946",
       "mode": "0644",
-      "bytes": 466
+      "bytes": 1778
+    },
+    {
+      "path": ".governance/project/ga-platform-scope.json",
+      "sha256": "159d644c161cf532c94d3bfe17ed55e32bf94c5d2843928945c450f6d8140c12",
+      "mode": "0644",
+      "bytes": 445
     },
     {
       "path": ".governance/project/PROJECT_INTENT.md",
-      "sha256": "f07e514f821699a57dd2824e5c1cb7dad6659ef85ce9ae75c3e238c75c5817c1",
+      "sha256": "0d92e5f95915dcbce37321a4e214425f04625c2b64a440f8dea5b6dd6abf9402",
       "mode": "0644",
-      "bytes": 1099
+      "bytes": 2574
     },
     {
       "path": ".governance/rules/gov-01-instructions.mdc",
@@ -113,9 +125,15 @@
     },
     {
       "path": ".governance/specs/SPEC-017-template-contract.md",
-      "sha256": "abb4b24aa5043a0a0867f1803f1d78d1e72f58ad25c36b4cdcc3ad3c30c40580",
+      "sha256": "8a26bae68b411302c2298c73a7e8a56f6b9805e129f56b8fe329e9c77ece6fa6",
       "mode": "0644",
-      "bytes": 9086
+      "bytes": 13742
+    },
+    {
+      "path": ".governance/specs/SPEC-018-fixed-consumer-qualification.md",
+      "sha256": "276c0a8c315e75b9e4b89f18e60fccf07d5f0151f51fec73cc664d729c4a6fa7",
+      "mode": "0644",
+      "bytes": 7751
     },
     {
       "path": "CHANGELOG.md",
@@ -158,6 +176,12 @@
       "sha256": "9b0dc3adb14b6d68fd23a4d159b3f948f20ab14be8de1cecb658b5d1fda835a5",
       "mode": "0644",
       "bytes": 177
+    },
+    {
+      "path": "docs/qualification-publication.md",
+      "sha256": "018f8657e2f5be41f0e23018b01cd42168bb8370f93740cc0cb58ed1cb23d53a",
+      "mode": "0644",
+      "bytes": 2112
     },
     {
       "path": "docs/reference/adjacent/SPEC-SERVICE-LASSO-HARNESS.md",
@@ -269,9 +293,9 @@
     },
     {
       "path": "INIT-TODO.md",
-      "sha256": "29520f6a979217fdaa74469713563f28075f2095972d96450c4a776614e945bb",
+      "sha256": "c65b434ebbc31936513c0620fded4f2683fc1624ad0293c7fa40238f8a335075",
       "mode": "0644",
-      "bytes": 933
+      "bytes": 2590
     },
     {
       "path": "LICENSE",
@@ -304,6 +328,12 @@
       "bytes": 186
     },
     {
+      "path": "scripts/ga-platform-scope-lib.mjs",
+      "sha256": "91d12c7d22a6016fbb994f65c72fd44a9b764dd9e7f2535e3e4ec7fa30523f4d",
+      "mode": "0644",
+      "bytes": 5709
+    },
+    {
       "path": "scripts/generate-template-contract.mjs",
       "sha256": "3e5cc0e2bc56c22746498703c45a5838e5084213b841bda93e1b105a88c18d26",
       "mode": "0644",
@@ -322,10 +352,28 @@
       "bytes": 650
     },
     {
-      "path": "scripts/publish-development-candidate.mjs",
-      "sha256": "df580516c1683343f7bd9f3fa70dbc3e5a87692824bc4bd83e7022d1386b4cd7",
+      "path": "scripts/produce-qualification-publication.mjs",
+      "sha256": "e50da76783ba3c7ed351b4d258aa52ee82355b24e1f6d51f1cc5a036b0cd8bb2",
       "mode": "0644",
-      "bytes": 24898
+      "bytes": 1492
+    },
+    {
+      "path": "scripts/publish-development-candidate.mjs",
+      "sha256": "58ac14a97a49cbcb1d0fc7aa1890b8739a7de1c25faa055424fa1add670dbb2b",
+      "mode": "0644",
+      "bytes": 25722
+    },
+    {
+      "path": "scripts/qualification-cli-lib.mjs",
+      "sha256": "91b36bc93629b42ec87d442c6280de73718005480a2b3ca325bc3a4630f2d7f3",
+      "mode": "0644",
+      "bytes": 1615
+    },
+    {
+      "path": "scripts/qualification-publication-lib.mjs",
+      "sha256": "6b17120d3509010bb474fb87f2072959ed146c8ee69b52ad289ff8ae247c795a",
+      "mode": "0644",
+      "bytes": 10839
     },
     {
       "path": "scripts/test.ps1",
@@ -344,6 +392,12 @@
       "sha256": "bd30453b48217b4f06f128b96c8bc724fa024e20c3ba83aabba18baba1b080c7",
       "mode": "0644",
       "bytes": 3835
+    },
+    {
+      "path": "scripts/verify-qualification-publication.mjs",
+      "sha256": "ecb7c46751aca31118199c773eeb7bbf200b2168ed1dc364d46a350ebbd4dbf9",
+      "mode": "0644",
+      "bytes": 946
     },
     {
       "path": "scripts/verify-template-contract.mjs",
@@ -425,9 +479,15 @@
     },
     {
       "path": "tests/development-candidate-workflow.test.mjs",
-      "sha256": "cba11e603a6b47024b876bf93e216bdba3e409b96545983030003935574feb6b",
+      "sha256": "8531fdfff76830df988419c2243115ed135a81036ff85b1a1f2cdfe4c2de986c",
       "mode": "0644",
-      "bytes": 42807
+      "bytes": 43459
+    },
+    {
+      "path": "tests/qualification-publication.test.mjs",
+      "sha256": "67b97269f245e8d4ba19b9b24ab2cbb0a32946d5212faabbe6e99390c0b2c414",
+      "mode": "0644",
+      "bytes": 6029
     },
     {
       "path": "tests/template-contract.test.mjs",
@@ -444,7 +504,7 @@
   ],
   "quotas": {
     "maximumFiles": 128,
-    "maximumTotalBytes": 417316,
+    "maximumTotalBytes": 468462,
     "maximumManifestBytes": 6298,
     "maximumProvenanceBytes": 479,
     "maximumConfigFiles": 16,

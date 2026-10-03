@@ -4,6 +4,7 @@
 | --- | --- | --- | --- | --- |
 | TASK-017 | in_progress | #17 | SPEC-017 AC-17.1–AC-17.10 | Versioned contract and strict held-byte private publisher; raw redirect authority retained; Windows native gates, all-three physical CLI identity and inventory documentation findings mapped to AC-17.8–AC-17.10; entire source review and fresh admission required before execution; publication/Core/CLI adoption open. |
 
+| TASK-022 | in_progress | #22 | SPEC-017 AC-17.11–AC-17.14; Core SPEC-008 R1–R7 | Complete Windows/Linux retained wrapper and actual entrypoints; actual two-role source register/catalog required; no fixture admission; source tests unexecuted before new review/admission; actual qualification/publication open. |
 
 ## Issue #23 coordinated Core #1628 amendment
 

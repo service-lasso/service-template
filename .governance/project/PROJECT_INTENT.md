@@ -8,6 +8,7 @@ The issue #17 publisher holds accepted bytes through private draft upload and ve
 
 Windows helper gates propagate every native failure immediately; all three CLIs recognize physical entrypoint identity while remaining silent safe imports. Source and subprocess regression coverage remain unexecuted pending independent entire review and fresh input admission.
 
+Issue #22 implements the complete independently governed Windows/Linux retained qualification/publication wrapper under SPEC-017 AC-17.11–AC-17.14 and landed Core SPEC-008 R1–R7. Candidate publication under original controls precedes final two-role qualification where needed. Actual source-owned adopter identities and production publication catalog must be obtained; missing authority denies eligibility. Source implementation/review does not establish real adoption or GA.
 
 ## Issue #23 coordinated Core #1628 amendment
 
