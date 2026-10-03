@@ -30,6 +30,7 @@ const mutations = [
   ["workflow", v => v.run.workflowSha = "b".repeat(40)],
   ["candidate source", v => v.candidate.templateCommit = "b".repeat(40)],
   ["candidate version", v => v.candidate.templateVersion = "unknown"],
+  ["candidate version bounds", v => v.candidate.templateVersion = "1.0.0-" + "a".repeat(64)],
   ["candidate tag", v => { v.candidate.templateCommit = commit; v.candidate.templateVersion = "1.0.0-dev"; v.candidate.releaseTag = "other"; }],
   ["third role", v => v.consumers.push(structuredClone(v.consumers[0]))],
   ["gate missing", v => v.consumers[0].gates.pop()],

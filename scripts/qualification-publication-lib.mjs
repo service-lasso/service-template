@@ -44,7 +44,7 @@ function candidate(value) {
     if (field === null) continue;
     if (key === "templateCommit" ? !hex(field, 40) : key.endsWith("Sha256") || key === "contractDigest" ? !hex(field, 64) : typeof field !== "string" || !/^[A-Za-z0-9][A-Za-z0-9._-]{0,199}$/u.test(field)) throw new Error("template candidate field invalid");
   }
-  if (value.templateVersion !== null && !/^\d+\.\d+\.\d+(?:-[a-z0-9.]+)?$/u.test(value.templateVersion)) throw new Error("template candidate version invalid");
+  if (value.templateVersion !== null && (value.templateVersion.length > 64 || !/^\d+\.\d+\.\d+(?:-[a-z0-9.]+)?$/u.test(value.templateVersion))) throw new Error("template candidate version invalid");
   if (value.templateCommit !== null && value.templateVersion !== null && value.releaseTag !== null && value.releaseTag !== `template-v${value.templateVersion}-${value.templateCommit}`) throw new Error("template candidate tag differs");
 }
 function publication(value, tuple) {
