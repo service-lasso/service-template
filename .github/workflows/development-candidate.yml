@@ -27,7 +27,7 @@ jobs:
       - name: Verify the checked-in template contract
         run: node scripts/generate-template-contract.mjs && git diff --exit-code -- template-contract.json
       - name: Run template contract and publication regression tests
-        run: node --test tests/template-contract.test.mjs tests/development-candidate-workflow.test.mjs
+        run: node --test tests/template-contract.test.mjs tests/development-candidate-workflow.test.mjs tests/qualification-publication.test.mjs
       - name: Validate development-candidate workflow structure
         run: node scripts/validate-development-candidate-workflow.mjs
       - name: Validate Actions syntax
@@ -107,4 +107,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
-        run: node scripts/publish-development-candidate.mjs publish candidate "$GITHUB_REPOSITORY" "$GITHUB_REF" "$GITHUB_SHA"
+        run: node scripts/publish-development-candidate.mjs publish candidate "$GITHUB_REPOSITORY" "$GITHUB_REF" "$GITHUB_SHA" > verified-publication.json
+      - name: Retain observed publication metadata after immutable same-byte readback
+        uses: actions/upload-artifact@v4
+        with:
+          name: template-observed-publication-${{ github.run_id }}-${{ github.run_attempt }}
+          path: verified-publication.json
+          if-no-files-found: error
+          retention-days: 90

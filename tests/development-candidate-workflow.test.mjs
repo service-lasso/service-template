@@ -106,6 +106,13 @@ test("workflow binds once and invokes one held-byte draft publisher", async () =
 for (const privateRedirect of [false, true]) test(`actual adapter publishes once only after all private ID bytes; redirect=${privateRedirect}`, async (t) => {
   const value = await fixture(t); const server = provider(value, { privateRedirect, annotated: true });
   const result = await publish(value, server); assert.equal(result.mode, "verified");
+  assert.deepEqual(result.publication.assets.map(asset => asset.name), [...assetNames].sort());
+  assert.equal(result.publication.targetCommit, sha); assert.equal(result.publication.immutable, true);
+  for (const asset of result.publication.assets) {
+    assert.equal(asset.sha256, hash(value.bytes[asset.name]));
+    assert.equal(asset.size, value.bytes[asset.name].length);
+    assert.equal(asset.url, `https://api.github.com/repos/${repository}/releases/assets/${asset.id}`);
+  }
   assert.deepEqual(server.state.writes.map((write) => write.method), ["POST", "POST", "POST", "POST", "POST", "POST", "PATCH"]);
   assert.equal(server.state.writes.filter((write) => write.method === "PATCH").length, 1);
   assert.ok(server.state.policyRounds >= server.state.writes.length);
@@ -114,7 +121,10 @@ for (const privateRedirect of [false, true]) test(`actual adapter publishes once
 });
 test("completed exact tuple recovery is strictly read-only with actual tag proof and public bytes", async (t) => {
   const value = await fixture(t); const server = provider(value, { existing: {}, annotated: true });
-  assert.equal((await publish(value, server)).mode, "recovered"); assert.equal(server.state.writes.length, 0);
+  const result = await publish(value, server);
+  assert.equal(result.mode, "recovered"); assert.equal(server.state.writes.length, 0);
+  assert.equal(result.publication.releaseId, 42);
+  assert.deepEqual(result.publication.assets.map(asset => asset.name), [...assetNames].sort());
 });
 for (const orphan of [sha, "b".repeat(40)]) test(`orphan preexisting tag fails with zero writes (${orphan.slice(0, 1)})`, async (t) => {
   const value = await fixture(t); const server = provider(value, { orphan }); await assert.rejects(() => publish(value, server), code("collision")); assert.equal(server.state.writes.length, 0);

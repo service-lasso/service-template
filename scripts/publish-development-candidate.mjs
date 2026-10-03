@@ -143,6 +143,21 @@ export function assertReleaseTuple(release, repository, local, downloaded) {
   return { tag: local.candidate.releaseTag, commit: local.candidate.templateCommit, releaseId: release.id, assetIds: assetNames.map((name) => assets.get(name).id) };
 }
 
+// Called only after the state machine has checked private and public held bytes.
+// This projection is observed publication metadata, never role catalog authority.
+function publicationProjection(release, repository, local) {
+  const assets = releaseAssets(release, repository, local, false);
+  return {
+    repository, releaseId: release.id, tag: release.tag_name,
+    targetCommit: release.target_commitish, draft: release.draft,
+    prerelease: release.prerelease, immutable: release.immutable,
+    assets: [...assetNames].sort().map(name => ({
+      id: assets.get(name).id, name, url: assets.get(name).url,
+      size: local.bytes[name].length, sha256: local.digests[name],
+    })),
+  };
+}
+
 // Only this adapter supplies network authority; caller-controlled provider URLs are never used.
 export function createPublisher({ request = fetch, token, repository, ref, sha, ownerContractBytes, deadlineMs = limits.deadlineMs }) {
   if (!/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repository || "") || repository.split("/").some((part) => part === "." || part === "..") || !fullSha.test(sha || "") || ref !== "refs/heads/develop" || typeof token !== "string" || !token || !Number.isSafeInteger(deadlineMs) || deadlineMs <= 0 || deadlineMs > limits.deadlineMs) fail("usage", "Invalid publisher inputs.");
@@ -208,7 +223,7 @@ export function createPublisher({ request = fetch, token, repository, ref, sha, 
     if (!local.bytes["template-contract.json"].equals(ownerContract)) fail("candidate_binding", "Artifact policy differs from the exact checked-out owner contract.");
     await verifyPublisherArchive(local.bytes["service-template.tar.gz"], ownerContract, local.candidate);
     await policy(); const existing = await getRelease(local.candidate.releaseTag);
-    if (existing) { const recovered = await verify(existing, local, false); return { mode: "recovered", releaseId: recovered.id, tag: local.candidate.releaseTag, commit: sha }; }
+    if (existing) { const recovered = await verify(existing, local, false); return { mode: "recovered", releaseId: recovered.id, tag: local.candidate.releaseTag, commit: sha, publication: publicationProjection(recovered, repository, local) }; }
     await absent(local);
     // Recheck absence after the literal before-write policy read. Creation never updates a ref.
     await policy(); await absent(local); await policy();
@@ -242,7 +257,7 @@ export function createPublisher({ request = fetch, token, repository, ref, sha, 
     const final = await verify(published, local, false, ids);
     const byTag = await getRelease(local.candidate.releaseTag); if (byTag?.id !== final.id) fail("release_tuple", "Final tag/release identity mismatch.");
     releaseAssets(byTag, repository, local, false, ids);
-    return { mode: "verified", tag: local.candidate.releaseTag, commit: sha, releaseId: final.id, assetIds: assetNames.map((name) => ids[name]) };
+    return { mode: "verified", tag: local.candidate.releaseTag, commit: sha, releaseId: final.id, assetIds: assetNames.map((name) => ids[name]), publication: publicationProjection(byTag, repository, local) };
   } };
 }
 
