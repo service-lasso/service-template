@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "templateVersion": "1.0.0-dev",
-  "contractDigest": "7a4fa9f4ee5ce2e5a370bd64b7af4561188f2708b98d764af07526237421f29d",
+  "contractDigest": "0766ce5c343cd0c90bda97218c9e8294b47e8535ababa4d64027eeaff98a0425",
   "inventory": [
     {
       "path": ".gitattributes",
@@ -293,9 +293,9 @@
     },
     {
       "path": "INIT-TODO.md",
-      "sha256": "e25cb4b01109b62f614f91baf7545fb392b0818a68f1a0c82664061f3d766b3d",
+      "sha256": "c65b434ebbc31936513c0620fded4f2683fc1624ad0293c7fa40238f8a335075",
       "mode": "0644",
-      "bytes": 2591
+      "bytes": 2590
     },
     {
       "path": "LICENSE",
@@ -504,7 +504,7 @@
   ],
   "quotas": {
     "maximumFiles": 128,
-    "maximumTotalBytes": 468330,
+    "maximumTotalBytes": 468329,
     "maximumManifestBytes": 6298,
     "maximumProvenanceBytes": 479,
     "maximumConfigFiles": 16,
