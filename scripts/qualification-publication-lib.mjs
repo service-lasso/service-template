@@ -64,7 +64,10 @@ function publication(value, tuple) {
 
 export function createBlockedTemplateEvidence(source, scope, run) {
   const value = { schema: "service-lasso.template-qualification-publication.v1", scope, source, candidate: Object.fromEntries(candidateKeys.map(key => [key, null])), publication: null, run, consumers: roles.map(role => ({ role: role.role, repository: role.repository, commit: null, templateCommit: null, archiveSha256: null, contractDigest: null, contractSha256: null, policySha256: scope.policySha256, catalogIdentity: null, catalogSource: null, platforms: [...REQUIRED_GA_PLATFORMS], gates: role.ids.map(id => ({ id, outcome: "blocked", receipts: [] })), receipts: [], outcome: "blocked" })), outcome: "blocked" };
-  return validateTemplateEvidence(value, source);
+  // Validate the original caller inputs before copying, so the snapshot cannot
+  // normalize away a closed-schema violation. The returned wrapper owns every
+  // nested object/array, including source, scope policy identity and run.
+  return structuredClone(validateTemplateEvidence(value, source));
 }
 export function readTemplateEvidence(bytes, source, held = new Map()) {
   return validateTemplateEvidence(parseScopedJson(bytes, "original template qualification wrapper"), source, held);
