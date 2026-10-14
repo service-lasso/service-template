@@ -1,0 +1,11 @@
+# Issue22 source checkpoint, 2026-10-13
+
+User-authorized commit/push checkpoint; NOT a complete candidate freeze, canonical Core transfer, source GO, native qualification, or installed acceptance.
+
+Owner: Template author78. Original retained source: D:/projects/service-lasso/service-lasso/audit-evidence/continuation-20260930-1520/template77-creator-source. The source manifest records exact same-byte copies and sizes. This archive includes packet-owned top-level C/C++/Python source only. It excludes upstream primary research copies, private roots, runtime evidence, historical retained text, dependency trees, and activation CMake rosters. It is intentionally not buildable as a standalone product. CLI-owned upstream-cli headers/codecs and authentic initial acquisition inputs are absent; no replacement or duplicate issuer is supplied.
+
+Latest work: surviving owner preownership for host/platform/process/readback/unit/range/HeldFile, actual failed-preown closure, allocated-capacity settlement views, and complete backing-overlap preflight before writing those views. Regression source remains UNRUN. Only static source inspection and diff checks were performed; no configure/build/parser/crypto/native/target execution.
+
+Remaining: complete overlap-negative corpus and whole review; portable failed-prefix export via genuine receipt foundation; initial child-local launcher/source/principal/containing reserve and independent policy/profile; SAME108/independent100 typed storage effect owner and terminal custody; complete A/unit/Git/nonGit/provider/own-writer/alias/last-borrower graph; useful Windows CPU/compiled/CRT/TLS/APC and Linux EXEC/kernel/interpreter/provider consumers; full two-caller outcomes and finite resource/deadline fit. All authentic qualification/ACK/useful guards remain closed.
+
+Inherited tracked and untracked work in the issue worktree is deliberately not staged by this checkpoint. Core120 remains sole canonical receiver after whole freeze, different ENTIRE review, and exact-byte transfer. The original packet and worktree remain retained for PR26 and successor repair; cleanup trigger is verified reviewed transfer and landing/closure. No disposable build/dependency/scratch outputs were created in this unit.

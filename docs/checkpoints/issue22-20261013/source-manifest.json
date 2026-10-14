@@ -1,0 +1,1406 @@
+[
+  {
+    "path": "source/bootstrap_noop.c",
+    "bytes": 279,
+    "sha256": "EDD192D67C182962F4AECBC380278A68D7A49DAA6320D3EDC085DA93474023DD",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\bootstrap_noop.c"
+  },
+  {
+    "path": "source/collector_contract_test.py",
+    "bytes": 10486,
+    "sha256": "3AD43D968D39B4FBBB10705309E3C54481366973403C36931089EA3EDFB874EA",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\collector_contract_test.py"
+  },
+  {
+    "path": "source/command_inputs.py",
+    "bytes": 14656,
+    "sha256": "92BAA85F213B94566B559B8605F8135A2B0D8553E78E3FEB21B08BDDF2EB94F5",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\command_inputs.py"
+  },
+  {
+    "path": "source/creator_entry_contract_test.py",
+    "bytes": 9321,
+    "sha256": "C5C108EC2BAC10F201ECA43E40114B9E722FF58CDFE7515BF34C3638375B0523",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\creator_entry_contract_test.py"
+  },
+  {
+    "path": "source/creator_entry.py",
+    "bytes": 11924,
+    "sha256": "53D16B0E31AE5ABE048AAD48881E6FF4209E380563C24C963B2C5999A8105DFB",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\creator_entry.py"
+  },
+  {
+    "path": "source/git_inputs.py",
+    "bytes": 10826,
+    "sha256": "5B1BCF06F2F3828D364AFFCD25BC0B37A964CAEC3EE014274C2B777202850AFA",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\git_inputs.py"
+  },
+  {
+    "path": "source/held_inputs.py",
+    "bytes": 19525,
+    "sha256": "C6E9769CCAF83C277D0C8448252F11B9D12D5F0B3E189889BD0B28BEA49500C8",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\held_inputs.py"
+  },
+  {
+    "path": "source/linux_caller_receipt.hpp",
+    "bytes": 13696,
+    "sha256": "70A3FECD1F413A1DB6EED8E7ED81E33268558AF04C9249BD5C868434B1A0BE86",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_caller_receipt.hpp"
+  },
+  {
+    "path": "source/linux_clone_original_regression.cpp",
+    "bytes": 4383,
+    "sha256": "49A3D6C1436218F3C03282BA525001F2DE044ACF34AF5E2111DC94F257117A6D",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_clone_original_regression.cpp"
+  },
+  {
+    "path": "source/linux_command_route.hpp",
+    "bytes": 9898,
+    "sha256": "B2F2B6FE4AA5F8E13B92E03C520820A3EF1CCE0CD6933E7F6F07ADA95824A989",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_command_route.hpp"
+  },
+  {
+    "path": "source/linux_deadline_receiver.hpp",
+    "bytes": 14008,
+    "sha256": "50C30916F5B2511DB745F070D9DC304E4DF7CC4DE5ED3F7E161777D564FE1616",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_deadline_receiver.hpp"
+  },
+  {
+    "path": "source/linux_deadline_supervisor_regression.cpp",
+    "bytes": 2095,
+    "sha256": "2065851BA9C3608F4A4CC6102D494B1BA65A9B963AA4D6FAC0FEB70AE197FFFC",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_deadline_supervisor_regression.cpp"
+  },
+  {
+    "path": "source/linux_deadline_supervisor.hpp",
+    "bytes": 24875,
+    "sha256": "D9DDCB80FAF3AA503BF9401F87B28E98962C7295C2513187B6BB87517BE86C95",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_deadline_supervisor.hpp"
+  },
+  {
+    "path": "source/linux_driver.hpp",
+    "bytes": 5354,
+    "sha256": "5317974B18ED27ACE0661562DA5E47DA7946DD4139D26562573F6BDD9F89E972",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_driver.hpp"
+  },
+  {
+    "path": "source/linux_elf_interpreter_source.hpp",
+    "bytes": 5955,
+    "sha256": "86DB6DBB20E82E17C6130F47EEBE70CE9CC75415AFF16CA4650DA6A7770571C7",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_elf_interpreter_source.hpp"
+  },
+  {
+    "path": "source/linux_held_file.hpp",
+    "bytes": 13922,
+    "sha256": "9EDF717808D5BD60DE2AD517657D1B8420C909640FAC73832BBA69AA832CAF95",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_held_file.hpp"
+  },
+  {
+    "path": "source/linux_host_channel.hpp",
+    "bytes": 8690,
+    "sha256": "6DC370E18E9F467462DA341941672A3DE023494D7A7BB7675AC439972E186478",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_host_channel.hpp"
+  },
+  {
+    "path": "source/linux_host_final_output.hpp",
+    "bytes": 10135,
+    "sha256": "C0177C32FBA114F90B3D69A6C77D1767F6D7D72C28CB617356538C05241BFFE7",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_host_final_output.hpp"
+  },
+  {
+    "path": "source/linux_host_wait_policy.hpp",
+    "bytes": 5056,
+    "sha256": "CDB0186195849C4F0260789B66998FA3FEB146BC75FA4241761CBAC090BBF1DF",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_host_wait_policy.hpp"
+  },
+  {
+    "path": "source/linux_ingress.hpp",
+    "bytes": 13240,
+    "sha256": "3C401E00CA1ACF56D9FDC030CF2C5FDDAD990D226366E639954F10F4FEF73C8B",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_ingress.hpp"
+  },
+  {
+    "path": "source/linux_initial_objects.hpp",
+    "bytes": 8109,
+    "sha256": "2B1C282F9098109DEF79B0301EC81AFD02FAB58C645AD7D4132510E6B99D9BE6",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_initial_objects.hpp"
+  },
+  {
+    "path": "source/linux_initial_provider_archive.cpp",
+    "bytes": 513,
+    "sha256": "BC9F04EC025C96F3CE45DD033D0261105BDB156394DBFA485298BBA0BDBD4428",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_initial_provider_archive.cpp"
+  },
+  {
+    "path": "source/linux_initial_provider_archive.hpp",
+    "bytes": 15854,
+    "sha256": "2F15C28200AA08BC9A81FCD4BA9EB910C9B5BBAD63481364277AD9912791B931",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_initial_provider_archive.hpp"
+  },
+  {
+    "path": "source/linux_initial_provider_process_association.hpp",
+    "bytes": 14483,
+    "sha256": "153563203A6056ABC8EFE09C5103F4F9A4E154BFB5FEF03614EA41DEC1654A64",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_initial_provider_process_association.hpp"
+  },
+  {
+    "path": "source/linux_lifecycle.cpp",
+    "bytes": 67755,
+    "sha256": "000179DD1BE5F0D03326F55B575A3FD5F357667953F66CB43A5D7676D18DDF21",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_lifecycle.cpp"
+  },
+  {
+    "path": "source/linux_main_receipt.hpp",
+    "bytes": 12184,
+    "sha256": "698244550BB5F590F38556C04C67A9B331768424F9DCC91199B19CF96F2DD6CC",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_main_receipt.hpp"
+  },
+  {
+    "path": "source/linux_memory_regression_receipt.hpp",
+    "bytes": 926,
+    "sha256": "65EB8C1B54F7D5FF272D2BB79B940BCF1BB4C61FD51044C60B0A0C84BF120E20",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_memory_regression_receipt.hpp"
+  },
+  {
+    "path": "source/linux_memory_regression.cpp",
+    "bytes": 16741,
+    "sha256": "C9B11617D28F387CE4610726155FAAFAE37C772BE33E554C03A0EE987E753745",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_memory_regression.cpp"
+  },
+  {
+    "path": "source/linux_memory.hpp",
+    "bytes": 20973,
+    "sha256": "C9B262712168488907333B587E82FE47E7FBDDEB1DB41F59C33D8862AA75A6CF",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_memory.hpp"
+  },
+  {
+    "path": "source/linux_native_sink_regression.cpp",
+    "bytes": 1459,
+    "sha256": "62CCF6803A1599810F6415CCFCE30B9FB1BDE5AB22464879989320AEDD59992C",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_native_sink_regression.cpp"
+  },
+  {
+    "path": "source/linux_native_sink.hpp",
+    "bytes": 18266,
+    "sha256": "9C1F049EBC1FAD6A41CC458118177FB2AA3AA3CFF9D1A77E94298900AD5CD286",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_native_sink.hpp"
+  },
+  {
+    "path": "source/linux_original_deadline.hpp",
+    "bytes": 4785,
+    "sha256": "352E2CD9F75FD84CAC5EFA69C4EF168687EB6723E34600D11BE51A83FF60B1F2",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_original_deadline.hpp"
+  },
+  {
+    "path": "source/linux_original_entry.cpp",
+    "bytes": 12750,
+    "sha256": "28AABEC5C4BFD15FC57E52AC5CAED883FE0C61294358310EAC983107E4F48F4D",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_original_entry.cpp"
+  },
+  {
+    "path": "source/linux_original_eof_stdin.hpp",
+    "bytes": 4175,
+    "sha256": "7151BC740141C7344D1B4B6E47B0C40DB0C41F4D91B7771D31DC2FF9C73D7D09",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_original_eof_stdin.hpp"
+  },
+  {
+    "path": "source/linux_original_interpreter.hpp",
+    "bytes": 7978,
+    "sha256": "4F5B099AC7FF2D71B213267CF3937B76FB68AB69E33E35E91C97C5BF12A77421",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_original_interpreter.hpp"
+  },
+  {
+    "path": "source/linux_original_invocation.hpp",
+    "bytes": 1740,
+    "sha256": "29B7F53B8548B527A2B171D2FF8807765245024441D086BE6F92AAA972FC29AA",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_original_invocation.hpp"
+  },
+  {
+    "path": "source/linux_original_main.hpp",
+    "bytes": 14648,
+    "sha256": "F15B95CBF97B8A814336E2B5F1310FC6A2EF9AB7AF82F681B26023E90AE7B194",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_original_main.hpp"
+  },
+  {
+    "path": "source/linux_original_route_arguments.hpp",
+    "bytes": 13927,
+    "sha256": "B35E95939D7002641596989EB6081AB5BE033622D2B4E46A2AE5CB08F2705913",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_original_route_arguments.hpp"
+  },
+  {
+    "path": "source/linux_original_route_producer.hpp",
+    "bytes": 3539,
+    "sha256": "1D8571DDE01AD8BCE8F30435CB2A6D282A4D2705E2BCF7B7904C84BEC6F8391D",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_original_route_producer.hpp"
+  },
+  {
+    "path": "source/linux_owned_barrier_regression.cpp",
+    "bytes": 2274,
+    "sha256": "3999222AE0C91D5EE0211D5D88679729003980D6AA20771A3DE73B7F6D1EF204",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_owned_barrier_regression.cpp"
+  },
+  {
+    "path": "source/linux_partial_syscall_regression.cpp",
+    "bytes": 2949,
+    "sha256": "31BF1E5369531D7F253AC2B09C05A2CBB666DC5146F4E79F2942D8471718B324",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_partial_syscall_regression.cpp"
+  },
+  {
+    "path": "source/linux_pending_host_preown_regression.cpp",
+    "bytes": 18625,
+    "sha256": "DA675D9BDEAC8CF5AD5A3CD6CB66DDB0263A51259F55DB6A1CB66F5E444884C3",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_pending_host_preown_regression.cpp"
+  },
+  {
+    "path": "source/linux_pending_host.hpp",
+    "bytes": 15380,
+    "sha256": "F27212E2DCE0B958AFCEBC1023C08028588B5DF9718AAB39D05DD368D037F472",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_pending_host.hpp"
+  },
+  {
+    "path": "source/linux_pending_input_owner.hpp",
+    "bytes": 10522,
+    "sha256": "6079B99C73A96CBF4297155D7147A006005F4DEEC4302DD72C89C2CB13C2266B",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_pending_input_owner.hpp"
+  },
+  {
+    "path": "source/linux_pending_notice_regression.cpp",
+    "bytes": 2267,
+    "sha256": "42F2A7007DB120D9B5A9C42FE23303C949864065DFC85F39B8285B6C60F45085",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_pending_notice_regression.cpp"
+  },
+  {
+    "path": "source/linux_pidfd_identity.hpp",
+    "bytes": 11890,
+    "sha256": "F57772D9141A5F3D3BB27E5BF58272CB7A9C9025A1433C30772A1F852932F801",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_pidfd_identity.hpp"
+  },
+  {
+    "path": "source/linux_prebirth_retention_policy.hpp",
+    "bytes": 19548,
+    "sha256": "FA70A7976460F6B461DE6A0D888B2EF3AC46F29AD815CAAC94ED8A59B1AB3578",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_prebirth_retention_policy.hpp"
+  },
+  {
+    "path": "source/linux_private_candidate_file.hpp",
+    "bytes": 9845,
+    "sha256": "64D074171BB1215E35123C1C2F10FF4AEBD058DCEC8D1546A21634E3C1C64C56",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_private_candidate_file.hpp"
+  },
+  {
+    "path": "source/linux_private_candidate_regression.cpp",
+    "bytes": 1879,
+    "sha256": "21EFA5B0189F3086A84728E0088A575A34BFE97409B9BD84ADE20A42848ABA9C",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_private_candidate_regression.cpp"
+  },
+  {
+    "path": "source/linux_private_lease_owner.hpp",
+    "bytes": 30205,
+    "sha256": "1AC8FAA33DFBEF074DB4151D5AE130E22D30084D9CB3B175C31BB13B431D2FBF",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_private_lease_owner.hpp"
+  },
+  {
+    "path": "source/linux_private_selection_decoder.hpp",
+    "bytes": 18239,
+    "sha256": "E167D7AC2D066F3FB97AB9EB8E8B09AA9E88DF0C363907AE097071E98F979D6E",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_private_selection_decoder.hpp"
+  },
+  {
+    "path": "source/linux_private_selection_startup.hpp",
+    "bytes": 51544,
+    "sha256": "F8EA8D6E1DA6C3A04ABED4CA1EE2E4248D42DE1535C7E1AC40B603996CB1AC3F",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_private_selection_startup.hpp"
+  },
+  {
+    "path": "source/linux_private_verity_regression.cpp",
+    "bytes": 2241,
+    "sha256": "EC0B28FF7E656AD5458FE5622277196052961DF552636B855510AFD4F04766C1",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_private_verity_regression.cpp"
+  },
+  {
+    "path": "source/linux_private_verity.hpp",
+    "bytes": 6464,
+    "sha256": "6DCCFD89DFCAFC03EE610383E3E3A6B6218FABEED9DC7BF79D86E205F20464E9",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_private_verity.hpp"
+  },
+  {
+    "path": "source/linux_receipt_destination_codec.hpp",
+    "bytes": 21170,
+    "sha256": "C6DEC62E0C6401781A3CE3EACD3C4CEC64E65450221FC07EC1110DBB41A4DD13",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_receipt_destination_codec.hpp"
+  },
+  {
+    "path": "source/linux_receipt_destination_layout.hpp",
+    "bytes": 12140,
+    "sha256": "748F193A4C86D9A54DDA4D256E403D59106B137AC77C7ADE4D57BB64455C32F0",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_receipt_destination_layout.hpp"
+  },
+  {
+    "path": "source/linux_receipt_foundation_geometry_regression.cpp",
+    "bytes": 14440,
+    "sha256": "300D8ACCE661E3A6F8F9BF30A41A13F6CE168AAFDF58E4DA0C09BDD30ABB1669",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_receipt_foundation_geometry_regression.cpp"
+  },
+  {
+    "path": "source/linux_receipt_foundation_geometry.hpp",
+    "bytes": 6537,
+    "sha256": "DF4B8280016E75E5400F612AE6731A27419310689A465C2499E5D4E319B71740",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_receipt_foundation_geometry.hpp"
+  },
+  {
+    "path": "source/linux_receipt_foundation_pair.hpp",
+    "bytes": 7603,
+    "sha256": "42D3CE634A3C1C3E1383BA29A49CFA847CC85CFDADDEF0E2EB4F59D50B1F4C79",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_receipt_foundation_pair.hpp"
+  },
+  {
+    "path": "source/linux_receipt_native_envelope.hpp",
+    "bytes": 9766,
+    "sha256": "204297A93D321C2E05460716D1D81D20267441611A29F2262BAD0D3ECC6EA18B",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_receipt_native_envelope.hpp"
+  },
+  {
+    "path": "source/linux_receipt_native_storage_plan.hpp",
+    "bytes": 4911,
+    "sha256": "415906A5D49C20279A1A957F64CE1DD272C15561E1C3EC4AF77A9C22F3D735D8",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_receipt_native_storage_plan.hpp"
+  },
+  {
+    "path": "source/linux_received_source_unit_range.hpp",
+    "bytes": 10952,
+    "sha256": "055F2A9C3D64F100CE5DF0CB8421ECE9C86D2449215D1D44616CEEF87FC8BDD8",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_received_source_unit_range.hpp"
+  },
+  {
+    "path": "source/linux_received_source_unit_regression.cpp",
+    "bytes": 1850,
+    "sha256": "4BCF95BE22238A9F2A55D2E8B5A6611D85E8F38235476F39B90178479D6A94BE",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_received_source_unit_regression.cpp"
+  },
+  {
+    "path": "source/linux_received_source_unit.hpp",
+    "bytes": 14554,
+    "sha256": "73C3C3B6F507CAE1247AAF05F59AB5F40B55EE303C4DB1CA21421BB58B44CDA9",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_received_source_unit.hpp"
+  },
+  {
+    "path": "source/linux_received_subject_readback.hpp",
+    "bytes": 15839,
+    "sha256": "1412E57B722701FC1571A8AD77B478690986A0A7C4C12BD4E1EF7456BA8F449D",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_received_subject_readback.hpp"
+  },
+  {
+    "path": "source/linux_selection_startup_regression.cpp",
+    "bytes": 2136,
+    "sha256": "4A763A6AA36D93D7886FB44BFB7189EC5BA189F8265C42DB62F5F55EE9E809B1",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_selection_startup_regression.cpp"
+  },
+  {
+    "path": "source/linux_session_commands.hpp",
+    "bytes": 10476,
+    "sha256": "ECEC19222D5E07CDBC47FC3A958730C26189F3E1B4BE66F99CD63E3DDE90196C",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_session_commands.hpp"
+  },
+  {
+    "path": "source/linux_session_gate.hpp",
+    "bytes": 95276,
+    "sha256": "46844F045492FB3B703B4E79E91D6C29A58F0F07A6B79C9BDE2B364EFA9A6A12",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_session_gate.hpp"
+  },
+  {
+    "path": "source/linux_sink_collector.hpp",
+    "bytes": 14871,
+    "sha256": "2971F14928B588AE372B4CACF3998B00950D1B10901BC8931B7CD73F05FA144A",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_sink_collector.hpp"
+  },
+  {
+    "path": "source/linux_source_occurrence_preflight.hpp",
+    "bytes": 8260,
+    "sha256": "5B7B5EE7DBC7C1516C2FBCE9D19C61FBB1027686016417C299BC17236EBB86D3",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_source_occurrence_preflight.hpp"
+  },
+  {
+    "path": "source/linux_standalone_host.hpp",
+    "bytes": 3859,
+    "sha256": "40CCB5612AE32D63CE3C38D6EA8F13CC32FB38D2461D515214815F530927B92F",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_standalone_host.hpp"
+  },
+  {
+    "path": "source/linux_task_identity.hpp",
+    "bytes": 27073,
+    "sha256": "D29B73C5458558501CA188361020031D3FCBAE8350461EE7367A8077971B8302",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_task_identity.hpp"
+  },
+  {
+    "path": "source/linux_unit_payload_archive.hpp",
+    "bytes": 24803,
+    "sha256": "B956D9B8B6D69D79302E745285328F1198BCF715626FC03AD16D28308A16CE7E",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_unit_payload_archive.hpp"
+  },
+  {
+    "path": "source/linux_upstream_subject_receiver_regression.cpp",
+    "bytes": 14668,
+    "sha256": "0EF1E93F91D4C4D1A8DD78A9B5B2CBB3342CB1C3DB8633C384F0DF1D6620ACFC",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_upstream_subject_receiver_regression.cpp"
+  },
+  {
+    "path": "source/linux_upstream_subject_receiver.hpp",
+    "bytes": 28103,
+    "sha256": "B8454548E0AC674B8537F47F8C15FBF3F53AC8DD1D1B47AACC4AAC186B9BC86F",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\linux_upstream_subject_receiver.hpp"
+  },
+  {
+    "path": "source/native_command_plan.hpp",
+    "bytes": 6041,
+    "sha256": "A04EBE612D929BE5FE41E18D285E825DFA869CB7FECD198BC4C34F35481902E0",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_command_plan.hpp"
+  },
+  {
+    "path": "source/native_creator_held_inputs_regression.cpp",
+    "bytes": 3029,
+    "sha256": "CCB0C8F028CC790637EE1149BDB0531C6D471E03801A6CB93C47AEEF94AED63B",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_creator_held_inputs_regression.cpp"
+  },
+  {
+    "path": "source/native_creator_held_inputs_regression.hpp",
+    "bytes": 660,
+    "sha256": "01925A8CF9296DB1DC0494B1AC9A1214BA81665834B172D6494433DA2ACEE879",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_creator_held_inputs_regression.hpp"
+  },
+  {
+    "path": "source/native_creator_held_inputs.hpp",
+    "bytes": 3274,
+    "sha256": "CF6BD2016DE2A29B92B13B5BE0808B975027CEC451B1CB239F8EFB91D2269E77",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_creator_held_inputs.hpp"
+  },
+  {
+    "path": "source/native_dispatch_roster.cpp",
+    "bytes": 6358,
+    "sha256": "7C701D099999C5C3D1240F7AC7624E0F62D65B1EAB5DD112F5972007C10F827F",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_dispatch_roster.cpp"
+  },
+  {
+    "path": "source/native_host_creator_invocation.cpp",
+    "bytes": 2646,
+    "sha256": "83A9F35FB87F61AC08C0B7A110EEE9DC8450594FEEB681189174639854EC488A",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_host_creator_invocation.cpp"
+  },
+  {
+    "path": "source/native_linux_closure.cpp",
+    "bytes": 1480,
+    "sha256": "8C6CFA4D2BBBD5D32E82816FA4378476E0EAAE699B93A9527ED9BEBFF62CE82D",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_linux_closure.cpp"
+  },
+  {
+    "path": "source/native_linux_command_plan.hpp",
+    "bytes": 7667,
+    "sha256": "8028CC9DCEA8B73ADF5EA7C2B238027E2C35AB4B90054D8AFA040533F3363471",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_linux_command_plan.hpp"
+  },
+  {
+    "path": "source/native_linux_creator_capture.cpp",
+    "bytes": 6644,
+    "sha256": "92E650EC2551A2F403EE6D68FD8D50A45210C300594AFB11DA266D98C5919D4D",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_linux_creator_capture.cpp"
+  },
+  {
+    "path": "source/native_linux_dispatch.cpp",
+    "bytes": 3662,
+    "sha256": "DCB641C94207820E67E30C7CF03A3399149D285EC223F9289A559F806465F285",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_linux_dispatch.cpp"
+  },
+  {
+    "path": "source/native_linux_factory.cpp",
+    "bytes": 6336,
+    "sha256": "87AE47973718BB6D44EDF94964A1CE1A2461CF6F169E6D8F1F601D9704F7066E",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_linux_factory.cpp"
+  },
+  {
+    "path": "source/native_linux_final_publication.cpp",
+    "bytes": 35100,
+    "sha256": "0462A646C1D3FB254AC6218C8F1977E5A71DEF4BD6472CDCFFDD99A7AC2CA0F7",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_linux_final_publication.cpp"
+  },
+  {
+    "path": "source/native_linux_host_closure.cpp",
+    "bytes": 3400,
+    "sha256": "D8074DD00C69BDFDA55322A04B53624C52D6B5F352B9B5C9EF8B81D3C30A0A05",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_linux_host_closure.cpp"
+  },
+  {
+    "path": "source/native_linux_host_disposal.cpp",
+    "bytes": 10113,
+    "sha256": "3F1E6E5B017733B465BC0FA8AA3A035A79663931FDA2C9775FEEECBF3A69EF5E",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_linux_host_disposal.cpp"
+  },
+  {
+    "path": "source/native_linux_input_bindings.cpp",
+    "bytes": 36572,
+    "sha256": "C0BB238AE73908CBF9E6F8F8B390F33B797E1A2DA47AADE5472C87A4FBF0D749",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_linux_input_bindings.cpp"
+  },
+  {
+    "path": "source/native_linux_input_disposal.cpp",
+    "bytes": 4298,
+    "sha256": "B9533A731C62FA231A5717AFC3D3D35700E1F3C414B94B96F8A44FBDCD51FDCF",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_linux_input_disposal.cpp"
+  },
+  {
+    "path": "source/native_linux_original_invocation.cpp",
+    "bytes": 4309,
+    "sha256": "DEC91682D4D7BFB1D5C6C27BD549760A98FA1DD5EFC80CD4EF06CB2BCAC2F57D",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_linux_original_invocation.cpp"
+  },
+  {
+    "path": "source/native_linux_platform.hpp",
+    "bytes": 18320,
+    "sha256": "C04C40939FFB4782B9B947175C1449D3C4A74961260D362BD6793972B5CA910C",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_linux_platform.hpp"
+  },
+  {
+    "path": "source/native_linux_route_bindings.cpp",
+    "bytes": 17494,
+    "sha256": "BD1459E77F6525ACB42EB4E91E8ECEECDCA442D7E2F6C19EE9999BBB84BC6A63",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_linux_route_bindings.cpp"
+  },
+  {
+    "path": "source/native_linux_standalone_host.cpp",
+    "bytes": 6157,
+    "sha256": "6670D0B51E90526D787D93C44812ABC3743200B87BB9C9DD1828362545B81BC7",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_linux_standalone_host.cpp"
+  },
+  {
+    "path": "source/native_session_core.hpp",
+    "bytes": 6861,
+    "sha256": "20421C4EA4F7CB4A0A4E0F4F0B446BB551A982BB11A6626CFE4F8B6201BAE654",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_session_core.hpp"
+  },
+  {
+    "path": "source/native_session_module.cpp",
+    "bytes": 6603,
+    "sha256": "E6BA02BF083AF842BE0FB311A8D87B77A85B229CD833B0AE6A5DAFE6C41ED228",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_session_module.cpp"
+  },
+  {
+    "path": "source/native_session_registry.hpp",
+    "bytes": 4854,
+    "sha256": "4014598EE1F9A2999167152008441FD65A2F6EA3D155897EF131466BDC1C9BCE",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_session_registry.hpp"
+  },
+  {
+    "path": "source/native_session.py",
+    "bytes": 4148,
+    "sha256": "10DBFD2B3CFE5C5FD8AAC8B108761E853A38D2BE3A61AF0F1B3F132FB60BF39D",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_session.py"
+  },
+  {
+    "path": "source/native_windows_accounting.cpp",
+    "bytes": 1936,
+    "sha256": "5B7D13D15C4CDE0423C948864CABCB1985CB691D06F7FB12127F8617458F1317",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_windows_accounting.cpp"
+  },
+  {
+    "path": "source/native_windows_closure.cpp",
+    "bytes": 2577,
+    "sha256": "7A5685C93C4E1A70BB59D2899607A3A4538E31401A486F72DC2C8599F90C1E7B",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_windows_closure.cpp"
+  },
+  {
+    "path": "source/native_windows_collector.cpp",
+    "bytes": 2028,
+    "sha256": "D390621787C1912E17C42C74DFD3703E752EDDA33CFFA7F367E0659A51D46B2F",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_windows_collector.cpp"
+  },
+  {
+    "path": "source/native_windows_command_capture.cpp",
+    "bytes": 18679,
+    "sha256": "A3D5C4D52A60036C7677852465EA09480329A21B995AB312D7C7CCD750AE4E04",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_windows_command_capture.cpp"
+  },
+  {
+    "path": "source/native_windows_creator_capture.cpp",
+    "bytes": 3537,
+    "sha256": "9C96A42454C64BDB34F37A9AD8E186BBFD2C39C5BCED52D9819AAEC6C20B396D",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_windows_creator_capture.cpp"
+  },
+  {
+    "path": "source/native_windows_dispatch.cpp",
+    "bytes": 3843,
+    "sha256": "909A1F23D667079D1F3A6F673728DAF8C67D7ECE599FA1347B1CC9A01C0B1380",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_windows_dispatch.cpp"
+  },
+  {
+    "path": "source/native_windows_disposal.cpp",
+    "bytes": 2226,
+    "sha256": "87F6F18F4087ED8F0576EFEC4B7586FE7EDB702ABC77E4F7FDF56A811FD0AEFC",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_windows_disposal.cpp"
+  },
+  {
+    "path": "source/native_windows_factory.cpp",
+    "bytes": 3376,
+    "sha256": "C31CFBDD86E6ACD21E684DB58C7EEA9D10840637EA7D301CB120A8DC4860341A",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_windows_factory.cpp"
+  },
+  {
+    "path": "source/native_windows_host_closure.cpp",
+    "bytes": 2495,
+    "sha256": "A8B14906973DDC46325EF7390AEF7246BA7ADE7B81B3F26832BB0F6E961EDCF5",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_windows_host_closure.cpp"
+  },
+  {
+    "path": "source/native_windows_host_entry.cpp",
+    "bytes": 2736,
+    "sha256": "6D5438EFE05395AECBCAA44DF62638C6A0C9D38AB557D21A1FD2D46BDFFC76BE",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_windows_host_entry.cpp"
+  },
+  {
+    "path": "source/native_windows_host_progress.cpp",
+    "bytes": 6066,
+    "sha256": "1F5EC5F81CEE3A1E77312C5BB15B2FDD7A9C3B6882BDC7506344461703E67463",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_windows_host_progress.cpp"
+  },
+  {
+    "path": "source/native_windows_host_publication.cpp",
+    "bytes": 25701,
+    "sha256": "D179205EB291A969808097DC5AADADF353F738F7BD8B4B92F0200EFD006C0CA9",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_windows_host_publication.cpp"
+  },
+  {
+    "path": "source/native_windows_input_bindings.cpp",
+    "bytes": 12563,
+    "sha256": "1269FA88D3C9E24695B5DF34B909CE598D0A9A98B99FD66E9AAFDA2277FFF27C",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_windows_input_bindings.cpp"
+  },
+  {
+    "path": "source/native_windows_input_disposal.cpp",
+    "bytes": 2059,
+    "sha256": "CF656613EE2AD85F02197FB0ACC696ADAFE19322210069BAD41918D7BFC40303",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_windows_input_disposal.cpp"
+  },
+  {
+    "path": "source/native_windows_launch_associations.cpp",
+    "bytes": 5459,
+    "sha256": "115B9337E5BC31377606E75BC407E3E5DFE476B57E5C8A1509ECE94AD7C356E0",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_windows_launch_associations.cpp"
+  },
+  {
+    "path": "source/native_windows_platform.hpp",
+    "bytes": 7007,
+    "sha256": "E62F4FFAC701C66158312736A1495468827FDD6DD63FF03675D7F79C971076B3",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_windows_platform.hpp"
+  },
+  {
+    "path": "source/native_windows_route_bindings.cpp",
+    "bytes": 5642,
+    "sha256": "F785F4483FB65BC863D9CD09C7C3DC724DBEB155ABC3C6F81343CD4837384555",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_windows_route_bindings.cpp"
+  },
+  {
+    "path": "source/native_windows_source_binding.cpp",
+    "bytes": 3053,
+    "sha256": "E81B65036EDDC81BF1A30A7350238E1F20AD5D79A94C877D85E1B5E90A4EF445",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\native_windows_source_binding.cpp"
+  },
+  {
+    "path": "source/observation_schedule.py",
+    "bytes": 4103,
+    "sha256": "15E8BA87B039F8C4DC880A52AB148D9A4E7CD64AD723639D5E56D3C5D54DC11C",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\observation_schedule.py"
+  },
+  {
+    "path": "source/original_git_object_sha1_regression.cpp",
+    "bytes": 3440,
+    "sha256": "AD6F8E41F030AF224DA82DB5C1B9F68573139F8D5374E265B186E31CDF5287B4",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\original_git_object_sha1_regression.cpp"
+  },
+  {
+    "path": "source/original_git_object_sha1.hpp",
+    "bytes": 2765,
+    "sha256": "5E6F91722ED1B2EC8BDEC4C879B52C30BB2E98DA7BA3FF5E0CC860BBAD69662B",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\original_git_object_sha1.hpp"
+  },
+  {
+    "path": "source/original_sha256_regression.cpp",
+    "bytes": 1837,
+    "sha256": "62E5C9F2D69DC03006F2BA36A52A7E365E601034E2AC09C8725658685DE6DAD0",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\original_sha256_regression.cpp"
+  },
+  {
+    "path": "source/original_sha256.hpp",
+    "bytes": 4120,
+    "sha256": "52B2721E68E76F53BDABBC532B309D961BFFF2CCD2F3E02EDCD2FBCF25751F82",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\original_sha256.hpp"
+  },
+  {
+    "path": "source/private_selection_encoder.py",
+    "bytes": 15865,
+    "sha256": "A06F51781819286F0A81F4DD533B9D4B6087F3A95488DABCB357693ACCEED952",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\private_selection_encoder.py"
+  },
+  {
+    "path": "source/private_sink.py",
+    "bytes": 8313,
+    "sha256": "46668FA0405939122D98287891A2EBF3F444297C0919B408AEA5DE9C48FB9C0C",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\private_sink.py"
+  },
+  {
+    "path": "source/selected_route_contract_test.py",
+    "bytes": 2112,
+    "sha256": "4AE8C79481FA80B171B639C45C7AE7EC899FEDBCBE957D0EC1C9DCFA53B118A0",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\selected_route_contract_test.py"
+  },
+  {
+    "path": "source/selected_route.py",
+    "bytes": 3469,
+    "sha256": "384692AB404CE9C579DA8AE901B8D0C17ECEF8F93B84135B9B1711C5A00C3A26",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\selected_route.py"
+  },
+  {
+    "path": "source/sink_schedule_contract_test.py",
+    "bytes": 5344,
+    "sha256": "66CE3DDEB5A7CC98751857F7D42106C4871F32680F97F31049CBA331E39B7E09",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\sink_schedule_contract_test.py"
+  },
+  {
+    "path": "source/windows_alias_code_guard.hpp",
+    "bytes": 12569,
+    "sha256": "091E2CFB6D1D7C5BFE375B2594DEEDFFF5D279157B07A8068B29845C4A90BC3F",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_alias_code_guard.hpp"
+  },
+  {
+    "path": "source/windows_alias_selector_regression.cpp",
+    "bytes": 2123,
+    "sha256": "5134C39088717BBA2D005553CB1CBB94032DC85E50DB00D861916B68860BCF71",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_alias_selector_regression.cpp"
+  },
+  {
+    "path": "source/windows_amd64_boundary_regression.cpp",
+    "bytes": 3177,
+    "sha256": "CDFCACF9EE6F31E404A5924B1319DE9454E458DD53E2CAE9BC61B456167A65DD",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_amd64_boundary_regression.cpp"
+  },
+  {
+    "path": "source/windows_amd64_caller_boundary.hpp",
+    "bytes": 17728,
+    "sha256": "FF879416761EB6EF7C8854FA2E8B29234025D29CAA47DCCEA1DF8DD4ADEE269F",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_amd64_caller_boundary.hpp"
+  },
+  {
+    "path": "source/windows_captured_copy.hpp",
+    "bytes": 2049,
+    "sha256": "7E8A7B0C96B97F629FEE63991773CC588E94E0D09F53CB1F6F7095B747B05DC6",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_captured_copy.hpp"
+  },
+  {
+    "path": "source/windows_chain_regression_receipt.hpp",
+    "bytes": 481,
+    "sha256": "B66966A919753305387D14D50BCD3E286493C7F6928FE56313DE112BC2C4FDD3",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_chain_regression_receipt.hpp"
+  },
+  {
+    "path": "source/windows_chain_transition_regression.cpp",
+    "bytes": 5679,
+    "sha256": "38117F93D44049A73A7FDBCAEEB27061614A028303BDA2BB0E325177242F5405",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_chain_transition_regression.cpp"
+  },
+  {
+    "path": "source/windows_codeview_observation.hpp",
+    "bytes": 4154,
+    "sha256": "2FB7E0E101108EC7748FB6F343B556CE745F734463D8BBCBE61EC9BE25246967",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_codeview_observation.hpp"
+  },
+  {
+    "path": "source/windows_command_line_observation.hpp",
+    "bytes": 12690,
+    "sha256": "92DAD94A44F9506364DAB83AFDD6B97D4761C499FD3C73A4B67FD9C840832BB4",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_command_line_observation.hpp"
+  },
+  {
+    "path": "source/windows_command_route.hpp",
+    "bytes": 8934,
+    "sha256": "8A243861C4087C19C3FD213DDB191D00F2A90DF2DB0FE0C22E6E888D0BC3ABC4",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_command_route.hpp"
+  },
+  {
+    "path": "source/windows_compiler_range_observation.hpp",
+    "bytes": 25327,
+    "sha256": "AD338AE75A69898A48CF26E4A980C981E770E07E45D4A381B3BC043601990DF6",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_compiler_range_observation.hpp"
+  },
+  {
+    "path": "source/windows_copied_source_capture.hpp",
+    "bytes": 3759,
+    "sha256": "8A3BDC64BF9ABD2F791035580401009C78EA13AA484B477A8E3ED77210D74D40",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_copied_source_capture.hpp"
+  },
+  {
+    "path": "source/windows_coreclr_caller_target.hpp",
+    "bytes": 15302,
+    "sha256": "F926156B8FB4CE4C3FA7AEC2E27FBB26D47E4F3D9BEDEC397155AEBD76297FBE",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_coreclr_caller_target.hpp"
+  },
+  {
+    "path": "source/windows_coreclr_compiled_geometry.hpp",
+    "bytes": 12203,
+    "sha256": "4FAE921F8F82807D1450BEB4FAB13DA37C00B34CF46903893E8F9A2CCC086034",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_coreclr_compiled_geometry.hpp"
+  },
+  {
+    "path": "source/windows_coreclr_context_change.hpp",
+    "bytes": 13973,
+    "sha256": "3381E75B698B8887495C977A661D1D92B8307FF8BA23D39AE30BC6D5E8BAB9B9",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_coreclr_context_change.hpp"
+  },
+  {
+    "path": "source/windows_coreclr_controller_custody.hpp",
+    "bytes": 20480,
+    "sha256": "CD197DE053CE8A9A865863598F2FE6B87B0AFBF3A5B933EDDC065BBF60BDF2BA",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_coreclr_controller_custody.hpp"
+  },
+  {
+    "path": "source/windows_coreclr_debug_cause.hpp",
+    "bytes": 3568,
+    "sha256": "5ACE76814465DDEFFACCA01115B952FE11654582A1798C2CDB1F4EAA775B009F",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_coreclr_debug_cause.hpp"
+  },
+  {
+    "path": "source/windows_coreclr_entry_inputs.hpp",
+    "bytes": 14237,
+    "sha256": "1F026CF563053CEC30F85B7F00819B84181DF76393B5666538E2446CF855443E",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_coreclr_entry_inputs.hpp"
+  },
+  {
+    "path": "source/windows_coreclr_entry_properties.hpp",
+    "bytes": 3674,
+    "sha256": "D806A0C59F60CBCE9DAA38E37E807A808E67BFCE26B6F2C29C5FF50E129F252A",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_coreclr_entry_properties.hpp"
+  },
+  {
+    "path": "source/windows_coreclr_export.hpp",
+    "bytes": 7609,
+    "sha256": "183F2FF00D0EF3558F65BDEFFC38A4FA6DAF96081C31FAE343C6A3379B476332",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_coreclr_export.hpp"
+  },
+  {
+    "path": "source/windows_coreclr_instruction_step.hpp",
+    "bytes": 12093,
+    "sha256": "3F6ACB91290421196B56F1B7F47D429050C9D397E3567E193BA8FCDBAF5E04F0",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_coreclr_instruction_step.hpp"
+  },
+  {
+    "path": "source/windows_coreclr_thread_context.hpp",
+    "bytes": 2645,
+    "sha256": "6A1AAB8F1E1EE58FCA84C541A9F827D7B9C63536E13FB3B844893AA96010B7FB",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_coreclr_thread_context.hpp"
+  },
+  {
+    "path": "source/windows_coreclr_writer_bootstrap.hpp",
+    "bytes": 5919,
+    "sha256": "EA4B6DF9550BCAB86258816F5F988437E5F6FDC660DD98E99EEF3D3CFC5F5D84",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_coreclr_writer_bootstrap.hpp"
+  },
+  {
+    "path": "source/windows_creator_held_inputs_regression.cpp",
+    "bytes": 1282,
+    "sha256": "6A9501524917DAA5F4A978DDC6BFE574F627C51D99D6D664EBD37835A1E78C90",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_creator_held_inputs_regression.cpp"
+  },
+  {
+    "path": "source/windows_crt_argument_projection.hpp",
+    "bytes": 4262,
+    "sha256": "F45F830B88DACE329BC4A9962C498AA5E8CACC5CAC66404034E19D1020744F70",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_crt_argument_projection.hpp"
+  },
+  {
+    "path": "source/windows_crt_projection_regression.cpp",
+    "bytes": 3584,
+    "sha256": "ECDCA7C12F785751AAE99584237654FE1EA2E1BC78905FF95E913A6F005B30AF",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_crt_projection_regression.cpp"
+  },
+  {
+    "path": "source/windows_driver.hpp",
+    "bytes": 3875,
+    "sha256": "5E6A950F93A9E5D27ED3EDC8C89028A98BA8477720D5C14BA18E2A8F01C3EFB6",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_driver.hpp"
+  },
+  {
+    "path": "source/windows_fixed_stub_regression.hpp",
+    "bytes": 2293,
+    "sha256": "2F94E61BA725F18518D2C36D246B319B0A091D0C8C27358DB5022E5F6FD00E28",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_fixed_stub_regression.hpp"
+  },
+  {
+    "path": "source/windows_fixture_name_hold.hpp",
+    "bytes": 4002,
+    "sha256": "E58B5F9A5D98C46ED77AE6E2DDC357D6E398F555A5504BF657773C6BDA2ED159",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_fixture_name_hold.hpp"
+  },
+  {
+    "path": "source/windows_fixture_relative_file.hpp",
+    "bytes": 9006,
+    "sha256": "4924BABEAC39C5AF2EA6798D243B23569611E7EAAC90D8BC737AE04AB67501C1",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_fixture_relative_file.hpp"
+  },
+  {
+    "path": "source/windows_framework_list_source_regression.cpp",
+    "bytes": 5491,
+    "sha256": "210BD55AA9239BD7F8CF8C50F080B0A403550700B8B2EAE4445662206D15EFE8",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_framework_list_source_regression.cpp"
+  },
+  {
+    "path": "source/windows_framework_list_source.hpp",
+    "bytes": 8950,
+    "sha256": "806021DA30572051909E30D4A20DAA19CE1C10C47750AFEEE02D556F5B5BAD8B",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_framework_list_source.hpp"
+  },
+  {
+    "path": "source/windows_framework_native_directory.hpp",
+    "bytes": 7392,
+    "sha256": "050A38F58917818FFA67C8F4F939CAD0D61211537F0684B5B6F81BAE932F5CE6",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_framework_native_directory.hpp"
+  },
+  {
+    "path": "source/windows_framework_resolution_source.hpp",
+    "bytes": 10815,
+    "sha256": "8B14B9DF2B73560D39F5BED369793ED2C796DDFF9CF25FCD9BD22724A897AE75",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_framework_resolution_source.hpp"
+  },
+  {
+    "path": "source/windows_framework_settings_source_regression.cpp",
+    "bytes": 4462,
+    "sha256": "DB79DCD4826B2BEC222963C942062127100EA57F27D82D5280D86534BB22C190",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_framework_settings_source_regression.cpp"
+  },
+  {
+    "path": "source/windows_framework_version_source_regression.cpp",
+    "bytes": 8835,
+    "sha256": "410ADA858D12D0FCE675A581C59FDE444F8DE941220CB7DA39D63BE15F5757A7",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_framework_version_source_regression.cpp"
+  },
+  {
+    "path": "source/windows_framework_version_source.hpp",
+    "bytes": 11950,
+    "sha256": "FE81E494EB90E28A6A6D437C4B8D6D7A8D663EC2D1EACCA60B64E755768DD0F9",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_framework_version_source.hpp"
+  },
+  {
+    "path": "source/windows_held_files.hpp",
+    "bytes": 17545,
+    "sha256": "97FA6A552FEDCF922FE45F7446F0A6A3933E5E824DDDB928E35654AA1CDBF506",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_held_files.hpp"
+  },
+  {
+    "path": "source/windows_helper_code_guard.hpp",
+    "bytes": 5865,
+    "sha256": "F76ACAD2C91827B9B40431D617C3A5A4C2E6C33803B013128A98749D63B22A21",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_helper_code_guard.hpp"
+  },
+  {
+    "path": "source/windows_helper_host_override_source_regression.cpp",
+    "bytes": 1653,
+    "sha256": "FA46300BF300AC478DEAC950E55AC5B9E94302BB691E0E40F74FE4E701AFD1E7",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_helper_host_override_source_regression.cpp"
+  },
+  {
+    "path": "source/windows_helper_projection_regression.cpp",
+    "bytes": 1767,
+    "sha256": "09E08A5C9BC2EF2875DF2CE6EF94EF1C5BC27D5B64930A06D101502CCF5160C5",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_helper_projection_regression.cpp"
+  },
+  {
+    "path": "source/windows_helper_source_projection.hpp",
+    "bytes": 2853,
+    "sha256": "7E029E251FACC63ACB709E1EE5B24B00D1EFC556B3F7DBF5FA43BBF044C67F6F",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_helper_source_projection.hpp"
+  },
+  {
+    "path": "source/windows_host_allocation_regression.cpp",
+    "bytes": 8356,
+    "sha256": "2FAAA5D0A07392532EFF7F1533F594B8B8415B77043D8D4E524289D7F7FE2917",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_host_allocation_regression.cpp"
+  },
+  {
+    "path": "source/windows_host_channel.hpp",
+    "bytes": 7607,
+    "sha256": "25BE3D29681A12A99D861D33239E52F6C3C38D9200735E46FF19AD89FAA5C11F",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_host_channel.hpp"
+  },
+  {
+    "path": "source/windows_host_entry_regression.cpp",
+    "bytes": 5686,
+    "sha256": "EFC71E31B6244CA304596441C9827866E27AAFA8DC2B4DA266BF1468CDC6A29A",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_host_entry_regression.cpp"
+  },
+  {
+    "path": "source/windows_host_final_output.hpp",
+    "bytes": 7846,
+    "sha256": "2105BE16319DD47AA358CCFACD8D61128F820DEE6ADBE5951FE0F15FD5F816B9",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_host_final_output.hpp"
+  },
+  {
+    "path": "source/windows_host_handoff.hpp",
+    "bytes": 6741,
+    "sha256": "843177E62A627F5B7E99044FDC04887DCABD69D98A043D4DC9D18A980B40B952",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_host_handoff.hpp"
+  },
+  {
+    "path": "source/windows_host_runtime_contract_observation.hpp",
+    "bytes": 6019,
+    "sha256": "7361872F0A5F0AFAADC35BE97611DAA1BC9EE8B5EEAE36D819CF685836CD3716",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_host_runtime_contract_observation.hpp"
+  },
+  {
+    "path": "source/windows_identity.hpp",
+    "bytes": 4660,
+    "sha256": "8BEAC126D84A862F645EF5EBA9A0931CC0D23E3C7A0B0D928EC30BF6020DF279",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_identity.hpp"
+  },
+  {
+    "path": "source/windows_ingress.hpp",
+    "bytes": 11042,
+    "sha256": "454AC5744D842D26010E77A6479833B4354EBA9DAB4EDFCD32F50081E77054FB",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_ingress.hpp"
+  },
+  {
+    "path": "source/windows_lifecycle.cpp",
+    "bytes": 43668,
+    "sha256": "85A8D6E1AF7041FF7683493E68890EF05C7C5E8971F06A59FC3C1646584C73AD",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_lifecycle.cpp"
+  },
+  {
+    "path": "source/windows_main_cleanup_regression.cpp",
+    "bytes": 4414,
+    "sha256": "E91BDEAA36E5E26A5ABA56E01A71353B2DB5A5745166AAE7A9B6F61C85860F01",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_main_cleanup_regression.cpp"
+  },
+  {
+    "path": "source/windows_main_receipt.hpp",
+    "bytes": 6860,
+    "sha256": "2B4AD0CFB5C66E9F9DFF0CD02C5D654F4400B798AA1DBAE2825A7D1F05130766",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_main_receipt.hpp"
+  },
+  {
+    "path": "source/windows_memory.hpp",
+    "bytes": 11780,
+    "sha256": "4AEAD8B1F02944632234AAD4B7BAE8266098A741B27B6870167A6B36B9283C16",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_memory.hpp"
+  },
+  {
+    "path": "source/windows_msf_source_owner.hpp",
+    "bytes": 58196,
+    "sha256": "4C8CDE35DEA220B2B9D0E3E8A1F6F62F12280D0367CA2913DA645855AFE1BF60",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_msf_source_owner.hpp"
+  },
+  {
+    "path": "source/windows_msf_source_regression.cpp",
+    "bytes": 23566,
+    "sha256": "900ABCEF10E2C0C8D20B44AB366A51A08899C20BC937A8A4A35352DFA09357F4",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_msf_source_regression.cpp"
+  },
+  {
+    "path": "source/windows_native_sink.hpp",
+    "bytes": 11560,
+    "sha256": "FEA1714A181A30293695C0A0CBDF11194E828FB20CAD3506ECD04D9EAB7E3042",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_native_sink.hpp"
+  },
+  {
+    "path": "source/windows_node_source_projection_regression.cpp",
+    "bytes": 2642,
+    "sha256": "095B903493CFD81D0E2117EF6F7FEE4920928FB335A1352EFF051B15A4CA638B",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_node_source_projection_regression.cpp"
+  },
+  {
+    "path": "source/windows_node_source_projection.hpp",
+    "bytes": 2481,
+    "sha256": "0F65F15C01F568BA541161407AD77D36F98AC62B4BEDDD6CFDAAF94B7DFBEEE1",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_node_source_projection.hpp"
+  },
+  {
+    "path": "source/windows_notice_owner.hpp",
+    "bytes": 12902,
+    "sha256": "3124964F2C7EF679F4B232BD10992832BF406DF386B760C10F6EBB356FB540C5",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_notice_owner.hpp"
+  },
+  {
+    "path": "source/windows_original_bootstrap.hpp",
+    "bytes": 7920,
+    "sha256": "4A9F5DFBE0FC2592E3BF3B0053ADCDE4270FA76206D3D66F63235B4B20ADDE8F",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_original_bootstrap.hpp"
+  },
+  {
+    "path": "source/windows_original_capabilities.hpp",
+    "bytes": 8463,
+    "sha256": "1CCEF24ECC4DD1CB58F443FDAA171A7439ACFBE5330F65DE71B61DE639684448",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_original_capabilities.hpp"
+  },
+  {
+    "path": "source/windows_original_entry.cpp",
+    "bytes": 7480,
+    "sha256": "F787C72C8DCEAC49CE5E8CBD62DA62C86424D800EC7806BA0A5B333B579C8E4F",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_original_entry.cpp"
+  },
+  {
+    "path": "source/windows_original_interpreter.hpp",
+    "bytes": 8389,
+    "sha256": "268E9508A46A74CA635634C2B4D62845D498A5BDF0C6D13F25D296811F68D998",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_original_interpreter.hpp"
+  },
+  {
+    "path": "source/windows_original_invocation.hpp",
+    "bytes": 14587,
+    "sha256": "88C5497D053004FDBEDA999B16CCD0275D927B58D680491E3E0B16F4DE3E1E17",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_original_invocation.hpp"
+  },
+  {
+    "path": "source/windows_original_json_regression.cpp",
+    "bytes": 7348,
+    "sha256": "D411B7F8399F47C4ADAB4CD3E4F3B90981C1CB87E015F77E0A77B03F23EFBAEE",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_original_json_regression.cpp"
+  },
+  {
+    "path": "source/windows_original_json.hpp",
+    "bytes": 17491,
+    "sha256": "71FC90E492110B0E6C726885D5D6E742B9708B51F4EE42C57A686B01B0952E5D",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_original_json.hpp"
+  },
+  {
+    "path": "source/windows_original_main.hpp",
+    "bytes": 15478,
+    "sha256": "1C159594906A954D534DA49FA11774DC50506D81CFCAB83F4A9D7641A75A3CFA",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_original_main.hpp"
+  },
+  {
+    "path": "source/windows_original_raw_member_regression.cpp",
+    "bytes": 2192,
+    "sha256": "507CD21E2E00D6C5B40E38DDDE7797D16575F48560C93E520C2FD9CD9AEDA573",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_original_raw_member_regression.cpp"
+  },
+  {
+    "path": "source/windows_original_raw_member.hpp",
+    "bytes": 11233,
+    "sha256": "39A645441CFC09AF7D5024AA66EA1CF57AB13EFF0FA09CF6FACBE83FC8C6CD55",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_original_raw_member.hpp"
+  },
+  {
+    "path": "source/windows_original_route_arguments.hpp",
+    "bytes": 13811,
+    "sha256": "6317A9C481526347243EF653CF9CB2B002CDCE8118D4978A1FFCE487742131C9",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_original_route_arguments.hpp"
+  },
+  {
+    "path": "source/windows_original_route_producer.hpp",
+    "bytes": 3546,
+    "sha256": "605DCB6CF2854F1383B632631664CA2113B323A95A06328929E0F340045ADD64",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_original_route_producer.hpp"
+  },
+  {
+    "path": "source/windows_original_zip_asset_comparison.hpp",
+    "bytes": 6600,
+    "sha256": "909082B11E3C2FDCD20B51DBD23161440EDEBE189F907C06A567E79606431415",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_original_zip_asset_comparison.hpp"
+  },
+  {
+    "path": "source/windows_original_zip_crc_regression.cpp",
+    "bytes": 727,
+    "sha256": "9E7FB255A498747639721EC8D7EF455EDC920BF46471A4DDBA04946095A98999",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_original_zip_crc_regression.cpp"
+  },
+  {
+    "path": "source/windows_original_zip_crc.hpp",
+    "bytes": 1487,
+    "sha256": "0562C3342F1560A0E287731C7A665D748291AD64D770C8790FE5304BEF455B5E",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_original_zip_crc.hpp"
+  },
+  {
+    "path": "source/windows_original_zip_directory.hpp",
+    "bytes": 13543,
+    "sha256": "2C3443A318D8773B57C3E1BF69A2787374D6D19D72432A0343CCC37415EDB797",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_original_zip_directory.hpp"
+  },
+  {
+    "path": "source/windows_original_zip_name_regression.cpp",
+    "bytes": 2506,
+    "sha256": "0F8441FFE59D8F28BB3735671556FA742A5E3E3031E4341A0A96B21906B9DDE6",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_original_zip_name_regression.cpp"
+  },
+  {
+    "path": "source/windows_original_zip_name.hpp",
+    "bytes": 5821,
+    "sha256": "14F9DB383D2F45EEEA40559EBACD0C1C1E07979D358DB57FC0E306AFC768B49C",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_original_zip_name.hpp"
+  },
+  {
+    "path": "source/windows_original_zip64_regression.cpp",
+    "bytes": 3521,
+    "sha256": "5384F2D91C01A7A5996E259371637D2FA9BD5CBA7B6F8078243588FAC7E71C92",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_original_zip64_regression.cpp"
+  },
+  {
+    "path": "source/windows_parser_input_capture.hpp",
+    "bytes": 9216,
+    "sha256": "C0E01B85E0F937D1906121BFA1DB014628C2C1C3B4DC9435EA8A86C588AD33CF",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_parser_input_capture.hpp"
+  },
+  {
+    "path": "source/windows_parser_runtime_association.hpp",
+    "bytes": 80271,
+    "sha256": "C2091103F8AE7CFB6677072AD0C7DE98542995050C50F7E9502B88824FA47A40",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_parser_runtime_association.hpp"
+  },
+  {
+    "path": "source/windows_pending_call_owner.hpp",
+    "bytes": 23439,
+    "sha256": "2687F1CE209694317381260F83FE6C41518C6B7F8544173A639882BFC6BEC836",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_pending_call_owner.hpp"
+  },
+  {
+    "path": "source/windows_pending_freeze_regression.cpp",
+    "bytes": 6409,
+    "sha256": "61E8CA0041C3484B705EB40EA59868AB33BCEACBC2D41040F8955FC7F00E38E4",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_pending_freeze_regression.cpp"
+  },
+  {
+    "path": "source/windows_portable_rid_source_regression.cpp",
+    "bytes": 1408,
+    "sha256": "79BD24E6CDDA351303DB684A1116F140FCEEA233F90EC0F6BA0B7424CCA2B530",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_portable_rid_source_regression.cpp"
+  },
+  {
+    "path": "source/windows_portable_rid_source.hpp",
+    "bytes": 7225,
+    "sha256": "02930E753BE83DF7106FE9CCB000825E50E63681E34077FBAC25D15A630345B0",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_portable_rid_source.hpp"
+  },
+  {
+    "path": "source/windows_private_fixture_root_regression.hpp",
+    "bytes": 3078,
+    "sha256": "8F0558EE1A9D6CEA9DCB26D3227C92813A329E57725CD4D68DD8C72935ED92ED",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_private_fixture_root_regression.hpp"
+  },
+  {
+    "path": "source/windows_private_fixture_root.hpp",
+    "bytes": 11182,
+    "sha256": "541C62DFACD7521395D6ADF1597CD1B93C186B14B321EDA6D7FA05180BABC19B",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_private_fixture_root.hpp"
+  },
+  {
+    "path": "source/windows_private_selection_decoder.hpp",
+    "bytes": 10154,
+    "sha256": "2E278DAD2C59A40119158D848449645928C183F0D563EDDDD90715583D5AE4DD",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_private_selection_decoder.hpp"
+  },
+  {
+    "path": "source/windows_private_selection_reader.hpp",
+    "bytes": 8150,
+    "sha256": "308A11D8934E2B740EECFFEF903AF3806AB3CAC1C9CE93D5239CF999CFE3A6DE",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_private_selection_reader.hpp"
+  },
+  {
+    "path": "source/windows_remote_exports.hpp",
+    "bytes": 3858,
+    "sha256": "5A9C4C1DD4503CAA4D91CA5DDC07FF1F915BF3E6776BC43E70B6D225FF6CC420",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_remote_exports.hpp"
+  },
+  {
+    "path": "source/windows_resolver_attributes_observation.hpp",
+    "bytes": 3709,
+    "sha256": "67544096719C5DEC16EE068B7708438F6D5523E005FA3CB106C207DAF4E4A68C",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_resolver_attributes_observation.hpp"
+  },
+  {
+    "path": "source/windows_resolver_path_source_regression.cpp",
+    "bytes": 3568,
+    "sha256": "2A73F142870F41CD64F95E683C4E5A50BDCF81E69A01F80673F68B4243904380",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_resolver_path_source_regression.cpp"
+  },
+  {
+    "path": "source/windows_resolver_path_source.hpp",
+    "bytes": 5931,
+    "sha256": "FD9B6C4E5559E5B9BE2D2181FA9273634B3889FEB04D494A5E47E9E1634862BC",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_resolver_path_source.hpp"
+  },
+  {
+    "path": "source/windows_runtime_environment_source_regression.cpp",
+    "bytes": 5537,
+    "sha256": "60758E0B92091A9E3897D27205E23473B09BC602864D56800EB5788773977AAB",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_runtime_environment_source_regression.cpp"
+  },
+  {
+    "path": "source/windows_runtime_host_configuration.hpp",
+    "bytes": 73426,
+    "sha256": "4FE3CBAEBCFE3F1547D7E42E43B8F3E9D06E2D69CA4D6648FCEAE2AC6E913312",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_runtime_host_configuration.hpp"
+  },
+  {
+    "path": "source/windows_runtime_host_version_regression.cpp",
+    "bytes": 14013,
+    "sha256": "5CF91611798B634A0A95F6630956D80458CA90088DF44FF1D3CFC1DE7D8D6C47",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_runtime_host_version_regression.cpp"
+  },
+  {
+    "path": "source/windows_runtime_option_order_regression.cpp",
+    "bytes": 4319,
+    "sha256": "0BC78E5F91373652DFF17FAE8EDD5FF5BD31061652093919F8FD0E3424BF1115",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_runtime_option_order_regression.cpp"
+  },
+  {
+    "path": "source/windows_runtime_probe_order_regression.cpp",
+    "bytes": 5729,
+    "sha256": "08BEAAC6BEC8D1421198912844114CC51AEE9524E92EA15ECC8310353F94F938",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_runtime_probe_order_regression.cpp"
+  },
+  {
+    "path": "source/windows_session_commands.hpp",
+    "bytes": 10565,
+    "sha256": "73217B67975B019FA2F54085A1D515CD15E5B7E1F8C8AEFCA758899B1B1B958F",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_session_commands.hpp"
+  },
+  {
+    "path": "source/windows_session_gate.hpp",
+    "bytes": 116407,
+    "sha256": "57F99BEFB9A0A359EA903D3EBE4E0EA2C682D7957FC6468586B8CB79B5FAD630",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_session_gate.hpp"
+  },
+  {
+    "path": "source/windows_sink_collector.hpp",
+    "bytes": 13603,
+    "sha256": "AA9418DA913004A4AFDC758442E5B77721CC9D9408A2355ADD4F7E968CF6EDAA",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_sink_collector.hpp"
+  },
+  {
+    "path": "source/windows_source_checksum_algorithms.hpp",
+    "bytes": 5335,
+    "sha256": "4602D6587C39E603BB4CF373875D88B34C010E0D497A688EB4ECD9C0C5EDD9CC",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_source_checksum_algorithms.hpp"
+  },
+  {
+    "path": "source/windows_source_span_regression.hpp",
+    "bytes": 7959,
+    "sha256": "07EFE50CCA150B6206D3F52B94774D6BF0C405A9A5A1046A6919C7149B8E51AE",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_source_span_regression.hpp"
+  },
+  {
+    "path": "source/windows_standalone_host.hpp",
+    "bytes": 18267,
+    "sha256": "1806E7EAF09E72D472A4A7C926591DBBA184742957DB8E930B6DE99553A2D8AF",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_standalone_host.hpp"
+  },
+  {
+    "path": "source/windows_startup_hooks_source_regression.cpp",
+    "bytes": 3765,
+    "sha256": "3A9BF4C7F01348ED53FEDD2BD39F191FFEB925B08B08F032BFE137EA22969D3A",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_startup_hooks_source_regression.cpp"
+  },
+  {
+    "path": "source/windows_streams.hpp",
+    "bytes": 12915,
+    "sha256": "A87F872E07C03E9FD15D510A76CEA2DB250466EC2E98566C1F9F64972EFFC721",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_streams.hpp"
+  },
+  {
+    "path": "source/windows_tls_observation.hpp",
+    "bytes": 3799,
+    "sha256": "93ACEAF179FB9894AB601B8C045BCA88D2CEDF447E9337380070D9CABEC80885",
+    "origin": "D:\\projects\\service-lasso\\service-lasso\\audit-evidence\\continuation-20260930-1520\\template77-creator-source\\windows_tls_observation.hpp"
+  }
+]

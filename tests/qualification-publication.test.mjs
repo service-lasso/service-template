@@ -12,6 +12,55 @@ import { produceQualificationPublication } from "../scripts/produce-qualificatio
 const commit = "a".repeat(40), source = sourceIdentity(commit, "service-lasso/service-template");
 const blocked = () => createBlockedTemplateEvidence(source, scopeIdentity(), { id: 7, attempt: 2, workflowSha: commit });
 const bytes = value => Buffer.from(JSON.stringify(value));
+test("blocked constructor owns caller inputs and independent wrappers", () => {
+  const callerSource = sourceIdentity(commit, "service-lasso/service-template"), callerScope = scopeIdentity();
+  const callerRun = { id: 7, attempt: 2, workflowSha: commit };
+  const original = structuredClone({ source: callerSource, scope: callerScope, run: callerRun });
+  const first = createBlockedTemplateEvidence(callerSource, callerScope, callerRun);
+  const second = createBlockedTemplateEvidence(callerSource, callerScope, callerRun);
+  const baseline = bytes(second);
+  first.source.commit = "b".repeat(40);
+  first.scope.policySource.blob = "b".repeat(40);
+  first.scope.requiredPlatforms.push("darwin"); first.scope.deferredPlatforms.length = 0;
+  first.run.attempt = 3;
+  first.consumers[0].gates[0].receipts.push({ name: "invented" });
+  first.consumers[0].platforms.push("darwin");
+  assert.deepEqual({ source: callerSource, scope: callerScope, run: callerRun }, original);
+  assert.deepEqual(bytes(second), baseline);
+  assert.throws(() => readTemplateEvidence(bytes(first), callerSource));
+  assert.equal(readTemplateEvidence(bytes(second), callerSource).outcome, "blocked");
+  assert.deepEqual(bytes(createBlockedTemplateEvidence(callerSource, callerScope, callerRun)), baseline);
+});
+test("caller mutation cannot rewrite an already validated blocked snapshot", () => {
+  const callerSource = sourceIdentity(commit, "service-lasso/service-template"), callerScope = scopeIdentity();
+  const callerRun = { id: 7, attempt: 2, workflowSha: commit };
+  const expectedSource = structuredClone(callerSource);
+  const value = createBlockedTemplateEvidence(callerSource, callerScope, callerRun), baseline = bytes(value);
+  callerSource.commit = "b".repeat(40); callerScope.policySource.blob = "b".repeat(40);
+  callerScope.requiredPlatforms.reverse(); callerScope.deferredPlatforms.push("linux");
+  callerRun.workflowSha = "b".repeat(40); callerRun.attempt = 0;
+  assert.deepEqual(bytes(value), baseline);
+  assert.equal(readTemplateEvidence(bytes(value), expectedSource).outcome, "blocked");
+  assert.throws(() => createBlockedTemplateEvidence(callerSource, callerScope, callerRun));
+});
+test("blocked constructor accepts frozen valid inputs without freezing its output", () => {
+  const callerSource = Object.freeze(sourceIdentity(commit, "service-lasso/service-template"));
+  const callerScope = scopeIdentity(); Object.freeze(callerScope.policySource);
+  Object.freeze(callerScope.requiredPlatforms); Object.freeze(callerScope.deferredPlatforms); Object.freeze(callerScope);
+  const callerRun = Object.freeze({ id: 7, attempt: 2, workflowSha: commit });
+  const value = createBlockedTemplateEvidence(callerSource, callerScope, callerRun);
+  value.source.commit = "b".repeat(40); value.scope.policySource.blob = "b".repeat(40);
+  value.scope.requiredPlatforms.push("darwin"); value.run.attempt = 3;
+  assert.equal(callerSource.commit, commit); assert.deepEqual(callerScope, scopeIdentity());
+  assert.equal(callerRun.attempt, 2);
+  assert.deepEqual(createBlockedTemplateEvidence(callerSource, callerScope, callerRun), blocked());
+});
+test("blocked constructor rejects invalid original caller inputs before snapshotting", () => {
+  assert.throws(() => createBlockedTemplateEvidence({ ...source, unexpected: true }, scopeIdentity(), { id: 7, attempt: 2, workflowSha: commit }), /closed schema/);
+  const scope = scopeIdentity(); scope.policySource.unexpected = true;
+  assert.throws(() => createBlockedTemplateEvidence(source, scope, { id: 7, attempt: 2, workflowSha: commit }), /closed schema/);
+  assert.throws(() => createBlockedTemplateEvidence(source, scopeIdentity(), { id: 7, attempt: 2, workflowSha: commit, unexpected: true }), /closed schema/);
+});
 test("actual producer retains two complete roles and admits no production proofs", async () => {
   const value = await produceQualificationPublication({ GITHUB_REPOSITORY: source.repository, GITHUB_REF: source.ref, GITHUB_SHA: commit, GITHUB_RUN_ID: "7", GITHUB_RUN_ATTEMPT: "2" });
   assert.deepEqual(value, blocked());
