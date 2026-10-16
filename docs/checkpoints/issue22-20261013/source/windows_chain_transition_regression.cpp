@@ -15,7 +15,13 @@ bool ObserveOriginalWindowsRetainedBackingRegression(const OriginalWindowsGate& 
         auto& overlap=*reinterpret_cast<View*>(const_cast<void*>(backing));++exercised;
         return !gate.ObserveRetainedPreownViewOriginal(overlap)&&!std::memcmp(preserved,backing,sizeof(preserved));
     };
-    if(!reject(&gate,sizeof(gate)))return false;
+    if(!reject(&gate,sizeof(gate))||!reject(view.commandOriginal,sizeof(*view.commandOriginal)))return false;
+    if(const auto* custody=gate.PrivateCoreClrCustody()){
+        if(custody->RetainedThreadCapacityOriginal()>SIZE_MAX/sizeof(OriginalCoreClrThreadCustody)||
+           custody->RetainedChangeCapacityOriginal()>SIZE_MAX/sizeof(OriginalCoreClrContextChange)||!reject(custody,sizeof(*custody))||
+           !reject(custody->PrivateThreads(),custody->RetainedThreadCapacityOriginal()*sizeof(OriginalCoreClrThreadCustody))||
+           !reject(custody->PrivateChanges(),custody->RetainedChangeCapacityOriginal()*sizeof(OriginalCoreClrContextChange)))return false;
+    }
     if(view.imageCapacity>SIZE_MAX/sizeof(std::unique_ptr<GateImageObservation>)||
        view.invocationCapacity>SIZE_MAX/sizeof(std::unique_ptr<GateCoreClrInvocation>)||
        !reject(view.imageSlotsOriginal,view.imageCapacity*sizeof(std::unique_ptr<GateImageObservation>))||

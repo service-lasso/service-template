@@ -6,7 +6,7 @@
   "sourceRoot": "docs/checkpoints/issue22-20261013/source",
   "sourceBranch": "fix/22-client-release-integration-oct16",
   "fileCount": 235,
-  "totalBytes": 2585392.0,
+  "totalBytes": 2587444.0,
   "status": "SOURCE UNRUN; no whole freeze, independent review, ROOT admission or authoritative receiver transfer",
   "receiverPaths": "Unassigned; canonical receiving owner must record exact destination and receiving commit after reviewed transfer. Null is not completed custody.",
   "requirements": [
@@ -1084,9 +1084,9 @@
     {
       "sourcePath": "source/windows_chain_transition_regression.cpp",
       "mode": "0644",
-      "bytes": 8561,
-      "sha256": "c639deb714ac8f48d80b8599501fa07d3498425868bcf5eb0dcc6283742cda3b",
-      "gitBlob": "5586e05e3386118adba74720316efb852dc2e872",
+      "bytes": 9189,
+      "sha256": "840a995267994bf064305cca1fb3a2f28b7c763b8fbd7488935b12bdbc2a6f94",
+      "gitBlob": "d56f153dc7489cd19f2c5db48280b4cc781c39e5",
       "receiverPath": null
     },
     {
@@ -1684,9 +1684,9 @@
     {
       "sourcePath": "source/windows_pending_call_owner.hpp",
       "mode": "0644",
-      "bytes": 23439,
-      "sha256": "2687f1ce209694317381260f83fe6c41518c6b7f8544173a639882bfc6bec836",
-      "gitBlob": "1aff3e245498a0de78f16ff3e99b4b7f5aa7cbb6",
+      "bytes": 24539,
+      "sha256": "6ced1519a2e88c6e0958615c782be2d13d6f3a97166584f10fac65ead2a4e2e3",
+      "gitBlob": "58c3c33c560e7c094d1984f8f1dc937bdcfd66d5",
       "receiverPath": null
     },
     {
@@ -1836,9 +1836,9 @@
     {
       "sourcePath": "source/windows_session_gate.hpp",
       "mode": "0644",
-      "bytes": 118765,
-      "sha256": "50e450749deaba46c0b1b74829eed1493c08a94d9d62afb8eb3b00995b0fa2ab",
-      "gitBlob": "04d3349bbb3ab2891ce3aa67211337bd85279356",
+      "bytes": 119089,
+      "sha256": "46b1d2dd49ca7e0484753c907376ad249e9e0a192f261ff2eb79ff0f0fe4e3b8",
+      "gitBlob": "483831a9fabd7e6d1fe7f3c14cd7c45abbbef858",
       "receiverPath": null
     },
     {

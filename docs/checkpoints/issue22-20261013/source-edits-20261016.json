@@ -97,8 +97,8 @@
     },
     {
       "path": "source/windows_chain_transition_regression.cpp",
-      "bytes": 8561,
-      "sha256": "C639DEB714AC8F48D80B8599501FA07D3498425868BCF5EB0DCC6283742CDA3B"
+      "bytes": 9189,
+      "sha256": "840A995267994BF064305CCA1FB3A2F28B7C763B8FBD7488935B12BDBC2A6F94"
     },
     {
       "path": "source/windows_copied_source_capture.hpp",
@@ -172,13 +172,18 @@
     },
     {
       "path": "source/windows_session_gate.hpp",
-      "bytes": 118765,
-      "sha256": "50E450749DEABA46C0B1B74829EED1493C08A94D9D62AFB8EB3B00995B0FA2AB"
+      "bytes": 119089,
+      "sha256": "46B1D2DD49CA7E0484753C907376AD249E9E0A192F261FF2EB79FF0F0FE4E3B8"
     },
     {
       "path": "source/windows_retained_backing.hpp",
       "bytes": 1089,
       "sha256": "FEB10885763DF90D88E0B3737D776B2169B4193479AAE3AF2C2EA4B8AE8DD5D6"
+    },
+    {
+      "path": "source/windows_pending_call_owner.hpp",
+      "bytes": 24539,
+      "sha256": "6CED1519A2E88C6E0958615C782BE2D13D6F3A97166584F10FAC65EAD2A4E2E3"
     }
   ]
 }

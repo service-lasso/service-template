@@ -1556,6 +1556,10 @@ public:
     };
     bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
         if(!OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this))||
+           !OriginalRetainedStorageSeparate(output,bytes,&ingress_,1,sizeof(ingress_))||
+           !OriginalRetainedStorageSeparate(output,bytes,&command_,1,sizeof(command_))||
+           !inputs_.OutputBackingSeparateOriginal(output,bytes)||
+           !pendingCallsOriginal_.OutputBackingSeparateOriginal(output,bytes)||
            !OriginalRetainedArraySeparate(output,bytes,callers_,callerCapacity_)||
            !OriginalRetainedArraySeparate(output,bytes,commandLines_,commandCapacity_)||
            !OriginalRetainedArraySeparate(output,bytes,helperProjections_,commandCapacity_)||
