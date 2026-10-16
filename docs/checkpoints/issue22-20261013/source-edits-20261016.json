@@ -1,0 +1,79 @@
+{
+  "schema": "service-lasso.template-source-edit-manifest.v1",
+  "baselineCommit": "6785b43a4aa5497d21cc3068eb61a91f71472337",
+  "owner": "Template22 release integration Oct16",
+  "purpose": "Retained preown output backing disjointness repair",
+  "execution": "UNRUN; independent entire review and new ROOT admission required",
+  "files": [
+    {
+      "path": "source/linux_caller_receipt.hpp",
+      "bytes": 14145,
+      "sha256": "8B436608E81EB0ACA817A59143BF881E706140767F56D0BBF5C3C6114BCEC07F"
+    },
+    {
+      "path": "source/linux_command_route.hpp",
+      "bytes": 10594,
+      "sha256": "AFD48EB2788104E91DA1BDD89A80EB8CFF8859E6CEA92FF69A2F8D6124BF2860"
+    },
+    {
+      "path": "source/linux_deadline_receiver.hpp",
+      "bytes": 14583,
+      "sha256": "8C05703F297F3673EF57840071604C9036D522543953C5E9289925C95D099A1E"
+    },
+    {
+      "path": "source/linux_deadline_supervisor.hpp",
+      "bytes": 25324,
+      "sha256": "28FE29185E9CE1241B088FD43523DAAEE1CAC8AD03DCACE4134F27558A23AA0E"
+    },
+    {
+      "path": "source/linux_native_sink.hpp",
+      "bytes": 18744,
+      "sha256": "0985DC5BD083064A67D7E883B108BB4984DDB5923056E563B6D086F9586E4894"
+    },
+    {
+      "path": "source/linux_original_deadline.hpp",
+      "bytes": 5086,
+      "sha256": "0C41B794A3A8560643CA2D5A3521697E1BBC145AE21BC16C3EDF7F09F4FB7608"
+    },
+    {
+      "path": "source/linux_pending_host.hpp",
+      "bytes": 16127,
+      "sha256": "6ACDEEC3E19387946DB39E6ECF9E597DF5A7A06757A45B892C10C0E5B5472B56"
+    },
+    {
+      "path": "source/linux_pending_host_preown_regression.cpp",
+      "bytes": 22484,
+      "sha256": "8EB7D4B22756DD5AB8E47C642363ABE5C64477354A791281C47247572D2B6F06"
+    },
+    {
+      "path": "source/linux_pending_input_owner.hpp",
+      "bytes": 11022,
+      "sha256": "0725EEC9B39F0A735E5B90FF99A6DFB60483C695F35C5CB166CB999443F5827E"
+    },
+    {
+      "path": "source/linux_pidfd_identity.hpp",
+      "bytes": 12418,
+      "sha256": "9613FB57A8A1E005F36152E44D186EA6D17C2BC934BB97068170B05111852A90"
+    },
+    {
+      "path": "source/linux_session_commands.hpp",
+      "bytes": 10763,
+      "sha256": "9D0902330383497C0EDF202369C1149AA59D345A61DD2CE64E77A257291AD9EF"
+    },
+    {
+      "path": "source/linux_sink_collector.hpp",
+      "bytes": 15485,
+      "sha256": "74C66B68D2A5687880FE358502092D8D8E04FF025B2F1F7062DBF67552F34762"
+    },
+    {
+      "path": "source/linux_task_identity.hpp",
+      "bytes": 28108,
+      "sha256": "5B1E1735F664D5D3577DFBB094E294E378AF03F5E09AED2F665E56CBEDC5976B"
+    },
+    {
+      "path": "source/native_linux_platform.hpp",
+      "bytes": 19663,
+      "sha256": "0AB8AD03354E4AD66111F69B399A17BF4E51A9AC9F45A09ECA93E5268882D059"
+    }
+  ]
+}

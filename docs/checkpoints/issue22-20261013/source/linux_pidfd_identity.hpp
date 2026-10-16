@@ -46,6 +46,12 @@ class OriginalPidfdHandoffAssociation {
     bool preownAttempted_=false,preowned_=false;
     std::exception_ptr preownException_;
 public:
+    bool OutputBackingSeparateOriginal(const void* output,size_t bytes) const noexcept {
+        return OriginalBackingStorageSeparate(output,bytes,this,1,sizeof(*this))&&
+            callerTask_.OutputBackingSeparateOriginal(output,bytes)&&fdinfo_.byteCapacity!=SIZE_MAX&&
+            OriginalBackingStorageSeparate(output,bytes,fdinfo_.bytes.get(),fdinfo_.bytes?fdinfo_.byteCapacity+1:0)&&
+            OriginalBackingStorageSeparate(output,bytes,fdinfo_.reads.get(),fdinfo_.readCapacity,sizeof(ProcReadOriginal));
+    }
     static bool OneNamespacePid(const ProcTaskObservation& receiver, pid_t actualReceiverTid) noexcept {
         const auto* cursor = receiver.status.bytes.get(); const auto* end = cursor+receiver.status.used;
         bool seen = false;

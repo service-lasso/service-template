@@ -119,6 +119,11 @@ public:
             supervisor_.originalReceiver_=this;preowned_=true;return true;
         }catch(...){preownException_=std::current_exception();failed_.store(true);return false;}
     }
+    bool OutputBackingSeparateOriginal(const void* output,size_t bytes) const noexcept {
+        return OriginalBackingStorageSeparate(output,bytes,this,1,sizeof(*this))&&
+            OriginalBackingStorageSeparate(output,bytes,joins_.get(),AllocatedJoinCapacityOriginal(),sizeof(SupervisorNativeOriginal))&&
+            OriginalBackingStorageSeparate(output,bytes,joinReturns_.get(),AllocatedJoinReturnCapacityOriginal(),sizeof(void*)) && OriginalBackingStorageSeparate(output,bytes,waits_.get(),AllocatedWaitCapacityOriginal(),sizeof(SupervisorNativeOriginal));
+    }
     bool PreownedOriginal() const noexcept{return preowned_;}
     const std::exception_ptr& PreownExceptionOriginal() const noexcept{return preownException_;}
     size_t AllocatedWaitCapacityOriginal() const noexcept{return waits_?waitCapacity_:0;}
