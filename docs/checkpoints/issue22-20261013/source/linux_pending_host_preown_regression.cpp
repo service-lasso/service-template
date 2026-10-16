@@ -31,6 +31,7 @@ bool VerifySurvivingPendingHostPreownRegressionOriginal(){
     g.fdinfoBytes=64;g.supervisorStack=65536;g.supervisorJoins=2;
     g.receiverStack=65536;g.receiverWaits=2;g.receiverJoins=2;
     g.mapsBytes=64;g.mapsReads=2;g.memoryRegions=2;g.memoryBytes=128;g.memoryReads=2;
+    bool hostOverlapExercised=false,processOverlapExercised=false,rangeOverlapExercised=false,payloadOverlapExercised=false;
     for(size_t failure:{size_t{2},size_t{6}}){
         auto* host=new OriginalLinuxPendingHost(DeferredOriginalPreown,g,false,0,65536,2);
         allocationOrdinal=0;failOrdinal=failure;
@@ -49,6 +50,7 @@ bool VerifySurvivingPendingHostPreownRegressionOriginal(){
         const auto* clocks=pending.OriginalDeadlineOwner().PrivateOriginals();
         if(clocks&&pending.OriginalDeadlineOwner().OriginalCapacity()*sizeof(OriginalClockBoundary)>=sizeof(backing)){
             unsigned char preserved[sizeof(backing)];std::memcpy(preserved,clocks,sizeof(preserved));
+            hostOverlapExercised=true;
             auto& overlap=*reinterpret_cast<OriginalLinuxPendingHost::RetainedPreownBackingView*>(const_cast<OriginalClockBoundary*>(clocks));
             okay=okay&&!host->ObserveRetainedPreownBackingOriginal(overlap)&&!std::memcmp(preserved,clocks,sizeof(preserved));
         }
@@ -72,7 +74,7 @@ bool VerifySurvivingPendingHostPreownRegressionOriginal(){
     auto& deadline=readbackHost->OriginalPendingOwner().OriginalDeadlineOwner();
     auto& supervisor=readbackHost->OriginalPendingOwner().OriginalSupervisorOwner();
     for(size_t failure=3;failure<=8;++failure){
-        auto* process=new OriginalInitialProviderProcessAssociation(*receiver,1,64,64,2,64);
+        auto* process=new OriginalInitialProviderProcessAssociation(*receiver,1,64,64,4,64);
         allocationOrdinal=0;failOrdinal=failure;
         const bool accepted=process->PreownStorageOriginal();failOrdinal=0;
         const auto firstException=process->PreownExceptionOriginal();
@@ -94,6 +96,7 @@ bool VerifySurvivingPendingHostPreownRegressionOriginal(){
             backing.returned&&!backing.preowned&&backing.disposed;
         if(row->stat.reads&&row->stat.readCapacity*sizeof(ProcReadOriginal)>=sizeof(backing)){
             unsigned char preserved[sizeof(backing)];std::memcpy(preserved,row->stat.reads.get(),sizeof(preserved));
+            processOverlapExercised=true;
             auto& overlap=*reinterpret_cast<OriginalInitialProviderProcessAssociation::RetainedPreownBackingView*>(row->stat.reads.get());
             okay=okay&&!process->ObserveRetainedPreownBackingOriginal(overlap)&&
                 !std::memcmp(preserved,row->stat.reads.get(),sizeof(preserved));
@@ -161,9 +164,10 @@ bool VerifySurvivingPendingHostPreownRegressionOriginal(){
                 !std::memcmp(preserved,unit->table_->reads_.get(),sizeof(preserved));
         }
         if(unit->header_){
-            auto saved=backing;const bool released=unit->header_->borrowReleased_;
+            unsigned char saved[sizeof(backing)];std::memcpy(saved,&backing,sizeof(saved));
+            const bool released=unit->header_->borrowReleased_;
             unit->header_->borrowReleased_=false;
-            okay=okay&&!unit->ObserveRetainedPreownBackingOriginal(backing)&&!std::memcmp(&saved,&backing,sizeof(backing));
+            okay=okay&&!unit->ObserveRetainedPreownBackingOriginal(backing)&&!std::memcmp(saved,&backing,sizeof(backing));
             unit->header_->borrowReleased_=released;
         }
         for(auto* range:{unit->header_.get(),unit->table_.get(),unit->member_.get()}){
@@ -171,6 +175,7 @@ bool VerifySurvivingPendingHostPreownRegressionOriginal(){
                 sizeof(OriginalReceivedSourceUnitRange::RetainedPreownBackingView))continue;
             using View=OriginalReceivedSourceUnitRange::RetainedPreownBackingView;
             unsigned char preserved[sizeof(View)];std::memcpy(preserved,range->reads_.get(),sizeof(preserved));
+            rangeOverlapExercised=true;
             auto& overlap=*reinterpret_cast<View*>(range->reads_.get());
             okay=okay&&!range->ObserveRetainedPreownBackingOriginal(overlap)&&
                 !std::memcmp(preserved,range->reads_.get(),sizeof(preserved));
@@ -209,9 +214,10 @@ bool VerifySurvivingPendingHostPreownRegressionOriginal(){
                 !std::memcmp(preserved,unit->table_->reads_.get(),sizeof(preserved));
         }
         if(unit->header_){
-            auto saved=backing;const bool released=unit->header_->borrowReleased_;
+            unsigned char saved[sizeof(backing)];std::memcpy(saved,&backing,sizeof(saved));
+            const bool released=unit->header_->borrowReleased_;
             unit->header_->borrowReleased_=false;
-            okay=okay&&!unit->ObserveRetainedPreownBackingOriginal(backing)&&!std::memcmp(&saved,&backing,sizeof(backing));
+            okay=okay&&!unit->ObserveRetainedPreownBackingOriginal(backing)&&!std::memcmp(saved,&backing,sizeof(backing));
             unit->header_->borrowReleased_=released;
         }
         for(auto* range:{unit->header_.get(),unit->table_.get(),unit->member_.get()}){
@@ -219,6 +225,7 @@ bool VerifySurvivingPendingHostPreownRegressionOriginal(){
                 sizeof(OriginalReceivedSourceUnitRange::RetainedPreownBackingView))continue;
             using View=OriginalReceivedSourceUnitRange::RetainedPreownBackingView;
             unsigned char preserved[sizeof(View)];std::memcpy(preserved,range->reads_.get(),sizeof(preserved));
+            rangeOverlapExercised=true;
             auto& overlap=*reinterpret_cast<View*>(range->reads_.get());
             okay=okay&&!range->ObserveRetainedPreownBackingOriginal(overlap)&&
                 !std::memcmp(preserved,range->reads_.get(),sizeof(preserved));
@@ -244,6 +251,7 @@ bool VerifySurvivingPendingHostPreownRegressionOriginal(){
             !payload->PreownStorageOriginal();
         if(payload->rows_&&payload->rowCapacity_*sizeof(OriginalUnitPayloadArchive::NativeOriginal)>=sizeof(backing)){
             unsigned char preserved[sizeof(backing)];std::memcpy(preserved,payload->rows_.get(),sizeof(preserved));
+            payloadOverlapExercised=true;
             auto& overlap=*reinterpret_cast<OriginalUnitPayloadArchive::RetainedPreownBackingView*>(payload->rows_.get());
             okay=okay&&!payload->ObserveRetainedPreownBackingOriginal(overlap)&&
                 !std::memcmp(preserved,payload->rows_.get(),sizeof(preserved));
@@ -301,7 +309,7 @@ bool VerifySurvivingPendingHostPreownRegressionOriginal(){
     // This readonly-predicate mutation is synthetic; no transfer was performed.
     platform->transferAttempted=false;
     delete platform;
-    return stable;
+    return stable&&hostOverlapExercised&&processOverlapExercised&&rangeOverlapExercised&&payloadOverlapExercised;
 }
 }
 int main(){return template_creator_linux::VerifySurvivingPendingHostPreownRegressionOriginal()?0:1;}
