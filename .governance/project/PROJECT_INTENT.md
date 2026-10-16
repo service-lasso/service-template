@@ -17,3 +17,5 @@ SPEC-018 AC-18.1–18.3 / SPEC-017: fixed CLI/Core roles, all TC01–12 and CA01
 ## Issue #22 wrapper input ownership repair
 
 AC-17.14: the blocked-wrapper constructor validates the original closed inputs before returning an independent deep snapshot. Caller source, scope (including policySource and platform arrays) and run must not alias any returned wrapper; callers and independently created wrappers can mutate without corrupting each other. Preserve strict source/run/policy denials and all original role, proof and publication gates. Bidirectional and frozen-input regression source requires a different entire cumulative independent review and NEW complete-input admission before execution; native/publication delivery remains open.
+
+Issue22 Oct16 continues native retained source ownership preservation: preown host/platform views must reject all dynamic backing aliasing before any write, including nested failures; authentic portable receipt/child-local/native integration remains required and unqualified. Supplier source stays noncanonical until independently reviewed exact-byte Core reception.

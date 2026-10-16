@@ -2,6 +2,7 @@
 // authority. Name-to-Windows-asset interpretation and member decoding are
 // separate joins; unsupported native input is never an alternate package.
 #pragma once
+#include "windows_retained_backing.hpp"
 #include <cstddef>
 #include <cstdint>
 #include <cstring>
@@ -208,5 +209,9 @@ public:
     const unsigned char* PrivateOriginal() const noexcept{return original_;}
     std::size_t OriginalExtent() const noexcept{return extent_;}
     std::size_t ReservedSourceBytes() const noexcept{return sizeof(*this)+capacity_*sizeof(Member);}
+public:
+    bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
+        return OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this))&&OriginalRetainedArraySeparate(output,bytes,members_,capacity_);
+    }
 };
 }

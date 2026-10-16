@@ -1,6 +1,7 @@
 // UNCOMPILED native copy capture, supporting the selected copied-CODE producer.
 // Actual producer/consumer/path/borrower authority is a separate gate relation.
 #pragma once
+#include "windows_retained_backing.hpp"
 #include "windows_captured_copy.hpp"
 namespace template_creator {
 class OriginalCopiedSourceCapture {
@@ -54,6 +55,10 @@ public:
     bool PhysicallyDisposed() const noexcept { return generated_.PhysicallyDisposed(); }
     SIZE_T ReservedSourceBytes() const noexcept {
         return sizeof(*this)-sizeof(NativeHeldFiles)+generated_.ReservedSourceBytes();
+    }
+public:
+    bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
+        return OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this))&&generated_.OutputBackingSeparateOriginal(output,bytes);
     }
 };
 // This capture owns no process or borrower by itself. The connected product gate

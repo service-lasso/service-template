@@ -1,6 +1,7 @@
 // UNCOMPILED retained host configuration projection. These are original
 // resolution inputs, never proof of resolved frameworks or managed providers.
 #pragma once
+#include "windows_retained_backing.hpp"
 #include "windows_original_json.hpp"
 #include "windows_held_files.hpp"
 #include "windows_framework_version_source.hpp"
@@ -1091,5 +1092,11 @@ public:
     // No positive admission/result API: apphost embedded path, hostfxr selection,
     // supplied ENV/shared frameworks/hostpolicy, TPA and PowerShell provider
     // resolution still require actual same-source/runtime/occurrence joins.
+public:
+    bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
+        return OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this))&&runtimeConfig_.OutputBackingSeparateOriginal(output,bytes)&&
+            deps_.OutputBackingSeparateOriginal(output,bytes)&&OriginalRetainedOwnerSeparate(output,bytes,devConfig_)&&
+            OriginalRetainedArraySeparate(output,bytes,assets_,assetCapacity_)&&OriginalRetainedArraySeparate(output,bytes,libraries_,depsTokensOriginal_);
+    }
 };
 }

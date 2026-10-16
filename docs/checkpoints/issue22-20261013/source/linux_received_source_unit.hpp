@@ -168,8 +168,10 @@ public:
         const OriginalReceivedSourceUnitRange* ranges[3]={header_.get(),table_.get(),member_.get()};
         if(!OriginalBackingStorageSeparate(&out,sizeof(out),records_.get(),allocatedRecords_,sizeof(struct slcli_source_unit12_record)))return false;
         for(const auto* range:ranges)if(range&&!range->BackingStorageSeparateOriginal(&out,sizeof(out)))return false;
+        OriginalReceivedSourceUnitRange::RetainedPreownBackingView settled[3]{};
+        for(size_t i=0;i<3;++i)if(ranges[i]&&!ranges[i]->ObserveRetainedPreownBackingOriginal(settled[i]))return false;
         std::memset(&out,0,sizeof(out));
-        for(size_t i=0;i<3;++i)if(ranges[i]&&!ranges[i]->ObserveRetainedPreownBackingOriginal(out.ranges[i]))return false;
+        for(size_t i=0;i<3;++i)out.ranges[i]=settled[i];
         out.ownerOriginal=this;out.recordsOriginal=records_.get();out.exceptionOriginal=&preownException_;
         out.recordCapacity=allocatedRecords_;out.parsedRecords=parsed_;out.allocatedBackingBytes=bytes;
         out.attempted=preownAttempted_;out.returned=preownReturned_;out.preowned=preowned_;out.released=borrowReleased_;return true;

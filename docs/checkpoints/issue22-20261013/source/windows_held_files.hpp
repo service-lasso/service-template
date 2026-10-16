@@ -1,6 +1,7 @@
 // UNCOMPILED native held-file byte/identity verifier. This is a concrete gate
 // predicate, not complete input selection, ROOT authority or native tool trust.
 #pragma once
+#include "windows_retained_backing.hpp"
 #include <windows.h>
 #include <bcrypt.h>
 #include <array>
@@ -295,6 +296,12 @@ public:
                 (file.algorithmAcquired && (!file.algorithmCloseAttempted || file.algorithmCloseResult<0))) return false;
         }
         return true;
+    }
+public:
+    bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
+        return OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this))&&
+            OriginalRetainedArraySeparate(output,bytes,files_,fileCapacity_)&&OriginalRetainedArraySeparate(output,bytes,reads_,readCapacity_)&&
+            OriginalRetainedArraySeparate(output,bytes,retainedBytes_,byteCapacity_);
     }
 };
 // Hash equality is one physical byte predicate only. Ancestor chains, named-vs-

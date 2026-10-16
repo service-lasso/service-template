@@ -2,6 +2,7 @@
 // is selected/preowned before effects; this object is not deadline supervision
 // or a caller receipt. Native notice/worker bodies must attach here before use.
 #pragma once
+#include "windows_retained_backing.hpp"
 #include <windows.h>
 #include <atomic>
 #include <cstdint>
@@ -85,6 +86,13 @@ class OriginalWindowsWorkerIoOwner final {
         return true;
     }
 public:
+    bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
+        using namespace template_creator;
+        return OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this))&&
+            OriginalRetainedStorageSeparate(output,bytes,input_,inputExtent_)&&
+            OriginalRetainedArraySeparate(output,bytes,rows_,capacity_)&&(!frameBytes_||capacity_<=SIZE_MAX/frameBytes_)&&
+            OriginalRetainedArraySeparate(output,bytes,bytes_,capacity_*frameBytes_);
+    }
     OriginalWindowsWorkerIoOwner(const OriginalWindowsWorkerIoOwner&)=delete;
     OriginalWindowsWorkerIoOwner& operator=(const OriginalWindowsWorkerIoOwner&)=delete;
     SIZE_T ReservedSourceBytes() const noexcept {return sizeof(*this)+capacity_*(sizeof(OriginalWindowsWorkerIoOriginal)+frameBytes_);}
@@ -332,6 +340,14 @@ public:
     }
     SIZE_T ReservedSourceBytes() const noexcept {
         return sizeof(*this)+capacity_*(sizeof(OriginalWindowsPendingCall)+sizeof(OriginalWindowsWorkerJoinAttempt));
+    }
+    bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
+        using namespace template_creator;
+        if(!OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this))||
+           !OriginalRetainedArraySeparate(output,bytes,rows_,capacity_)||
+           !OriginalRetainedArraySeparate(output,bytes,joins_,capacity_))return false;
+        for(const auto& worker:workers_)if(worker.ioOriginal&&!worker.ioOriginal->OutputBackingSeparateOriginal(output,bytes))return false;
+        return true;
     }
     const OriginalWindowsObserverGeometry& OriginalObserverGeometry() const noexcept{return observerGeometry_;}
 };

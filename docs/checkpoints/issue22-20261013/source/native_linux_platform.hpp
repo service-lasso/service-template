@@ -185,15 +185,31 @@ public:
         const auto destination=reinterpret_cast<std::uintptr_t>(&out),source=reinterpret_cast<std::uintptr_t>(this);
         if(destination>UINTPTR_MAX-sizeof(out)||source>UINTPTR_MAX-sizeof(*this)||
            (destination<source+sizeof(*this)&&source<destination+sizeof(out)))return false;
+        // Check the complete preown graph against the entire destination before
+        // any outer or nested memset. Later acquired input graphs need their own
+        // export contract and cannot be projected through this preown-only view.
+        if(inputBindingAttempted||transferAttempted||captureReturned||adoptAttempted||prechargeAttempted||stepsBound||
+           !pendingHost.OutputBackingSeparateOriginal(&out,sizeof(out))||
+           !pendingHostStorage.OutputBackingSeparateOriginal(&out,sizeof(out))||
+           !route.OutputPreownBackingSeparateOriginal(&out,sizeof(out))||
+           !commands.OutputBackingSeparateOriginal(&out,sizeof(out))||
+           !sink.OutputBackingSeparateOriginal(&out,sizeof(out))||
+           !collector.OutputBackingSeparateOriginal(&out,sizeof(out))||
+           !finalOutput.sink.OutputBackingSeparateOriginal(&out,sizeof(out))||
+           !finalOutput.collector.OutputBackingSeparateOriginal(&out,sizeof(out))||
+           !template_creator_linux::OriginalBackingStorageSeparate(&out,sizeof(out),inputOwners.get(),allocatedInputOwnerCapacity,sizeof(LinuxInputOwner)))return false;
+        template_creator_linux::OriginalLinuxPendingHost::RetainedPreownBackingView pendingView{};
+        if(!pendingHost.ObserveRetainedPreownBackingOriginal(pendingView))return false;
+        if(route.BornCommandCountOriginal()>route.AllocatedCommandCapacityOriginal()||
+           route.AllocatedCommandCapacityOriginal()>selectedCommandCapacity||allocatedInputOwnerCapacity>selectedCommandCapacity||
+           bool(inputOwners)!=bool(allocatedInputOwnerCapacity))return false;
         std::memset(&out,0,sizeof(out)); // Initialize private serialized padding in actual destination.
         auto& view=out;
-        if(!pendingHost.ObserveRetainedPreownBackingOriginal(view.pendingBacking))return false;
+        view.pendingBacking=pendingView;
         view.platformOriginal=this;view.pendingHostOriginal=&pendingHost;view.routeOriginal=&route;
         view.inputOwnersOriginal=inputOwners.get();view.exceptionOriginal=&storagePreownException;
         view.selectedCommands=selectedCommandCapacity;view.allocatedCommandSlots=route.AllocatedCommandCapacityOriginal();
         view.bornCommands=route.BornCommandCountOriginal();view.allocatedInputs=allocatedInputOwnerCapacity;
-        if(view.bornCommands>view.allocatedCommandSlots||view.allocatedCommandSlots>view.selectedCommands||
-           view.allocatedInputs>view.selectedCommands||bool(view.inputOwnersOriginal)!=bool(view.allocatedInputs))return false;
         view.sinkCopied=sink.AllocatedCopiedCapacityOriginal();view.sinkReadbacks=sink.AllocatedReadbackCapacityOriginal();
         view.sinkCalls=sink.AllocatedCallCapacityOriginal();
         view.collectorBytes=collector.AllocatedByteCapacityOriginal();view.collectorReads=collector.AllocatedReadCapacityOriginal();

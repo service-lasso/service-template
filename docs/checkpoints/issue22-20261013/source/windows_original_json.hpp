@@ -1,6 +1,7 @@
 // UNCOMPILED original-byte JSON reader. Syntax/field correspondence is not
 // host resolution, managed assembly selection, or vendor/build authority.
 #pragma once
+#include "windows_retained_backing.hpp"
 #include <cstddef>
 #include <cstdint>
 #include <memory>
@@ -318,5 +319,10 @@ private:
     // Numbers retain lexical bytes only. Native host integer/double conversion,
     // range errors and config-property formatting are not modeled by this
     // decoder; this framing/lookup mode alone cannot prove host equivalence.
+public:
+    bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
+        return OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this))&&
+            OriginalRetainedArraySeparate(output,bytes,tokens_,capacity_)&&OriginalRetainedArraySeparate(output,bytes,frames_,capacity_);
+    }
 };
 }

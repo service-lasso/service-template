@@ -1,0 +1,1901 @@
+{
+  "schema": "service-lasso.template-supplier-receiver-inventory.v1",
+  "issue": 22,
+  "owner": "Template22 release integration Oct16",
+  "receivingOwner": "Core1562 canonical receiver via parent coordination",
+  "sourceRoot": "docs/checkpoints/issue22-20261013/source",
+  "sourceBranch": "fix/22-client-release-integration-oct16",
+  "fileCount": 235,
+  "totalBytes": 2587444.0,
+  "status": "SOURCE UNRUN; no whole freeze, independent review, ROOT admission or authoritative receiver transfer",
+  "receiverPaths": "Unassigned; canonical receiving owner must record exact destination and receiving commit after reviewed transfer. Null is not completed custody.",
+  "requirements": [
+    "Retain exact source bytes and mode; verify every Git blob and raw SHA256 before and after reception.",
+    "Keep source-header adjacency; canonical receiver owns compile/source activation rosters.",
+    "CLI-owned upstream headers/codecs and genuine child-local installer/profile/principal/reserve inputs are absent and must be supplied under their owner.",
+    "Independent entire cumulative source review and NEW authentic complete-input/exact-command ROOT admission precede execution.",
+    "Preserve original source history/private evidence; delete supplier archive only after exact canonical reviewed custody and closure."
+  ],
+  "files": [
+    {
+      "sourcePath": "source/bootstrap_noop.c",
+      "mode": "0644",
+      "bytes": 279,
+      "sha256": "edd192d67c182962f4aecbc380278a68d7a49daa6320d3edc085da93474023dd",
+      "gitBlob": "b7baaf89748ea244e16b8cd35ee99be6f80bf3ab",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/collector_contract_test.py",
+      "mode": "0644",
+      "bytes": 10486,
+      "sha256": "3ad43d968d39b4fbbb10705309e3c54481366973403c36931089ea3edfb874ea",
+      "gitBlob": "033a888b588e69ad67e1f6fb4e17db3fa7d6a2de",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/command_inputs.py",
+      "mode": "0644",
+      "bytes": 14656,
+      "sha256": "92baa85f213b94566b559b8605f8135a2b0d8553e78e3feb21b08bddf2eb94f5",
+      "gitBlob": "b9784f1904d52d4e0176de64945299874d0dca79",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/creator_entry_contract_test.py",
+      "mode": "0644",
+      "bytes": 9321,
+      "sha256": "c5c108ec2bac10f201eca43e40114b9e722ff58cdfe7515bf34c3638375b0523",
+      "gitBlob": "4a83cecc3e5570ab11183693c4991dc4b2a5fe59",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/creator_entry.py",
+      "mode": "0644",
+      "bytes": 11924,
+      "sha256": "53d16b0e31ae5abe048aad48881e6ff4209e380563c24c963b2c5999a8105dfb",
+      "gitBlob": "908160c4664a6fcce474aacdc08a0c39b2fa447f",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/git_inputs.py",
+      "mode": "0644",
+      "bytes": 10826,
+      "sha256": "5b1bcf06f2f3828d364affcd25bc0b37a964caec3ee014274c2b777202850afa",
+      "gitBlob": "a505306107e95b18cce3a89b5aa1bc5a940de0e1",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/held_inputs.py",
+      "mode": "0644",
+      "bytes": 19525,
+      "sha256": "c6e9769ccaf83c277d0c8448252f11b9d12d5f0b3e189889bd0b28bea49500c8",
+      "gitBlob": "6c2ccd3e10644a9f8240ac0128a5e26a541569e6",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_caller_receipt.hpp",
+      "mode": "0644",
+      "bytes": 14145,
+      "sha256": "8b436608e81eb0aca817a59143bf881e706140767f56d0bbf5c3c6114bcec07f",
+      "gitBlob": "793bbfa0616fbf37fbbfb9fc860a5e4f8315e52d",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_clone_original_regression.cpp",
+      "mode": "0644",
+      "bytes": 4383,
+      "sha256": "49a3d6c1436218f3c03282ba525001f2de044acf34af5e2111dc94f257117a6d",
+      "gitBlob": "be06981ea0e59752fe12fa2775054eec57f49c1c",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_command_route.hpp",
+      "mode": "0644",
+      "bytes": 10594,
+      "sha256": "afd48eb2788104e91da1bdd89a80eb8cff8859e6cea92ff69a2f8d6124bf2860",
+      "gitBlob": "85741888e7ec8818831cca9a1af68de231eb31ad",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_deadline_receiver.hpp",
+      "mode": "0644",
+      "bytes": 14583,
+      "sha256": "8c05703f297f3673ef57840071604c9036d522543953c5e9289925c95d099a1e",
+      "gitBlob": "edb3138a5929e1e7136b6c688c4969ddfa0db71f",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_deadline_supervisor_regression.cpp",
+      "mode": "0644",
+      "bytes": 2095,
+      "sha256": "2065851ba9c3608f4a4cc6102d494b1ba65a9b963aa4d6fac0feb70ae197fffc",
+      "gitBlob": "00a0161d1a12587b9dd9a1e9bdf70f4165c0a4f5",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_deadline_supervisor.hpp",
+      "mode": "0644",
+      "bytes": 25324,
+      "sha256": "28fe29185e9ce1241b088fd43523daaee1cac8ad03dcace4134f27558a23aa0e",
+      "gitBlob": "518330fb943d4b159b5809bb0c5ccf7bd173f531",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_driver.hpp",
+      "mode": "0644",
+      "bytes": 5354,
+      "sha256": "5317974b18ed27ace0661562da5e47da7946dd4139d26562573f6bdd9f89e972",
+      "gitBlob": "e4baf069f3f7679921339d276adcefc7c1ff47f1",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_elf_interpreter_source.hpp",
+      "mode": "0644",
+      "bytes": 5955,
+      "sha256": "86db6dbb20e82e17c6130f47eebe70ce9cc75415aff16ca4650da6a7770571c7",
+      "gitBlob": "e2299f643f49b7a509db2e35c2e90df1c92ff082",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_held_file.hpp",
+      "mode": "0644",
+      "bytes": 13922,
+      "sha256": "9edf717808d5bd60de2ad517657d1b8420c909640fac73832bba69aa832caf95",
+      "gitBlob": "8c92506503145d3fb24c88276bb2604cfae1de3c",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_host_channel.hpp",
+      "mode": "0644",
+      "bytes": 8690,
+      "sha256": "6dc370e18e9f467462da341941672a3de023494d7a7bb7675ac439972e186478",
+      "gitBlob": "32fd1648c8ef29f0c23a011ca9d0405aff7b5f2b",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_host_final_output.hpp",
+      "mode": "0644",
+      "bytes": 10135,
+      "sha256": "c0177c32fba114f90b3d69a6c77d1767f6d7d72c28cb617356538c05241bffe7",
+      "gitBlob": "1eb6f9334fc81f3e3200e112dc4850ec15da3c6f",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_host_wait_policy.hpp",
+      "mode": "0644",
+      "bytes": 5056,
+      "sha256": "cdb0186195849c4f0260789b66998fa3feb146bc75fa4241761cbac090bbf1df",
+      "gitBlob": "a39fa2a003025015285a0201e0d0dd7de7e3b145",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_ingress.hpp",
+      "mode": "0644",
+      "bytes": 13240,
+      "sha256": "3c401e00ca1acf56d9fdc030cf2c5fddad990d226366e639954f10f4fef73c8b",
+      "gitBlob": "8ba3702891e1252b700c6e037a07bc3dfba22cda",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_initial_objects.hpp",
+      "mode": "0644",
+      "bytes": 8109,
+      "sha256": "2b1c282f9098109def79b0301ec81afd02fab58c645ad7d4132510e6b99d9be6",
+      "gitBlob": "72daea4fbe8195f5d6c058aafa9d6e629afdbfca",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_initial_provider_archive.cpp",
+      "mode": "0644",
+      "bytes": 513,
+      "sha256": "bc9f04ec025c96f3ce45dd033d0261105bdb156394dbfa485298bba0bdbd4428",
+      "gitBlob": "b73450cd94ddde3b8921e295bf46ba43d5b324c1",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_initial_provider_archive.hpp",
+      "mode": "0644",
+      "bytes": 15854,
+      "sha256": "2f15c28200aa08bc9a81fcd4ba9eb910c9b5bbad63481364277ad9912791b931",
+      "gitBlob": "b5248e76216dd86f26ffdd0b2407f9fa0f437096",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_initial_provider_process_association.hpp",
+      "mode": "0644",
+      "bytes": 14483,
+      "sha256": "153563203a6056abc8efe09c5103f4f9a4e154bfb5fef03614ea41dec1654a64",
+      "gitBlob": "b7be91be3b3bcdc7941da8ecbf750bb40af7a8f8",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_lifecycle.cpp",
+      "mode": "0644",
+      "bytes": 67755,
+      "sha256": "000179dd1be5f0d03326f55b575a3fd5f357667953f66cb43a5d7676d18ddf21",
+      "gitBlob": "3af43c0794d9b6e157f13b8b072db1d2b02da8b1",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_main_receipt.hpp",
+      "mode": "0644",
+      "bytes": 12184,
+      "sha256": "698244550bb5f590f38556c04c67a9b331768424f9dcc91199b19cf96f2dd6cc",
+      "gitBlob": "2718e5defb87149ac6d403bc52b37bce53258f9a",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_memory_regression_receipt.hpp",
+      "mode": "0644",
+      "bytes": 926,
+      "sha256": "65eb8c1b54f7d5ff272d2bb79b940bcf1bb4c61fd51044c60b0a0c84bf120e20",
+      "gitBlob": "281851327058254e1537a4dd756b6b4211bf912e",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_memory_regression.cpp",
+      "mode": "0644",
+      "bytes": 16741,
+      "sha256": "c9b11617d28f387ce4610726155faafae37c772be33e554c03a0ee987e753745",
+      "gitBlob": "e44777d76d5ac733fff676db3e880cbbb61fd343",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_memory.hpp",
+      "mode": "0644",
+      "bytes": 20973,
+      "sha256": "c9b262712168488907333b587e82fe47e7fbddeb1db41f59c33d8862aa75a6cf",
+      "gitBlob": "3f0256aea90bf1d76f771682bf28da03ec05ff53",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_native_sink_regression.cpp",
+      "mode": "0644",
+      "bytes": 1459,
+      "sha256": "62ccf6803a1599810f6415ccfce30b9fb1bde5ab22464879989320aedd59992c",
+      "gitBlob": "2cf95dbd31e1b5aed9427afec77ff91dfe76eb96",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_native_sink.hpp",
+      "mode": "0644",
+      "bytes": 18744,
+      "sha256": "0985dc5bd083064a67d7e883b108bb4984ddb5923056e563b6d086f9586e4894",
+      "gitBlob": "4b0392a0974aed27b4a6917a93621ec2bf8fe8cc",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_original_deadline.hpp",
+      "mode": "0644",
+      "bytes": 5086,
+      "sha256": "0c41b794a3a8560643ca2d5a3521697e1bbc145ae21bc16c3edf7f09f4fb7608",
+      "gitBlob": "01c842f70522c996d597a0df9ebde81fe6d4c01a",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_original_entry.cpp",
+      "mode": "0644",
+      "bytes": 12750,
+      "sha256": "28aabec5c4bfd15fc57e52ac5caed883fe0c61294358310eac983107e4f48f4d",
+      "gitBlob": "49b9b8cde7ae0122a9d676114fbe694f593cb37d",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_original_eof_stdin.hpp",
+      "mode": "0644",
+      "bytes": 4175,
+      "sha256": "7151bc740141c7344d1b4b6e47b0c40db0c41f4d91b7771d31dc2ff9c73d7d09",
+      "gitBlob": "a36a001ac6c8ae62c517ea2557474abeef24f034",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_original_interpreter.hpp",
+      "mode": "0644",
+      "bytes": 7978,
+      "sha256": "4f5b099ac7ff2d71b213267cf3937b76fb68ab69e33e35e91c97c5bf12a77421",
+      "gitBlob": "eabba1cba129edaed32226523efece86e6597804",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_original_invocation.hpp",
+      "mode": "0644",
+      "bytes": 1740,
+      "sha256": "29b7f53b8548b527a2b171d2ff8807765245024441d086be6f92aaa972fc29aa",
+      "gitBlob": "e5286af3727501346081e7c318a3b9abd030aef6",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_original_main.hpp",
+      "mode": "0644",
+      "bytes": 14648,
+      "sha256": "f15b95cbf97b8a814336e2b5f1310fc6a2ef9ab7af82f681b26023e90ae7b194",
+      "gitBlob": "9bf5bf1dda37ae76fc5a94706f4b0b1e48c73430",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_original_route_arguments.hpp",
+      "mode": "0644",
+      "bytes": 13927,
+      "sha256": "b35e95939d7002641596989eb6081ab5be033622d2b4e46a2ae5cb08f2705913",
+      "gitBlob": "d4826ad0345bb0dc5540dea0035c58a22de6939d",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_original_route_producer.hpp",
+      "mode": "0644",
+      "bytes": 3539,
+      "sha256": "1d8571dde01ad8bce8f30435cb2a6d282a4d2705e2bcf7b7904c84bec6f8391d",
+      "gitBlob": "d4c9723ca946615bd96c97d0265e6749413353f3",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_owned_barrier_regression.cpp",
+      "mode": "0644",
+      "bytes": 2274,
+      "sha256": "3999222ae0c91d5ee0211d5d88679729003980d6aa20771a3de73b7f6d1ef204",
+      "gitBlob": "1cf633eabf64c4db0dfc37ad07b865cdd1af2f02",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_partial_syscall_regression.cpp",
+      "mode": "0644",
+      "bytes": 2949,
+      "sha256": "31bf1e5369531d7f253ac2b09c05a2cbb666dc5146f4e79f2942d8471718b324",
+      "gitBlob": "9fb1f74d332929921c96c03e51e66f0fab6205e6",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_pending_host_preown_regression.cpp",
+      "mode": "0644",
+      "bytes": 23765,
+      "sha256": "3d26d50fe4380aac6282aa95502031c1f705ee13adfe23af4c751fa79373885b",
+      "gitBlob": "2189c289f805d2be34438b6c68a9fc8eb5c7d859",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_pending_host.hpp",
+      "mode": "0644",
+      "bytes": 16127,
+      "sha256": "6acdeec3e19387946db39e6ecf9e597df5a7a06757a45b892c10c0e5b5472b56",
+      "gitBlob": "84f207ba4e3f965d65c904e1be4ad3ffe21c3506",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_pending_input_owner.hpp",
+      "mode": "0644",
+      "bytes": 11022,
+      "sha256": "0725eec9b39f0a735e5b90ff99a6dfb60483c695f35c5cb166cb999443f5827e",
+      "gitBlob": "bec54a3a6626c93607e6f465658cdad7e289de4c",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_pending_notice_regression.cpp",
+      "mode": "0644",
+      "bytes": 2267,
+      "sha256": "42f2a7007db120d9b5a9c42fe23303c949864065dfc85f39b8285b6c60f45085",
+      "gitBlob": "b2d7bb4a4a48cce3b541e38b18d6289ba63686d3",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_pidfd_identity.hpp",
+      "mode": "0644",
+      "bytes": 12418,
+      "sha256": "9613fb57a8a1e005f36152e44d186ea6d17c2bc934bb97068170b05111852a90",
+      "gitBlob": "10dc5858bdb947c556bed95eaf219020f23daed1",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_prebirth_retention_policy.hpp",
+      "mode": "0644",
+      "bytes": 19548,
+      "sha256": "fa70a7976460f6b461de6a0d888b2ef3ac46f29ad815caac94ed8a59b1ab3578",
+      "gitBlob": "fb351149e7e1b2edb5764695aaec680b440727ea",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_private_candidate_file.hpp",
+      "mode": "0644",
+      "bytes": 9845,
+      "sha256": "64d074171bb1215e35123c1c2f10ff4aebd058dcec8d1546a21634e3c1c64c56",
+      "gitBlob": "5cb649a49d1a8e7222e5a9f85d3e14b87d973049",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_private_candidate_regression.cpp",
+      "mode": "0644",
+      "bytes": 1879,
+      "sha256": "21efa5b0189f3086a84728e0088a575a34bfe97409b9bd84ade20a42848aba9c",
+      "gitBlob": "5f90cc1d9d7a2a1edc2d32b21edd09940404754c",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_private_lease_owner.hpp",
+      "mode": "0644",
+      "bytes": 30205,
+      "sha256": "1ac8faa33dfbef074db4151d5ae130e22d30084d9cb3b175c31bb13b431d2fbf",
+      "gitBlob": "ed3999011379e226791b20b61a2cc8aebfc19e00",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_private_selection_decoder.hpp",
+      "mode": "0644",
+      "bytes": 18239,
+      "sha256": "e167d7ac2d066f3fb97ab9eb8e8b09aa9e88df0c363907ae097071e98f979d6e",
+      "gitBlob": "3471ec1a2299e99caba830ca601811c9aa2ee12b",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_private_selection_startup.hpp",
+      "mode": "0644",
+      "bytes": 51544,
+      "sha256": "f8ea8d6e1da6c3a04abed4ca1ee2e4248d42de1535c7e1ac40b603996cb1ac3f",
+      "gitBlob": "15139b35d456d4fe176449ab16ac382a8fff63fc",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_private_verity_regression.cpp",
+      "mode": "0644",
+      "bytes": 2241,
+      "sha256": "ec0b28ff7e656ad5458fe5622277196052961df552636b855510afd4f04766c1",
+      "gitBlob": "b6f41ad9530f141d56e14c6022a0311ff49cf0d3",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_private_verity.hpp",
+      "mode": "0644",
+      "bytes": 6464,
+      "sha256": "6dccfd89dfcafc03ee610383e3e3a6b6218fabeed9dc7bf79d86e205f20464e9",
+      "gitBlob": "4da4d7e3b9d36e2b097e072e132d39fdc06c517e",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_receipt_destination_codec.hpp",
+      "mode": "0644",
+      "bytes": 21170,
+      "sha256": "c6dec62e0c6401781a3ce3eacd3c4cec64e65450221fc07ec1110dbb41a4dd13",
+      "gitBlob": "44ff75c52b46d31815cb07d5606c3af3492945ef",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_receipt_destination_layout.hpp",
+      "mode": "0644",
+      "bytes": 12140,
+      "sha256": "748f193a4c86d9a54dda4d256e403d59106b137ac77c7ade4d57bb64455c32f0",
+      "gitBlob": "c50d7bcdd83b23aec48bfd9894e4338338a657f1",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_receipt_foundation_geometry_regression.cpp",
+      "mode": "0644",
+      "bytes": 14440,
+      "sha256": "300d8acce661e3a6f8f9bf30a41a13f6ce168aafdf58e4da0c09bdd30abb1669",
+      "gitBlob": "4b23a09fbb9dd535b3c21db3e0e4fd4f83743afd",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_receipt_foundation_geometry.hpp",
+      "mode": "0644",
+      "bytes": 6537,
+      "sha256": "df4b8280016e75e5400f612ae6731a27419310689a465c2499e5d4e319b71740",
+      "gitBlob": "71bd9aa832985ebc6673116cdcf3bb6424fb24b9",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_receipt_foundation_pair.hpp",
+      "mode": "0644",
+      "bytes": 7603,
+      "sha256": "42d3ce634a3c1c3e1383ba29a49cfa847cc85cfdaddef0e2eb4f59d50b1f4c79",
+      "gitBlob": "85308154c7e4c90ef35da438c18a4168c757943e",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_receipt_native_envelope.hpp",
+      "mode": "0644",
+      "bytes": 9766,
+      "sha256": "204297a93d321c2e05460716d1d81d20267441611a29f2262bad0d3ecc6ea18b",
+      "gitBlob": "8bbb5eefcb70aea7209fd91e7c28528503403fba",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_receipt_native_storage_plan.hpp",
+      "mode": "0644",
+      "bytes": 4911,
+      "sha256": "415906a5d49c20279a1a957f64ce1dd272c15561e1c3ec4af77a9c22f3d735d8",
+      "gitBlob": "e7a9096e0c35bae5ac53d6ef67cd06fb15f663fb",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_received_source_unit_range.hpp",
+      "mode": "0644",
+      "bytes": 10952,
+      "sha256": "055f2a9c3d64f100ce5df0cb8421ece9c86d2449215d1d44616ceef87fc8bdd8",
+      "gitBlob": "72322dfdd97f6d0a328896d1b17b45140e156a36",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_received_source_unit_regression.cpp",
+      "mode": "0644",
+      "bytes": 1850,
+      "sha256": "4bcf95be22238a9f2a55d2e8b5a6611d85e8f38235476f39b90178479d6a94be",
+      "gitBlob": "5f1e72243c11a458d7c8ddc4df1d85957ffe0e10",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_received_source_unit.hpp",
+      "mode": "0644",
+      "bytes": 14689,
+      "sha256": "808f960ab6d8970c60ac6d294dad9db35111473c51586e9dfa5d29cf3ce8d457",
+      "gitBlob": "9f7607e1e58d37f51d58b169a0fa3157d34d5466",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_received_subject_readback.hpp",
+      "mode": "0644",
+      "bytes": 15839,
+      "sha256": "1412e57b722701fc1571a8ad77b478690986a0a7c4c12bd4e1ef7456ba8f449d",
+      "gitBlob": "cc22baceadac0678eba2a3450045e56a98ddae0d",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_selection_startup_regression.cpp",
+      "mode": "0644",
+      "bytes": 2136,
+      "sha256": "4a763a6aa36d93d7886fb44bfb7189ec5ba189f8265c42db62f5f55ee9e809b1",
+      "gitBlob": "78263eef5496343b9dd5e0a7819c832eaaabd1a5",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_session_commands.hpp",
+      "mode": "0644",
+      "bytes": 10763,
+      "sha256": "9d0902330383497c0edf202369c1149aa59d345a61dd2ce64e77a257291ad9ef",
+      "gitBlob": "95f0ef50b8137f5bd3a2b4c19dc2b32d1c67cc41",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_session_gate.hpp",
+      "mode": "0644",
+      "bytes": 95276,
+      "sha256": "46844f045492fb3b703b4e79e91d6c29a58f0f07a6b79c9bde2b364efa9a6a12",
+      "gitBlob": "91ad92a8357c6c913c5f5a277b6dee2dea15cc9c",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_sink_collector.hpp",
+      "mode": "0644",
+      "bytes": 15485,
+      "sha256": "74c66b68d2a5687880fe358502092d8d8e04ff025b2f1f7062dbf67552f34762",
+      "gitBlob": "491ab9c82de259fe869ba971f3158d26d776703a",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_source_occurrence_preflight.hpp",
+      "mode": "0644",
+      "bytes": 8260,
+      "sha256": "5b7b5ee7dbc7c1516c2fbce9d19c61fbb1027686016417c299bc17236ebb86d3",
+      "gitBlob": "303723e679d81664f642c9c8ffb3f9eda28950e5",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_standalone_host.hpp",
+      "mode": "0644",
+      "bytes": 3859,
+      "sha256": "40ccb5612ae32d63ce3c38d6ea8f13cc32fb38d2461d515214815f530927b92f",
+      "gitBlob": "39b8f64adab4a431a8075d8933ef64246e30200a",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_task_identity.hpp",
+      "mode": "0644",
+      "bytes": 28108,
+      "sha256": "5b1e1735f664d5d3577dfbb094e294e378af03f5e09aed2f665e56cbedc5976b",
+      "gitBlob": "66872a563368e302be6b5831ae9e09147b270ce5",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_unit_payload_archive.hpp",
+      "mode": "0644",
+      "bytes": 24803,
+      "sha256": "b956d9b8b6d69d79302e745285328f1198bcf715626fc03ad16d28308a16ce7e",
+      "gitBlob": "cc5662a0a6dae827823db48823ae1c28f275fec8",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_upstream_subject_receiver_regression.cpp",
+      "mode": "0644",
+      "bytes": 14668,
+      "sha256": "0ef1e93f91d4c4d1a8dd78a9b5b2cbb3342cb1c3db8633c384f0df1d6620acfc",
+      "gitBlob": "e7872be304aa62f718ad01bc88657eec7e7b5b7c",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/linux_upstream_subject_receiver.hpp",
+      "mode": "0644",
+      "bytes": 28103,
+      "sha256": "b8454548e0ac674b8537f47f8c15fbf3f53ac8dd1d1b47aacc4aac186b9bc86f",
+      "gitBlob": "853f6fff809896756385e09c78156393f6fa7ef8",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_command_plan.hpp",
+      "mode": "0644",
+      "bytes": 6041,
+      "sha256": "a04ebe612d929be5fe41e18d285e825dfa869cb7fecd198bc4c34f35481902e0",
+      "gitBlob": "1c6e76fec5492437ca5b9df5bb78778275d791bb",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_creator_held_inputs_regression.cpp",
+      "mode": "0644",
+      "bytes": 3029,
+      "sha256": "ccb0c8f028cc790637ee1149bdb0531c6d471e03801a6cb93c47aeef94aed63b",
+      "gitBlob": "ce5ed87547357a1cce6a2030b12318e1612d6e4b",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_creator_held_inputs_regression.hpp",
+      "mode": "0644",
+      "bytes": 660,
+      "sha256": "01925a8cf9296db1dc0494b1ac9a1214ba81665834b172d6494433da2acee879",
+      "gitBlob": "8d57a17b54051852176a4e59bf4554b06dfe40ba",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_creator_held_inputs.hpp",
+      "mode": "0644",
+      "bytes": 3274,
+      "sha256": "cf6bd2016de2a29b92b13b5be0808b975027cec451b1cb239f8efb91d2269e77",
+      "gitBlob": "9d45baa6dc1322d0f3bbd75de5e43f91f4086163",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_dispatch_roster.cpp",
+      "mode": "0644",
+      "bytes": 6358,
+      "sha256": "7c701d099999c5c3d1240f7ac7624e0f62d65b1eab5dd112f5972007c10f827f",
+      "gitBlob": "da513de14d6cb63fef38bd78863bdbf49f8930c3",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_host_creator_invocation.cpp",
+      "mode": "0644",
+      "bytes": 2646,
+      "sha256": "83a9f35fb87f61ac08c0b7a110eee9dc8450594feeb681189174639854ec488a",
+      "gitBlob": "f571fd15df26598b0a112c156d1c9352871d4d3d",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_linux_closure.cpp",
+      "mode": "0644",
+      "bytes": 1480,
+      "sha256": "8c6cfa4d2bbbd5d32e82816fa4378476e0eaae699b93a9527ed9bebff62ce82d",
+      "gitBlob": "19a8b4257df9ffe387509a462abe6218d4a1a94b",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_linux_command_plan.hpp",
+      "mode": "0644",
+      "bytes": 7667,
+      "sha256": "8028cc9dcea8b73adf5ea7c2b238027e2c35ab4b90054d8afa040533f3363471",
+      "gitBlob": "999b8a661a5c6f736e3081f0ead11d2604058bf9",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_linux_creator_capture.cpp",
+      "mode": "0644",
+      "bytes": 6644,
+      "sha256": "92e650ec2551a2f403ee6d68fd8d50a45210c300594afb11da266d98c5919d4d",
+      "gitBlob": "5e11b27bca0799fa1fd135db35659686ff3fc12a",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_linux_dispatch.cpp",
+      "mode": "0644",
+      "bytes": 3662,
+      "sha256": "dcb641c94207820e67e30c7cf03a3399149d285ec223f9289a559f806465f285",
+      "gitBlob": "3c5a1584293fbc3d83b7a3c34dab4a4b9a56e7f4",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_linux_factory.cpp",
+      "mode": "0644",
+      "bytes": 6336,
+      "sha256": "87ae47973718bb6d44edf94964a1ce1a2461cf6f169e6d8f1f601d9704f7066e",
+      "gitBlob": "fcf77646818b2f6fd9ffcfdb7bfc79b2330d34a8",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_linux_final_publication.cpp",
+      "mode": "0644",
+      "bytes": 35100,
+      "sha256": "0462a646c1d3fb254ac6218c8f1977e5a71def4bd6472cdcffdd99a7ac2ca0f7",
+      "gitBlob": "a65770c5bafa36b18ce4cea168d5d75a74af7e90",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_linux_host_closure.cpp",
+      "mode": "0644",
+      "bytes": 3400,
+      "sha256": "d8074dd00c69bdfda55322a04b53624c52d6b5f352b9b5c9ef8b81d3c30a0a05",
+      "gitBlob": "6e242f7e6c75b9f029aeb374989110cd730e042c",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_linux_host_disposal.cpp",
+      "mode": "0644",
+      "bytes": 10113,
+      "sha256": "3f1e6e5b017733b465bc0fa8aa3a035a79663931fda2c9775feeecbf3a69ef5e",
+      "gitBlob": "08d9052989b9c17e15ef1bbf935eb75aa8b7dc2d",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_linux_input_bindings.cpp",
+      "mode": "0644",
+      "bytes": 36572,
+      "sha256": "c0bb238ae73908cbf9e6f8f8b390f33b797e1a2da47aade5472c87a4fbf0d749",
+      "gitBlob": "448d7fe2dc5e406629d99db207c15e8f68f3fbce",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_linux_input_disposal.cpp",
+      "mode": "0644",
+      "bytes": 4298,
+      "sha256": "b9533a731c62fa231a5717afc3d3d35700e1f3c414b94b96f8a44fbdcd51fdcf",
+      "gitBlob": "3e3352f92bb548e4f9ae78c9a5c84ce056f0bdb5",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_linux_original_invocation.cpp",
+      "mode": "0644",
+      "bytes": 4309,
+      "sha256": "dec91682d4d7bfb1d5c6c27bd549760a98fa1dd5efc80cd4ef06cb2bcac2f57d",
+      "gitBlob": "186b48a518fc243aa63c3fe8a83c42f030ca1e5a",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_linux_platform.hpp",
+      "mode": "0644",
+      "bytes": 19663,
+      "sha256": "0ab8ad03354e4ad66111f69b399a17bf4e51a9ac9f45a09eca93e5268882d059",
+      "gitBlob": "39a8e3d0b4ff76ab283b62164684e2dc175d5c4d",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_linux_route_bindings.cpp",
+      "mode": "0644",
+      "bytes": 17494,
+      "sha256": "bd1459e77f6525acb42eb4e91e8eceecdca442d7e2f6c19ee9999bbb84bc6a63",
+      "gitBlob": "311c6dcee3d6c632121beff932777ae4d46e7f91",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_linux_standalone_host.cpp",
+      "mode": "0644",
+      "bytes": 6157,
+      "sha256": "6670d0b51e90526d787d93c44812abc3743200b87bb9c9dd1828362545b81bc7",
+      "gitBlob": "fe89dfea504917232ac05af1058f41d3e52c23ff",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_session_core.hpp",
+      "mode": "0644",
+      "bytes": 6861,
+      "sha256": "20421c4ea4f7cb4a0a4e0f4f0b446bb551a982bb11a6626cfe4f8b6201bae654",
+      "gitBlob": "d30f69d74647f3a180048a4e4590ca2774aaf9f5",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_session_module.cpp",
+      "mode": "0644",
+      "bytes": 6603,
+      "sha256": "e6ba02bf083af842be0fb311a8d87b77a85b229cd833b0ae6a5dafe6c41ed228",
+      "gitBlob": "78f04b5c836ec638908a23cde4bb450784771755",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_session_registry.hpp",
+      "mode": "0644",
+      "bytes": 4854,
+      "sha256": "4014598ee1f9a2999167152008441fd65a2f6ea3d155897ef131466bdc1c9bce",
+      "gitBlob": "f905f419c61dc6f1484af64ccea8278a669cb7fc",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_session.py",
+      "mode": "0644",
+      "bytes": 4148,
+      "sha256": "10dbfd2b3cfe5c5fd8aac8b108761e853a38d2be3a61af0f1b3f132fb60bf39d",
+      "gitBlob": "47cb1736ef2bff69cb81258c18e359c50e0620a0",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_windows_accounting.cpp",
+      "mode": "0644",
+      "bytes": 1936,
+      "sha256": "5b7d13d15c4cde0423c948864cabcb1985cb691d06f7fb12127f8617458f1317",
+      "gitBlob": "ee5a24acf87062173fb35ae7c1558e78a7f0e797",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_windows_closure.cpp",
+      "mode": "0644",
+      "bytes": 2577,
+      "sha256": "7a5685c93c4e1a70bb59d2899607a3a4538e31401a486f72dc2c8599f90c1e7b",
+      "gitBlob": "3e014ec5cbcb5cdd7d907a73fc100cdc48e05d47",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_windows_collector.cpp",
+      "mode": "0644",
+      "bytes": 2028,
+      "sha256": "d390621787c1912e17c42c74dfd3703e752edda33cffa7f367e0659a51d46b2f",
+      "gitBlob": "6b977d055c116ca1e7a01740c5be05fcafb9213e",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_windows_command_capture.cpp",
+      "mode": "0644",
+      "bytes": 18679,
+      "sha256": "a3d5c4d52a60036c7677852465ea09480329a21b995ab312d7c7ccd750ae4e04",
+      "gitBlob": "9654c2e12d4e570746b4a9a01acb1a8ae7cb1347",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_windows_creator_capture.cpp",
+      "mode": "0644",
+      "bytes": 3537,
+      "sha256": "9c96a42454c64bdb34f37a9ad8e186bbfd2c39c5bced52d9819aaec6c20b396d",
+      "gitBlob": "fb336f441d851f40aec77aaaa639061d754b7520",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_windows_dispatch.cpp",
+      "mode": "0644",
+      "bytes": 3843,
+      "sha256": "909a1f23d667079d1f3a6f673728daf8c67d7ece599fa1347b1cc9a01c0b1380",
+      "gitBlob": "106d4ef3b4c906b53baead16983c43ec456fb54a",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_windows_disposal.cpp",
+      "mode": "0644",
+      "bytes": 2226,
+      "sha256": "87f6f18f4087ed8f0576efec4b7586fe7edb702abc77e4f7fdf56a811fd0aefc",
+      "gitBlob": "89f9720a9106b6b102eb318c515eb1bc05e9ad63",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_windows_factory.cpp",
+      "mode": "0644",
+      "bytes": 3376,
+      "sha256": "c31cfbdd86e6acd21e684db58c7eea9d10840637ea7d301cb120a8dc4860341a",
+      "gitBlob": "7454c274ab4212c7cc2577655dbbe1c929a17522",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_windows_host_closure.cpp",
+      "mode": "0644",
+      "bytes": 2495,
+      "sha256": "a8b14906973ddc46325ef7390aef7246ba7ade7b81b3f26832bb0f6e961edcf5",
+      "gitBlob": "930f4b79906d9f6edcd948d6237f31601c960d56",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_windows_host_entry.cpp",
+      "mode": "0644",
+      "bytes": 2736,
+      "sha256": "6d5438efe05395aecbcaa44df62638c6a0c9d38ab557d21a1fd2d46bdffc76be",
+      "gitBlob": "ed7ea384407a31d32c8de0860cd6978bdc224575",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_windows_host_progress.cpp",
+      "mode": "0644",
+      "bytes": 6066,
+      "sha256": "1f5ec5f81cee3a1e77312c5bb15b2fdd7a9c3b6882bdc7506344461703e67463",
+      "gitBlob": "8be0945f8f68686885514867aac897be2f847033",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_windows_host_publication.cpp",
+      "mode": "0644",
+      "bytes": 25875,
+      "sha256": "dd2cf72c36c8bad771d99131cefd18582c0a1829112aa64659ef3cc5d84ed248",
+      "gitBlob": "40a7f3e072a4be2f97e21dbf4211149d01e27160",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_windows_input_bindings.cpp",
+      "mode": "0644",
+      "bytes": 12563,
+      "sha256": "1269fa88d3c9e24695b5df34b909ce598d0a9a98b99fd66e9aafda2277fff27c",
+      "gitBlob": "e9a3c01763082e9e62cfafc4a6aa5649ede67f97",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_windows_input_disposal.cpp",
+      "mode": "0644",
+      "bytes": 2059,
+      "sha256": "cf656613ee2ad85f02197fb0acc696adafe19322210069bad41918d7bfc40303",
+      "gitBlob": "caedcfdfc4f4b47d69b8afd684e2b1635be8f2a1",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_windows_launch_associations.cpp",
+      "mode": "0644",
+      "bytes": 5459,
+      "sha256": "115b9337e5bc31377606e75bc407e3e5dfe476b57e5c8a1509ece94ad7c356e0",
+      "gitBlob": "7b5739c26df7b1519fa45ba0e96d8a0b364fa026",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_windows_platform.hpp",
+      "mode": "0644",
+      "bytes": 7007,
+      "sha256": "e62f4ffac701c66158312736a1495468827fdd6dd63ff03675d7f79c971076b3",
+      "gitBlob": "5673278b702e9f8db9221359caa2a481d50e7c0f",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_windows_route_bindings.cpp",
+      "mode": "0644",
+      "bytes": 5642,
+      "sha256": "f785f4483fb65bc863d9cd09c7c3dc724dbeb155abc3c6f81343cd4837384555",
+      "gitBlob": "b9ef8fd55f509fb7e43804f350ade3b2af52b2ec",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/native_windows_source_binding.cpp",
+      "mode": "0644",
+      "bytes": 3053,
+      "sha256": "e81b65036eddc81bf1a30a7350238e1f20ad5d79a94c877d85e1b5e90a4ef445",
+      "gitBlob": "d0212411c241541fed840970dfbc454fd28ad1e0",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/observation_schedule.py",
+      "mode": "0644",
+      "bytes": 4103,
+      "sha256": "15e8ba87b039f8c4dc880a52ab148d9a4e7cd64ad723639d5e56d3c5d54dc11c",
+      "gitBlob": "76127781608776e333d68458adc8660e688323fc",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/original_git_object_sha1_regression.cpp",
+      "mode": "0644",
+      "bytes": 3440,
+      "sha256": "ad6f8e41f030af224da82db5c1b9f68573139f8d5374e265b186e31cdf5287b4",
+      "gitBlob": "b90b553950d31d5a11a41777177ad3387434d04a",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/original_git_object_sha1.hpp",
+      "mode": "0644",
+      "bytes": 2765,
+      "sha256": "5e6f91722ed1b2ec8bdec4c879b52c30bb2e98da7ba3ff5e0cc860bbad69662b",
+      "gitBlob": "0dc0f0b0029aacd11ab0659b9e5680dd9d511918",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/original_sha256_regression.cpp",
+      "mode": "0644",
+      "bytes": 1837,
+      "sha256": "62e5c9f2d69dc03006f2ba36a52a7e365e601034e2ac09c8725658685de6dad0",
+      "gitBlob": "b2742a6f8912e3b0e0e16a3c9c4266dea62d1dcc",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/original_sha256.hpp",
+      "mode": "0644",
+      "bytes": 4120,
+      "sha256": "52b2721e68e76f53bdabbc532b309d961bfff2ccd2f3e02edcd2fbcf25751f82",
+      "gitBlob": "f97a1079d7cd3835e3231d9781a683f18829a22b",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/private_selection_encoder.py",
+      "mode": "0644",
+      "bytes": 15865,
+      "sha256": "a06f51781819286f0a81f4dd533b9d4b6087f3a95488dabcb357693acceed952",
+      "gitBlob": "a3657918b35802a74b0b89e80a2731face4b4784",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/private_sink.py",
+      "mode": "0644",
+      "bytes": 8313,
+      "sha256": "46668fa0405939122d98287891a2ebf3f444297c0919b408aea5de9c48fb9c0c",
+      "gitBlob": "8ff97d7c3d495941b684504c0217898e49d66f29",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/selected_route_contract_test.py",
+      "mode": "0644",
+      "bytes": 2112,
+      "sha256": "4ae8c79481fa80b171b639c45c7ae7ec899fedbcbe957d0ec1c9dcfa53b118a0",
+      "gitBlob": "febee2ba4e5ccd70581833775cca41c2a15ab322",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/selected_route.py",
+      "mode": "0644",
+      "bytes": 3469,
+      "sha256": "384692ab404ce9c579da8ae901b8d0c17ecef8f93b84135b9b1711c5a00c3a26",
+      "gitBlob": "18493c78e1b77865101b8f09e294e6843da2ff40",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/sink_schedule_contract_test.py",
+      "mode": "0644",
+      "bytes": 5344,
+      "sha256": "66ce3ddeb5a7cc98751857f7d42106c4871f32680f97f31049cba331e39b7e09",
+      "gitBlob": "a926ae56ba630eac055847cdfc46dc22bd8dffb2",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_alias_code_guard.hpp",
+      "mode": "0644",
+      "bytes": 12851,
+      "sha256": "8f1d6e7767b0648058c3cecf0841ae1be8c1a83c64a13d390328006c127b0d43",
+      "gitBlob": "3003de45ded5b901f52bff3e9549aba1f615a025",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_alias_selector_regression.cpp",
+      "mode": "0644",
+      "bytes": 2123,
+      "sha256": "5134c39088717bba2d005553cb1cbb94032dc85e50db00d861916b68860bcf71",
+      "gitBlob": "c970998dcc21df7860182b2e92ef545d4227ac59",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_amd64_boundary_regression.cpp",
+      "mode": "0644",
+      "bytes": 3177,
+      "sha256": "cdfcacf9ee6f31e404a5924b1319de9454e458dd53e2cae9bc61b456167a65dd",
+      "gitBlob": "77d511837802dd6d720b9426013c18049ea9a6a3",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_amd64_caller_boundary.hpp",
+      "mode": "0644",
+      "bytes": 18102,
+      "sha256": "34e4088c85de3185713b9cc563ade3a15608f02d0f03dc59af11f516f9447044",
+      "gitBlob": "a16a5254908774173012ad05d6206cd83c172954",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_captured_copy.hpp",
+      "mode": "0644",
+      "bytes": 2049,
+      "sha256": "7e8a7b0c96b97f629fee63991773cc588e94e0d09f53cb1f6f7095b747b05dc6",
+      "gitBlob": "28edd5b707fc8acc14f682b839ef86e42826db43",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_chain_regression_receipt.hpp",
+      "mode": "0644",
+      "bytes": 481,
+      "sha256": "b66966a919753305387d14d50bcd3e286493c7f6928fe56313de112bc2c4fdd3",
+      "gitBlob": "42c6b552c942ed641ce2c43397cec6893a6d60fd",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_chain_transition_regression.cpp",
+      "mode": "0644",
+      "bytes": 9189,
+      "sha256": "840a995267994bf064305cca1fb3a2f28b7c763b8fbd7488935b12bdbc2a6f94",
+      "gitBlob": "d56f153dc7489cd19f2c5db48280b4cc781c39e5",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_codeview_observation.hpp",
+      "mode": "0644",
+      "bytes": 4154,
+      "sha256": "2fb7e0e101108ec7748fb6f343b556ce745f734463d8bbcbe61ec9be25246967",
+      "gitBlob": "b4570057efe04bb949c4d316fc4e46e07370d28d",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_command_line_observation.hpp",
+      "mode": "0644",
+      "bytes": 12690,
+      "sha256": "92dad94a44f9506364dab83afdd6b97d4761c499fd3c73a4b67fd9c840832bb4",
+      "gitBlob": "810b0b5636990bba8ec052637f920f6f93879d98",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_command_route.hpp",
+      "mode": "0644",
+      "bytes": 8934,
+      "sha256": "8a243861c4087c19c3fd213ddb191d00f2a90df2db0fe0c22e6e888d0bc3abc4",
+      "gitBlob": "5682202941df540e749a6973e2472737204c67ff",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_compiler_range_observation.hpp",
+      "mode": "0644",
+      "bytes": 25327,
+      "sha256": "ad338ae75a69898a48cf26e4a980c981e770e07e45d4a381b3bc043601990df6",
+      "gitBlob": "52357f660986138bb22fe5a34fe94246a4216956",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_copied_source_capture.hpp",
+      "mode": "0644",
+      "bytes": 4046,
+      "sha256": "d4a5fc7f57560db3ea86195dbaa2db4edeb26dda80a295a5d6a99955c09fa02a",
+      "gitBlob": "7e4acfb9422ef742332523dc3689ef8cfab2f9e3",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_coreclr_caller_target.hpp",
+      "mode": "0644",
+      "bytes": 15302,
+      "sha256": "f926156b8fb4ce4c3fa7aec2e27fbb26d47e4f3d9bedec397155aebd76297fbe",
+      "gitBlob": "efccfcfe4c9c77a0d63ecacd6b714a2d4052277a",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_coreclr_compiled_geometry.hpp",
+      "mode": "0644",
+      "bytes": 12203,
+      "sha256": "4fae921f8f82807d1450beb4fab13da37c00b34cf46903893e8f9a2ccc086034",
+      "gitBlob": "cf09840728551414cefd13b600947cc1ca0bc65c",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_coreclr_context_change.hpp",
+      "mode": "0644",
+      "bytes": 13973,
+      "sha256": "3381e75b698b8887495c977a661d1d92b8307ff8ba23d39ae30bc6d5e8bab9b9",
+      "gitBlob": "ff0995b27ba8dc9f71ff1e8b5b2cf5b5aa2fb211",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_coreclr_controller_custody.hpp",
+      "mode": "0644",
+      "bytes": 20864,
+      "sha256": "4529ff241b107467bae52b4f7b7ce2e212695efbd0a3c5f9259d375e0925a247",
+      "gitBlob": "94af76c342a0aa326253bbf46fe201f0670ce867",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_coreclr_debug_cause.hpp",
+      "mode": "0644",
+      "bytes": 3568,
+      "sha256": "5ace76814465ddeffacca01115b952fe11654582a1798c2cdb1f4eaa775b009f",
+      "gitBlob": "1cb9c711f1112ea71688b3e604caff8e84c2ee38",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_coreclr_entry_inputs.hpp",
+      "mode": "0644",
+      "bytes": 15052,
+      "sha256": "4c90c4c888adc201ef5cb444c2d9c60bef26f447f6ad80eb123579d629804091",
+      "gitBlob": "89698320471399e889e335238edb77bef2968b62",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_coreclr_entry_properties.hpp",
+      "mode": "0644",
+      "bytes": 3674,
+      "sha256": "d806a0c59f60cbce9daa38e37e807a808e67bfce26b6f2c29c5ff50e129f252a",
+      "gitBlob": "c5592d1af7ddfbfcf6ef425cff737c2a73b6b856",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_coreclr_export.hpp",
+      "mode": "0644",
+      "bytes": 7609,
+      "sha256": "183f2ff00d0ef3558f65bdeffc38a4fa6daf96081c31fae343c6a3379b476332",
+      "gitBlob": "d79c003a8a682621c8322d9763f30187ccced40e",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_coreclr_instruction_step.hpp",
+      "mode": "0644",
+      "bytes": 12093,
+      "sha256": "3f6acb91290421196b56f1b7f47d429050c9d397e3567e193ba8fcdbaf5e04f0",
+      "gitBlob": "14fb397dcb11e4d4a0e7e81a3932b8d95b7787ea",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_coreclr_thread_context.hpp",
+      "mode": "0644",
+      "bytes": 2645,
+      "sha256": "6a1aab8f1e1ee58fca84c541a9f827d7b9c63536e13fb3b844893aa96010b7fb",
+      "gitBlob": "162e35176b2f67f11961062f9a5a8f520e5d72fb",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_coreclr_writer_bootstrap.hpp",
+      "mode": "0644",
+      "bytes": 5919,
+      "sha256": "ea4b6df9550bcab86258816f5f988437e5f6fdc660dd98e99eef3d3cfc5f5d84",
+      "gitBlob": "4794243cc3ee961c6e9a5b35775fde23670a1743",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_creator_held_inputs_regression.cpp",
+      "mode": "0644",
+      "bytes": 1282,
+      "sha256": "6a9501524917daa5f4a978ddc6bfe574f627c51d99d6d664ebd37835a1e78c90",
+      "gitBlob": "b354aeba55fe80531b7d4f218fa55922465135ea",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_crt_argument_projection.hpp",
+      "mode": "0644",
+      "bytes": 4262,
+      "sha256": "f45f830b88dace329bc4a9962c498aa5e8cacc5cac66404034e19d1020744f70",
+      "gitBlob": "d2bdbc306c6a20fb9e97aeda8fad0240f1f23ba1",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_crt_projection_regression.cpp",
+      "mode": "0644",
+      "bytes": 3584,
+      "sha256": "ecdca7c12f785751aae99584237654fe1ea2e1bc78905ff95e913a6f005b30af",
+      "gitBlob": "f7825bdfb982ae3c56f5ed2f91e086f67b0b0f20",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_driver.hpp",
+      "mode": "0644",
+      "bytes": 3875,
+      "sha256": "5e6a950f93a9e5d27ed3edc8c89028a98ba8477720d5c14ba18e2a8f01c3efb6",
+      "gitBlob": "9f37c4a6458d6fc100224a4d0791c46be1520830",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_fixed_stub_regression.hpp",
+      "mode": "0644",
+      "bytes": 2293,
+      "sha256": "2f94e61ba725f18518d2c36d246b319b0a091d0c8c27358db5022e5f6fd00e28",
+      "gitBlob": "d976e88529b594e4407fa5cade0201677c458e5d",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_fixture_name_hold.hpp",
+      "mode": "0644",
+      "bytes": 4002,
+      "sha256": "e58b5f9a5d98c46ed77ae6e2ddc357d6e398f555a5504bf657773c6bda2ed159",
+      "gitBlob": "5fb0ce61b7835a9e6701fc9c128dde25f626815a",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_fixture_relative_file.hpp",
+      "mode": "0644",
+      "bytes": 9006,
+      "sha256": "4924babeac39c5af2ea6798d243b23569611e7eaac90d8bc737ae04ab67501c1",
+      "gitBlob": "8712589f84e5d5f9a97d6ed05ccb438fc8a1aa90",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_framework_list_source_regression.cpp",
+      "mode": "0644",
+      "bytes": 5491,
+      "sha256": "210bd55aa9239bd7f8cf8c50f080b0a403550700b8b2eae4445662206d15efe8",
+      "gitBlob": "167ebdb21aaae6f6db4073199b850266835f9b88",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_framework_list_source.hpp",
+      "mode": "0644",
+      "bytes": 9242,
+      "sha256": "2eb1f2f3e1835321141e5f30fc80fb73efc47e1a12a4d40c22565385912d1f7d",
+      "gitBlob": "ff14766112674c54b0f31aa3e335cf1a4cb3a88f",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_framework_native_directory.hpp",
+      "mode": "0644",
+      "bytes": 7392,
+      "sha256": "050a38f58917818ffa67c8f4f939cad0d61211537f0684b5b6f81bae932f5ce6",
+      "gitBlob": "56686e1ab39ee1616fc0daacf199e5f160f04142",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_framework_resolution_source.hpp",
+      "mode": "0644",
+      "bytes": 10815,
+      "sha256": "8b14b9df2b73560d39f5bed369793ed2c796ddff9cf25fcd9bd22724a897ae75",
+      "gitBlob": "2177b50b3d119081615c2e2d9eb72ec683ca234c",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_framework_settings_source_regression.cpp",
+      "mode": "0644",
+      "bytes": 4462,
+      "sha256": "db79dcd4826b2bec222963c942062127100ea57f27d82d5280d86534bb22c190",
+      "gitBlob": "8b140fe05eb115cff35afbffc2ee10cee805ff43",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_framework_version_source_regression.cpp",
+      "mode": "0644",
+      "bytes": 8835,
+      "sha256": "410ada858d12d0fce675a581c59fde444f8de941220cb7da39d63be15f5757a7",
+      "gitBlob": "b0f8bda3a294538d6cfa0c01513daaaaa0c0a428",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_framework_version_source.hpp",
+      "mode": "0644",
+      "bytes": 11950,
+      "sha256": "fe81e494eb90e28a6a6d437c4b8d6d7a8d663ec2d1eacca60b64e755768dd0f9",
+      "gitBlob": "0440e3cf217b979b3066991fec404a45756644f9",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_held_files.hpp",
+      "mode": "0644",
+      "bytes": 18008,
+      "sha256": "f8265c6bbe7a50aaffa178ba77530d3bc803a62ee24bfef764457bf49a6bd052",
+      "gitBlob": "210cd3a680a1e71617fdf0ad872212681c6cc114",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_helper_code_guard.hpp",
+      "mode": "0644",
+      "bytes": 6213,
+      "sha256": "693906450d3ce80cd9c274c69fbab619ce63681550e4ec32653ea4946c2bfa76",
+      "gitBlob": "516b37ba124be4255e0d0b75fd3a2cfcfe354e83",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_helper_host_override_source_regression.cpp",
+      "mode": "0644",
+      "bytes": 1653,
+      "sha256": "fa46300bf300ac478deac950e55ac5b9e94302bb691e0e40f74fe4e701afd1e7",
+      "gitBlob": "79352bdf9f1dc56e7ca2f4fef40c1f51e6152cca",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_helper_projection_regression.cpp",
+      "mode": "0644",
+      "bytes": 1767,
+      "sha256": "09e08a5c9bc2ef2875df2ce6ef94ef1c5bc27d5b64930a06d101502ccf5160c5",
+      "gitBlob": "4233e561212f9666a0b65ee6af10ddf33419a147",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_helper_source_projection.hpp",
+      "mode": "0644",
+      "bytes": 2853,
+      "sha256": "7e029e251facc63acb709e1ee5b24b00d1efc556b3f7dbf5fa43bbf044c67f6f",
+      "gitBlob": "42c43e5e07b1520163b6531e712efc18bbfed0cf",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_host_allocation_regression.cpp",
+      "mode": "0644",
+      "bytes": 8356,
+      "sha256": "2faaa5d0a07392532eff7f1533f594b8b8415b77043d8d4e524289d7f7fe2917",
+      "gitBlob": "e68a7145b2ac44114e1b7bfb8289e842201c1763",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_host_channel.hpp",
+      "mode": "0644",
+      "bytes": 7607,
+      "sha256": "25be3d29681a12a99d861d33239e52f6c3c38d9200735e46ff19ad89faa5c11f",
+      "gitBlob": "0fc1e9b3357550f0a9029713df756ebdf618aef8",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_host_entry_regression.cpp",
+      "mode": "0644",
+      "bytes": 5686,
+      "sha256": "efc71e31b6244ca304596441c9827866e27aafa8dc2b4da266bf1468cdc6a29a",
+      "gitBlob": "aa8ae66f231890890b37eec5ec90311958dd9fdb",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_host_final_output.hpp",
+      "mode": "0644",
+      "bytes": 7846,
+      "sha256": "2105be16319dd47aa358ccfacd8d61128f820dee6adbe5951fe0f15fd5f816b9",
+      "gitBlob": "516b3ac3ce1cada7a019cbd0a115db5fe691ed62",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_host_handoff.hpp",
+      "mode": "0644",
+      "bytes": 6741,
+      "sha256": "843177e62a627f5b7e99044fdc04887dcabd69d98a043d4dc9d18a980b40b952",
+      "gitBlob": "a579a9747ed3a502e3580e93af94b8f6176b98c6",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_host_runtime_contract_observation.hpp",
+      "mode": "0644",
+      "bytes": 6019,
+      "sha256": "7361872f0a5f0afaadc35be97611daa1bc9ee8b5eeae36d819cf685836cd3716",
+      "gitBlob": "89800404ba73fb43d9bedcc4b802aff2ab2b99f8",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_identity.hpp",
+      "mode": "0644",
+      "bytes": 4660,
+      "sha256": "8beac126d84a862f645ef5eba9a0931cc0d23e3c7a0b0d928ec30bf6020df279",
+      "gitBlob": "1b3442cf92ebe83879aeac017a05f1b4e843153d",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_ingress.hpp",
+      "mode": "0644",
+      "bytes": 11042,
+      "sha256": "454ac5744d842d26010e77a6479833b4354eba9dab4edfcd32f50081e77054fb",
+      "gitBlob": "299650792cb9804a799e259c7fc1b4a195cc24e8",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_lifecycle.cpp",
+      "mode": "0644",
+      "bytes": 43668,
+      "sha256": "85a8d6e1af7041ff7683493e68890ef05c7c5e8971f06a59fc3c1646584c73ad",
+      "gitBlob": "8cb2e567528bcb2f0ff49997111a26f8a01f6448",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_main_cleanup_regression.cpp",
+      "mode": "0644",
+      "bytes": 4414,
+      "sha256": "e91bdeaa36e5e26a5aba56e01a71353b2db5a5745166aae7a9b6f61c85860f01",
+      "gitBlob": "add8930a3633a320f1e0e98908131609d208607b",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_main_receipt.hpp",
+      "mode": "0644",
+      "bytes": 6860,
+      "sha256": "2b4ad0cfb5c66e9f9dff0cd02c5d654f4400b798aa1dbae2825a7d1f05130766",
+      "gitBlob": "563ee3243a9e19ab1cb89e7b7a55ca27d23163c5",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_memory.hpp",
+      "mode": "0644",
+      "bytes": 11780,
+      "sha256": "4aead8b1f02944632234aad4b7bae8266098a741b27b6870167a6b36b9283c16",
+      "gitBlob": "d8f768ad8004987b8a148383968428f2201430bd",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_msf_source_owner.hpp",
+      "mode": "0644",
+      "bytes": 58692,
+      "sha256": "df23fd992cb67d3a68521b4ed6222ebbdf65690dcd171fbd89bbb04b07c05b9d",
+      "gitBlob": "8638e348b9883577bbb8a9916359c27c9eebf96e",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_msf_source_regression.cpp",
+      "mode": "0644",
+      "bytes": 23566,
+      "sha256": "900abcef10e2c0c8d20b44ab366a51a08899c20bc937a8a4a35352dfa09357f4",
+      "gitBlob": "84e9f29bab04fc7d628ab14c97f4e683b4b7c36c",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_native_sink.hpp",
+      "mode": "0644",
+      "bytes": 11560,
+      "sha256": "fea1714a181a30293695c0a0cbdf11194e828fb20cad3506ecd04d9eab7e3042",
+      "gitBlob": "2fce03eb52151069cb21c0d5551e6fbd6b5fff2c",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_node_source_projection_regression.cpp",
+      "mode": "0644",
+      "bytes": 2642,
+      "sha256": "095b903493cfd81d0e2117ef6f7fee4920928fb335a1352eff051b15a4ca638b",
+      "gitBlob": "cd719518bc3152d4288e975388d03b8976342543",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_node_source_projection.hpp",
+      "mode": "0644",
+      "bytes": 2481,
+      "sha256": "0f65f15c01f568ba541161407ad77d36f98ac62b4beddd6cfdaaf94b7dfbeee1",
+      "gitBlob": "807ad8d0bc309914d18199ea3bfa8c71b0c36cf9",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_notice_owner.hpp",
+      "mode": "0644",
+      "bytes": 12902,
+      "sha256": "3124964f2c7ef679f4b232bd10992832bf406df386b760c10f6ebb356fb540c5",
+      "gitBlob": "481d1c72ca0d616b0b00525553fe4204d554eef4",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_original_bootstrap.hpp",
+      "mode": "0644",
+      "bytes": 7920,
+      "sha256": "4a9f5dfbe0fc2592e3bf3b0053adcde4270fa76206d3d66f63235b4b20adde8f",
+      "gitBlob": "826a4edddc56b4888d9f84068966003ae6d50b7a",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_original_capabilities.hpp",
+      "mode": "0644",
+      "bytes": 8463,
+      "sha256": "1ccef24ecc4dd1cb58f443fdaa171a7439acfbe5330f65de71b61de639684448",
+      "gitBlob": "cea5cd2bc2ceebb0a719e8a3f14a1be9ae6e0dfb",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_original_entry.cpp",
+      "mode": "0644",
+      "bytes": 7480,
+      "sha256": "f787c72c8dceac49ce5e8cbd62da62c86424d800ec7806ba0a5b333b579c8e4f",
+      "gitBlob": "80ae99dff80995b1ffafcf03e75eb841b320241e",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_original_interpreter.hpp",
+      "mode": "0644",
+      "bytes": 8389,
+      "sha256": "268e9508a46a74ca635634c2b4d62845d498a5bdf0c6d13f25d296811f68d998",
+      "gitBlob": "446043f7184d301d9808a9d37d67aca6aed9ccd4",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_original_invocation.hpp",
+      "mode": "0644",
+      "bytes": 14587,
+      "sha256": "88c5497d053004fdbeda999b16ccd0275d927b58d680491e3e0b16f4de3e1e17",
+      "gitBlob": "d513828e11973bb93eb92a5975c7be37b885a49b",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_original_json_regression.cpp",
+      "mode": "0644",
+      "bytes": 7348,
+      "sha256": "d411b7f8399f47c4adab4cd3e4f3b90981c1cb87e015f77e0a77b03f23efbaee",
+      "gitBlob": "8d71e3952d72057e8261589e37576605cd64dd7b",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_original_json.hpp",
+      "mode": "0644",
+      "bytes": 17861,
+      "sha256": "2993366e4402bf052cb8a8c6d6086c7985ba44f20ff3005dcebebfa8027d7699",
+      "gitBlob": "2b1e6b8cb2cf4ca78929c569df220dae1b26702a",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_original_main.hpp",
+      "mode": "0644",
+      "bytes": 15478,
+      "sha256": "1c159594906a954d534da49fa11774dc50506d81cfcab83f4a9d7641a75a3cfa",
+      "gitBlob": "6159491d947d29ada6eb185be647795d3980472f",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_original_raw_member_regression.cpp",
+      "mode": "0644",
+      "bytes": 2192,
+      "sha256": "507cd21e2e00d6c5b40e38ddde7797d16575f48560c93e520c2fd9cd9aeda573",
+      "gitBlob": "4445260f92a6c3e9a1e00a1180830527e7588684",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_original_raw_member.hpp",
+      "mode": "0644",
+      "bytes": 11651,
+      "sha256": "f92fb99362d1a16ae48e86e86ec3d20b2aa6806ecd6fa452399f9f0b5da80d40",
+      "gitBlob": "decd1cd56f97e00789f0948b1ac24b80e59a2794",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_original_route_arguments.hpp",
+      "mode": "0644",
+      "bytes": 13811,
+      "sha256": "6317a9c481526347243ef653cf9cb2b002cdce8118d4978a1ffce487742131c9",
+      "gitBlob": "6b79279d7a89261aa6d89494026eb295a8e3620d",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_original_route_producer.hpp",
+      "mode": "0644",
+      "bytes": 3546,
+      "sha256": "605dcb6cf2854f1383b632631664ca2113b323a95a06328929e0f340045add64",
+      "gitBlob": "0c575b3f9055554890c64e3f2a7cddcf50338824",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_original_zip_asset_comparison.hpp",
+      "mode": "0644",
+      "bytes": 6886,
+      "sha256": "f67b603b0e0e5cd4920076b297eaa4e8b3f9004a19f99046913752010005aaf2",
+      "gitBlob": "c1fe76afe005abc5688e30a8e8bfcb37a8bdab3e",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_original_zip_crc_regression.cpp",
+      "mode": "0644",
+      "bytes": 727,
+      "sha256": "9e7fb255a498747639721ec8d7ef455edc920bf46471a4ddba04946095a98999",
+      "gitBlob": "7c764fd96d72f98fec96a1c087e919a8786d273d",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_original_zip_crc.hpp",
+      "mode": "0644",
+      "bytes": 1487,
+      "sha256": "0562c3342f1560a0e287731c7a665d748291ad64d770c8790fe5304bef455b5e",
+      "gitBlob": "57a39eaf271bb56b279a01c54da742126f50301e",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_original_zip_directory.hpp",
+      "mode": "0644",
+      "bytes": 13838,
+      "sha256": "c5ae841d39fe1da804354ba6ad0d7c7b0be256dae75c1754f4c8c6a3cd8721b2",
+      "gitBlob": "cff8b559ec07421cbce1ad0a990f05444b353fed",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_original_zip_name_regression.cpp",
+      "mode": "0644",
+      "bytes": 2506,
+      "sha256": "0f8441ffe59d8f28bb3735671556fa742a5e3e3031e4341a0a96b21906b9dde6",
+      "gitBlob": "6a018998bec9519794b008f26fd6e7f9b76d5227",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_original_zip_name.hpp",
+      "mode": "0644",
+      "bytes": 5821,
+      "sha256": "14f9db383d2f45eeea40559ebacd0c1c1e07979d358db57fc0e306afc768b49c",
+      "gitBlob": "63f7c03f19bf6fec323e5e623823c5526fbfd69d",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_original_zip64_regression.cpp",
+      "mode": "0644",
+      "bytes": 3521,
+      "sha256": "5384f2d91c01a7a5996e259371637d2fa9bd5cba7b6f8078243588fac7e71c92",
+      "gitBlob": "49a8abb774d0615847e527fbca9f3da240e45c32",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_parser_input_capture.hpp",
+      "mode": "0644",
+      "bytes": 9498,
+      "sha256": "960702219c3355fddb439c1c7bda95b509c0f1ea05dd8453c0ad71217b7a075b",
+      "gitBlob": "0bdfa3fa9053edd7ab248b692b5c3870ca50fcf0",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_parser_runtime_association.hpp",
+      "mode": "0644",
+      "bytes": 81597,
+      "sha256": "33bda09f63202a1f37b90fd5bb53e13c6a297c0950206d1b03ccd8089aaec74e",
+      "gitBlob": "fa23100d3bafaa855ab4442dadb3419054fb1ad6",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_pending_call_owner.hpp",
+      "mode": "0644",
+      "bytes": 24539,
+      "sha256": "6ced1519a2e88c6e0958615c782be2d13d6f3a97166584f10fac65ead2a4e2e3",
+      "gitBlob": "58c3c33c560e7c094d1984f8f1dc937bdcfd66d5",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_pending_freeze_regression.cpp",
+      "mode": "0644",
+      "bytes": 6409,
+      "sha256": "61e8ca0041c3484b705eb40ea59868ab33bceacbc2d41040f8955fc7f00e38e4",
+      "gitBlob": "489aa9ea9f3ff752588f1f6de07074c89b024344",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_portable_rid_source_regression.cpp",
+      "mode": "0644",
+      "bytes": 1408,
+      "sha256": "79bd24e6cdda351303db684a1116f140fceea233f90ec0f6ba0b7424cca2b530",
+      "gitBlob": "02c3c8af23262841cde3d9b1767eb1b37b69c3c7",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_portable_rid_source.hpp",
+      "mode": "0644",
+      "bytes": 7225,
+      "sha256": "02930e753be83df7106fe9ccb000825e50e63681e34077fbac25d15a630345b0",
+      "gitBlob": "af959b5d6345b54a6d6b7cc0364a076f2bfd8feb",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_private_fixture_root_regression.hpp",
+      "mode": "0644",
+      "bytes": 3078,
+      "sha256": "8f0558ee1a9d6cea9dcb26d3227c92813a329e57725cd4d68dd8c72935ed92ed",
+      "gitBlob": "a5bb589c223d58dcbcfba89498fe044672fb598c",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_private_fixture_root.hpp",
+      "mode": "0644",
+      "bytes": 11182,
+      "sha256": "541c62dfacd7521395d6adf1597cd1b93c186b14b321eda6d7fa05180babc19b",
+      "gitBlob": "b82007a0d9ee53fb49f9dac5a8ae1e6d6c1e186e",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_private_selection_decoder.hpp",
+      "mode": "0644",
+      "bytes": 10154,
+      "sha256": "2e278dad2c59a40119158d848449645928c183f0d563edddd90715583d5ae4dd",
+      "gitBlob": "20bb6e1a02ecad1ad8d77f80a03f6c28b6949fe8",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_private_selection_reader.hpp",
+      "mode": "0644",
+      "bytes": 8150,
+      "sha256": "308a11d8934e2b740eecffef903af3806ab3cac1c9ce93d5239cf999cfe3a6de",
+      "gitBlob": "89d41f6e6aabfa00f3a6ebf00d6e48493ae67185",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_remote_exports.hpp",
+      "mode": "0644",
+      "bytes": 3858,
+      "sha256": "5a9c4c1dd4503caa4d91ca5ddc07ff1f915bf3e6776bc43e70b6d225ff6cc420",
+      "gitBlob": "b5bba996d7a9a855ea20471e87ba3f6fcad68ea8",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_resolver_attributes_observation.hpp",
+      "mode": "0644",
+      "bytes": 3709,
+      "sha256": "67544096719c5dec16ee068b7708438f6d5523e005fa3cb106c207daf4e4a68c",
+      "gitBlob": "202c96e15d3481b36197a496abdb3c6cf0e79537",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_resolver_path_source_regression.cpp",
+      "mode": "0644",
+      "bytes": 3568,
+      "sha256": "2a73f142870f41cd64f95e683c4e5a50bdcf81e69a01f80673f68b4243904380",
+      "gitBlob": "70c79166e21167165647568e1b32b238947cc643",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_resolver_path_source.hpp",
+      "mode": "0644",
+      "bytes": 5931,
+      "sha256": "fd9b6c4e5559e5b9be2d2181fa9273634b3889feb04d494a5e47e9e1634862bc",
+      "gitBlob": "9e64204e06c74a6823b9c0ca0ef1e9d7e4c3bff1",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_retained_backing.hpp",
+      "mode": "0644",
+      "bytes": 1089,
+      "sha256": "feb10885763df90d88e0b3737d776b2169b4193479aae3af2c2ea4b8ae8dd5d6",
+      "gitBlob": "bfa06c6f3e95e50fa4807149da9107c96934a70a",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_runtime_environment_source_regression.cpp",
+      "mode": "0644",
+      "bytes": 5537,
+      "sha256": "60758e0b92091a9e3897d27205e23473b09bc602864d56800eb5788773977aab",
+      "gitBlob": "d4e7c29e2f887784c3e00bdd694398574288fc44",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_runtime_host_configuration.hpp",
+      "mode": "0644",
+      "bytes": 73994,
+      "sha256": "941dfbe37a8035a28340a3713bf950fe9b065639ffb0e7fe0d9dbbaf009eb288",
+      "gitBlob": "4ee00034998caafab78f90bef7941cbbb4762716",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_runtime_host_version_regression.cpp",
+      "mode": "0644",
+      "bytes": 14013,
+      "sha256": "5cf91611798b634a0a95f6630956d80458ca90088df44ff1d3cfc1de7d8d6c47",
+      "gitBlob": "3a118a68b777b874dff7d15cf4f1fd519d89796c",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_runtime_option_order_regression.cpp",
+      "mode": "0644",
+      "bytes": 4319,
+      "sha256": "0bc78e5f91373652dff17fae8edd5ff5bd31061652093919f8fd0e3424bf1115",
+      "gitBlob": "edb7667cc1723ec88558bb05c0ac9cb87252a5e4",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_runtime_probe_order_regression.cpp",
+      "mode": "0644",
+      "bytes": 5729,
+      "sha256": "08beaac6bec8d1421198912844114cc51aee9524e92ea15ecc8310353f94f938",
+      "gitBlob": "56dd39031a84d20c9a814476ce0d202d13bd902b",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_session_commands.hpp",
+      "mode": "0644",
+      "bytes": 10565,
+      "sha256": "73217b67975b019fa2f54085a1d515cd15e5b7e1f8c8aefca758899b1b1b958f",
+      "gitBlob": "f832790d52b6a939e94dbe2c11c32adbc9005a5d",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_session_gate.hpp",
+      "mode": "0644",
+      "bytes": 119089,
+      "sha256": "46b1d2dd49ca7e0484753c907376ad249e9e0a192f261ff2eb79ff0f0fe4e3b8",
+      "gitBlob": "483831a9fabd7e6d1fe7f3c14cd7c45abbbef858",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_sink_collector.hpp",
+      "mode": "0644",
+      "bytes": 13603,
+      "sha256": "aa9418da913004a4afdc758442e5b77721cc9d9408a2355add4f7e968cf6edaa",
+      "gitBlob": "586a6f16a5dc11cd8185d961a76e8a3ba62f64e7",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_source_checksum_algorithms.hpp",
+      "mode": "0644",
+      "bytes": 5335,
+      "sha256": "4602d6587c39e603bb4cf373875d88b34c010e0d497a688eb4ecd9c0c5edd9cc",
+      "gitBlob": "d4039f303631afc9cf50c7a5e5078a4c74397e6e",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_source_span_regression.hpp",
+      "mode": "0644",
+      "bytes": 7959,
+      "sha256": "07efe50cca150b6206d3f52b94774d6bf0c405a9a5a1046a6919c7149b8e51ae",
+      "gitBlob": "92d960d223a7f0dead45d5f527a7195ebb684fb6",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_standalone_host.hpp",
+      "mode": "0644",
+      "bytes": 18267,
+      "sha256": "1806e7eaf09e72d472a4a7c926591dbba184742957db8e930b6de99553a2d8af",
+      "gitBlob": "b89eb0d8ce725dba530702dd2db89c40199aa012",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_startup_hooks_source_regression.cpp",
+      "mode": "0644",
+      "bytes": 3765,
+      "sha256": "3a9bf4c7f01348ed53fedd2bd39f191ffeb925b08b08f032bfe137ea22969d3a",
+      "gitBlob": "9375c593e97135e1952bdcaef9b3198ba36dea2f",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_streams.hpp",
+      "mode": "0644",
+      "bytes": 12915,
+      "sha256": "a87f872e07c03e9fd15d510a76cea2db250466ec2e98566c1f9f64972effc721",
+      "gitBlob": "ab0b16b7ba8dffa9922c45e4f1c7049c39eae0e2",
+      "receiverPath": null
+    },
+    {
+      "sourcePath": "source/windows_tls_observation.hpp",
+      "mode": "0644",
+      "bytes": 3799,
+      "sha256": "93aceaf179fb9894ab601b8c045bca88d2cedf447e9337380070d9cabec80885",
+      "gitBlob": "373941573fddb2d037ea4e82561bf6ba177e4d8b",
+      "receiverPath": null
+    }
+  ]
+}

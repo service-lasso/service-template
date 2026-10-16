@@ -58,6 +58,12 @@ public:
         if(!receiver_.PreownOriginal()){preownException_=receiver_.PreownExceptionOriginal();failed_=true;return false;}
         preowned_=true;return true;
     }
+    bool OutputBackingSeparateOriginal(const void* output,size_t bytes) const noexcept {
+        return OriginalBackingStorageSeparate(output,bytes,this,1,sizeof(*this))&&
+            deadline_.OutputBackingSeparateOriginal(output,bytes)&&creatorTask_.OutputBackingSeparateOriginal(output,bytes)&&
+            caller_.OutputBackingSeparateOriginal(output,bytes)&&supervisor_.OutputBackingSeparateOriginal(output,bytes)&&
+            receiver_.OutputBackingSeparateOriginal(output,bytes);
+    }
     bool PreownedOriginal() const noexcept{return preowned_;}
     const std::exception_ptr& PreownExceptionOriginal() const noexcept{return preownException_;}
     OriginalLinuxPendingInputOwner(const OriginalLinuxPendingInputOwner&)=delete;

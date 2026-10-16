@@ -16,3 +16,7 @@ SPEC-018 AC-18.1–18.3 / SPEC-017: fixed CLI/Core roles, all TC01–12 and CA01
 - [ ] Issue #22 source implementation: retained blocked producer/strict reader and observed immutable publication projection implemented; actual CLI/Core catalog/native proof source remains absent. Obtain DIFFERENT entire cumulative source review and NEW complete-input admission before product execution. Source regression tests remain UNEXECUTED; real publication/qualification stays open.
 
 - [ ] Issue #22 ownership repair: independent entire cumulative review and NEW complete-input admission for constructor snapshots and bidirectional/frozen-input regressions; source-only repair is not native qualification or full delivery. Preserve original failed runs.
+
+- [ ] Issue22 Oct16 preown backing repair: independent entire cumulative review and fresh exact-input ROOT admission before executing host/platform/process/range/payload preserved-byte regression source; finish portable export and genuine child-local/typed receipt/native integration. Historical Oct13 manifest remains a baseline receipt; successor edits have their own current-byte manifest.
+
+- [ ] Issue22: finish Windows complete backing preflight/regression independent review; resolve inherited supplier checkpoint/policy quota contradiction through authoritative reviewed canonical custody transfer before source removal and honest inventory refresh. Fixed128files/128entries/524288expanded limits remain unchanged; current tree is not a publishable template.

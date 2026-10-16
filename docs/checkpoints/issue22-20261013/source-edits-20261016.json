@@ -1,0 +1,189 @@
+{
+  "schema": "service-lasso.template-source-edit-manifest.v1",
+  "baselineCommit": "6785b43a4aa5497d21cc3068eb61a91f71472337",
+  "owner": "Template22 release integration Oct16",
+  "purpose": "Retained preown output backing disjointness repair",
+  "execution": "UNRUN; independent entire review and new ROOT admission required",
+  "files": [
+    {
+      "path": "source/linux_caller_receipt.hpp",
+      "bytes": 14145,
+      "sha256": "8B436608E81EB0ACA817A59143BF881E706140767F56D0BBF5C3C6114BCEC07F"
+    },
+    {
+      "path": "source/linux_command_route.hpp",
+      "bytes": 10594,
+      "sha256": "AFD48EB2788104E91DA1BDD89A80EB8CFF8859E6CEA92FF69A2F8D6124BF2860"
+    },
+    {
+      "path": "source/linux_deadline_receiver.hpp",
+      "bytes": 14583,
+      "sha256": "8C05703F297F3673EF57840071604C9036D522543953C5E9289925C95D099A1E"
+    },
+    {
+      "path": "source/linux_deadline_supervisor.hpp",
+      "bytes": 25324,
+      "sha256": "28FE29185E9CE1241B088FD43523DAAEE1CAC8AD03DCACE4134F27558A23AA0E"
+    },
+    {
+      "path": "source/linux_native_sink.hpp",
+      "bytes": 18744,
+      "sha256": "0985DC5BD083064A67D7E883B108BB4984DDB5923056E563B6D086F9586E4894"
+    },
+    {
+      "path": "source/linux_original_deadline.hpp",
+      "bytes": 5086,
+      "sha256": "0C41B794A3A8560643CA2D5A3521697E1BBC145AE21BC16C3EDF7F09F4FB7608"
+    },
+    {
+      "path": "source/linux_pending_host_preown_regression.cpp",
+      "bytes": 23765,
+      "sha256": "3D26D50FE4380AAC6282AA95502031C1F705EE13ADFE23AF4C751FA79373885B"
+    },
+    {
+      "path": "source/linux_pending_host.hpp",
+      "bytes": 16127,
+      "sha256": "6ACDEEC3E19387946DB39E6ECF9E597DF5A7A06757A45B892C10C0E5B5472B56"
+    },
+    {
+      "path": "source/linux_pending_input_owner.hpp",
+      "bytes": 11022,
+      "sha256": "0725EEC9B39F0A735E5B90FF99A6DFB60483C695F35C5CB166CB999443F5827E"
+    },
+    {
+      "path": "source/linux_pidfd_identity.hpp",
+      "bytes": 12418,
+      "sha256": "9613FB57A8A1E005F36152E44D186EA6D17C2BC934BB97068170B05111852A90"
+    },
+    {
+      "path": "source/linux_received_source_unit.hpp",
+      "bytes": 14689,
+      "sha256": "808F960AB6D8970C60AC6D294DAD9DB35111473C51586E9DFA5D29CF3CE8D457"
+    },
+    {
+      "path": "source/linux_session_commands.hpp",
+      "bytes": 10763,
+      "sha256": "9D0902330383497C0EDF202369C1149AA59D345A61DD2CE64E77A257291AD9EF"
+    },
+    {
+      "path": "source/linux_sink_collector.hpp",
+      "bytes": 15485,
+      "sha256": "74C66B68D2A5687880FE358502092D8D8E04FF025B2F1F7062DBF67552F34762"
+    },
+    {
+      "path": "source/linux_task_identity.hpp",
+      "bytes": 28108,
+      "sha256": "5B1E1735F664D5D3577DFBB094E294E378AF03F5E09AED2F665E56CBEDC5976B"
+    },
+    {
+      "path": "source/native_linux_platform.hpp",
+      "bytes": 19663,
+      "sha256": "0AB8AD03354E4AD66111F69B399A17BF4E51A9AC9F45A09ECA93E5268882D059"
+    },
+    {
+      "path": "source/native_windows_host_publication.cpp",
+      "bytes": 25875,
+      "sha256": "DD2CF72C36C8BAD771D99131CEFD18582C0A1829112AA64659EF3CC5D84ED248"
+    },
+    {
+      "path": "source/windows_alias_code_guard.hpp",
+      "bytes": 12851,
+      "sha256": "8F1D6E7767B0648058C3CECF0841AE1BE8C1A83C64A13D390328006C127B0D43"
+    },
+    {
+      "path": "source/windows_amd64_caller_boundary.hpp",
+      "bytes": 18102,
+      "sha256": "34E4088C85DE3185713B9CC563ADE3A15608F02D0F03DC59AF11F516F9447044"
+    },
+    {
+      "path": "source/windows_chain_transition_regression.cpp",
+      "bytes": 9189,
+      "sha256": "840A995267994BF064305CCA1FB3A2F28B7C763B8FBD7488935B12BDBC2A6F94"
+    },
+    {
+      "path": "source/windows_copied_source_capture.hpp",
+      "bytes": 4046,
+      "sha256": "D4A5FC7F57560DB3EA86195DBAA2DB4EDEB26DDA80A295A5D6A99955C09FA02A"
+    },
+    {
+      "path": "source/windows_coreclr_controller_custody.hpp",
+      "bytes": 20864,
+      "sha256": "4529FF241B107467BAE52B4F7B7CE2E212695EFBD0A3C5F9259D375E0925A247"
+    },
+    {
+      "path": "source/windows_coreclr_entry_inputs.hpp",
+      "bytes": 15052,
+      "sha256": "4C90C4C888ADC201EF5CB444C2D9C60BEF26F447F6AD80EB123579D629804091"
+    },
+    {
+      "path": "source/windows_framework_list_source.hpp",
+      "bytes": 9242,
+      "sha256": "2EB1F2F3E1835321141E5F30FC80FB73EFC47E1A12A4D40C22565385912D1F7D"
+    },
+    {
+      "path": "source/windows_held_files.hpp",
+      "bytes": 18008,
+      "sha256": "F8265C6BBE7A50AAFFA178BA77530D3BC803A62EE24BFEF764457BF49A6BD052"
+    },
+    {
+      "path": "source/windows_helper_code_guard.hpp",
+      "bytes": 6213,
+      "sha256": "693906450D3CE80CD9C274C69FBAB619CE63681550E4EC32653EA4946C2BFA76"
+    },
+    {
+      "path": "source/windows_msf_source_owner.hpp",
+      "bytes": 58692,
+      "sha256": "DF23FD992CB67D3A68521B4ED6222EBBDF65690DCD171FBD89BBB04B07C05B9D"
+    },
+    {
+      "path": "source/windows_original_json.hpp",
+      "bytes": 17861,
+      "sha256": "2993366E4402BF052CB8A8C6D6086C7985BA44F20FF3005DCEBEBFA8027D7699"
+    },
+    {
+      "path": "source/windows_original_raw_member.hpp",
+      "bytes": 11651,
+      "sha256": "F92FB99362D1A16AE48E86E86EC3D20B2AA6806ECD6FA452399F9F0B5DA80D40"
+    },
+    {
+      "path": "source/windows_original_zip_asset_comparison.hpp",
+      "bytes": 6886,
+      "sha256": "F67B603B0E0E5CD4920076B297EAA4E8B3F9004A19F99046913752010005AAF2"
+    },
+    {
+      "path": "source/windows_original_zip_directory.hpp",
+      "bytes": 13838,
+      "sha256": "C5AE841D39FE1DA804354BA6AD0D7C7B0BE256DAE75C1754F4C8C6A3CD8721B2"
+    },
+    {
+      "path": "source/windows_parser_input_capture.hpp",
+      "bytes": 9498,
+      "sha256": "960702219C3355FDDB439C1C7BDA95B509C0F1EA05DD8453C0AD71217B7A075B"
+    },
+    {
+      "path": "source/windows_parser_runtime_association.hpp",
+      "bytes": 81597,
+      "sha256": "33BDA09F63202A1F37B90FD5BB53E13C6A297C0950206D1B03CCD8089AAEC74E"
+    },
+    {
+      "path": "source/windows_runtime_host_configuration.hpp",
+      "bytes": 73994,
+      "sha256": "941DFBE37A8035A28340A3713BF950FE9B065639FFB0E7FE0D9DBBAF009EB288"
+    },
+    {
+      "path": "source/windows_session_gate.hpp",
+      "bytes": 119089,
+      "sha256": "46B1D2DD49CA7E0484753C907376AD249E9E0A192F261FF2EB79FF0F0FE4E3B8"
+    },
+    {
+      "path": "source/windows_retained_backing.hpp",
+      "bytes": 1089,
+      "sha256": "FEB10885763DF90D88E0B3737D776B2169B4193479AAE3AF2C2EA4B8AE8DD5D6"
+    },
+    {
+      "path": "source/windows_pending_call_owner.hpp",
+      "bytes": 24539,
+      "sha256": "6CED1519A2E88C6E0958615C782BE2D13D6F3A97166584F10FAC65EAD2A4E2E3"
+    }
+  ]
+}

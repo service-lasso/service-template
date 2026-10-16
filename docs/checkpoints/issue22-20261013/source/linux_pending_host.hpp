@@ -81,11 +81,18 @@ public:
         size_t receiverWaits=0,receiverJoins=0,receiverReturns=0,callerJoins=0,callerReturns=0,waitRows=0;
         bool attempted=false,returned=false,preowned=false;
     };
+    bool OutputBackingSeparateOriginal(const void* output,size_t bytes) const noexcept {
+        return OriginalBackingStorageSeparate(output,bytes,this,1,sizeof(*this))&&
+            pending_.OutputBackingSeparateOriginal(output,bytes)&&caller_.OutputBackingSeparateOriginal(output,bytes)&&
+            OriginalBackingStorageSeparate(output,bytes,waitPolicy_.PrivateOriginals(),waitPolicy_.AllocatedCapacityOriginal(),sizeof(HostWaitPolicyOriginal));
+    }
     bool ObserveRetainedPreownBackingOriginal(RetainedPreownBackingView& out) const noexcept {
-        if(!preownAttempted_||!preownReturned_)return false;
+        if(!preownAttempted_||!preownReturned_||!OutputBackingSeparateOriginal(&out,sizeof(out)))return false;
         const auto destination=reinterpret_cast<uintptr_t>(&out),source=reinterpret_cast<uintptr_t>(this);
         if(destination>UINTPTR_MAX-sizeof(out)||source>UINTPTR_MAX-sizeof(*this)||
            (destination<source+sizeof(*this)&&source<destination+sizeof(out)))return false;
+        if(pending_.creatorTask_.BornObservationCountOriginal()>pending_.creatorTask_.AllocatedObservationCapacityOriginal()||
+           pending_.caller_.OriginalCallerTask().BornObservationCountOriginal()>pending_.caller_.OriginalCallerTask().AllocatedObservationCapacityOriginal())return false;
         std::memset(&out,0,sizeof(out));
         out.hostOriginal=this;out.pendingOriginal=&pending_;out.deadlineOriginal=&pending_.OriginalDeadlineOwner();
         out.creatorTaskOriginal=&pending_.creatorTask_;out.supervisorOriginal=&pending_.OriginalSupervisorOwner();
@@ -103,7 +110,7 @@ public:
         out.receiverReturns=pending_.OriginalReceiverOwner().AllocatedJoinReturnCapacityOriginal();
         out.callerJoins=caller_.AllocatedJoinCapacityOriginal();out.callerReturns=caller_.AllocatedJoinReturnCapacityOriginal();
         out.waitRows=waitPolicy_.AllocatedCapacityOriginal();out.attempted=preownAttempted_;out.returned=preownReturned_;out.preowned=preowned_;
-        return out.bornTasks<=out.taskSlots&&out.bornCallerTasks<=out.callerTaskSlots;
+        return true;
     }
     bool PreownedOriginal() const noexcept{return preowned_;}
     const std::exception_ptr& PreownExceptionOriginal() const noexcept{return preownException_;}

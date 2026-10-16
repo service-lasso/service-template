@@ -242,6 +242,9 @@ bool OriginalWindowsStandaloneHost::PublishPostCloseOriginals() noexcept {
                 emit(90,i,route.gate.get(),sizeof(*route.gate));
                 template_creator::OriginalWindowsGate::RetainedPreownView preown{};
                 if(!route.gate->ObserveRetainedPreownViewOriginal(preown)){clean=false;return;}
+#if defined(TEMPLATE_NATIVE_CHAIN_REGRESSION)
+                if(!template_creator::ObserveOriginalWindowsRetainedBackingRegression(*route.gate)){clean=false;return;}
+#endif
                 emit(111,i,&preown,sizeof(preown));
                 for(SIZE_T k=0;k<preown.invocationCapacity;++k) {
                     const auto* attached=route.gate->RetainedPreownInvocationOriginal(preown,k);

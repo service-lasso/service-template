@@ -307,6 +307,20 @@ public:
     }
     bool PreownedOriginal() const noexcept{return preowned_;}
     const std::exception_ptr& PreownExceptionOriginal() const noexcept{return preownException_;}
+    bool OutputBackingSeparateOriginal(const void* output,size_t bytes) const noexcept {
+        if(!OriginalBackingStorageSeparate(output,bytes,this,1,sizeof(*this))||bornCount_>capacity_||
+           !OriginalBackingStorageSeparate(output,bytes,observations_.get(),capacity_,sizeof(std::unique_ptr<ProcTaskObservation>)))return false;
+        for(size_t i=0;i<bornCount_;++i){
+            const auto* row=observations_[i].get();
+            if(!row||!OriginalBackingStorageSeparate(output,bytes,row,1,sizeof(*row)))return false;
+            for(const auto* file:{&row->stat,&row->status}){
+                if(file->byteCapacity==SIZE_MAX||file->used>file->byteCapacity||file->readCount>file->readCapacity||
+                   !OriginalBackingStorageSeparate(output,bytes,file->bytes.get(),file->bytes?file->byteCapacity+1:0)||
+                   !OriginalBackingStorageSeparate(output,bytes,file->reads.get(),file->readCapacity,sizeof(ProcReadOriginal)))return false;
+            }
+        }
+        return true;
+    }
     HeldTaskIdentity(const HeldTaskIdentity&) = delete;
     HeldTaskIdentity& operator=(const HeldTaskIdentity&) = delete;
     bool BindFromOriginalProcRoot(OriginalProcRoot& root, pid_t originalEnrolledTid,

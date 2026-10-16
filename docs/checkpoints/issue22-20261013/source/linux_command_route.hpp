@@ -41,6 +41,16 @@ public:
             preowned_=true;return true;
         }catch(...){preownException_=std::current_exception();failed_=true;return false;}
     }
+    bool OutputPreownBackingSeparateOriginal(const void* output,size_t bytes) const noexcept {
+        if(!OriginalBackingStorageSeparate(output,bytes,this,1,sizeof(*this))||bornCount_>capacity_||
+           !OriginalBackingStorageSeparate(output,bytes,commands_.get(),capacity_,sizeof(std::unique_ptr<OriginalRouteCommand>)))return false;
+        for(size_t i=0;i<bornCount_;++i){const auto* row=commands_[i].get();
+            // Preown view has no authority over later Python/driver allocations.
+            if(!row||row->driver||row->plan.attempted||
+               !OriginalBackingStorageSeparate(output,bytes,row,1,sizeof(*row)))return false;
+        }
+        return true;
+    }
     bool PreownedOriginal() const noexcept{return preowned_;}
     const std::exception_ptr& PreownExceptionOriginal() const noexcept{return preownException_;}
     size_t AllocatedCommandCapacityOriginal() const noexcept{return capacity_;}

@@ -1,5 +1,6 @@
 // UNCOMPILED conditional source control flow. This never grants native admission.
 #pragma once
+#include "windows_retained_backing.hpp"
 #include "windows_runtime_host_configuration.hpp"
 namespace template_creator {
 class OriginalFrameworkListSource {
@@ -146,5 +147,9 @@ public:
     unsigned PrivateSpecifiedMask() const noexcept{return specified_;}
     bool PrivateDependentSource() const noexcept{return dependent_;}
     SIZE_T ReservedSourceBytes() const noexcept{return sizeof(*this)+capacity_*sizeof(Row);}
+public:
+    bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
+        return OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this))&&OriginalRetainedArraySeparate(output,bytes,rows_,capacity_);
+    }
 };
 }

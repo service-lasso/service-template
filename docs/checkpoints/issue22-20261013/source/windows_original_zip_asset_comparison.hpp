@@ -1,6 +1,7 @@
 // UNCOMPILED exact package/member byte correspondence. It does not authenticate
 // a vendor record, select a managed provider or grant a parser release.
 #pragma once
+#include "windows_retained_backing.hpp"
 #include "windows_original_zip_directory.hpp"
 #include "windows_original_raw_member.hpp"
 #include "windows_original_zip_crc.hpp"
@@ -92,5 +93,9 @@ public:
     // Caller retains package, directory, selected asset, this decoder and all
     // returned byte views at the actual quiescent source/native borrower cut.
     // Disposal here frees no original held input or output backing.
+public:
+    bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
+        return OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this))&&OriginalRetainedOwnerSeparate(output,bytes,inflater_);
+    }
 };
 }

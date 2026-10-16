@@ -127,6 +127,13 @@ public:
         preowned_=true;return true;
         }catch(...){preownException_=std::current_exception();failed_=true;return false;}
     }
+    bool OutputBackingSeparateOriginal(const void* output,size_t bytes) const noexcept {
+        return OriginalBackingStorageSeparate(output,bytes,this,1,sizeof(*this))&&
+            OriginalBackingStorageSeparate(output,bytes,bytes_.get(),byteCapacity_)&&
+            OriginalBackingStorageSeparate(output,bytes,reads_.get(),readCapacity_,sizeof(LinuxCollectorRead))&&
+            OriginalBackingStorageSeparate(output,bytes,joins_.get(),joinCapacity_,sizeof(SupervisorNativeOriginal))&&
+            OriginalBackingStorageSeparate(output,bytes,joinReturns_.get(),joinReturnCapacity_,sizeof(void*));
+    }
     bool PreownedOriginal() const noexcept{return preowned_;}
     const std::exception_ptr& PreownExceptionOriginal() const noexcept{return preownException_;}
     size_t AllocatedByteCapacityOriginal() const noexcept{return bytes_?byteCapacity_+1:0;}
