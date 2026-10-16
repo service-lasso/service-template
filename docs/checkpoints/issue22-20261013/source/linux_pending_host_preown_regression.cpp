@@ -160,6 +160,12 @@ bool VerifySurvivingPendingHostPreownRegressionOriginal(){
             okay=okay&&!unit->ObserveRetainedPreownBackingOriginal(overlap)&&
                 !std::memcmp(preserved,unit->table_->reads_.get(),sizeof(preserved));
         }
+        if(unit->header_){
+            auto saved=backing;const bool released=unit->header_->borrowReleased_;
+            unit->header_->borrowReleased_=false;
+            okay=okay&&!unit->ObserveRetainedPreownBackingOriginal(backing)&&!std::memcmp(&saved,&backing,sizeof(backing));
+            unit->header_->borrowReleased_=released;
+        }
         for(auto* range:{unit->header_.get(),unit->table_.get(),unit->member_.get()}){
             if(!range||!range->reads_||range->allocatedReads_*sizeof(OriginalReceivedSourceUnitRange::NativeOriginal)<
                 sizeof(OriginalReceivedSourceUnitRange::RetainedPreownBackingView))continue;
@@ -201,6 +207,12 @@ bool VerifySurvivingPendingHostPreownRegressionOriginal(){
             auto& overlap=*reinterpret_cast<OriginalReceivedSourceUnitObservation::RetainedPreownBackingView*>(unit->table_->reads_.get());
             okay=okay&&!unit->ObserveRetainedPreownBackingOriginal(overlap)&&
                 !std::memcmp(preserved,unit->table_->reads_.get(),sizeof(preserved));
+        }
+        if(unit->header_){
+            auto saved=backing;const bool released=unit->header_->borrowReleased_;
+            unit->header_->borrowReleased_=false;
+            okay=okay&&!unit->ObserveRetainedPreownBackingOriginal(backing)&&!std::memcmp(&saved,&backing,sizeof(backing));
+            unit->header_->borrowReleased_=released;
         }
         for(auto* range:{unit->header_.get(),unit->table_.get(),unit->member_.get()}){
             if(!range||!range->reads_||range->allocatedReads_*sizeof(OriginalReceivedSourceUnitRange::NativeOriginal)<
