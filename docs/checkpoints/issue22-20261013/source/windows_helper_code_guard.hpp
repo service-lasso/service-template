@@ -1,6 +1,7 @@
 // UNCOMPILED actual copied helper/echo CODE holds for one observed consumer.
 // Native PowerShell image/source semantics are a separate selected-input join.
 #pragma once
+#include "windows_retained_backing.hpp"
 #include "windows_alias_code_guard.hpp"
 #include "windows_helper_source_projection.hpp"
 namespace template_creator {
@@ -83,5 +84,10 @@ public:
     }
     const OriginalAliasCodeGuard& PrivateHelper() const noexcept{return helper_;}
     const OriginalAliasCodeGuard* PrivateEcho() const noexcept{return echo_.get();}
+public:
+    bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
+        return OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this))&&helper_.OutputBackingSeparateOriginal(output,bytes)&&
+            OriginalRetainedOwnerSeparate(output,bytes,echo_);
+    }
 };
 }

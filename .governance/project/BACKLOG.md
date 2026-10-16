@@ -13,3 +13,5 @@ SPEC-018 AC-18.1–18.3 / SPEC-017: fixed CLI/Core roles, all TC01–12 and CA01
 | TASK-022-OWNERSHIP | in_progress | #22 | SPEC-017 AC-17.14 | Validate original inputs and isolate returned blocked wrappers from caller and sibling mutations; preserve protected denial cases; entire source review and new input admission required before unexecuted regressions. |
 
 | TASK-022-PREOWN | in_progress | #22 | SPEC-017 native preown settlement view preservation | Complete allocated backing exclusion before host/platform view writes and add actual preserved-byte negatives; source UNRUN, whole review/new admission/native/portable export open. |
+
+| TASK-022-PACKAGING | blocked | #22 | SPEC-017 AC-17.1/17.2/17.13 | Inherited checkpoint source exceeds fixed128files/128entries/524288expanded limits and is absent from83-entry policy. Preserve source until verified canonical reviewed receiving custody; then remove disposable supplier copy and honestly refresh remaining template inventory without quota widening. |

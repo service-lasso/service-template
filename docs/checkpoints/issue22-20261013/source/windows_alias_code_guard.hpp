@@ -1,6 +1,7 @@
 // UNCOMPILED per-consumer copied CODE ownership. Paths select observations;
 // full byte correspondence and native identities establish the file relation.
 #pragma once
+#include "windows_retained_backing.hpp"
 #include "windows_fixture_relative_file.hpp"
 #include "windows_command_line_observation.hpp"
 #include "windows_fixture_name_hold.hpp"
@@ -177,5 +178,9 @@ public:
     }
     // This releases only this consumer's CODE holds after its actual last thread
     // event. Retained process duplicates, shutdown, streams and EOF are separate.
+public:
+    bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
+        return OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this))&&copy_.OutputBackingSeparateOriginal(output,bytes);
+    }
 };
 }

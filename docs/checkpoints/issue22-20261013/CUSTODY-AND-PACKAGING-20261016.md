@@ -1,0 +1,17 @@
+# Issue22 current source custody and packaging correction
+
+Owner: Template22 release integration Oct16, issue22 / draft PR27. Source is retained at D:/projects/service-lasso/_worktrees/service-template/22-client-release-integration-oct16 for incomplete supplier repair. Remove only after authoritative reviewed canonical reception, verified landing/closure, clean pushed state, and machine hygiene closure checks. No disposable outputs remain.
+
+The exact current supplier roster is source-receiver-inventory-20261016.json. Its raw SHA256, Git blob, size and mode bind every source file; receiver paths are honestly null until Core1562 assigns its canonical destination and binds a receiving commit. The Oct13 source-manifest remains a historical copy receipt and source-edits records successor changes. This inventory is not source GO, transfer, native/runtime/fit proof or publication.
+
+The inherited checkpoint archive is not a publishable template. Current policy inventories83 entries while the tracked tree includes the historical234-source checkpoint plus its receipt/handover files. The supplier source alone exceeds2.5MiB, beyond fixed maximumArchiveExpandedBytes524288; maximumFiles128 and maximumArchiveEntries128 also prohibit packaging this tree. The current policy is therefore stale against retained checkpoint source. No generator/parser execution was used to diagnose this mismatch. All quotas and the current policy remain unchanged; do not produce or publish a candidate from this tree.
+
+Required remediation order:
+
+1. Finish the whole supplier/CLI/Core source graph with genuine producer inputs; independently review exact cumulative source and dependencies. Keep missing child-local principal/source/containing reserve/profile gates closed.
+2. Core1562 assigns canonical receiving paths and owns actual compile activation. Transfer exact reviewed source bytes only under parent coordination; verify every manifest row at the receiving immutable commit and retain acknowledgement/custody evidence. Moving a packet or locating it adjacent to Core is insufficient.
+3. Once authoritative reviewed reception and retained evidence are verified, make a separate attributable source-removal change for no-longer-needed checkpoint supplier files. Preserve Git history and private/original retained evidence. Do not delete sources now or invent an excluded regular-file namespace.
+4. Recompute the actual remaining template closed inventory, modes, raw hashes, self-excluding semantic digest and exact fixed-point maximumTotalBytes with external source editing or later admitted owner generator. Preserve128files/128entries/524288expanded/262144compressed and every other quota/deadline. Independently verify the actual required product assets and final archive against the unchanged grammar.
+5. Only after whole independent review and NEW authentic ROOT admission execute qualified Windows/Linux/native/operator/fit/provider gates and the separately authorized protected Development publication/same-byte Core integration sequence. Source/CI/merge does not establish those results.
+
+Oct16 Windows repair: retained gate projections now check the entire output against allocated native image, CoreCLR input/pointer/string/read/span/instruction/caller-boundary/custody, parser runtime/MSF/JSON/host/framework/ZIP/inflater, copied-source and command backing before assignment. A macro-only actual native publication-route regression checks preserved-byte rejection using its real attached gate backing. Source remains UNRUN.

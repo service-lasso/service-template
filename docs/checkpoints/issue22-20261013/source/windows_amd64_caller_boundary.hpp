@@ -2,6 +2,7 @@
 // This is not a full disassembler, CPU admission, CALL execution observation,
 // source/build relationship or target-memory immutability authority.
 #pragma once
+#include "windows_retained_backing.hpp"
 #include "windows_coreclr_export.hpp"
 #include <cstdint>
 #include <memory>
@@ -272,5 +273,10 @@ public:
     SIZE_T PrivateInstructionCount() const noexcept{return count_;}
     const DWORD* PrivateWork() const noexcept{return work_.get();}
     SIZE_T PrivateWorkCount() const noexcept{return workCount_;}
+public:
+    bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
+        return OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this))&&OriginalRetainedArraySeparate(output,bytes,instructions_,capacity_)&&
+            OriginalRetainedArraySeparate(output,bytes,work_,capacity_);
+    }
 };
 }

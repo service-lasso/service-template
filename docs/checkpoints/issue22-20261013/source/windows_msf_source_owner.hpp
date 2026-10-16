@@ -1,5 +1,6 @@
 // Optional held MSF7 source owner. Structural success is never build/source authority.
 #pragma once
+#include "windows_retained_backing.hpp"
 #include "windows_held_files.hpp"
 #include "windows_source_checksum_algorithms.hpp"
 #include <cstdint>
@@ -968,5 +969,12 @@ public:
     SIZE_T FileOrdinal() const noexcept{return fileOrdinal_;}
     const unsigned char* BodyOriginal() const noexcept{return bodyOriginal_;}
     SIZE_T BodyExtent() const noexcept{return bodyExtent_;}
+public:
+    bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
+        if(!OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this)))return false;
+        std::array<RetainedAllocationSpan,8> spans{};if(!RetainedAllocationSpansOriginal(spans))return false;
+        for(const auto& span:spans)if(!OriginalRetainedStorageSeparate(output,bytes,span.original,span.bytes))return false;
+        return true;
+    }
 };
 }

@@ -36,14 +36,14 @@
       "sha256": "0C41B794A3A8560643CA2D5A3521697E1BBC145AE21BC16C3EDF7F09F4FB7608"
     },
     {
-      "path": "source/linux_pending_host.hpp",
-      "bytes": 16127,
-      "sha256": "6ACDEEC3E19387946DB39E6ECF9E597DF5A7A06757A45B892C10C0E5B5472B56"
-    },
-    {
       "path": "source/linux_pending_host_preown_regression.cpp",
       "bytes": 23765,
       "sha256": "3D26D50FE4380AAC6282AA95502031C1F705EE13ADFE23AF4C751FA79373885B"
+    },
+    {
+      "path": "source/linux_pending_host.hpp",
+      "bytes": 16127,
+      "sha256": "6ACDEEC3E19387946DB39E6ECF9E597DF5A7A06757A45B892C10C0E5B5472B56"
     },
     {
       "path": "source/linux_pending_input_owner.hpp",
@@ -54,6 +54,11 @@
       "path": "source/linux_pidfd_identity.hpp",
       "bytes": 12418,
       "sha256": "9613FB57A8A1E005F36152E44D186EA6D17C2BC934BB97068170B05111852A90"
+    },
+    {
+      "path": "source/linux_received_source_unit.hpp",
+      "bytes": 14689,
+      "sha256": "808F960AB6D8970C60AC6D294DAD9DB35111473C51586E9DFA5D29CF3CE8D457"
     },
     {
       "path": "source/linux_session_commands.hpp",
@@ -76,9 +81,104 @@
       "sha256": "0AB8AD03354E4AD66111F69B399A17BF4E51A9AC9F45A09ECA93E5268882D059"
     },
     {
-      "path": "source/linux_received_source_unit.hpp",
-      "bytes": 14689,
-      "sha256": "808F960AB6D8970C60AC6D294DAD9DB35111473C51586E9DFA5D29CF3CE8D457"
+      "path": "source/native_windows_host_publication.cpp",
+      "bytes": 25875,
+      "sha256": "DD2CF72C36C8BAD771D99131CEFD18582C0A1829112AA64659EF3CC5D84ED248"
+    },
+    {
+      "path": "source/windows_alias_code_guard.hpp",
+      "bytes": 12851,
+      "sha256": "8F1D6E7767B0648058C3CECF0841AE1BE8C1A83C64A13D390328006C127B0D43"
+    },
+    {
+      "path": "source/windows_amd64_caller_boundary.hpp",
+      "bytes": 18102,
+      "sha256": "34E4088C85DE3185713B9CC563ADE3A15608F02D0F03DC59AF11F516F9447044"
+    },
+    {
+      "path": "source/windows_chain_transition_regression.cpp",
+      "bytes": 8561,
+      "sha256": "C639DEB714AC8F48D80B8599501FA07D3498425868BCF5EB0DCC6283742CDA3B"
+    },
+    {
+      "path": "source/windows_copied_source_capture.hpp",
+      "bytes": 4046,
+      "sha256": "D4A5FC7F57560DB3EA86195DBAA2DB4EDEB26DDA80A295A5D6A99955C09FA02A"
+    },
+    {
+      "path": "source/windows_coreclr_controller_custody.hpp",
+      "bytes": 20864,
+      "sha256": "4529FF241B107467BAE52B4F7B7CE2E212695EFBD0A3C5F9259D375E0925A247"
+    },
+    {
+      "path": "source/windows_coreclr_entry_inputs.hpp",
+      "bytes": 15052,
+      "sha256": "4C90C4C888ADC201EF5CB444C2D9C60BEF26F447F6AD80EB123579D629804091"
+    },
+    {
+      "path": "source/windows_framework_list_source.hpp",
+      "bytes": 9242,
+      "sha256": "2EB1F2F3E1835321141E5F30FC80FB73EFC47E1A12A4D40C22565385912D1F7D"
+    },
+    {
+      "path": "source/windows_held_files.hpp",
+      "bytes": 18008,
+      "sha256": "F8265C6BBE7A50AAFFA178BA77530D3BC803A62EE24BFEF764457BF49A6BD052"
+    },
+    {
+      "path": "source/windows_helper_code_guard.hpp",
+      "bytes": 6213,
+      "sha256": "693906450D3CE80CD9C274C69FBAB619CE63681550E4EC32653EA4946C2BFA76"
+    },
+    {
+      "path": "source/windows_msf_source_owner.hpp",
+      "bytes": 58692,
+      "sha256": "DF23FD992CB67D3A68521B4ED6222EBBDF65690DCD171FBD89BBB04B07C05B9D"
+    },
+    {
+      "path": "source/windows_original_json.hpp",
+      "bytes": 17861,
+      "sha256": "2993366E4402BF052CB8A8C6D6086C7985BA44F20FF3005DCEBEBFA8027D7699"
+    },
+    {
+      "path": "source/windows_original_raw_member.hpp",
+      "bytes": 11651,
+      "sha256": "F92FB99362D1A16AE48E86E86EC3D20B2AA6806ECD6FA452399F9F0B5DA80D40"
+    },
+    {
+      "path": "source/windows_original_zip_asset_comparison.hpp",
+      "bytes": 6886,
+      "sha256": "F67B603B0E0E5CD4920076B297EAA4E8B3F9004A19F99046913752010005AAF2"
+    },
+    {
+      "path": "source/windows_original_zip_directory.hpp",
+      "bytes": 13838,
+      "sha256": "C5AE841D39FE1DA804354BA6AD0D7C7B0BE256DAE75C1754F4C8C6A3CD8721B2"
+    },
+    {
+      "path": "source/windows_parser_input_capture.hpp",
+      "bytes": 9498,
+      "sha256": "960702219C3355FDDB439C1C7BDA95B509C0F1EA05DD8453C0AD71217B7A075B"
+    },
+    {
+      "path": "source/windows_parser_runtime_association.hpp",
+      "bytes": 81597,
+      "sha256": "33BDA09F63202A1F37B90FD5BB53E13C6A297C0950206D1B03CCD8089AAEC74E"
+    },
+    {
+      "path": "source/windows_runtime_host_configuration.hpp",
+      "bytes": 73994,
+      "sha256": "941DFBE37A8035A28340A3713BF950FE9B065639FFB0E7FE0D9DBBAF009EB288"
+    },
+    {
+      "path": "source/windows_session_gate.hpp",
+      "bytes": 118765,
+      "sha256": "50E450749DEABA46C0B1B74829EED1493C08A94D9D62AFB8EB3B00995B0FA2AB"
+    },
+    {
+      "path": "source/windows_retained_backing.hpp",
+      "bytes": 1089,
+      "sha256": "FEB10885763DF90D88E0B3737D776B2169B4193479AAE3AF2C2EA4B8AE8DD5D6"
     }
   ]
 }

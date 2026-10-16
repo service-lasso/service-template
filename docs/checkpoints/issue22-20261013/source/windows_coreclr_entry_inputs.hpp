@@ -1,6 +1,7 @@
 // UNCOMPILED AMD64 initializer input bytes. This owner does not establish the
 // calling binary/source ABI, an owned breakpoint, or a continuation decision.
 #pragma once
+#include "windows_retained_backing.hpp"
 #include "windows_coreclr_export.hpp"
 #include "windows_coreclr_thread_context.hpp"
 #include <exception>
@@ -224,5 +225,13 @@ public:
     SIZE_T PrivatePointerCapacity() const noexcept{return pointerCapacity_;}
     SIZE_T PrivateStringCapacity() const noexcept{return stringCapacity_;}
     SIZE_T PrivateReadCapacity() const noexcept{return readCapacity_;}
+public:
+    bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
+        if(!OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this))||pointerCapacity_>(SIZE_MAX-2)/2)return false;
+        for(SIZE_T i=0;i<2;++i)if(!OriginalRetainedArraySeparate(output,bytes,pointers_[i],pointerCapacity_)||
+            !OriginalRetainedArraySeparate(output,bytes,revalidatedPointers_[i],pointerCapacity_))return false;
+        return OriginalRetainedArraySeparate(output,bytes,strings_,stringCapacity_)&&OriginalRetainedArraySeparate(output,bytes,revalidatedStrings_,stringCapacity_)&&
+            OriginalRetainedArraySeparate(output,bytes,spans_,2*pointerCapacity_+2)&&OriginalRetainedArraySeparate(output,bytes,reads_,readCapacity_);
+    }
 };
 }

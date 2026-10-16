@@ -1554,8 +1554,34 @@ public:
         SIZE_T imageCapacity=0,imageObserved=0,invocationCapacity=0,invocationObserved=0;
         bool attempted=false,returned=false,preowned=false,failed=false;
     };
+    bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
+        if(!OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this))||
+           !OriginalRetainedArraySeparate(output,bytes,callers_,callerCapacity_)||
+           !OriginalRetainedArraySeparate(output,bytes,commandLines_,commandCapacity_)||
+           !OriginalRetainedArraySeparate(output,bytes,helperProjections_,commandCapacity_)||
+           !OriginalRetainedArraySeparate(output,bytes,images_,imageCapacity_)||
+           !OriginalRetainedArraySeparate(output,bytes,coreClrInvocations_,coreClrInvocationCapacity_)||
+           !OriginalRetainedOwnerSeparate(output,bytes,coreClrCustody_)||!OriginalRetainedOwnerSeparate(output,bytes,parserRuntime_))return false;
+        if(images_)for(SIZE_T i=0;i<imageCapacity_;++i)if(images_[i]){
+            const auto& image=*images_[i];
+            if(!OriginalRetainedStorageSeparate(output,bytes,&image,1,sizeof(image))||
+               !OriginalRetainedArraySeparate(output,bytes,image.loaded.bytes,image.loaded.byteCapacity)||
+               !OriginalRetainedArraySeparate(output,bytes,image.loaded.regions,image.loaded.regionCapacity))return false;
+        }
+        if(coreClrInvocations_)for(SIZE_T i=0;i<coreClrInvocationCapacity_;++i)if(coreClrInvocations_[i]){
+            const auto& invocation=*coreClrInvocations_[i];
+            if(!OriginalRetainedStorageSeparate(output,bytes,&invocation,1,sizeof(invocation))||
+               !OriginalRetainedArraySeparate(output,bytes,invocation.instructionOriginals,invocation.instructionCapacity)||
+               !OriginalRetainedOwnerSeparate(output,bytes,invocation.inputs)||
+               !OriginalRetainedOwnerSeparate(output,bytes,invocation.callerBoundary))return false;
+        }
+        for(const auto& owner:aliasCodeGuards_)if(!OriginalRetainedOwnerSeparate(output,bytes,owner))return false;
+        for(const auto& owner:helperCodeGuards_)if(!OriginalRetainedOwnerSeparate(output,bytes,owner))return false;
+        for(const auto& owner:parserInputs_)if(!OriginalRetainedOwnerSeparate(output,bytes,owner))return false;
+        return true;
+    }
     bool ObserveRetainedPreownViewOriginal(RetainedPreownView& out) const noexcept {
-        if(!preownAttempted_||!preownReturned_||!CoreClrNativeOutputsSettledOriginal()||
+        if(!OutputBackingSeparateOriginal(&out,sizeof(out))||!preownAttempted_||!preownReturned_||!CoreClrNativeOutputsSettledOriginal()||
             imageCount_>imageCapacity_||coreClrInvocationCount_>coreClrInvocationCapacity_||
             (imageCapacity_&&!images_)||(coreClrInvocationCapacity_&&!coreClrInvocations_))return false;
         RetainedPreownView value{};value.gateOriginal=this;value.commandOriginal=&command_;
@@ -1619,6 +1645,9 @@ public:
     const OriginalFixtureRelativeFile& PrivateCanonicalAliasSource(SIZE_T ordinal) const noexcept {return canonicalAliasSources_[ordinal];}
     const char* FirstFailure() const noexcept { return firstFailure_; }
 };
+#if defined(TEMPLATE_NATIVE_CHAIN_REGRESSION)
+bool ObserveOriginalWindowsRetainedBackingRegression(const OriginalWindowsGate&) noexcept;
+#endif
 // Session still must bind actual caller/root/tool rights and source admission,
 // complete selected input membership, writer exclusion and actual supplied native
 // tool/source provenance. No new signature issuer is inferred by this gate.

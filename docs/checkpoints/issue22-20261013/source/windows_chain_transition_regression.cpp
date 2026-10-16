@@ -3,6 +3,43 @@
 // observations of failed native calls, foreign events or unknown kernel IO.
 #include "windows_session_gate.hpp"
 namespace template_creator {
+// Called from the actual settled gate publication route. This is an alias
+// mutation rejection test over genuine attached backing, not native authority.
+bool ObserveOriginalWindowsRetainedBackingRegression(const OriginalWindowsGate& gate) noexcept {
+    using View=OriginalWindowsGate::RetainedPreownView;
+    View view{};if(!gate.ObserveRetainedPreownViewOriginal(view))return false;
+    SIZE_T exercised=0;
+    const auto reject=[&](const void* backing,SIZE_T extent) noexcept {
+        if(!backing||extent<sizeof(View))return true;
+        unsigned char preserved[sizeof(View)];std::memcpy(preserved,backing,sizeof(preserved));
+        auto& overlap=*reinterpret_cast<View*>(const_cast<void*>(backing));++exercised;
+        return !gate.ObserveRetainedPreownViewOriginal(overlap)&&!std::memcmp(preserved,backing,sizeof(preserved));
+    };
+    if(!reject(&gate,sizeof(gate)))return false;
+    if(view.imageCapacity>SIZE_MAX/sizeof(std::unique_ptr<GateImageObservation>)||
+       view.invocationCapacity>SIZE_MAX/sizeof(std::unique_ptr<GateCoreClrInvocation>)||
+       !reject(view.imageSlotsOriginal,view.imageCapacity*sizeof(std::unique_ptr<GateImageObservation>))||
+       !reject(view.invocationSlotsOriginal,view.invocationCapacity*sizeof(std::unique_ptr<GateCoreClrInvocation>)))return false;
+    for(SIZE_T i=0;i<view.imageCapacity;++i){const auto* row=gate.RetainedPreownImageOriginal(view,i);if(!row)continue;
+        if(row->loaded.regionCapacity>SIZE_MAX/sizeof(MemoryRegion)||!reject(row,sizeof(*row))||
+           !reject(row->loaded.bytes.get(),row->loaded.byteCapacity)||
+           !reject(row->loaded.regions.get(),row->loaded.regionCapacity*sizeof(MemoryRegion)))return false;
+    }
+    for(SIZE_T i=0;i<view.invocationCapacity;++i){const auto* row=gate.RetainedPreownInvocationOriginal(view,i);if(!row)continue;
+        if(row->instructionCapacity>SIZE_MAX/sizeof(GateCoreClrInstruction)||!reject(row,sizeof(*row))||
+           !reject(row->instructionOriginals.get(),row->instructionCapacity*sizeof(GateCoreClrInstruction)))return false;
+        if(row->inputs){const auto& input=*row->inputs;SIZE_T reads=0,spans=0;
+            if(!input.RetainedRowBackingExtentsOriginal(reads,spans)||!reject(&input,sizeof(input))||
+               !reject(input.PrivateReads(),reads)||!reject(input.PrivateStrings(),spans)||
+               !reject(input.PrivateStringBytes(),input.PrivateStringCapacity())||
+               !reject(input.PrivateRevalidatedStringBytes(),input.PrivateStringCapacity())||
+               input.PrivatePointerCapacity()>SIZE_MAX/sizeof(DWORD64))return false;
+            for(SIZE_T k=0;k<2;++k)if(!reject(input.PrivatePointers(k),input.PrivatePointerCapacity()*sizeof(DWORD64))||
+                !reject(input.PrivateRevalidatedPointers(k),input.PrivatePointerCapacity()*sizeof(DWORD64)))return false;
+        }
+    }
+    return exercised!=0;
+}
 // Synthetic allocation-prefix case, not a failed native allocation observation.
 // It exercises the SAME extent body used by the final publication caller.
 bool ObservePartialPreownBackingRegression() noexcept {

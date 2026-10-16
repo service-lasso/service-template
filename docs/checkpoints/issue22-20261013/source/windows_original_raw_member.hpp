@@ -1,6 +1,7 @@
 // UNCOMPILED source-owned raw member decoder. Package framing and authentic
 // build/asset association are separate owners; this object grants neither.
 #pragma once
+#include "windows_retained_backing.hpp"
 #include <atomic>
 #include <cstddef>
 #include <cstdint>
@@ -167,5 +168,10 @@ public:
     std::size_t CallCapacity() const noexcept{return calls_?callCapacity_:0;}
     const Allocation* PrivateAllocations() const noexcept{return allocations_;}
     std::size_t ReservedSourceBytes() const noexcept{return sizeof(*this)+PrivateOutputCapacity()+CallCapacity()*sizeof(Call);}
+public:
+    bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
+        return OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this))&&(!output_||expected_!=SIZE_MAX)&&
+            OriginalRetainedArraySeparate(output,bytes,output_,output_?expected_+1:0)&&OriginalRetainedArraySeparate(output,bytes,calls_,callCapacity_);
+    }
 };
 }

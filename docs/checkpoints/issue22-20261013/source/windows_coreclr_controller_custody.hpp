@@ -1,6 +1,7 @@
 // UNCOMPILED production-gate custody backing. Enrollment and native terminal
 // publication are not source/CPU/caller authority or permission to install.
 #pragma once
+#include "windows_retained_backing.hpp"
 #include <exception>
 #include "windows_coreclr_context_change.hpp"
 #include "windows_coreclr_debug_cause.hpp"
@@ -302,5 +303,10 @@ public:
     SIZE_T RetainedChangeCapacityOriginal() const noexcept{return changes_?changeCapacity_:0;}
     SIZE_T PrivateChangeCount() const noexcept{return changeCount_;}
     bool UnresolvedSourceState() const noexcept{return unknown_ || exhausted_;}
+public:
+    bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
+        return OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this))&&OriginalRetainedArraySeparate(output,bytes,threads_,threadCapacity_)&&
+            OriginalRetainedArraySeparate(output,bytes,changes_,changeCapacity_);
+    }
 };
 }

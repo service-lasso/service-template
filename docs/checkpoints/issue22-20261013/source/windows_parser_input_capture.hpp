@@ -1,6 +1,7 @@
 // UNCOMPILED full copied parser-input acquisition. No early-release grant is
 // inferred from DATA classification, exit code, or the CODE guard rule.
 #pragma once
+#include "windows_retained_backing.hpp"
 #include "windows_helper_code_guard.hpp"
 #include "windows_parser_runtime_association.hpp"
 namespace template_creator {
@@ -133,5 +134,9 @@ public:
     bool Captured() const noexcept{return captured_;}
     // The normal-release consumer is connected, but its supported host/provider
     // result producer is still incomplete and cannot yet grant this branch.
+public:
+    bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
+        return OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this))&&copy_.OutputBackingSeparateOriginal(output,bytes);
+    }
 };
 }

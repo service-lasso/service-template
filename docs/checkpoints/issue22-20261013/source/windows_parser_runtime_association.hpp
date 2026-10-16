@@ -1,6 +1,7 @@
 // UNCOMPILED private runtime/source owner joins. A structural join is not a
 // vendor assertion, an admitted build, or a synchronous-disposal qualification.
 #pragma once
+#include "windows_retained_backing.hpp"
 #include "windows_helper_source_projection.hpp"
 #include "windows_held_files.hpp"
 #include "windows_memory.hpp"
@@ -1132,5 +1133,17 @@ public:
     // inputs. Their absence remains UNKNOWN, not successful disposal semantics.
     // NativePlatformState is resident through original host settlement; neither
     // a wrapper finalizer nor this object's destruction decrefs these originals.
+public:
+    bool OutputBackingSeparateOriginal(const void* output,std::size_t bytes) const noexcept {
+        if(!OriginalRetainedStorageSeparate(output,bytes,this,1,sizeof(*this))||
+           !OriginalRetainedArraySeparate(output,bytes,occurrences_,capacity_)||!OriginalRetainedArraySeparate(output,bytes,consumerResults_,capacity_)||
+           !OriginalRetainedArraySeparate(output,bytes,compilerArtifacts_,compilerArtifactCount_)||!OriginalRetainedArraySeparate(output,bytes,compilerSourceDigests_,compilerArtifactCount_)||
+           !OriginalRetainedOwnerSeparate(output,bytes,hostConfiguration_)||!OriginalRetainedOwnerSeparate(output,bytes,frameworkListsSource_)||
+           !OriginalRetainedOwnerSeparate(output,bytes,vendorDirectory_)||!OriginalRetainedArraySeparate(output,bytes,vendorNames_,vendorNameCount_)||
+           !OriginalRetainedArraySeparate(output,bytes,vendorComparisons_,vendorComparisonCapacity_))return false;
+        if(compilerArtifacts_)for(SIZE_T i=0;i<compilerArtifactCount_;++i)if(!compilerArtifacts_[i].OutputBackingSeparateOriginal(output,bytes))return false;
+        if(vendorComparisons_)for(SIZE_T i=0;i<vendorComparisonCapacity_;++i)if(!OriginalRetainedOwnerSeparate(output,bytes,vendorComparisons_[i]))return false;
+        return true;
+    }
 };
 }
